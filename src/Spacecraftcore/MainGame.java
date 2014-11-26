@@ -1,4 +1,4 @@
-package Spacecraftcore
+package Spacecraftcore;
 public class MainGame {
 	/**
 	 * This class contains main method 

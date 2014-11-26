@@ -1,12 +1,11 @@
 package spacecraftelements;
 /**
- * Objects such as Spaceship,bullet...must implement this interface.
- * If a class implement this class,it can be update by the BattleFieldManager
+ * 这个主要是保证其他元件有update()；
  * 
  */
 public interface Updatable {
 	/**
-	 * @return if it is update successfully
+	 * @return 是否成功更新
 	 */
 	public boolean update();
 }

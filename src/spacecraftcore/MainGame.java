@@ -1,7 +1,7 @@
 package spacecraftcore;
 
 /**
- * This class contains main method
+ * 考虑在主程序里加上各个Manager的全局变量
  * 
  */
 

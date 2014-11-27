@@ -1,0 +1,16 @@
+jstarcraft.core
+jstarcraft.gui
+jstarcraft.gui.ui
+jstarcraft.gui.ui.combobox
+jstarcraft.gui.ui.list
+jstarcraft.icon
+jstarcraft.net
+jstarcraft.net.datagram
+jstarcraft.net.socket
+jstarcraft.net.udp
+jstarcraft.net.util
+jstarcraft.particles
+jstarcraft.tile
+jstarcraft.util
+jstarcraft.util.path
+test

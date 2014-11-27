@@ -4,14 +4,16 @@ import java.util.LinkedList;
 import java.util.List;
 
 import spacecraftelements.*;
+import spacecraftTest.*;
 
 public class BattleFieldManager {
 	List<Bullet> BulletList = new LinkedList<Bullet>();
-	List<SpaceShip> ShipList = new LinkedList<SpaceShip>();
+	SpaceShip Ship=null;
 	public boolean add(Bullet b) {
 		return BulletList.add(b);
 	}
 	public boolean add(SpaceShip s) {
-		return ShipList.add(s);
+		Ship=s;
+		return true;
 	}
 }

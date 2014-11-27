@@ -12,11 +12,11 @@ public abstract class SpaceShip implements Updatable{
 	/**
 	 * 飞船加速度，先不考虑
 	 */
-	Double vx,vy;
+	Double ax,ay;
 	/**
-	 * 趋势，每次更新时用
+	 * 速度(趋势)，每次更新时用
 	 */
-	Double tx,ty;
+	Double vx,vy;
 	/**
 	 * 贴图地址，以后要是有必要可以改成ImageID[];
 	 */

@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import spacecraftelements.*;
-import spacecraftTest.*;
 
 public class BattleFieldManager {
 	List<Bullet> BulletList = new LinkedList<Bullet>();
@@ -16,4 +15,5 @@ public class BattleFieldManager {
 		Ship=s;
 		return true;
 	}
+	
 }

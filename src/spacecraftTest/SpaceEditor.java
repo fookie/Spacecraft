@@ -7,21 +7,28 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class SpaceEditor {
-	final static int minsize = 10;														//单位大小
+	final static int minsize = 10;// 区块大小 //单位大小
 	static int maparea[][];
 	static DataOutputStream dos;
 
 	public static void main(String[] args) {
-		writemap(100, 100, "scmaps//ditu1.cmp", "Image//bg1.png");						//生成地图
+		writemap(800, 600, "scmaps//ditu1.cmp", "Image//bg1.png"); // 生成地图
 	}
 
+	/**
+	 * 参数，实际大小x,y,输出地址,背景地址
+	 * 
+	 * @param x
+	 * @param y
+	 * @param address
+	 * @param bg
+	 */
 	public static void writemap(int x, int y, String address, String bg) {
 		int ax, ay;
 		try {
 			dos = new DataOutputStream(new BufferedOutputStream(
 					new FileOutputStream(address)));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		ax = x / minsize;
@@ -41,6 +48,8 @@ public class SpaceEditor {
 				dos.writeUTF(bg);// 先写背景位置
 				dos.writeInt(ax);// 格子数
 				dos.writeInt(ay);
+				dos.writeInt(x);// 写入实际大小
+				dos.writeInt(y);
 				for (column = 0; column < ay; column++) {
 					for (int row = 0; row < ax; row++) {
 						dos.writeInt(maparea[row][column]);
@@ -53,7 +62,6 @@ public class SpaceEditor {
 				dos.flush();
 				dos.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

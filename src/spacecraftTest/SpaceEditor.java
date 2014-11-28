@@ -7,12 +7,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class SpaceEditor {
-	final static int minsize = 10;
+	final static int minsize = 10;														//单位大小
 	static int maparea[][];
 	static DataOutputStream dos;
 
 	public static void main(String[] args) {
-		writemap(100, 100, "scmaps//ditu1.cmp", "Image//bg1.png");
+		writemap(100, 100, "scmaps//ditu1.cmp", "Image//bg1.png");						//生成地图
 	}
 
 	public static void writemap(int x, int y, String address, String bg) {

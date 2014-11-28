@@ -20,9 +20,9 @@ public class BattleFieldManager {
 	private List<Bullet> BulletList = new LinkedList<Bullet>();
 	private List<Enemy> EnemyList = new LinkedList<Enemy>();
 	private SpaceShip Ship = null;
-	private String map[][];
+	private int map[][];
 	private DataInputStream mapin;
-	public boolean loadmap(String mapaddress, int x, int y) {
+	public boolean loadmap(String mapaddress) {
 		try {
 			mapin = new DataInputStream(
 					new BufferedInputStream(new FileInputStream(mapaddress)));
@@ -31,12 +31,29 @@ public class BattleFieldManager {
 			e.printStackTrace();// 会出现红字
 			return false;
 		}
-		map = new String[x][y];
+		try {
+			System.out.println(mapin.readUTF());
+		} catch (IOException e2) {
+			e2.printStackTrace();
+		}
+		int x = 0;
+		try {
+			x = mapin.readInt();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		int y = 0;
+		try {
+			y = mapin.readInt();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		map = new int[x][y];
 		for (int column = 0; column < y; column++) {
 			for (int row = 0; row < x; row++) {
 				try {
-					map[row][column]=mapin.readUTF();
-					System.out.println(" row : "+row+" colum: "+column+" :"+map[row][column]);
+					map[row][column]=mapin.readInt();
+					System.out.println(" row : "+row+" column: "+column+" :"+map[row][column]);
 				} catch (IOException e) {
 					System.out.println("在读取地图:"+mapaddress+"时"+"第"+row+"行"+"第"+column+ "列，无法被处理或读取，故无法加载地图\n堆栈轨迹：");
 					e.printStackTrace();

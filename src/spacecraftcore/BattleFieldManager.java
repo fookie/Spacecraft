@@ -33,27 +33,29 @@ public class BattleFieldManager {
 			e.printStackTrace();// 会出现红字
 			return false;
 		}
-		int x = 0, y = 0;
+		int ax = 0, ay = 0,x=0,y=0;
 		try {
 			bgloc = mapin.readUTF();
+			ax = mapin.readInt();
+			ay = mapin.readInt();
 			x = mapin.readInt();
 			y = mapin.readInt();
-			System.out.println("正在处理"+mapaddress+" 背景地址："+bgloc+" 区块:"+x+"x"+y+"(共"+x*y+"个)");
+			System.out.println("正在处理"+mapaddress+"\n背景地址："+bgloc+" 区块:"+ax+"x"+ay+"(共"+ax*ay+"个),地图实际大小："+x+"x"+y);
 		} catch (IOException e1) {
 			System.out.println("在读取地图:" + mapaddress + "时,无法获取基本信息，故无法加载地图");
 			e1.printStackTrace();
 			return false;
 		}
-		map = new int[x][y];
-		for (int column = 0; column < y; column++) {
-			for (int row = 0; row < x; row++) {
+		map = new int[ax][ay];
+		for (int column = 0; column < ay; column++) {
+			for (int row = 0; row < ax; row++) {
 				try {
 					map[row][column] = mapin.readInt();
 //					System.out.println(" row : " + row + " column: " + column
 //							+ " :" + map[row][column]);
 				} catch (IOException e) {
-					System.out.println("在读取地图:" + mapaddress + "时" + "第" + row
-							+ "行" + "第" + column + "列，无法被处理或读取，故无法加载地图\n堆栈轨迹：");
+					System.out.println("处理地图时，到第" + row
+							+ "行" + "第" + column + "列，无法被处理，故无法加载地图\n堆栈轨迹：");
 					e.printStackTrace();
 					return false;
 				}

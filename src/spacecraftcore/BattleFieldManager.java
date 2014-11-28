@@ -13,7 +13,11 @@ public class BattleFieldManager {
 	private List<Bullet> BulletList = new LinkedList<Bullet>();
 	private List<Enemy> EnemyList = new LinkedList<Enemy>();
 	private SpaceShip Ship = null;
-	
+	public boolean loadmap(String mapaddress,int x,int y)
+	{
+		return true;
+		
+	}
 	/**
 	 * 添加子弹
 	 * 
@@ -23,7 +27,6 @@ public class BattleFieldManager {
 	public boolean add(Bullet b) {
 		return BulletList.add(b);
 	}
-
 	/**
 	 * 添加SpaceShip，只能添加一次
 	 * 

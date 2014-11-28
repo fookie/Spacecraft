@@ -21,48 +21,52 @@ public class BattleFieldManager {
 	private List<Enemy> EnemyList = new LinkedList<Enemy>();
 	private SpaceShip Ship = null;
 	private int map[][];
+	private String bgloc;
 	private DataInputStream mapin;
+
 	public boolean loadmap(String mapaddress) {
 		try {
-			mapin = new DataInputStream(
-					new BufferedInputStream(new FileInputStream(mapaddress)));
+			mapin = new DataInputStream(new BufferedInputStream(
+					new FileInputStream(mapaddress)));
 		} catch (FileNotFoundException e) {
 			System.out.println(mapaddress + " 不存在，故无法加载地图");
 			e.printStackTrace();// 会出现红字
 			return false;
 		}
+		int x = 0, y = 0;
 		try {
-			System.out.println(mapin.readUTF());
-		} catch (IOException e2) {
-			e2.printStackTrace();
-		}
-		int x = 0;
-		try {
+			bgloc = mapin.readUTF();
 			x = mapin.readInt();
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		int y = 0;
-		try {
 			y = mapin.readInt();
+			System.out.println("正在处理"+mapaddress+" 背景地址："+bgloc+" 区块:"+x+"x"+y+"(共"+x*y+"个)");
 		} catch (IOException e1) {
+			System.out.println("在读取地图:" + mapaddress + "时,无法获取基本信息，故无法加载地图");
 			e1.printStackTrace();
+			return false;
 		}
 		map = new int[x][y];
 		for (int column = 0; column < y; column++) {
 			for (int row = 0; row < x; row++) {
 				try {
-					map[row][column]=mapin.readInt();
-					System.out.println(" row : "+row+" column: "+column+" :"+map[row][column]);
+					map[row][column] = mapin.readInt();
+//					System.out.println(" row : " + row + " column: " + column
+//							+ " :" + map[row][column]);
 				} catch (IOException e) {
-					System.out.println("在读取地图:"+mapaddress+"时"+"第"+row+"行"+"第"+column+ "列，无法被处理或读取，故无法加载地图\n堆栈轨迹：");
+					System.out.println("在读取地图:" + mapaddress + "时" + "第" + row
+							+ "行" + "第" + column + "列，无法被处理或读取，故无法加载地图\n堆栈轨迹：");
 					e.printStackTrace();
 					return false;
-				}	
+				}
 			}
 		}
+		try {
+			mapin.close();
+		} catch (IOException e) {
+			System.out.println("在读取地图:" + mapaddress + "时,无法关闭流，读取失败。");
+			e.printStackTrace();
+		}
+		System.out.println("读取完成");
 		return true;
-
 	}
 
 	/**

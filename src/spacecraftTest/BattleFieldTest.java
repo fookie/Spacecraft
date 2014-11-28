@@ -11,7 +11,7 @@ public class BattleFieldTest {
 	public static void main(String[] args)
 	{
 		BattleFieldManager bfm=new BattleFieldManager();
-		bfm.loadmap("scmaps//ceshiditu.cmp",10, 10);
+		bfm.loadmap("scmaps//ditu1.cmp");
 	}
 
 }

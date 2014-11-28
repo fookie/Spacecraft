@@ -20,7 +20,7 @@ public class BattleFieldManager {
 	private List<Bullet> BulletList = new LinkedList<Bullet>();
 	private List<Enemy> EnemyList = new LinkedList<Enemy>();
 	private SpaceShip Ship = null;
-	private int map[][];
+	private String map[][];
 	private DataInputStream mapin;
 	public boolean loadmap(String mapaddress, int x, int y) {
 		try {
@@ -31,13 +31,14 @@ public class BattleFieldManager {
 			e.printStackTrace();// 会出现红字
 			return false;
 		}
-		map = new int[x][y];
+		map = new String[x][y];
 		for (int column = 0; column < y; column++) {
 			for (int row = 0; row < x; row++) {
 				try {
-					map[row][column]=mapin.readInt();
+					map[row][column]=mapin.readUTF();
+					System.out.println(" row : "+row+" colum: "+column+" :"+map[row][column]);
 				} catch (IOException e) {
-					System.out.println("在读取地图中 row: "+row+" colum: "+column+" 无法处理或读取该数据，故无法加载地图");
+					System.out.println("在读取地图:"+mapaddress+"时"+"第"+row+"行"+"第"+column+ "列，无法被处理或读取，故无法加载地图\n堆栈轨迹：");
 					e.printStackTrace();
 					return false;
 				}	

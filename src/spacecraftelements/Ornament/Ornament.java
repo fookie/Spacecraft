@@ -1,4 +1,6 @@
-package spacecraftelements;
+package spacecraftelements.Ornament;
+
+import spacecraftelements.Updatable;
 
 public class Ornament implements Updatable{
 	

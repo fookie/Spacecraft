@@ -1,4 +1,4 @@
-package spacecraftelements;
+package spacecraftelements.Weapon;
 
 import spacecraftelements.Bullets.Bullet;
 

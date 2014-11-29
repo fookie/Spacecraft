@@ -11,6 +11,7 @@ import java.util.List;
 import spacecraftelements.*;
 import spacecraftelements.Bullets.Bullet;
 import spacecraftelements.Enemy.Enemy;
+import spacecraftelements.SpaceShip.SpaceShip;
 
 /**
  * BattleFieldManager负责更新战场以及地图，并把信息传递给DisplayManager

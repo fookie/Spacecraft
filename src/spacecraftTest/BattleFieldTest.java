@@ -13,8 +13,8 @@ public class BattleFieldTest {
 	{
 		BattleFieldManager bfm=new BattleFieldManager();
 		bfm.loadmap("scmaps//ditu1.cmp");
-		bfm.add(new BasicBullet(300.0, 300.0, 100.0, 0.0));
-		bfm.add(new BasicBullet(100.0, 300.0, 100.0, 0.0));
+		bfm.add(new BasicBullet(300, 300, 100, 0));
+		bfm.add(new BasicBullet(100, 300, 100, 0));
 	}
 
 }

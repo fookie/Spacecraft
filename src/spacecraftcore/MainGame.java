@@ -6,9 +6,9 @@ package spacecraftcore;
  */
 
 public class MainGame {
-
+	public static BattleFieldManager bm;
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

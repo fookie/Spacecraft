@@ -1,10 +1,13 @@
 package spacecraftelements.Bullets;
+
+import spacecraftelements.Updatable;
+
 /**
  * 子弹虚拟类
  * @author Paulay
  *
  */
-public abstract class Bullet {
+public abstract class Bullet implements Updatable{
 	/**
 	 * 		子弹贴图路径
 	 */
@@ -34,4 +37,5 @@ public abstract class Bullet {
 	 * 		用于子弹判断敌我
 	 */
 	public int faction;
+	public abstract boolean update();
 }

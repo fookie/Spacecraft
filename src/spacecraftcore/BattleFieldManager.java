@@ -13,8 +13,8 @@ import spacecraftelements.Bullets.Bullet;
 
 /**
  * BattleFieldManager负责更新战场以及地图，并把信息传递给DisplayManager
- * @method
- * 添加元素：add();
+ * 
+ * @method 添加元素：add();
  * 
  * @author Hale
  *
@@ -23,7 +23,7 @@ public class BattleFieldManager {
 	private List<Bullet> BulletList = new LinkedList<Bullet>();
 	private List<Enemy> EnemyList = new LinkedList<Enemy>();
 	private SpaceShip Ship = null;
-	private int map[][],mapblocksize;
+	private int map[][], mapblocksize,mapx,mapy;
 	private String bgloc;
 	private DataInputStream mapin;
 
@@ -36,15 +36,17 @@ public class BattleFieldManager {
 			e.printStackTrace();// 会出现红字
 			return false;
 		}
-		int ax = 0, ay = 0,x=0,y=0;
+		int ax = 0, ay = 0, x = 0, y = 0;
 		try {
 			bgloc = mapin.readUTF();
 			ax = mapin.readInt();
 			ay = mapin.readInt();
-			x = mapin.readInt();
-			y = mapin.readInt();
-			mapblocksize=mapin.readInt();
-			System.out.println("正在处理"+mapaddress+"\n背景地址："+bgloc+" 区块:"+ax+"x"+ay+"(共"+ax*ay+"个),地图实际大小："+x+"x"+y+"(区块大小："+mapblocksize+")");
+			mapx = mapin.readInt();
+			mapy = mapin.readInt();
+			mapblocksize = mapin.readInt();
+			System.out.println("正在处理" + mapaddress + "\n背景地址：" + bgloc + " 区块:"
+					+ ax + "x" + ay + "(共" + ax * ay + "个),地图实际大小：" + mapx + "x"
+					+ mapy + "(区块大小：" + mapblocksize + ")");
 		} catch (IOException e1) {
 			System.out.println("在读取地图:" + mapaddress + "时,无法获取基本信息，故无法加载地图");
 			e1.printStackTrace();
@@ -55,11 +57,11 @@ public class BattleFieldManager {
 			for (int row = 0; row < ax; row++) {
 				try {
 					map[row][column] = mapin.readInt();
-//					System.out.println(" row : " + row + " column: " + column
-//							+ " :" + map[row][column]);
+					// System.out.println(" row : " + row + " column: " + column
+					// + " :" + map[row][column]);
 				} catch (IOException e) {
-					System.out.println("处理地图时，到第" + row
-							+ "行" + "第" + column + "列，无法被处理，故无法加载地图\n堆栈轨迹：");
+					System.out.println("处理地图时，到第" + row + "行" + "第" + column
+							+ "列，无法被处理，故无法加载地图\n堆栈轨迹：");
 					e.printStackTrace();
 					return false;
 				}
@@ -109,18 +111,16 @@ public class BattleFieldManager {
 	public boolean add(Enemy e) {
 		return EnemyList.add(e);
 	}
-	public boolean update()
-	{
-		if(bgloc==null)
-		{
+
+	public boolean update() {
+		if (bgloc == null) {
 			System.out.println("没有加载地图，故无法更新战场数据");
 			return false;
 		}
-		//子弹
-		for(int i=0;BulletList.get(i)!=null;i++)
-		{
-		BulletList.get(i);
-		
+		// 子弹
+		for (int i = 0; BulletList.get(i) != null; i++) {
+			BulletList.get(i).update();
+
 		}
 		return true;
 	}

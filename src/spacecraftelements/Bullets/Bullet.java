@@ -1,28 +1,33 @@
 package spacecraftelements.Bullets;
 
 public abstract class Bullet {
-	String ImageID;
 	/**
 	 * 		子弹贴图路径
 	 */
-	Double vx,vy;
+	String ImageID;
 	/**
 	 * 		子弹速度
 	 */
-	Double ax, ay;
+	Double vx,vy;
 	/**
 	 * 		子弹加速度（可选）
 	 */
-	Double x, y;
+	Double ax, ay;
 	/**
 	 * 		子弹初始生成位置
 	 */
-	Double angle;
+	Double x, y;
 	/**
 	 *		子弹朝向角度 
 	 */
-	Double damage;
+	Double angle;
 	/**
 	 * 		子弹伤害值
 	 */
+	Double damage;
+	/**
+	 * 		子弹所属（跟踪类武器需要）
+	 * 		用于子弹判断敌我
+	 */
+	int faction;
 }

@@ -1,4 +1,4 @@
-package loop;
+package displayConsole;
 import java.awt.*;
 import java.awt.event.*;
 

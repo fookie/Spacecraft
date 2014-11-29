@@ -7,5 +7,5 @@ public interface Updatable {
 	/**
 	 * @return 是否成功更新
 	 */
-	public boolean update();
+	public abstract boolean update();
 }

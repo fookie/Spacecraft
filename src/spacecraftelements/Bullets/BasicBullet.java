@@ -1,6 +1,6 @@
 package spacecraftelements.Bullets;
 
-import spacecraftcore.MainGame;
+import spacecraftTest.BattleFieldTest;
 
 public class BasicBullet extends Bullet{
 	public BasicBullet(int x,int y,int vx,int vy){
@@ -18,10 +18,11 @@ public class BasicBullet extends Bullet{
 
 	@Override
 	public boolean update() {
-		System.out.print(this.toString()+"before: x");
+		System.out.print(this.toString()+"\n x:"+x+"y:"+y);
 		x=x+vx;
 		y=y+vy;
-		if(x>(MainGame.bm.mapx)/2||y>(MainGame.bm.mapy)/2||x<-(MainGame.bm.mapx)/2||y<-(MainGame.bm.mapy)/2)
+		System.out.println("-> x:"+x+"y:"+y);
+		if(x>((BattleFieldTest.bfm.mapx)))
 		{//³¬³ö±ß½ç
 		return false;
 		}

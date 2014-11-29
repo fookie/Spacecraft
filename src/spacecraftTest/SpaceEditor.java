@@ -12,7 +12,7 @@ public class SpaceEditor {
 	static DataOutputStream dos;
 
 	public static void main(String[] args) {
-		writemap(800, 600, "scmaps//ditu1.cmp", "Image//bg1.png"); // 生成地图
+		writemap(800, 600, "ditu1.cmp", "Image//bg1.png"); // 生成地图
 	}
 
 	/**

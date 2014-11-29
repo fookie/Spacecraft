@@ -25,7 +25,7 @@ public class BattleFieldManager {
 	private List<Enemy> EnemyList = new LinkedList<Enemy>();
 	private SpaceShip Ship = null;
 	private int map[][], mapblocksize;
-	public int mapx,mapy;
+	public int mapx, mapy;
 	private String bgloc;
 	private DataInputStream mapin;
 
@@ -47,8 +47,8 @@ public class BattleFieldManager {
 			mapy = mapin.readInt();
 			mapblocksize = mapin.readInt();
 			System.out.println("正在处理" + mapaddress + "\n背景地址：" + bgloc + " 区块:"
-					+ ax + "x" + ay + "(共" + ax * ay + "个),地图实际大小：" + mapx + "x"
-					+ mapy + "(区块大小：" + mapblocksize + ")");
+					+ ax + "x" + ay + "(共" + ax * ay + "个),地图实际大小：" + mapx
+					+ "x" + mapy + "(区块大小：" + mapblocksize + ")");
 		} catch (IOException e1) {
 			System.out.println("在读取地图:" + mapaddress + "时,无法获取基本信息，故无法加载地图");
 			e1.printStackTrace();
@@ -120,9 +120,8 @@ public class BattleFieldManager {
 			return false;
 		}
 		// 子弹
-		for (int i = 0; BulletList.get(i) != null; i++) {
-			if(BulletList.get(i).update()==false)
-			{
+		for (int i = 0;i<BulletList.size(); i++) {
+			if (BulletList.get(i).update() == false) {
 				BulletList.remove(i);
 			}
 

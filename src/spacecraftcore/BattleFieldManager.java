@@ -15,7 +15,7 @@ import spacecraftelements.Enemy.Enemy;
 /**
  * BattleFieldManager负责更新战场以及地图，并把信息传递给DisplayManager
  * 
- * @method 添加元素：add();
+ * @method 添加元素：add();更新战场数据及逻辑 update();
  * 
  * @author Hale
  *

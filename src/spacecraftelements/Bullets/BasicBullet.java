@@ -1,7 +1,9 @@
 package spacecraftelements.Bullets;
 
 import spacecraftcore.MainGame;
-
+/**
+ *		基础子弹，暂时用于测试 
+ */
 public class BasicBullet extends Bullet{
 	public BasicBullet(Double x,Double y){
 		//设定该子弹属性

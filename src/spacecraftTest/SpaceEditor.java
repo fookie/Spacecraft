@@ -34,7 +34,7 @@ public class SpaceEditor {
 		ax = x / minsize;
 		ay = y / minsize;
 		System.out.println(ax);
-		System.out.println(ay);
+		System.out.println(ay+"开始生成地图");
 		maparea = new int[ax][ay];
 		for (int column = 0; column < ay; column++) {
 			for (int row = 0; row < ax; row++) {
@@ -50,6 +50,7 @@ public class SpaceEditor {
 				dos.writeInt(ay);
 				dos.writeInt(x);// 写入实际大小
 				dos.writeInt(y);
+				dos.writeInt(minsize);//写入区块大小
 				for (column = 0; column < ay; column++) {
 					for (int row = 0; row < ax; row++) {
 						dos.writeInt(maparea[row][column]);
@@ -64,6 +65,7 @@ public class SpaceEditor {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			System.out.println("完成");
 		}
 	}
 }

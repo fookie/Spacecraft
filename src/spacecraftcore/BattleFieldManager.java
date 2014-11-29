@@ -12,6 +12,8 @@ import spacecraftelements.*;
 
 /**
  * BattleFieldManager负责更新战场以及地图，并把信息传递给DisplayManager
+ * @method
+ * 添加元素：add();
  * 
  * @author Hale
  *
@@ -20,7 +22,7 @@ public class BattleFieldManager {
 	private List<Bullet> BulletList = new LinkedList<Bullet>();
 	private List<Enemy> EnemyList = new LinkedList<Enemy>();
 	private SpaceShip Ship = null;
-	private int map[][];
+	private int map[][],mapblocksize;
 	private String bgloc;
 	private DataInputStream mapin;
 
@@ -40,7 +42,8 @@ public class BattleFieldManager {
 			ay = mapin.readInt();
 			x = mapin.readInt();
 			y = mapin.readInt();
-			System.out.println("正在处理"+mapaddress+"\n背景地址："+bgloc+" 区块:"+ax+"x"+ay+"(共"+ax*ay+"个),地图实际大小："+x+"x"+y);
+			mapblocksize=mapin.readInt();
+			System.out.println("正在处理"+mapaddress+"\n背景地址："+bgloc+" 区块:"+ax+"x"+ay+"(共"+ax*ay+"个),地图实际大小："+x+"x"+y+"(区块大小："+mapblocksize+")");
 		} catch (IOException e1) {
 			System.out.println("在读取地图:" + mapaddress + "时,无法获取基本信息，故无法加载地图");
 			e1.printStackTrace();
@@ -105,5 +108,15 @@ public class BattleFieldManager {
 	public boolean add(Enemy e) {
 		return EnemyList.add(e);
 	}
-
+	public boolean update()
+	{
+		if(bgloc==null)
+		{
+			System.out.println("没有加载地图，故无法更新战场数据");
+			return false;
+		}
+		//子弹
+		
+		return true;
+	}
 }

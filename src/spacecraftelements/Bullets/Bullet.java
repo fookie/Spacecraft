@@ -41,5 +41,9 @@ public abstract class Bullet implements Updatable{
 	 * 		子弹体积
 	 */
 	public int volume;
+	/**
+	 * 		子弹编号
+	 */
+	public int ID;
 	public abstract boolean update();
 }

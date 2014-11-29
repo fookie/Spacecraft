@@ -5,4 +5,5 @@ public abstract class Bullet {
 	Double vx,vy;
 	Double x, y;
 	
+	
 }

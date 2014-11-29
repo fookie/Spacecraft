@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import spacecraftelements.*;
+import spacecraftelements.Bullets.Bullet;
 
 /**
  * BattleFieldManager负责更新战场以及地图，并把信息传递给DisplayManager
@@ -116,7 +117,11 @@ public class BattleFieldManager {
 			return false;
 		}
 		//子弹
+		for(int i=0;BulletList.get(i)!=null;i++)
+		{
+		BulletList.get(i);
 		
+		}
 		return true;
 	}
 }

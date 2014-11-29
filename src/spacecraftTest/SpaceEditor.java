@@ -40,6 +40,7 @@ public class SpaceEditor {
 			for (int row = 0; row < ax; row++) {
 				maparea[row][column] = 0;
 			}
+			//自定义点
 			maparea[1][2] = 1;
 			maparea[1][3] = 1;
 			maparea[9][9] = 1;

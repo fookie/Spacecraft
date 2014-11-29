@@ -23,7 +23,8 @@ public class BattleFieldManager {
 	private List<Bullet> BulletList = new LinkedList<Bullet>();
 	private List<Enemy> EnemyList = new LinkedList<Enemy>();
 	private SpaceShip Ship = null;
-	private int map[][], mapblocksize,mapx,mapy;
+	private int map[][], mapblocksize;
+	public int mapx,mapy;
 	private String bgloc;
 	private DataInputStream mapin;
 
@@ -119,7 +120,10 @@ public class BattleFieldManager {
 		}
 		// ×Óµ¯
 		for (int i = 0; BulletList.get(i) != null; i++) {
-			BulletList.get(i).update();
+			if(BulletList.get(i).update()==false)
+			{
+				BulletList.remove(i);
+			}
 
 		}
 		return true;

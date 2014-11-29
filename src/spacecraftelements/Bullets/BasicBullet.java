@@ -10,7 +10,7 @@ public class BasicBullet extends Bullet{
 		super.vx=(double) 10;
 		super.vy=(double) 8;
 		super.damage=15.0;
-		super.ImageID="Image//bullet//basicbullet.png";
+		super.ImageID="Images//bullet//basicbullet.png";
 		//角度暂时不设定
 	}
 

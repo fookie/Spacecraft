@@ -25,7 +25,7 @@ public abstract class Bullet implements Updatable{
 	 */
 	public Double x, y;
 	/**
-	 *		子弹朝向角度 
+	 *		子弹朝向角度 	
 	 */
 	public Double angle;
 	/**

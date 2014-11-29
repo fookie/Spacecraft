@@ -1,5 +1,9 @@
 package spacecraftelements.Bullets;
-
+/**
+ * 子弹虚拟类
+ * @author Paulay
+ *
+ */
 public abstract class Bullet {
 	/**
 	 * 		子弹贴图路径

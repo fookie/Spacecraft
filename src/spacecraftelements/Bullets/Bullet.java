@@ -37,5 +37,9 @@ public abstract class Bullet implements Updatable{
 	 * 		用于子弹判断敌我
 	 */
 	public int faction;
+	/**
+	 * 		子弹体积
+	 */
+	public Double volume;
 	public abstract boolean update();
 }

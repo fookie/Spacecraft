@@ -11,7 +11,7 @@ public class BasicBullet extends Bullet{
 		super.vy=vy;
 		super.damage=15;
 		super.volume = 10;
-		super.ImageID="Images//bullet//basicbullet.png";
+		super.ImageID="Images//bullet//basicbullet1.png";
 		super.ID = 0;
 		//角度暂时不设定
 	}

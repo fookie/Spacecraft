@@ -22,6 +22,10 @@ public class Ornament implements Updatable{
 	 * 		实体ID
 	 */
 	public int ID;
+	/**
+	 * 		实体贴图
+	 */
+	public String imageID;
 	public boolean update() {
 		return false;
 	}

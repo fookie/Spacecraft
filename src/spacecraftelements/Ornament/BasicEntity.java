@@ -1,13 +1,15 @@
 package spacecraftelements.Ornament;
+
 /**
- *		基础实体 
+ * 基础实体
  */
-public class BasicEntity extends Ornament{
+public class BasicEntity extends Ornament {
 	public BasicEntity(int x, int y){
 		super.health = 1000;
 		super.x = x;
 		super.y = y;
 		super.volume = 10;
 		super.ID = 0;
+		super.imageID = "Images//ornament//basicentity.png";
 	}
 }

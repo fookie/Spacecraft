@@ -99,8 +99,8 @@ public class BattleFieldManager {
 	 * @return 是否成功添加
 	 */
 	public boolean add(SpaceShip s) {
-		if (Ship == null) {
-			Ship = s;
+		if (ship == null) {
+			ship = s;
 			return true;
 		} else {
 			return false;
@@ -136,6 +136,9 @@ public class BattleFieldManager {
 		MainGame.test.repainter.repaint();
 		return true;
 	}
+	/**
+	 * 移动子弹并且自动移除出界子弹
+	 */
 	private void updatebullet()
 	{
 		for (int i = 0; i < BulletList.size(); i++) {

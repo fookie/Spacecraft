@@ -121,33 +121,61 @@ public class BattleFieldManager {
 			return false;
 		}
 		// 子弹
-		for (int i = 0;i<BulletList.size(); i++) {
+		for (int i = 0; i < BulletList.size(); i++) {
 			BulletList.get(i).update();
-			//计算部分
-			//超出边界
-			if(BulletList.get(i).x>(mapx/2)||BulletList.get(i).x<-(mapx/2)||BulletList.get(i).y>(mapy/2)||BulletList.get(i).y<-(mapy/2))
-			{
-				System.out.println(BulletList.get(i).toString()+"removing:out of range");
+			// 计算部分
+			// 超出边界
+			if (BulletList.get(i).x > (mapx / 2)
+					|| BulletList.get(i).x < -(mapx / 2)
+					|| BulletList.get(i).y > (mapy / 2)
+					|| BulletList.get(i).y < -(mapy / 2)) {
+				// System.out.println(BulletList.get(i).toString()+"remove:out of range");
 				BulletList.remove(i);
-				i=i-1;
+				i = i - 1;
+				break;
+			}// 删除速度为0的子弹
+			if (BulletList.get(i).vx == 0 && BulletList.get(i).vy == 0) {
+				// System.out.println(BulletList.get(i).toString()+"remove:no speed");
+				BulletList.remove(i);
+				i = i - 1;
+				break;
 			}
 		}
-			//传递部分
-			MainGame.test.repainter.le=new LinkedList<Element>();
-			
-			//传递子弹
-			
-			for (int i = 0;i<BulletList.size(); i++) 
-			{
-				MainGame.test.repainter.add(BulletList.get(i).ImageID, BulletList.get(i).x+400, 300-BulletList.get(i).y,BulletList.get(i).angle, 2);
-			}
-			MainGame.test.repainter.repaint();
-		
+		// 传递部分
+		MainGame.test.repainter.le = new LinkedList<Element>();
+
+		// 传递子弹
+
+		for (int i = 0; i < BulletList.size(); i++) {
+			MainGame.test.repainter.add(BulletList.get(i).ImageID,
+					BulletList.get(i).x + 400, 300 - BulletList.get(i).y,
+					getangle(BulletList.get(i).vx, BulletList.get(i).vy), 2);
+		}
+		MainGame.test.repainter.repaint();
+
 		return true;
 	}
-	public int getangle(int x,int y)
-	{
-		return y;
-		
+
+	public int getangle(int x, int y) {
+		int ans;
+		if (x == 0) {
+			if (y > 0)
+				return 0;
+			else
+				return 180;
+		} else if (y == 0) {
+			if (x > 0)
+				return 90;
+			if (x < 0)
+				return 270;
+		} else if (y > 0) {
+			ans = (int) (Math.atan(100 * y / 100 * x) * (180 / Math.PI));
+			return ans;
+		} else if (y < 0) {
+			ans = (int) (Math.atan(100 * y / 100 * x) * (180 / Math.PI)) + 180;
+			return ans;
+		}
+		return 0;
+
 	}
 }

@@ -14,24 +14,47 @@ import spacecraftelements.Bullets.BasicBullet;
 public class MainGame {
 	public static BattleFieldManager bm;
 	public static Test test;
+
 	public static void main(String[] args) {
 		test = new Test();
-		   test.addWindowListener(new WindowAdapter(){
-			   public void windowClosing(WindowEvent e){
-				   System.exit(0);
-			   }
-		   });
-		//System.out.println(Math.atan(1.0)*(180/Math.PI));
-		Thread mt=new Thread(new SpaceTimmer());
-		bm=new BattleFieldManager();
+		test.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				System.exit(0);
+			}
+		});
+		// System.out.println(Math.atan(1.0)*(180/Math.PI));
+		Thread mt = new Thread(new SpaceTimmer());
+		bm = new BattleFieldManager();
 		bm.loadmap("ditu1.cmp");
-//		for(int j=0;j<20;j++){
-//			bm.add(new BasicBullet( (int) (Math.random() * 100) % 10,(int) (Math.random() * 100) % 10,1,1));
-//			} 
-		for(int j=0;j<20;j++){
-			bm.add(new BasicBullet( (int) (Math.random() * 100) % 10,(int) (Math.random() * 100) % 10,(int) (Math.random() * 100) % 10,(int) (Math.random() * 100) % 10));
-			} 
+		// for(int j=0;j<20;j++){
+		// bm.add(new BasicBullet( (int) (Math.random() * 100) % 10,(int)
+		// (Math.random() * 100) % 10,1,1));
+		// }
+		for (int j = 0; j < 20; j++) {
+			bm.add(new BasicBullet((int) (Math.random() * 100) % 10,
+					(int) (Math.random() * 100) % 10,
+					(int) (Math.random() * 100) % 5,
+					(int) (Math.random() * 100) % 5));
+		}
+		for (int j = 0; j < 20; j++) {
+			bm.add(new BasicBullet((int) (Math.random() * 100) % 10,
+					(int) (Math.random() * 100) % 10,
+					-(int) (Math.random() * 100) % 5,
+					(int) (Math.random() * 100) % 5));
+		}
+		for (int j = 0; j < 20; j++) {
+			bm.add(new BasicBullet((int) (Math.random() * 100) % 10,
+					(int) (Math.random() * 100) % 10,
+					-(int) (Math.random() * 100) % 5,
+					-(int) (Math.random() * 100) % 5));
+		}
+		for (int j = 0; j < 20; j++) {
+			bm.add(new BasicBullet((int) (Math.random() * 100) % 10,
+					(int) (Math.random() * 100) % 10,
+					(int) (Math.random() * 100) % 5,
+					-(int) (Math.random() * 100) % 5));
+		}
 		mt.start();
 	}
-	
+
 }

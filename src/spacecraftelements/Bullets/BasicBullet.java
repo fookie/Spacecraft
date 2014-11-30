@@ -17,13 +17,8 @@ public class BasicBullet extends Bullet{
 
 	@Override
 	public boolean update() {
-		System.out.print(this.toString()+"\n x:"+x+"y:"+y);
 		x=x+vx;
 		y=y+vy;
-		if(vx!=0){
-		angle=(int) (Math.atan(vy/vx)*(180/Math.PI));
-		}
-		System.out.println("-> x:"+x+" y:"+y+"vx:"+vx+"vy:"+vy+"angel:"+angle);
 		return true;
 	}
 

@@ -24,12 +24,16 @@ import spacecraftelements.SpaceShip.SpaceShip;
 public class BattleFieldManager {
 	private List<Bullet> BulletList = new LinkedList<Bullet>();
 	private List<Enemy> EnemyList = new LinkedList<Enemy>();
-	private SpaceShip Ship = null;
+	public SpaceShip ship = null;
 	private int map[][], mapblocksize;
 	public int mapx, mapy;
 	private String bgloc;
 	private DataInputStream mapin;
-
+	
+	public SpaceShip getShip()
+	{
+		return ship;
+	}
 	public boolean loadmap(String mapaddress) {
 		try {
 			mapin = new DataInputStream(new BufferedInputStream(
@@ -60,8 +64,6 @@ public class BattleFieldManager {
 			for (int row = 0; row < ax; row++) {
 				try {
 					map[row][column] = mapin.readInt();
-					// System.out.println(" row : " + row + " column: " + column
-					// + " :" + map[row][column]);
 				} catch (IOException e) {
 					System.out.println("处理地图时，到第" + row + "行" + "第" + column
 							+ "列，无法被处理，故无法加载地图\n堆栈轨迹：");
@@ -121,6 +123,21 @@ public class BattleFieldManager {
 			return false;
 		}
 		// 子弹
+		updatebullet();
+		// 传递部分
+		MainGame.test.repainter.le = new LinkedList<Element>();
+		// 传递子弹
+		for (int i = 0; i < BulletList.size(); i++) {
+			MainGame.test.repainter.add(BulletList.get(i).ImageID,
+					BulletList.get(i).x + 400, 300 - BulletList.get(i).y,
+					getangle(BulletList.get(i).vx, BulletList.get(i).vy), 2);
+		}
+		// 重新绘制
+		MainGame.test.repainter.repaint();
+		return true;
+	}
+	private void updatebullet()
+	{
 		for (int i = 0; i < BulletList.size(); i++) {
 			BulletList.get(i).update();
 			// 计算部分
@@ -132,30 +149,9 @@ public class BattleFieldManager {
 				// System.out.println(BulletList.get(i).toString()+"remove:out of range");
 				BulletList.remove(i);
 				i = i - 1;
-				break;
-			}// 删除速度为0的子弹
-			if (BulletList.get(i).vx == 0 && BulletList.get(i).vy == 0) {
-				// System.out.println(BulletList.get(i).toString()+"remove:no speed");
-				BulletList.remove(i);
-				i = i - 1;
-				break;
 			}
 		}
-		// 传递部分
-		MainGame.test.repainter.le = new LinkedList<Element>();
-
-		// 传递子弹
-
-		for (int i = 0; i < BulletList.size(); i++) {
-			MainGame.test.repainter.add(BulletList.get(i).ImageID,
-					BulletList.get(i).x + 400, 300 - BulletList.get(i).y,
-					getangle(BulletList.get(i).vx, BulletList.get(i).vy), 2);
-		}
-		MainGame.test.repainter.repaint();
-
-		return true;
 	}
-
 	public int getangle(int x, int y) {
 		int ans;
 		if (x == 0) {
@@ -176,6 +172,5 @@ public class BattleFieldManager {
 			return ans;
 		}
 		return 0;
-
 	}
 }

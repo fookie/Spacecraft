@@ -29,7 +29,7 @@ public class Repainter extends JPanel {
 	//private Image iBuffer;
 	//private Graphics gBuffer;
 	
-	//public Image bg = getToolkit().getImage("Images//bg1.jpg");
+	public Image bg = getToolkit().getImage("Images//bg1.jpg");
 	//public Image player = getToolkit().getImage("Images//player.png");
 	
 	public List<Element> le = new ArrayList<Element>();
@@ -86,7 +86,7 @@ public class Repainter extends JPanel {
 		g.drawImage(iBuffer,0,0,this);*/
 		super.paint(g);
 		g.clearRect( 0, 0, this.getWidth(), this.getHeight());
-		//g.drawImage(le[1].img,0,0,this);
+		g.drawImage(bg,0,0,this);
 		//g.drawImage(rotateImage(player,rotatedegree),0,y,this);
 		//g.drawImage(rotateImage(player,rotatedegree),50,y,this);
 		//g.drawImage(rotateImage(player,rotatedegree),100,y,this);

@@ -12,6 +12,9 @@ import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -24,16 +27,20 @@ public class Repainter extends JPanel implements Runnable{
 	private Graphics gBuffer;
 	public Image bg = getToolkit().getImage("bg1.jpg");
 	public Image player = getToolkit().getImage("player.png");
+	public List<Element> le = new ArrayList<Element>();
 	
 	//try{BufferedImage bg1 = ImageIO.read(new File("bg1.jpg"));}
 	//catch(IOException e){}
 	
-	public class background extends JPanel{
-		public background(){
-		setOpaque(false);
-		setLayout(null);
-		}
-	}
+	public void add(String name,int x,int y,int degree,int layer){
+		   Element img = (Element) getToolkit().getImage(name);
+		   img.x = x;
+		   img.y = y;
+		   img.rotatedegree = degree;
+		   img.layer = layer;
+		   le.add(img);
+	   }
+
 	
 	 public Repainter(){
 		 Thread t = new Thread(this);
@@ -47,7 +54,7 @@ public class Repainter extends JPanel implements Runnable{
         	}catch(InterruptedException e){}
         	y+=2;
         	rotatedegree+=5;
-        	//List<Element> el = new LinkedList<ELement>; 
+        	//List<Element> el = new LinkedList<ELement>(); 
         	if(y>300){
         		y=-80;
         	}

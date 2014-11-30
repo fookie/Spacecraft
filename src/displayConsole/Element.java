@@ -3,19 +3,20 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.ImageObserver;
 import java.awt.image.ImageProducer;
+import java.util.LinkedList;
 import java.util.List;
-import java.awt.Component;
 import java.awt.*;
+
 import javax.swing.*;
 
 public class Element extends Image{
   private Toolkit tk = Toolkit.getDefaultToolkit();
-  private String filename;
-  private int x;
-  private int y;
-  private int rotatedegree;
-  private int layer;
-  private Image bg = tk.getImage(filename);
+  public String filename;
+  public int x;
+  public int y;
+  public int rotatedegree;
+  public int layer;
+  private Element element = (Element) tk.getImage(filename);
   
    public Element(String s,int x,int y,int d,int l){
 	   filename = s;
@@ -23,6 +24,9 @@ public class Element extends Image{
 	   this.y = y;
 	   rotatedegree = d;
 	   layer = l;
+   }
+   public void add(String name,int x,int y,int degree,int layer){
+	   List<Element> el = new LinkedList<Element>();
    }
 
 @Override

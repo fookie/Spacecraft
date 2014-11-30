@@ -139,10 +139,15 @@ public class BattleFieldManager {
 			
 			for (int i = 0;i<BulletList.size(); i++) 
 			{
-				MainGame.test.repainter.add(BulletList.get(i).ImageID, BulletList.get(i).x+400, BulletList.get(i).y+300,BulletList.get(i).angle, 2);
+				MainGame.test.repainter.add(BulletList.get(i).ImageID, BulletList.get(i).x+400, 300-BulletList.get(i).y,BulletList.get(i).angle, 2);
 			}
 			MainGame.test.repainter.repaint();
 		
 		return true;
+	}
+	public int getangle(int x,int y)
+	{
+		return y;
+		
 	}
 }

@@ -23,7 +23,7 @@ public class BasicBullet extends Bullet{
 		if(vx!=0){
 		angle=(int) (Math.atan(vy/vx)*(180/Math.PI));
 		}
-		System.out.println("-> x:"+x+" y:"+y);
+		System.out.println("-> x:"+x+" y:"+y+"vx:"+vx+"vy:"+vy+"angel:"+angle);
 		return true;
 	}
 

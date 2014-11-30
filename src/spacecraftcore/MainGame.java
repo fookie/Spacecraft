@@ -15,16 +15,19 @@ public class MainGame {
 	public static BattleFieldManager bm;
 	public static Test test;
 	public static void main(String[] args) {
-		Thread mt=new Thread(new SpaceTimmer());
-		BattleFieldManager bfm=new BattleFieldManager();
-		bfm.loadmap("ditu1.cmp");
-		bfm.add(new BasicBullet(300,0,50,2));
 		test = new Test();
 		   test.addWindowListener(new WindowAdapter(){
 			   public void windowClosing(WindowEvent e){
 				   System.exit(0);
 			   }
 		   });
+		Thread mt=new Thread(new SpaceTimmer());
+		bm=new BattleFieldManager();
+		bm.loadmap("ditu1.cmp");
+		for(int j=0;j<20;j++){
+			bm.add(new BasicBullet( (int) (Math.random() * 100) % 10,(int) (Math.random() * 100) % 10,(int) (Math.random() * 100) % 10,(int) (Math.random() * 100) % 10));
+			}
+		mt.start();
 	}
 	
 }

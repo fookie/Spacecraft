@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.awt.Transparency;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.swing.JPanel;
@@ -31,7 +32,7 @@ public class Repainter extends JPanel {
 	public Image bg = getToolkit().getImage("Images//bg1.jpg");
 	//public Image player = getToolkit().getImage("Images//player.png");
 	
-	public List<Element> le = new ArrayList<Element>();
+	public List<Element> le = new LinkedList<Element>();
 	
 	
 	public void add(String name,int x,int y,int degree,int layer){

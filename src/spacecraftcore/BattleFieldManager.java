@@ -5,7 +5,6 @@ import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -126,22 +125,27 @@ public class BattleFieldManager {
 			BulletList.get(i).update();
 			//计算部分
 			//超出边界
-			if(BulletList.get(i).x>(mapx/2)||BulletList.get(i).x<-(mapx/2))
+			if(BulletList.get(i).x>(mapx/2)||BulletList.get(i).x<-(mapx/2)||BulletList.get(i).y>(mapy/2)||BulletList.get(i).y<-(mapy/2))
 			{
 				System.out.println(BulletList.get(i).toString()+"removing:out of range");
 				BulletList.remove(i);
 				i=i-1;
 			}
-			
+		}
 			//传递部分
-			MainGame.test.repainter.le=new ArrayList<Element>();
+//			System.out.println(MainGame.test.toString());
+//			System.out.println(MainGame.test.repainter.toString());
+//			System.out.println(MainGame.test.repainter.le.toString());
+			MainGame.test.repainter.le=new LinkedList<Element>();
+			
 			//传递子弹
 			
-			for (i = 0;i<BulletList.size(); i++) 
+			for (int i = 0;i<BulletList.size(); i++) 
 			{
-				MainGame.test.repainter.add(BulletList.get(i).ImageID, BulletList.get(i).x, BulletList.get(i).y, 45, 2);
+				MainGame.test.repainter.add(BulletList.get(i).ImageID, BulletList.get(i).x+400, BulletList.get(i).y+300, 0, 2);
 			}
-		}
+			MainGame.test.repainter.repaint();
+		
 		return true;
 	}
 }

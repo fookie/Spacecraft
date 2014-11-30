@@ -14,10 +14,12 @@ public class BattleFieldTest {
 	{
 		BattleFieldManager bfm=new BattleFieldManager();
 		bfm.loadmap("ditu1.cmp");
-		for(int j=0;j<300;j++){
-		bfm.add(new BasicBullet( (int) (Math.random() * 100) % 10,(int) (Math.random() * 100) % 10,(int) (Math.random() * 100) % 10,(int) (Math.random() * 100) % 10));
-		}
-		for(int i=0;i<1;i++)
+//		for(int j=0;j<300;j++){
+//		bfm.add(new BasicBullet( (int) (Math.random() * 100) % 10,(int) (Math.random() * 100) % 10,(int) (Math.random() * 100) % 10,(int) (Math.random() * 100) % 10));
+//		}
+		bfm.add(new BasicBullet(300,0,50,2));
+		bfm.add(new BasicBullet(300,0,10,2));
+		for(int i=0;i<20;i++)
 		{
 			bfm.update();
 		}

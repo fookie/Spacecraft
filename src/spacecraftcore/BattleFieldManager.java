@@ -38,7 +38,7 @@ public class BattleFieldManager {
 			e.printStackTrace();// 会出现红字
 			return false;
 		}
-		int ax = 0, ay = 0, x = 0, y = 0;
+		int ax = 0, ay = 0;
 		try {
 			bgloc = mapin.readUTF();
 			ax = mapin.readInt();
@@ -121,10 +121,18 @@ public class BattleFieldManager {
 		}
 		// 子弹
 		for (int i = 0;i<BulletList.size(); i++) {
-			if (BulletList.get(i).update() == false) {
+			BulletList.get(i).update();
+			//计算部分
+			//超出边界
+			if(BulletList.get(i).x>(mapx/2)||BulletList.get(i).x<-(mapx/2))
+			{
+				System.out.println(BulletList.get(i).toString()+"removing:out of range");
 				BulletList.remove(i);
+				i=i-1;
 			}
-
+			
+			//传递部分
+			
 		}
 		return true;
 	}

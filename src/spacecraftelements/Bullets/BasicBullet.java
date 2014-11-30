@@ -21,11 +21,7 @@ public class BasicBullet extends Bullet{
 		System.out.print(this.toString()+"\n x:"+x+"y:"+y);
 		x=x+vx;
 		y=y+vy;
-		System.out.println("-> x:"+x+"y:"+y);
-		if(x>((BattleFieldTest.bfm.mapx)))
-		{//³¬³ö±ß½ç
-		return false;
-		}
+		System.out.println("-> x:"+x+" y:"+y);
 		return true;
 	}
 

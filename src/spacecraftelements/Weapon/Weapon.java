@@ -1,7 +1,5 @@
 package spacecraftelements.Weapon;
 
-import spacecraftelements.Bullets.Bullet;
-
 /**
  * 这个的话既可以是玩家飞船的武器也可以是敌人的武器
  */
@@ -9,7 +7,7 @@ public abstract class Weapon {
 	/**
 	 * 指定子弹
 	 */
-	public Bullet bullet;
+	public int defaultbullet;
 	/**
 	 * 弹夹大小
 	 */

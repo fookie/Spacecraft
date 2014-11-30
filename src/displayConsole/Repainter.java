@@ -54,7 +54,12 @@ public class Repainter extends JPanel implements Runnable{
         	}catch(InterruptedException e){}
         	y+=2;
         	rotatedegree+=5;
-        	//List<Element> el = new LinkedList<ELement>(); 
+            /* for(int i =0;i<le.length();i++)
+             * 
+             * 
+             * 
+             * 
+             * */
         	if(y>300){
         		y=-80;
         	}

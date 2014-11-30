@@ -133,16 +133,13 @@ public class BattleFieldManager {
 			}
 		}
 			//传递部分
-//			System.out.println(MainGame.test.toString());
-//			System.out.println(MainGame.test.repainter.toString());
-//			System.out.println(MainGame.test.repainter.le.toString());
 			MainGame.test.repainter.le=new LinkedList<Element>();
 			
 			//传递子弹
 			
 			for (int i = 0;i<BulletList.size(); i++) 
 			{
-				MainGame.test.repainter.add(BulletList.get(i).ImageID, BulletList.get(i).x+400, BulletList.get(i).y+300, 0, 2);
+				MainGame.test.repainter.add(BulletList.get(i).ImageID, BulletList.get(i).x+400, BulletList.get(i).y+300,BulletList.get(i).angle, 2);
 			}
 			MainGame.test.repainter.repaint();
 		

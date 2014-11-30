@@ -11,6 +11,7 @@ public class Palelin extends SpaceShip{
 		super.volume = 50;
 		super.w1 = null;
 		super.w2 = null;
+		super.ImageID = "Images//ship//palelin.png";
 	}
 	
 	public boolean update() {

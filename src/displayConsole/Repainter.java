@@ -82,10 +82,13 @@ public class Repainter extends JPanel {
 		gBuffer.setColor(Color.red);
 		gBuffer.fillOval(90,y,80,80);
 		g.drawImage(bg,0,0,this);
-		g.drawImage(iBuffer,0,0,this);*/
+		g.drawImage(iBuffer,0,0,this);*/  
 		super.paint(g);
 		g.clearRect( 0, 0, this.getWidth(), this.getHeight());
 		g.drawImage(bg,0,0,this);
+		for(int i=0;i<le.size();i++){
+			g.drawImage(rotateImage(le.get(i).img , le.get(i).rotatedegree) , le.get(i).x , le.get(i).y,this);
+		}
 		//g.drawImage(rotateImage(player,rotatedegree),0,y,this);
 		//g.drawImage(rotateImage(player,rotatedegree),50,y,this);
 		//g.drawImage(rotateImage(player,rotatedegree),100,y,this);

@@ -26,7 +26,7 @@ public class MainGame {
 		bm.loadmap("ditu1.cmp");
 		for(int j=0;j<20;j++){
 			bm.add(new BasicBullet( (int) (Math.random() * 100) % 10,(int) (Math.random() * 100) % 10,(int) (Math.random() * 100) % 10,(int) (Math.random() * 100) % 10));
-			}
+			} 
 		mt.start();
 	}
 	

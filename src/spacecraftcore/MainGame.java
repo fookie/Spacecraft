@@ -13,17 +13,18 @@ import spacecraftelements.Bullets.BasicBullet;
 
 public class MainGame {
 	public static BattleFieldManager bm;
-	public static displayConsole.Repainter Repainter;
+	public static Test test;
 	public static void main(String[] args) {
 		Thread mt=new Thread(new SpaceTimmer());
 		BattleFieldManager bfm=new BattleFieldManager();
 		bfm.loadmap("ditu1.cmp");
 		bfm.add(new BasicBullet(300,0,50,2));
-		Test test = new Test();
+		test = new Test();
 		   test.addWindowListener(new WindowAdapter(){
 			   public void windowClosing(WindowEvent e){
 				   System.exit(0);
 			   }
 		   });
 	}
+	
 }

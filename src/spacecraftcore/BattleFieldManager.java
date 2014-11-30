@@ -132,7 +132,7 @@ public class BattleFieldManager {
 			}
 			
 			//´«µİ²¿·Ö
-			
+			MainGame.test.repainter.add(name, x, y, degree, layer);
 		}
 		return true;
 	}

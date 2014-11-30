@@ -25,8 +25,8 @@ public class Repainter extends JPanel implements Runnable{
 	public int rotatedegree=60;
 	private Image iBuffer;
 	private Graphics gBuffer;
-	public Image bg = getToolkit().getImage("bg1.jpg");
-	public Image player = getToolkit().getImage("player.png");
+	public Image bg = getToolkit().getImage("Images//bg1.jpg");
+	public Image player = getToolkit().getImage("Images//player.png");
 	public List<Element> le = new ArrayList<Element>();
 	
 	//try{BufferedImage bg1 = ImageIO.read(new File("bg1.jpg"));}

@@ -5,9 +5,11 @@ import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import displayConsole.Element;
 import spacecraftelements.Bullets.Bullet;
 import spacecraftelements.Enemy.Enemy;
 import spacecraftelements.SpaceShip.SpaceShip;
@@ -132,7 +134,13 @@ public class BattleFieldManager {
 			}
 			
 			//传递部分
-			MainGame.test.repainter.add(name, x, y, degree, layer);
+			MainGame.test.repainter.le=new ArrayList<Element>();
+			//传递子弹
+			
+			for (i = 0;i<BulletList.size(); i++) 
+			{
+				MainGame.test.repainter.add(BulletList.get(i).ImageID, BulletList.get(i).x, BulletList.get(i).y, 45, 2);
+			}
 		}
 		return true;
 	}

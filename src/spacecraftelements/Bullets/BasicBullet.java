@@ -1,6 +1,5 @@
 package spacecraftelements.Bullets;
 
-import spacecraftTest.BattleFieldTest;
 
 public class BasicBullet extends Bullet{
 	public BasicBullet(int x,int y,int vx,int vy){
@@ -11,7 +10,7 @@ public class BasicBullet extends Bullet{
 		super.vy=vy;
 		super.damage=15;
 		super.volume = 10;
-		super.ImageID="Images//bullet//basicbullet1.png";
+		super.ImageID="Images//bullet//basicbullet2.png";
 		super.ID = 0;
 		//角度暂时不设定
 	}

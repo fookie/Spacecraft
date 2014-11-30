@@ -19,56 +19,57 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-public class Repainter extends JPanel implements Runnable{
+public class Repainter extends JPanel {
+	public String name;
+	public int x = 0;
+	public int y = 0;
+	public int rotatedegree=0;
+	public int layer = 0;
 	
-	public int y = -80;
-	public int rotatedegree=60;
-	private Image iBuffer;
-	private Graphics gBuffer;
-	public Image bg = getToolkit().getImage("Images//bg1.jpg");
-	public Image player = getToolkit().getImage("Images//player.png");
+	//private Image iBuffer;
+	//private Graphics gBuffer;
+	
+	//public Image bg = getToolkit().getImage("Images//bg1.jpg");
+	//public Image player = getToolkit().getImage("Images//player.png");
+	
 	public List<Element> le = new ArrayList<Element>();
 	
-	//try{BufferedImage bg1 = ImageIO.read(new File("bg1.jpg"));}
-	//catch(IOException e){}
 	
 	public void add(String name,int x,int y,int degree,int layer){
-		   Element img = (Element) getToolkit().getImage(name);
-		   img.x = x;
-		   img.y = y;
-		   img.rotatedegree = degree;
-		   img.layer = layer;
-		   le.add(img);
+		   Element element = new Element(name,x,y,degree,layer);
+		   element.img = getToolkit().getImage(name);
+		   element.x = x;
+		   element.y = y;
+		   element.rotatedegree = degree;
+		   element.layer = layer;
+		   le.add(element);
 	   }
 
 	
-	 public Repainter(){
+	 /*public Repainter(){
 		 Thread t = new Thread(this);
 		 t.start();
 	 }
-
-	public void run() {
+	 
+     //Thread here,aborted
+      
+	 public void run() {
         while(true){
         	try{
         		Thread.sleep(20);
         	}catch(InterruptedException e){}
         	y+=2;
         	rotatedegree+=5;
-            /* for(int i =0;i<le.length();i++)
-             * 
-             * 
-             * 
-             * 
-             * */
+
         	if(y>300){
         		y=-80;
         	}
-        	if(rotatedegree>420){
-        		rotatedegree=60;
+        	if(rotatedegree>360){
+        		rotatedegree=0;
         	}
         	repaint();
         }
-	}
+	}*/
 	public void paint(Graphics g){
 		
 		//BufferedImage bg = (BufferedImage) getToolkit().getImage("bg1.jpg"); 
@@ -85,10 +86,10 @@ public class Repainter extends JPanel implements Runnable{
 		g.drawImage(iBuffer,0,0,this);*/
 		super.paint(g);
 		g.clearRect( 0, 0, this.getWidth(), this.getHeight());
-		g.drawImage(bg,0,0,this);
-		g.drawImage(rotateImage(player,rotatedegree),0,y,this);
-		g.drawImage(rotateImage(player,rotatedegree),50,y,this);
-		g.drawImage(rotateImage(player,rotatedegree),100,y,this);
+		//g.drawImage(le[1].img,0,0,this);
+		//g.drawImage(rotateImage(player,rotatedegree),0,y,this);
+		//g.drawImage(rotateImage(player,rotatedegree),50,y,this);
+		//g.drawImage(rotateImage(player,rotatedegree),100,y,this);
 		
 		
 		//g.drawImage(bg,0,0,this);
@@ -102,7 +103,7 @@ public class Repainter extends JPanel implements Runnable{
         int h = bufferedimage.getHeight(null);
         //int type = ((BufferedImage) bufferedimage).getColorModel().getTransparency();
         BufferedImage img = new BufferedImage(w,h,BufferedImage.TYPE_INT_RGB);
-        Graphics2D graphics2d = img.createGraphics();
+        Graphics2D graphics2d = img.createGraphics();//Key Code to implement the Transparency 
         img = graphics2d.getDeviceConfiguration().createCompatibleImage(w, h, Transparency.TRANSLUCENT);
         graphics2d.dispose();
         graphics2d = img.createGraphics();

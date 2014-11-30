@@ -114,7 +114,7 @@ public class Repainter extends JPanel {
                // .createGraphics()).setRenderingHint(
                // RenderingHints.KEY_INTERPOLATION,
                 //RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        graphics2d.rotate(Math.toRadians(degree), w / 2, h / 2+5);
+        graphics2d.rotate(Math.toRadians(degree), w / 2, h / 2);
         graphics2d.drawImage(bufferedimage, 0, 0, null);
         graphics2d.dispose();
         return img;

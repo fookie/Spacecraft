@@ -124,9 +124,13 @@ public class BattleFieldManager {
 		}
 		// 子弹
 		updatebullet();
-		// 传递部分
+		// 清空
 		MainGame.test.repainter.le = new LinkedList<Element>();
 		// 传递子弹
+		if(ship!=null)
+		{
+		MainGame.test.repainter.add(ship.ImageID,ship.x+400,300-ship.y,getangle(ship.x,ship.y),2);
+		}
 		for (int i = 0; i < BulletList.size(); i++) {
 			MainGame.test.repainter.add(BulletList.get(i).ImageID,
 					BulletList.get(i).x + 400, 300 - BulletList.get(i).y,
@@ -154,6 +158,11 @@ public class BattleFieldManager {
 				i = i - 1;
 			}
 		}
+	}
+	private void updateship()
+	{
+		ship.x=ship.x+ship.vx;
+		ship.y=ship.y+ship.vy;
 	}
 	public int getangle(int x, int y) {
 		int ans;

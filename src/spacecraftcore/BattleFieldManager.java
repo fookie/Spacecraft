@@ -136,8 +136,8 @@ public class BattleFieldManager {
 		MainGame.test.repainter.le = new LinkedList<Element>();
 		// ´«µİ·É´¬
 		if (ship != null)
-			MainGame.test.repainter.add(ship.ImageID, ship.x + 400,
-					300 - ship.y, ship.angle, 2);
+			MainGame.test.repainter.add(ship.ImageID, ship.x ,
+					  ship.y, ship.angle, 2);
 		for (int i = 0; i < BulletList.size(); i++) {
 			MainGame.test.repainter.add(BulletList.get(i).ImageID,
 					BulletList.get(i).x + 400, 300 - BulletList.get(i).y,
@@ -186,18 +186,54 @@ public class BattleFieldManager {
 			}
 		}
 		ship.x = ship.x + ship.vx;
-		ship.y = ship.y + ship.vy;
+		ship.y = ship.y - ship.vy;
 		ship.angle = currentangle;
 		
 	}
 
 	public int getangle(int x, int y) {
 		int ans;
-		if (x == 0) {
-			if (y > 0)
+		if(y>0){
+			if(x==0){
+				return 90;
+			}
+			if(x>0){
+				ans = (int) (Math.atan( y / x) * (180 / Math.PI));
+				return ans;
+			}
+			if(x<0){
+				ans = 180 - (int) (Math.atan( y / -x) * (180 / Math.PI));
+				return ans;
+			}
+		}
+		if(y<0){
+			if(x==0)
+				return 270;
+			if(x>0){
+				ans = 360 - (int) (Math.atan( -y / x ) * (180 / Math.PI));
+				return ans;
+			}
+			if(x<0){
+				ans = 180 + (int) (Math.atan( -y /  -x) * (180 / Math.PI));
+				return ans;
+			}
+		}
+		if(y==0){
+			if(x>=0){
 				return 0;
-			else
+			}
+			else{
 				return 180;
+			}
+				
+		}
+		/*if (x == 0) {
+			if (y > 0)
+				return 90;
+			if (y < 0)
+				return 270;
+			if (y == 0)
+				return 0;
 		} else if (y == 0) {
 			if (x > 0)
 				return 90;
@@ -205,12 +241,13 @@ public class BattleFieldManager {
 				return 270;
 		} else if (y > 0) {
 			ans = (int) (Math.atan(100 * y / 100 * x) * (180 / Math.PI));
-		//	System.out.println("x:"+x+" y:"+y+" ans="+ans);
+			//System.out.println("x:"+x+" y:"+y+" ans="+ans);
 			return ans;
 		} else if (y < 0) {
 			ans = (int) (Math.atan(100 * y / 100 * x) * (180 / Math.PI)) + 180;
 			return ans;
 		}
+		return 0;*/
 		return 0;
 	}
 
@@ -230,12 +267,17 @@ public class BattleFieldManager {
 			ks = i;
 		} else if (key == 'd') {
 			kd = i;
-
 		}
+		int t1 = MainGame.test.ml.mx - ship.x -45;
+		int t2 = MainGame.test.ml.my - ship.y -45;
+		currentangle = getangle(t1,t2);
 	}
 	
 	public void Mouseprocessor(int x,int y){
-		currentangle = getangle(x - ship.x-400 , y - 300+ship.y);
-		System.out.println(currentangle);
+		int t1 = x - ship.x -45;
+		int t2 = y - ship.y -45;
+		currentangle = getangle(t1,t2);
+	
+		System.out.println(t1+" "+t2+" "+currentangle);
 	}
 }

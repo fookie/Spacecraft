@@ -4,6 +4,10 @@ import spacecraftelements.Updatable;
 
 public class Enemy implements Updatable{
 	/**
+	 * 敌人贴图
+	 */
+	public String imageID;
+	/**
 	 *  敌人生成位置
 	 */
 	public int x, y;

@@ -10,6 +10,7 @@ public class Slime extends Enemy {
 		super.health = 50;
 		super.v = 10;
 		super.volume = 20;
+		super.imageID = "Images//enemy//slime.png";
 	}
 
 	public boolean update() {

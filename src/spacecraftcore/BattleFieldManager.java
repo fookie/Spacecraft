@@ -1,5 +1,7 @@
 package spacecraftcore;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.BufferedInputStream;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
@@ -21,7 +23,7 @@ import spacecraftelements.SpaceShip.SpaceShip;
  * @author Hale
  *
  */
-public class BattleFieldManager {
+public class BattleFieldManager{
 	private List<Bullet> BulletList = new LinkedList<Bullet>();
 	private List<Enemy> EnemyList = new LinkedList<Enemy>();
 	public SpaceShip ship = null;
@@ -29,11 +31,11 @@ public class BattleFieldManager {
 	public int mapx, mapy;
 	private String bgloc;
 	private DataInputStream mapin;
-	
-	public SpaceShip getShip()
-	{
+
+	public SpaceShip getShip() {
 		return ship;
 	}
+
 	public boolean loadmap(String mapaddress) {
 		try {
 			mapin = new DataInputStream(new BufferedInputStream(
@@ -122,15 +124,20 @@ public class BattleFieldManager {
 			System.out.println("没有加载地图，故无法更新战场数据");
 			return false;
 		}
+		// 基本计算
 		// 子弹
 		updatebullet();
+		// 飞船
+		updateship();
+
+		// 传递到画面
+
 		// 清空
 		MainGame.test.repainter.le = new LinkedList<Element>();
-		// 传递子弹
-		if(ship!=null)
-		{
-		MainGame.test.repainter.add(ship.ImageID,ship.x+400,300-ship.y,getangle(ship.x,ship.y),2);
-		}
+		// 传递飞船
+		if (ship != null)
+			MainGame.test.repainter.add(ship.ImageID, ship.x + 400,
+					300 - ship.y, getangle(ship.x, ship.y), 2);
 		for (int i = 0; i < BulletList.size(); i++) {
 			MainGame.test.repainter.add(BulletList.get(i).ImageID,
 					BulletList.get(i).x + 400, 300 - BulletList.get(i).y,
@@ -140,11 +147,11 @@ public class BattleFieldManager {
 		MainGame.test.repainter.repaint();
 		return true;
 	}
+
 	/**
 	 * 移动子弹并且自动移除出界子弹
 	 */
-	private void updatebullet()
-	{
+	private void updatebullet() {
 		for (int i = 0; i < BulletList.size(); i++) {
 			BulletList.get(i).update();
 			// 计算部分
@@ -159,11 +166,12 @@ public class BattleFieldManager {
 			}
 		}
 	}
-	private void updateship()
-	{
-		ship.x=ship.x+ship.vx;
-		ship.y=ship.y+ship.vy;
+
+	private void updateship() {
+		ship.x = ship.x + ship.vx;
+		ship.y = ship.y + ship.vy;
 	}
+
 	public int getangle(int x, int y) {
 		int ans;
 		if (x == 0) {

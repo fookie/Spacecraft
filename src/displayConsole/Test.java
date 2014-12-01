@@ -4,6 +4,9 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import spacecraftcore.BattleFieldManager;
+import spacecraftcore.KL;
+
 public class Test extends JFrame {
    public Repainter repainter;
 	public Test(){
@@ -15,6 +18,7 @@ public class Test extends JFrame {
 	   this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	   this.setResizable(false);
 	   this.setVisible(true);
+	   this.addKeyListener(new KL());
    }
 //   public static void main(String args[]){
 //	   Test test = new Test();

@@ -187,6 +187,7 @@ public class BattleFieldManager {
 		}
 		ship.x = ship.x + ship.vx;
 		ship.y = ship.y + ship.vy;
+		ship.angle = currentangle;
 	}
 
 	public int getangle(int x, int y) {
@@ -215,6 +216,7 @@ public class BattleFieldManager {
 	private boolean ka = false;
 	private boolean ks = false;
 	private boolean kd = false;
+	private int currentangle;
 
 	public void Keyprocesser(Boolean i, char key) {
 
@@ -228,5 +230,9 @@ public class BattleFieldManager {
 			kd = i;
 
 		}
+	}
+	
+	public void Mouseprocessor(int x,int y){
+		currentangle = getangle(x - ship.x , y - ship.y);		
 	}
 }

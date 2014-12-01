@@ -13,9 +13,22 @@ public abstract class SpaceShip {
 	 */
 	public int x, y;
 	/**
+	 * 屏幕上的坐标
+	 */
+	public int visx,visy;
+	/**
 	 * 飞船加速度，先不考虑
 	 */
 	public int ax, ay;
+	/**
+	 * 最大速度
+	 */
+	public int maxv;
+	/**
+	 * 现在速度
+	 * 在计算镜头时有用
+	 */
+	public int nowv;
 	/**
 	 * 速度(趋势)，每次更新时用
 	 */

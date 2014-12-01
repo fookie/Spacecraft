@@ -5,11 +5,11 @@ import spacecraftelements.Weapon.Weapon;
 
 public class Palelin extends SpaceShip {
 
-	public Palelin(int x, int y, int vx, int vy) {
+	public Palelin(int x, int y, int visx, int visy) {
 		super.x = x;
 		super.y = y;
-		super.vx = vx;
-		super.vy = vy;
+		super.visx = visx;
+		super.visy = visy;
 		super.health = 100;
 		super.volume = 50;
 		super.w1 = new BasicWeapon();

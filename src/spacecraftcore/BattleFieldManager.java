@@ -137,7 +137,7 @@ public class BattleFieldManager {
 		// ´«µÝ·É´¬
 		if (ship != null)
 			MainGame.test.repainter.add(ship.ImageID, ship.x + 400,
-					300 - ship.y, getangle(ship.x, ship.y), 2);
+					300 - ship.y, ship.angle, 2);
 		for (int i = 0; i < BulletList.size(); i++) {
 			MainGame.test.repainter.add(BulletList.get(i).ImageID,
 					BulletList.get(i).x + 400, 300 - BulletList.get(i).y,
@@ -188,6 +188,7 @@ public class BattleFieldManager {
 		ship.x = ship.x + ship.vx;
 		ship.y = ship.y + ship.vy;
 		ship.angle = currentangle;
+		
 	}
 
 	public int getangle(int x, int y) {
@@ -204,6 +205,7 @@ public class BattleFieldManager {
 				return 270;
 		} else if (y > 0) {
 			ans = (int) (Math.atan(100 * y / 100 * x) * (180 / Math.PI));
+		//	System.out.println("x:"+x+" y:"+y+" ans="+ans);
 			return ans;
 		} else if (y < 0) {
 			ans = (int) (Math.atan(100 * y / 100 * x) * (180 / Math.PI)) + 180;
@@ -233,6 +235,7 @@ public class BattleFieldManager {
 	}
 	
 	public void Mouseprocessor(int x,int y){
-		currentangle = getangle(x - ship.x , y - ship.y);		
+		currentangle = getangle(x - ship.x-400 , y - 300+ship.y);
+		System.out.println(currentangle);
 	}
 }

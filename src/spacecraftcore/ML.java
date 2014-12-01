@@ -16,6 +16,7 @@ public class ML implements MouseMotionListener,MouseListener{
 	public void mouseMoved(MouseEvent e) {
 		mx=e.getX();
 		my=e.getY();
+		
 		MainGame.bm.Mouseprocessor(mx,my);
 	}
 

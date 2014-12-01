@@ -6,6 +6,7 @@ import javax.swing.*;
 
 import spacecraftcore.BattleFieldManager;
 import spacecraftcore.KL;
+import spacecraftcore.ML;
 
 public class Test extends JFrame {
    public Repainter repainter;
@@ -19,6 +20,7 @@ public class Test extends JFrame {
 	   this.setResizable(false);
 	   this.setVisible(true);
 	   this.addKeyListener(new KL());
+	   this.addMouseMotionListener(new ML());
    }
 //   public static void main(String args[]){
 //	   Test test = new Test();

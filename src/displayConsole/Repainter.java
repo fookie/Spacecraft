@@ -36,6 +36,7 @@ public class Repainter extends JPanel {
 	
 	
 	public void add(String name,int x,int y,int degree,int layer){
+			
 		   Element element = new Element(name,x,y,degree,layer);
 		   element.img = getToolkit().getImage(name);
 		   element.x = x;

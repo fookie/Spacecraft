@@ -168,26 +168,21 @@ public class BattleFieldManager {
 	}
 
 	private void updateship() {
-		if (((kw && ks) || (ka && kd)) != true) {//如果上下键或者左右键被被同时按下则不操作
-			if (kw && (ship.vy <= 0)) {//W向上
+		if (((kw && ks) || (ka && kd)) != true) {// 如果上下键或者左右键被被同时按下则不操作
+			if (kw && (ship.vy <= 0)) {// W向上
 				ship.vy = 10;
-			}
-			else if (kd && (ship.vx <= 0)) {//d向右
+			} else if (kd && (ship.vx <= 0)) {// d向右
 				ship.vx = 10;
-			}
-			else if (ka && (ship.vx >= 0)) {//a向左
+			} else if (ka && (ship.vx >= 0)) {// a向左
 				ship.vx = -10;
-			}
-			else if (ks && (ship.vy >= 0)) {//s向下
+			} else if (ks && (ship.vy >= 0)) {// s向下
 				ship.vy = -10;
 			}
-			if(!kd&&!ka)
-			{
-				ship.vx=0;
+			if (!kd && !ka) {
+				ship.vx = 0;
 			}
-			if(!kw&&!ks)
-			{
-				ship.vy=0;
+			if (!kw && !ks) {
+				ship.vy = 0;
 			}
 		}
 		ship.x = ship.x + ship.vx;
@@ -222,7 +217,7 @@ public class BattleFieldManager {
 	private boolean kd = false;
 
 	public void Keyprocesser(Boolean i, char key) {
-	
+
 		if (key == 'w') {
 			kw = i;
 		} else if (key == 'a') {

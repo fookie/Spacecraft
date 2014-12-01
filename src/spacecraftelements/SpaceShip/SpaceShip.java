@@ -1,6 +1,5 @@
 package spacecraftelements.SpaceShip;
 
-import spacecraftelements.Updatable;
 import spacecraftelements.Weapon.Weapon;
 
 /**

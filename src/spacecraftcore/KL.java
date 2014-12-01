@@ -14,13 +14,13 @@ public class KL implements KeyListener
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		System.out.println("a");
+		MainGame.bm.Keyprocesser(true, e.getKeyChar());
 		
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
+		MainGame.bm.Keyprocesser(false, e.getKeyChar());
 		
 	}
 	

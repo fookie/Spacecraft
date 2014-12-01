@@ -1,11 +1,14 @@
 package spacecraftelements.Weapon;
 
+import spacecraftelements.Bullets.BasicBullet;
+import spacecraftelements.Bullets.Bullet;
+
 /**
  * 这个的话既可以是玩家飞船的武器也可以是敌人的武器
  */
 public abstract class Weapon {
 	/**
-	 * 指定子弹
+	 * 指定子弹ID
 	 */
 	public int defaultbullet;
 	/**
@@ -24,4 +27,11 @@ public abstract class Weapon {
 	 * 武器ID
 	 */
 	public int ID;
+
+	/**
+	 * 开火method
+	 * 
+	 * @param
+	 */
+	public abstract Bullet shoot(int x, int y, int cx, int cy);
 }

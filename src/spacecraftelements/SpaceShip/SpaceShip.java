@@ -7,7 +7,7 @@ import spacecraftelements.Weapon.Weapon;
  * 
  *
  */
-public abstract class SpaceShip implements Updatable {
+public abstract class SpaceShip {
 	/**
 	 * 游戏内建坐标
 	 */
@@ -36,5 +36,12 @@ public abstract class SpaceShip implements Updatable {
 	 * 飞船体积
 	 */
 	public int volume;
-	public abstract boolean update();
+	/**
+	 * 切换武器
+	 */
+	public abstract void switchweapon();
+	/**
+	 * 拾取武器
+	 */
+	public abstract void updateweapon(Weapon nw);
 }

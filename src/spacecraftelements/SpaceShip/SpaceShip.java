@@ -7,7 +7,7 @@ import spacecraftelements.Weapon.Weapon;
  *
  */
 public abstract class SpaceShip {
-	public int angle;
+	public double angle;
 	/**
 	 * 游戏内建坐标
 	 */

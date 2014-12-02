@@ -43,25 +43,25 @@ public class Repainter extends JPanel {
 
 	public List<Element> le = new LinkedList<Element>();
 
-	public void add(String name, int x, int y, int degree, int layer) {
+	public void add(String name, int x, int y, double d, int layer) {
 
-		Element element = this.computeElement(name, x, y, degree, layer);
+		Element element = this.computeElement(name, x, y, d, layer);
 		element.img = getToolkit().getImage(name);
 		// element.x = x;
 		// element.y = y;
-		element.rotatedegree = degree;
+		element.rotatedegree = d;
 		element.layer = layer;
 		le.add(element);
 	}
 
-	public void add_nooffset_element(String name, int x, int y, int degree,
+	public void add_nooffset_element(String name, int x, int y, double angle,
 			int layer) {
 
-		Element element = new Element(name, x, y, degree, layer);
+		Element element = new Element(name, x, y, angle, layer);
 		element.img = getToolkit().getImage(name);
 		element.x = x;
 		element.y = y;
-		element.rotatedegree = degree;
+		element.rotatedegree = angle;
 		element.layer = layer;
 		le.add(element);
 	}
@@ -113,7 +113,7 @@ public class Repainter extends JPanel {
 	// public void update(Graphics g){
 	// paint(g);
 	// }
-	public static BufferedImage rotateImage(Image bufferedimage, int degree) 
+	public static BufferedImage rotateImage(Image bufferedimage, double degree) 
 	{
 		int w = bufferedimage.getWidth(null);
 		int h = bufferedimage.getHeight(null);
@@ -143,13 +143,13 @@ public class Repainter extends JPanel {
 	 * @param name
 	 * @param x
 	 * @param y
-	 * @param degree
+	 * @param d
 	 * @param layer
 	 * @return 以相对坐标存储的元素
 	 */
-	private Element computeElement(String name, int x, int y, int degree,
+	private Element computeElement(String name, int x, int y, double d,
 			int layer) {
-		Element e = new Element(name, x - offsetx, y - offsety, degree, layer);
+		Element e = new Element(name, x - offsetx, y - offsety, d, layer);
 		return e;
 
 	}
@@ -176,7 +176,7 @@ public class Repainter extends JPanel {
 		}
 		MainGame.bm.SetShip(bufferShip);
 		this.add_nooffset_element(bufferShip.ImageID, bufferShip.visx,
-				bufferShip.visy, 45, 2);
+				bufferShip.visy, bufferShip.angle, 2);
 		// 计算偏差
 		offsetx = bufferShip.x - bufferShip.visx;
 		offsety = bufferShip.y - bufferShip.visy;

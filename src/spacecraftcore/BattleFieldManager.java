@@ -213,58 +213,58 @@ public class BattleFieldManager {
 
 	}
 
-	public int getangle(int x, int y) {
-		int ans;
-		if (y > 0) {
-			if (x == 0) {
-				return 90;
-			}
-			if (x > 0) {
-				ans = (int) (Math.atan(y / x) * (180 / Math.PI));
-				return ans;
-			}
-			if (x < 0) {
-				ans = 180 - (int) (Math.atan(y / -x) * (180 / Math.PI));
-				return ans;
-			}
-		}
-		if (y < 0) {
-			if (x == 0)
-				return 270;
-			if (x > 0) {
-				ans = 360 - (int) (Math.atan(-y / x) * (180 / Math.PI));
-				return ans;
-			}
-			if (x < 0) {
-				ans = 180 + (int) (Math.atan(-y / -x) * (180 / Math.PI));
-				return ans;
-			}
-		}
-		if (y == 0) {
-			if (x >= 0) {
-				return 0;
-			} else {
-				return 180;
-			}
-
-		}
-		/*
-		 * if (x == 0) { if (y > 0) return 90; if (y < 0) return 270; if (y ==
-		 * 0) return 0; } else if (y == 0) { if (x > 0) return 90; if (x < 0)
-		 * return 270; } else if (y > 0) { ans = (int) (Math.atan(100 * y / 100
-		 * * x) * (180 / Math.PI));
-		 * //System.out.println("x:"+x+" y:"+y+" ans="+ans); return ans; } else
-		 * if (y < 0) { ans = (int) (Math.atan(100 * y / 100 * x) * (180 /
-		 * Math.PI)) + 180; return ans; } return 0;
-		 */
-		return 0;
-	}
-
 	private boolean kw = false;
 	private boolean ka = false;
 	private boolean ks = false;
 	private boolean kd = false;
-	private int currentangle;
+	private double currentangle;
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 * @return
+	 *  @author EveLIN
+	 */
+	public double getangle(int x, int y) {
+		double ans;
+		double temp = (double)y/x;
+		if(y>0){
+			if(x==0){
+				return 90.00;
+			}
+			if(x>0){
+				ans = (Math.atan( temp) * (180 / Math.PI));
+				return ans;
+			}
+			if(x<0){
+				ans = 180.00 - (Math.atan( -temp) * (180 / Math.PI));
+				return ans;
+			}
+		}
+		if(y<0){
+			if(x==0)
+				return 270.00;
+			if(x>0){
+				ans = 360.00 - (Math.atan( -temp) * (180 / Math.PI));
+				return ans;
+			}
+			if(x<0){
+				ans = 180.00 + (Math.atan( temp) * (180 / Math.PI));
+				return ans;
+			}
+		}
+		if(y==0){
+			if(x>=0){
+				return 0.00;
+			}
+			else
+			{
+				return 180.00;
+			}
+				
+		}
+		return 0;
+	}
 
 	public void Keyprocesser(Boolean i, char key) {
 
@@ -281,12 +281,15 @@ public class BattleFieldManager {
 		int t2 = MainGame.test.ml.my - ship.y - 45;
 		currentangle = getangle(t1, t2);
 	}
-
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 * @author EveLIN
+	 */
 	public void Mouseprocessor(int x, int y) {
-		int t1 = x - ship.x - 45;
-		int t2 = y - ship.y - 45;
+		int t1 = (x-400) - ship.visx - 45;
+		int t2 = (y-300) - ship.visy - 45;
 		currentangle = getangle(t1, t2);
-
-		// System.out.println(t1+" "+t2+" "+currentangle);
 	}
 }

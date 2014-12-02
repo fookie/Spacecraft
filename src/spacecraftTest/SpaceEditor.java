@@ -11,8 +11,8 @@ public class SpaceEditor {
 	static int maparea[][];
 	static DataOutputStream dos;
 
-	public static void main(String[] args) {
-		writemap(800, 600, "ditu1.cmp", "Image//bg1.png"); // 生成地图
+	public static void main(String[] args) throws IOException {
+		writemap(1600, 1200, "bigmap1600*1200.cmp", "Image//bg1.png"); // 生成地图
 	}
 
 	/**
@@ -22,8 +22,9 @@ public class SpaceEditor {
 	 * @param y
 	 * @param address
 	 * @param bg
+	 * @throws IOException 
 	 */
-	public static void writemap(int x, int y, String address, String bg) {
+	public static void writemap(int x, int y, String address, String bg) throws IOException {
 		int ax, ay;
 		try {
 			dos = new DataOutputStream(new BufferedOutputStream(
@@ -35,31 +36,16 @@ public class SpaceEditor {
 		ay = y / minsize;
 		System.out.println(ax);
 		System.out.println(ay+"开始生成地图");
-		maparea = new int[ax][ay];
-		for (int column = 0; column < ay; column++) {
-			for (int row = 0; row < ax; row++) {
-				maparea[row][column] = 0;
-			}
 			//自定义点
-			maparea[1][2] = 1;
-			maparea[1][3] = 1;
-			maparea[9][9] = 1;
 			// 下面写入
-			try {
 				dos.writeUTF(bg);// 先写背景位置
 				dos.writeInt(ax);// 格子数
 				dos.writeInt(ay);
 				dos.writeInt(x);// 写入实际大小
 				dos.writeInt(y);
 				dos.writeInt(minsize);//写入区块大小
-				for (column = 0; column < ay; column++) {
-					for (int row = 0; row < ax; row++) {
-						dos.writeInt(maparea[row][column]);
-					}
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+		
+
 			try {
 				dos.flush();
 				dos.close();
@@ -69,4 +55,3 @@ public class SpaceEditor {
 			System.out.println("完成");
 		}
 	}
-}

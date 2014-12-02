@@ -7,11 +7,11 @@ public class Element {
   public String filename;
   public int x;
   public int y;
-  public int rotatedegree;
+  public double rotatedegree;
   public int layer;
   public Image img =  tk.getImage(filename);
   
-   public Element(String s,int x,int y,int d,int l){
+   public Element(String s,int x,int y,double d,int l){
 	   filename = s;
 	   this.x = x;
 	   this.y = y;

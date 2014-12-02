@@ -1,15 +1,17 @@
 package DisplaymentManager;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 
 public class BackgroundPanel extends JPanel{
-  private Image bg;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+private Image bg;
   private JLabel scoreLabel;
   public BackgroundPanel(){
 	  setOpaque(false);

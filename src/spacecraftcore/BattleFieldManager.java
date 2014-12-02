@@ -1,7 +1,5 @@
 package spacecraftcore;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.io.BufferedInputStream;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
@@ -36,7 +34,12 @@ public class BattleFieldManager {
 		return ship;
 	}
 
+	public void SetShip(SpaceShip ship) {
+		this.ship = ship;
+	}
+
 	public boolean loadmap(String mapaddress) {
+		MainGame.test.setTitle("Spacecraft - loding:" + mapaddress);
 		try {
 			mapin = new DataInputStream(new BufferedInputStream(
 					new FileInputStream(mapaddress)));
@@ -81,6 +84,8 @@ public class BattleFieldManager {
 			e.printStackTrace();
 		}
 		System.out.println("读取完成");
+		MainGame.test.setMapsize(mapx, mapy);
+		MainGame.test.setTitle("Spacecraft - running:" + mapaddress);
 		return true;
 	}
 
@@ -129,23 +134,38 @@ public class BattleFieldManager {
 		updatebullet();
 		// 飞船
 		updateship();
-
+		//敌人
+		updateEnemy();
 		// 传递到画面
 
 		// 清空
 		MainGame.test.repainter.le = new LinkedList<Element>();
+		MainGame.test.repainter.computeOffset(ship);
 		// 传递飞船
-		if (ship != null)
-			MainGame.test.repainter.add(ship.ImageID, ship.x ,
-					  ship.y, ship.angle, 2);
+//		if (ship != null)
+//			MainGame.test.repainter.add(ship.ImageID, ship.x, ship.y,
+//					ship.angle, 2);
 		for (int i = 0; i < BulletList.size(); i++) {
 			MainGame.test.repainter.add(BulletList.get(i).ImageID,
-					BulletList.get(i).x + 400, 300 - BulletList.get(i).y,
+					BulletList.get(i).x, BulletList.get(i).y,
 					getangle(BulletList.get(i).vx, BulletList.get(i).vy), 2);
 		}
+		for (int i = 0; i < EnemyList.size(); i++) {
+			MainGame.test.repainter.add(EnemyList.get(i).imageID,
+					EnemyList.get(i).x, EnemyList.get(i).y,
+					0, 2);
+		}
+		
 		// 重新绘制
 		MainGame.test.repainter.repaint();
 		return true;
+	}
+
+	private void updateEnemy() {
+		for (int i = 0; i < EnemyList.size(); i++) {
+			EnemyList.get(i).update();
+		}
+		
 	}
 
 	/**
@@ -186,68 +206,57 @@ public class BattleFieldManager {
 			}
 		}
 		ship.x = ship.x + ship.vx;
-		ship.y = ship.y - ship.vy;
+		ship.visx=ship.visx+ship.vx;
+		ship.y = ship.y + ship.vy;
+		ship.visy=ship.visy+ship.vy;
 		ship.angle = currentangle;
-		
+
 	}
 
 	public int getangle(int x, int y) {
 		int ans;
-		if(y>0){
-			if(x==0){
+		if (y > 0) {
+			if (x == 0) {
 				return 90;
 			}
-			if(x>0){
-				ans = (int) (Math.atan( y / x) * (180 / Math.PI));
+			if (x > 0) {
+				ans = (int) (Math.atan(y / x) * (180 / Math.PI));
 				return ans;
 			}
-			if(x<0){
-				ans = 180 - (int) (Math.atan( y / -x) * (180 / Math.PI));
+			if (x < 0) {
+				ans = 180 - (int) (Math.atan(y / -x) * (180 / Math.PI));
 				return ans;
 			}
 		}
-		if(y<0){
-			if(x==0)
+		if (y < 0) {
+			if (x == 0)
 				return 270;
-			if(x>0){
-				ans = 360 - (int) (Math.atan( -y / x ) * (180 / Math.PI));
+			if (x > 0) {
+				ans = 360 - (int) (Math.atan(-y / x) * (180 / Math.PI));
 				return ans;
 			}
-			if(x<0){
-				ans = 180 + (int) (Math.atan( -y /  -x) * (180 / Math.PI));
+			if (x < 0) {
+				ans = 180 + (int) (Math.atan(-y / -x) * (180 / Math.PI));
 				return ans;
 			}
 		}
-		if(y==0){
-			if(x>=0){
+		if (y == 0) {
+			if (x >= 0) {
 				return 0;
-			}
-			else{
+			} else {
 				return 180;
 			}
-				
+
 		}
-		/*if (x == 0) {
-			if (y > 0)
-				return 90;
-			if (y < 0)
-				return 270;
-			if (y == 0)
-				return 0;
-		} else if (y == 0) {
-			if (x > 0)
-				return 90;
-			if (x < 0)
-				return 270;
-		} else if (y > 0) {
-			ans = (int) (Math.atan(100 * y / 100 * x) * (180 / Math.PI));
-			//System.out.println("x:"+x+" y:"+y+" ans="+ans);
-			return ans;
-		} else if (y < 0) {
-			ans = (int) (Math.atan(100 * y / 100 * x) * (180 / Math.PI)) + 180;
-			return ans;
-		}
-		return 0;*/
+		/*
+		 * if (x == 0) { if (y > 0) return 90; if (y < 0) return 270; if (y ==
+		 * 0) return 0; } else if (y == 0) { if (x > 0) return 90; if (x < 0)
+		 * return 270; } else if (y > 0) { ans = (int) (Math.atan(100 * y / 100
+		 * * x) * (180 / Math.PI));
+		 * //System.out.println("x:"+x+" y:"+y+" ans="+ans); return ans; } else
+		 * if (y < 0) { ans = (int) (Math.atan(100 * y / 100 * x) * (180 /
+		 * Math.PI)) + 180; return ans; } return 0;
+		 */
 		return 0;
 	}
 
@@ -268,16 +277,16 @@ public class BattleFieldManager {
 		} else if (key == 'd') {
 			kd = i;
 		}
-		int t1 = MainGame.test.ml.mx - ship.x -45;
-		int t2 = MainGame.test.ml.my - ship.y -45;
-		currentangle = getangle(t1,t2);
+		int t1 = MainGame.test.ml.mx - ship.x - 45;
+		int t2 = MainGame.test.ml.my - ship.y - 45;
+		currentangle = getangle(t1, t2);
 	}
-	
-	public void Mouseprocessor(int x,int y){
-		int t1 = x - ship.x -45;
-		int t2 = y - ship.y -45;
-		currentangle = getangle(t1,t2);
-	
-		System.out.println(t1+" "+t2+" "+currentangle);
+
+	public void Mouseprocessor(int x, int y) {
+		int t1 = x - ship.x - 45;
+		int t2 = y - ship.y - 45;
+		currentangle = getangle(t1, t2);
+
+		// System.out.println(t1+" "+t2+" "+currentangle);
 	}
 }

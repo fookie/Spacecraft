@@ -1,23 +1,24 @@
 package displayConsole;
 import java.awt.*;
-import java.awt.event.*;
 
 import javax.swing.*;
 
-import spacecraftcore.BattleFieldManager;
 import spacecraftcore.KL;
 import spacecraftcore.ML;
+import spacecraftcore.MainGame;
 
 public class Test extends JFrame {
    public Repainter repainter;
    public KL kl;
    public ML ml;
+   public int windowsizex=800;
+   public int windowsizey=600;
 	public Test(){
-	   this.setTitle("Try");
+	   this.setTitle("Spacecraft");
 	   Container c = this.getContentPane();
 	   repainter=new Repainter();
 	   c.add(repainter);
-	   this.setBounds(400,200,800,600);
+	   this.setBounds(400,200,windowsizex,windowsizey);
 	   this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	   this.setResizable(false);
 	   this.setVisible(true);
@@ -35,4 +36,11 @@ public class Test extends JFrame {
 //		   }
 //	   });
 //   }
+	public void setMapsize(int x,int y)
+	{
+		this.repainter.mapsizex=x;
+		this.repainter.mapsizex=y;
+		this.repainter.windowsizex = MainGame.test.windowsizex;
+		this.repainter.windowsizey = MainGame.test.windowsizey;
+	}
 }

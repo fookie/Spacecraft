@@ -19,6 +19,7 @@ public class Enemy implements Updatable{
 	 *  敌人移动速度
 	 */
 	public int v;
+	public int vx,vy;
 	/**
 	 * 	敌人血量
 	 */

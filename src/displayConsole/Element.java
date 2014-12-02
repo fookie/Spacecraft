@@ -1,11 +1,6 @@
 package displayConsole;
-import java.awt.Graphics;
 import java.awt.Image;
-import java.util.LinkedList;
-import java.util.List;
 import java.awt.*;
-
-import javax.swing.*;
 
 public class Element {
   private Toolkit tk = Toolkit.getDefaultToolkit();

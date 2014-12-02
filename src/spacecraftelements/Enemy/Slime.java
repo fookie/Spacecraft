@@ -10,11 +10,11 @@ public class Slime extends Enemy {
 		super.health = 50;
 		super.v = 10;
 		super.volume = 20;
-		super.imageID = "Images//enemy//slime.png";
+		super.imageID = "Images//ornament//basicentity.png";
 	}
 
 	public boolean update() {
-		int x1, y1, vx, vy;
+		int x1, y1;
 		double angle;
 		x1 = MainGame.bm.getShip().x - x;
 		y1 = MainGame.bm.getShip().y - y;

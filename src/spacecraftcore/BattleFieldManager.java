@@ -134,7 +134,7 @@ public class BattleFieldManager {
 		updatebullet();
 		// 飞船
 		updateship();
-		//敌人
+		// 敌人
 		updateEnemy();
 		// 传递到画面
 
@@ -142,9 +142,9 @@ public class BattleFieldManager {
 		MainGame.test.repainter.le = new LinkedList<Element>();
 		MainGame.test.repainter.computeOffset(ship);
 		// 传递飞船
-//		if (ship != null)
-//			MainGame.test.repainter.add(ship.ImageID, ship.x, ship.y,
-//					ship.angle, 2);
+		// if (ship != null)
+		// MainGame.test.repainter.add(ship.ImageID, ship.x, ship.y,
+		// ship.angle, 2);
 		for (int i = 0; i < BulletList.size(); i++) {
 			MainGame.test.repainter.add(BulletList.get(i).ImageID,
 					BulletList.get(i).x, BulletList.get(i).y,
@@ -152,10 +152,9 @@ public class BattleFieldManager {
 		}
 		for (int i = 0; i < EnemyList.size(); i++) {
 			MainGame.test.repainter.add(EnemyList.get(i).imageID,
-					EnemyList.get(i).x, EnemyList.get(i).y,
-					0, 2);
+					EnemyList.get(i).x, EnemyList.get(i).y, 0, 2);
 		}
-		
+
 		// 重新绘制
 		MainGame.test.repainter.repaint();
 		return true;
@@ -165,7 +164,7 @@ public class BattleFieldManager {
 		for (int i = 0; i < EnemyList.size(); i++) {
 			EnemyList.get(i).update();
 		}
-		
+
 	}
 
 	/**
@@ -206,9 +205,9 @@ public class BattleFieldManager {
 			}
 		}
 		ship.x = ship.x + ship.vx;
-		ship.visx=ship.visx+ship.vx;
+		ship.visx = ship.visx + ship.vx;
 		ship.y = ship.y + ship.vy;
-		ship.visy=ship.visy+ship.vy;
+		ship.visy = ship.visy + ship.vy;
 		ship.angle = currentangle;
 
 	}
@@ -218,50 +217,49 @@ public class BattleFieldManager {
 	private boolean ks = false;
 	private boolean kd = false;
 	private double currentangle;
+
 	/**
 	 * 
 	 * @param x
 	 * @param y
 	 * @return
-	 *  @author EveLIN
+	 * @author EveLIN
 	 */
 	public double getangle(int x, int y) {
 		double ans;
-		double temp = (double)y/x;
-		if(y>0){
-			if(x==0){
+		double temp = (double) y / x;
+		if (y > 0) {
+			if (x == 0) {
 				return 90.00;
 			}
-			if(x>0){
-				ans = (Math.atan( temp) * (180 / Math.PI));
+			if (x > 0) {
+				ans = (Math.atan(temp) * (180 / Math.PI));
 				return ans;
 			}
-			if(x<0){
-				ans = 180.00 - (Math.atan( -temp) * (180 / Math.PI));
+			if (x < 0) {
+				ans = 180.00 - (Math.atan(-temp) * (180 / Math.PI));
 				return ans;
 			}
 		}
-		if(y<0){
-			if(x==0)
+		if (y < 0) {
+			if (x == 0)
 				return 270.00;
-			if(x>0){
-				ans = 360.00 - (Math.atan( -temp) * (180 / Math.PI));
+			if (x > 0) {
+				ans = 360.00 - (Math.atan(-temp) * (180 / Math.PI));
 				return ans;
 			}
-			if(x<0){
-				ans = 180.00 + (Math.atan( temp) * (180 / Math.PI));
+			if (x < 0) {
+				ans = 180.00 + (Math.atan(temp) * (180 / Math.PI));
 				return ans;
 			}
 		}
-		if(y==0){
-			if(x>=0){
+		if (y == 0) {
+			if (x >= 0) {
 				return 0.00;
-			}
-			else
-			{
+			} else {
 				return 180.00;
 			}
-				
+
 		}
 		return 0;
 	}
@@ -277,10 +275,14 @@ public class BattleFieldManager {
 		} else if (key == 'd') {
 			kd = i;
 		}
-		int t1 = MainGame.test.ml.mx - ship.x - 45;
-		int t2 = MainGame.test.ml.my - ship.y - 45;
-		currentangle = getangle(t1, t2);
+//		int t1 = (-400) - ship.visx - 45;
+//		int t2 = (300-MainGame.test.ml.my) - ship.visy - 45;
+//		currentangle = getangle(t1, t2);
+		int t1 = (MainGame.test.ml.mx - 400-45) -( ship.visx );
+		int t2 = (300-MainGame.test.ml.my+45) -( ship.visy );
+		currentangle = -getangle(t1, t2);
 	}
+
 	/**
 	 * 
 	 * @param x
@@ -288,8 +290,12 @@ public class BattleFieldManager {
 	 * @author EveLIN
 	 */
 	public void Mouseprocessor(int x, int y) {
-		int t1 = (x-400) - ship.visx - 45;
-		int t2 = (y-300) - ship.visy - 45;
-		currentangle = getangle(t1, t2);
+		int t1 = (x - 400-45) -( ship.visx);
+		int t2 = (300-y+45) -( ship.visy);
+		currentangle = -getangle(t1, t2);
+		System.out.println("x:"+x+"  y:"+y+"    x2:"+(x-400-45)+"  y2  "+(300-y+45));
+		System.out.println("t1:"+t1+"  t2:  "+t2+"a:"+currentangle);
+		System.out.println("visx:"+ship.visx+"  vixy:  "+ship.visy+"\n");
+		
 	}
 }

@@ -29,8 +29,8 @@ public class MainGame {
 		bm.loadmap("ditu1.cmp");
 //		bm.add(new BasicBullet(0, 0, 0, 0));
 //		bm.add(new BasicBullet(0, 0, 1, 1));
-		bm.add(new Palelin(0, 0, 0, 0));
-		bm.add(new Slime(300,200));
+		bm.add(new Palelin(0, 0, 100,100));
+		//bm.add(new Slime(300,200));
 		// mt.start();
 
 		for (int j = 0; j < 20; j++) {

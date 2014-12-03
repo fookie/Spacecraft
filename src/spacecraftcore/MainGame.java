@@ -33,29 +33,25 @@ public class MainGame {
 		bm.add(new Slime(300,200));
 		// mt.start();
 
-		for (int j = 0; j < 20; j++) {
-			bm.add(new BasicBullet((int) (Math.random() * 100) % 10,
-					(int) (Math.random() * 100) % 10,
-				(int) (Math.random() * 100) % 5,
-					(int) (Math.random() * 100) % 5));
+		for (int i = 0; i < 4; i++) {
+			for(int j = 0; j < 4; j++){
+			bm.add(new BasicBullet(-400,-300,i,j));
+			}
 		}
-		for (int j = 0; j < 20; j++) {
-			bm.add(new BasicBullet((int) (Math.random() * 100) % 10,
-					(int) (Math.random() * 100) % 10,
-					-(int) (Math.random() * 100) % 5,
-					(int) (Math.random() * 100) % 5));
+		for (int i = 0; i < 4; i++) {
+			for(int j = 0; j < 4; j++){
+			bm.add(new BasicBullet(400,300,-i,-j));
+			}
 		}
-		for (int j = 0; j < 20; j++) {
-			bm.add(new BasicBullet((int) (Math.random() * 100) % 10,
-					(int) (Math.random() * 100) % 10,
-					-(int) (Math.random() * 100) % 5,
-					-(int) (Math.random() * 100) % 5));
-	}
-		for (int j = 0; j < 20; j++) {
-			bm.add(new BasicBullet((int) (Math.random() * 100) % 10,
-					(int) (Math.random() * 100) % 10,
-					(int) (Math.random() * 100) % 5,
-					-(int) (Math.random() * 100) % 5));
+		for (int i = 0; i < 4; i++) {
+			for(int j = 0; j < 4; j++){
+			bm.add(new BasicBullet(400,-300,-i,j));
+			}
+		}
+		for (int i = 0; i < 4; i++) {
+			for(int j = 0; j < 4; j++){
+			bm.add(new BasicBullet(-400,300,i,-j));
+			}
 		}
 		mt.start();
 	}

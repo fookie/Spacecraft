@@ -11,6 +11,7 @@ public class Slime extends Enemy {
 		super.v = 10;
 		super.volume = 20;
 		super.imageID = "Images//ornament//basicentity.png";
+		super.imagesize=20;
 	}
 
 	public boolean update() {

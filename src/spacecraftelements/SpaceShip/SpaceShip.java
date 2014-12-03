@@ -38,6 +38,10 @@ public abstract class SpaceShip {
 	 */
 	public String ImageID;
 	/**
+	 * 贴图的大小，正方形图片的直径。单位：像素
+	 */
+	public int Imagesize;
+	/**
 	 * 两个武器;w1是现在装备的武器
 	 */
 	public Weapon w1, w2;

@@ -8,6 +8,10 @@ public class Enemy implements Updatable{
 	 */
 	public String imageID;
 	/**
+	 * 敌人贴图大小
+	 */
+	public int imagesize;
+	/**
 	 *  敌人生成位置
 	 */
 	public int x, y;

@@ -140,21 +140,19 @@ public class BattleFieldManager {
 
 		// 清空
 		MainGame.test.repainter.le = new LinkedList<Element>();
+		//传递飞船并计算偏移量
 		MainGame.test.repainter.computeOffset(ship);
-		// 传递飞船
-		// if (ship != null)
-		// MainGame.test.repainter.add(ship.ImageID, ship.x, ship.y,
-		// ship.angle, 2);
+		//传递子弹
 		for (int i = 0; i < BulletList.size(); i++) {
-			MainGame.test.repainter.add(BulletList.get(i).ImageID,
-					BulletList.get(i).x, BulletList.get(i).y,
-					getangle(BulletList.get(i).vx, BulletList.get(i).vy), 2);
+			MainGame.test.repainter.add(BulletList.get(i).ImageID,BulletList.get(i).Imagesize,BulletList.get(i).x, BulletList.get(i).y,
+					-getangle(BulletList.get(i).vx, BulletList.get(i).vy), 2);
 		}
+		//传递敌人
 		for (int i = 0; i < EnemyList.size(); i++) {
-			MainGame.test.repainter.add(EnemyList.get(i).imageID,
+			MainGame.test.repainter.add(EnemyList.get(i).imageID,EnemyList.get(i).imagesize,
 					EnemyList.get(i).x, EnemyList.get(i).y, 0, 2);
 		}
-
+		
 		// 重新绘制
 		MainGame.test.repainter.repaint();
 		return true;
@@ -275,9 +273,6 @@ public class BattleFieldManager {
 		} else if (key == 'd') {
 			kd = i;
 		}
-//		int t1 = (-400) - ship.visx - 45;
-//		int t2 = (300-MainGame.test.ml.my) - ship.visy - 45;
-//		currentangle = getangle(t1, t2);
 		int t1 = (MainGame.test.ml.mx - 400-45) -( ship.visx );
 		int t2 = (300-MainGame.test.ml.my+45) -( ship.visy );
 		currentangle = -getangle(t1, t2);
@@ -290,8 +285,8 @@ public class BattleFieldManager {
 	 * @author EveLIN
 	 */
 	public void Mouseprocessor(int x, int y) {
-		int t1 = (x - 400-45) -( ship.visx);
-		int t2 = (300-y+45) -( ship.visy);
+		int t1 = (x - 400) -( ship.visx);
+		int t2 = (300-y) -( ship.visy);
 		currentangle = -getangle(t1, t2);
 		System.out.println("x:"+x+"  y:"+y+"    x2:"+(x-400-45)+"  y2  "+(300-y+45));
 		System.out.println("t1:"+t1+"  t2:  "+t2+"a:"+currentangle);

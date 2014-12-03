@@ -43,9 +43,9 @@ public class Repainter extends JPanel {
 
 	public List<Element> le = new LinkedList<Element>();
 
-	public void add(String name, int x, int y, double d, int layer) {
+	public void add(String name,int imagesize, int x, int y, double d, int layer) {
 
-		Element element = this.computeElement(name, x, y, d, layer);
+		Element element = this.computeElement(name,imagesize, x, y, d, layer);
 		element.img = getToolkit().getImage(name);
 		// element.x = x;
 		// element.y = y;
@@ -147,9 +147,9 @@ public class Repainter extends JPanel {
 	 * @param layer
 	 * @return 以相对坐标存储的元素
 	 */
-	private Element computeElement(String name, int x, int y, double d,
+	private Element computeElement(String name,int Imagesize ,int x, int y, double d,
 			int layer) {
-		Element e = new Element(name, x - offsetx, y - offsety, d, layer);
+		Element e = new Element(name, x - offsetx-Imagesize, y - offsety+Imagesize, d, layer);
 		return e;
 
 	}
@@ -175,8 +175,8 @@ public class Repainter extends JPanel {
 			bufferShip.visy = -3 * windowsizey / 8;
 		}
 		MainGame.bm.SetShip(bufferShip);
-		this.add_nooffset_element(bufferShip.ImageID, bufferShip.visx,
-				bufferShip.visy, bufferShip.angle, 2);
+		this.add_nooffset_element(bufferShip.ImageID, bufferShip.visx-bufferShip.Imagesize,
+				bufferShip.visy+bufferShip.Imagesize, bufferShip.angle, 2);
 		// 计算偏差
 		offsetx = bufferShip.x - bufferShip.visx;
 		offsety = bufferShip.y - bufferShip.visy;

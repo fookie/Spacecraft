@@ -12,7 +12,7 @@ public class SpaceEditor {
 	static DataOutputStream dos;
 
 	public static void main(String[] args) throws IOException {
-		writemap(1600, 1200, "bigmap1600*1200.cmp", "Image//bg1.png"); // 生成地图
+		writemap(1600, 1200, "Data\\scmaps\\bigmap1600x1200.smp", "Image//bg1.png"); // 生成地图
 	}
 
 	/**
@@ -25,26 +25,18 @@ public class SpaceEditor {
 	 * @throws IOException 
 	 */
 	public static void writemap(int x, int y, String address, String bg) throws IOException {
-		int ax, ay;
 		try {
 			dos = new DataOutputStream(new BufferedOutputStream(
 					new FileOutputStream(address)));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-		}
-		ax = x / minsize;
-		ay = y / minsize;
-		System.out.println(ax);
-		System.out.println(ay+"开始生成地图");
-			//自定义点
+		};
+		System.out.println("开始生成地图");
 			// 下面写入
 				dos.writeUTF(bg);// 先写背景位置
-				dos.writeInt(ax);// 格子数
-				dos.writeInt(ay);
 				dos.writeInt(x);// 写入实际大小
 				dos.writeInt(y);
-				dos.writeInt(minsize);//写入区块大小
-		
+				
 
 			try {
 				dos.flush();

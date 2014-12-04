@@ -164,17 +164,16 @@ public class Repainter extends JPanel {
 	 */
 	public boolean computeOffset(SpaceShip s) {
 		bufferShip = MainGame.bm.getShip();
-		//
-		if (bufferShip.visx > (3 * (windowsizex) / 8)) {
-			bufferShip.visx = 3 * windowsizex / 8;
-		} else if (bufferShip.visx < -(3 * (windowsizex) / 8)) {
-			bufferShip.visx = -3 * windowsizex / 8;
-		}
-		if (bufferShip.visy > (3 * (windowsizey) / 8)) {
-			bufferShip.visy = 3 * windowsizey / 8;
-		} else if (bufferShip.visy < -(3 * (windowsizey) / 8)) {
-			bufferShip.visy = -3 * windowsizey / 8;
-		}
+			if (bufferShip.visx > (3 * (windowsizex) / 8)) {
+				bufferShip.visx = 3 * windowsizex / 8;
+			} else if (bufferShip.visx < -(3 * (windowsizex) / 8)) {
+				bufferShip.visx = -3 * windowsizex / 8;
+			}
+			if (bufferShip.visy > (3 * (windowsizey) / 8)) {
+				bufferShip.visy = 3 * windowsizey / 8;
+			} else if (bufferShip.visy < -(3 * (windowsizey) / 8)) {
+				bufferShip.visy = -3 * windowsizey / 8;
+			}
 		MainGame.bm.SetShip(bufferShip);
 		this.add_nooffset_element(bufferShip.ImageID, bufferShip.visx
 				- bufferShip.Imagesize, bufferShip.visy + bufferShip.Imagesize,

@@ -26,6 +26,10 @@ public class ML implements MouseMotionListener,MouseListener{
 
 	public void mousePressed(MouseEvent e) {
 		//MainGame.bm.currentWeapon.shoot();
+		//System.out.println("x");
+		mx=e.getX();
+		my=e.getY();
+		MainGame.bm.shootprocessor(mx, my);
 	}
 
 	public void mouseReleased(MouseEvent e) {

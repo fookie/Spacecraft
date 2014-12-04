@@ -25,7 +25,6 @@ public class BattleFieldManager {
 	private List<Bullet> BulletList = new LinkedList<Bullet>();
 	private List<Enemy> EnemyList = new LinkedList<Enemy>();
 	public SpaceShip ship = null;
-	private int map[][], mapblocksize;
 	public int mapx, mapy;
 	private String bgloc;
 	private DataInputStream mapin;
@@ -48,34 +47,16 @@ public class BattleFieldManager {
 			e.printStackTrace();// 会出现红字
 			return false;
 		}
-		int ax = 0, ay = 0;
 		try {
 			bgloc = mapin.readUTF();
-			ax = mapin.readInt();
-			ay = mapin.readInt();
 			mapx = mapin.readInt();
 			mapy = mapin.readInt();
-			mapblocksize = mapin.readInt();
-			System.out.println("正在处理" + mapaddress + "\n背景地址：" + bgloc + " 区块:"
-					+ ax + "x" + ay + "(共" + ax * ay + "个),地图实际大小：" + mapx
-					+ "x" + mapy + "(区块大小：" + mapblocksize + ")");
+			System.out.println("正在处理" + mapaddress + "\n背景地址：" + bgloc +"地图实际大小：" + mapx
+					+ "x" + mapy );
 		} catch (IOException e1) {
 			System.out.println("在读取地图:" + mapaddress + "时,无法获取基本信息，故无法加载地图");
 			e1.printStackTrace();
 			return false;
-		}
-		map = new int[ax][ay];
-		for (int column = 0; column < ay; column++) {
-			for (int row = 0; row < ax; row++) {
-				try {
-					map[row][column] = mapin.readInt();
-				} catch (IOException e) {
-					System.out.println("处理地图时，到第" + row + "行" + "第" + column
-							+ "列，无法被处理，故无法加载地图\n堆栈轨迹：");
-					e.printStackTrace();
-					return false;
-				}
-			}
 		}
 		try {
 			mapin.close();
@@ -291,9 +272,17 @@ public class BattleFieldManager {
 		int t1 = (x - 400) - (ship.visx);
 		int t2 = (300 - y) - (ship.visy);
 		currentangle = -getangle(t1, t2);
-		// System.out.println("x:"+x+"  y:"+y+"    x2:"+(x-400-45)+"  y2  "+(300-y+45));
-		// System.out.println("t1:"+t1+"  t2:  "+t2+"a:"+currentangle);
-		// System.out.println("visx:"+ship.visx+"  vixy:  "+ship.visy+"\n");
-		//
+//		 System.out.println("x:"+x+"  y:"+y+"    x2:"+(x-400-45)+"  y2  "+(300-y+45));
+//		 System.out.println("t1:"+t1+"  t2:  "+t2+"a:"+currentangle);
+//		 System.out.println("visx:"+ship.visx+"  vixy:  "+ship.visy+"\n");
+//		System.out.println("x:"+ship.x+"  y:  "+ship.y);
+	}
+	public void shootprocessor(int mx,int my)
+	{	
+		//计算大地图坐标
+		int cx=mx-400;//400=1/2windowsizex
+		int cy=300-my;
+		System.out.println("shooting: visx:"+ship.visx+" visy:"+ship.visy+"cx:"+cx+"cy"+cy);
+		add(this.ship.w1.shoot(ship.x,ship.y,ship.visx, ship.visy, cx, cy));
 	}
 }

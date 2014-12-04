@@ -22,11 +22,13 @@ public class Test extends JFrame {
 	   this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	   this.setResizable(false);
 	   this.setVisible(true);
+	   //事件部分
 	   kl = new KL();
 	   this.addKeyListener(kl);
 	   ml = new ML();
 	   this.addMouseMotionListener(ml);
 	   this.addMouseMotionListener(new ML());
+	   this.addMouseListener(ml);
    }
 //   public static void main(String args[]){
 //	   Test test = new Test();

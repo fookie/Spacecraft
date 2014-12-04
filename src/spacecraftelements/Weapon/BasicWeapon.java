@@ -7,15 +7,15 @@ public class BasicWeapon extends Weapon {
 	public BasicWeapon() {
 		super.defaultbullet = 0;
 		super.clip = 10;
-		super.iv = 100;
+		super.iv = 10;
 		super.reload = 1;
 		super.ID = 0;
 	}
 
-	public Bullet shoot(int x, int y, int cx, int cy) {
+	public Bullet shoot(int x,int  y,int visx, int visy, int cx, int cy) {
 		double a, b, c;
-		a = cx - x;
-		b = cy - y;
+		a = cx - visx;
+		b = cy - visy;
 		c = Math.sqrt(a*a+b*b);
 		double sin = b/c;
 		double cos = a/c;

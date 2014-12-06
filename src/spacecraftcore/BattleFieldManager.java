@@ -98,7 +98,7 @@ public class BattleFieldManager {
 	/**
 	 * 添加敌人
 	 * 
-	 * @param Bullet
+	 * @param Enemy
 	 * @return 是否成功添加
 	 */
 	public boolean add(Enemy e) {

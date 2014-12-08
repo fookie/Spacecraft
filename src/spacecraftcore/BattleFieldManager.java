@@ -51,8 +51,8 @@ public class BattleFieldManager {
 			bgloc = mapin.readUTF();
 			mapx = mapin.readInt();
 			mapy = mapin.readInt();
-			System.out.println("正在处理" + mapaddress + "\n背景地址：" + bgloc +"地图实际大小：" + mapx
-					+ "x" + mapy );
+			System.out.println("正在处理" + mapaddress + "\n背景地址：" + bgloc
+					+ "地图实际大小：" + mapx + "x" + mapy);
 		} catch (IOException e1) {
 			System.out.println("在读取地图:" + mapaddress + "时,无法获取基本信息，故无法加载地图");
 			e1.printStackTrace();
@@ -111,14 +111,17 @@ public class BattleFieldManager {
 			return false;
 		}
 		// 基本计算
-		// 子弹
-		updatebullet();
-		// 飞船
-		updateship();
-		// 敌人
-		updateEnemy();
-		// 传递到画面
+		updatebullet();// 更新子弹
+		updateship();// 更新飞船
+		updateEnemy();// 更新敌人
+		// 计算碰撞
+		
+		// 传递数据
+		sendImage();
+		return true;
+	}
 
+	private void sendImage() {
 		// 清空
 		MainGame.test.repainter.le = new LinkedList<Element>();
 		// 传递飞船并计算偏移量
@@ -134,19 +137,18 @@ public class BattleFieldManager {
 		for (int i = 0; i < EnemyList.size(); i++) {
 			MainGame.test.repainter.add(EnemyList.get(i).imageID,
 					EnemyList.get(i).imagesize, EnemyList.get(i).x,
-					EnemyList.get(i).y, 0, 2);
+					EnemyList.get(i).y,
+					-getangle(EnemyList.get(i).vx, EnemyList.get(i).vy), 2);
 		}
 
 		// 重新绘制
 		MainGame.test.repainter.repaint();
-		return true;
 	}
 
 	private void updateEnemy() {
 		for (int i = 0; i < EnemyList.size(); i++) {
 			EnemyList.get(i).update();
 		}
-
 	}
 
 	/**
@@ -272,17 +274,18 @@ public class BattleFieldManager {
 		int t1 = (x - 400) - (ship.visx);
 		int t2 = (300 - y) - (ship.visy);
 		currentangle = -getangle(t1, t2);
-//		 System.out.println("x:"+x+"  y:"+y+"    x2:"+(x-400-45)+"  y2  "+(300-y+45));
-//		 System.out.println("t1:"+t1+"  t2:  "+t2+"a:"+currentangle);
-//		 System.out.println("visx:"+ship.visx+"  vixy:  "+ship.visy+"\n");
-//		System.out.println("x:"+ship.x+"  y:  "+ship.y);
+		// System.out.println("x:"+x+"  y:"+y+"    x2:"+(x-400-45)+"  y2  "+(300-y+45));
+		// System.out.println("t1:"+t1+"  t2:  "+t2+"a:"+currentangle);
+		// System.out.println("visx:"+ship.visx+"  vixy:  "+ship.visy+"\n");
+		// System.out.println("x:"+ship.x+"  y:  "+ship.y);
 	}
-	public void shootprocessor(int mx,int my)
-	{	
-		//计算大地图坐标
-		int cx=mx-400;//400=1/2windowsizex
-		int cy=300-my;
-		System.out.println("shooting: visx:"+ship.visx+" visy:"+ship.visy+"cx:"+cx+"cy"+cy);
-		add(this.ship.w1.shoot(ship.x,ship.y,ship.visx, ship.visy, cx, cy));
+
+	public void shootprocessor(int mx, int my) {
+		// 计算大地图坐标
+		int cx = mx - 400;// 400=1/2windowsizex
+		int cy = 300 - my;
+		//System.out.println("shooting: visx:" + ship.visx + " visy:" + ship.visy
+		//		+ "cx:" + cx + "cy" + cy);
+		add(this.ship.w1.shoot(ship.x, ship.y, ship.visx, ship.visy, cx, cy));
 	}
 }

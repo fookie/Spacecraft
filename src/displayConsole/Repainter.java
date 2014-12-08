@@ -98,7 +98,7 @@ public class Repainter extends JPanel {
 
 		super.paint(g);
 		g.clearRect(0, 0, this.getWidth(), this.getHeight());
-		g.drawImage(bg, 0, 0, this);
+		g.drawImage(bg,-offsetx-1280,offsety-722, this);//
 		for (int i = 0; i < le.size(); i++) {// Need to optimize here
 			g.drawImage(rotateImage(le.get(i).img, le.get(i).rotatedegree),
 					le.get(i).x + (windowsizex / 2),

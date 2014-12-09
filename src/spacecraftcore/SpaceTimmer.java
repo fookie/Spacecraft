@@ -8,6 +8,8 @@ public class SpaceTimmer implements Runnable{
 		MainGame.bm.update();
 		try {
 			Thread.sleep(19);
+			MainGame.gametime=MainGame.gametime+1;
+			
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

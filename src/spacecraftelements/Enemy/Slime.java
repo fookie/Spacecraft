@@ -9,7 +9,7 @@ public class Slime extends Enemy {
 		super.damage = 1;
 		super.health = 50;
 		super.v = 2;
-		super.volume = 20;
+		super.volume = 40;
 		super.imageID = "Images//enemy//slime.png";
 		super.imagesize = 20;
 	}

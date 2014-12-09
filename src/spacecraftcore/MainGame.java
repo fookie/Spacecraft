@@ -16,6 +16,7 @@ import spacecraftelements.SpaceShip.Palelin;
 public class MainGame {
 	public static BattleFieldManager bm;
 	public static Test test;
+	public static long gametime;
 
 	public static void main(String[] args) {
 		test = new Test();

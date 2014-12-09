@@ -27,7 +27,10 @@ public abstract class Weapon {
 	 * ÎäÆ÷ID
 	 */
 	public int ID;
-
+	/**
+	 * ¿ª»ð¼ä¸ô
+	 */
+	public int cd;
 	/**
 	 * ¿ª»ðmethod
 	 * 

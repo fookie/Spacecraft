@@ -10,6 +10,7 @@ public class BasicWeapon extends Weapon {
 		super.iv = 20;
 		super.reload = 1;
 		super.ID = 0;
+		super.cd=8;
 	}
 
 	public Bullet shoot(int x,int  y,int visx, int visy, int cx, int cy) {

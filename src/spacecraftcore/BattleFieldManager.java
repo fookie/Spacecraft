@@ -31,6 +31,7 @@ public class BattleFieldManager {
 	public int mapx, mapy;
 	private String bgloc;
 	private DataInputStream mapin;
+	public int autotarx, autotary;
 
 	public SpaceShip getShip() {
 		return ship;
@@ -113,7 +114,9 @@ public class BattleFieldManager {
 			System.out.println("没有加载地图，故无法更新战场数据");
 			return false;
 		}
+		// System.out.println(ml+" "+pressedtime);
 		// 基本计算
+		autoshoot();
 		updatebullet();// 更新子弹
 		updateship();// 更新飞船
 		updateEnemy();// 更新敌人
@@ -157,21 +160,24 @@ public class BattleFieldManager {
 	/**
 	 * 计算碰撞
 	 */
-	
-	private void collisionupdate()
-	{
-		for(int i = 0; i < EnemyList.size(); i++){
+
+	private void collisionupdate() {
+		for (int i = 0; i < EnemyList.size(); i++) {
 			EnemyList.get(i).update();
 			Enemy tEnemy = EnemyList.get(i);
-			Rectangle Enemyhitbox = new Rectangle(tEnemy.x-tEnemy.volume/2,tEnemy.y-tEnemy.volume/2, tEnemy.volume/2, tEnemy.volume/2);
-			for(int j = 0; j < BulletList.size(); j++){
+			Rectangle Enemyhitbox = new Rectangle(tEnemy.x - tEnemy.volume / 2,
+					tEnemy.y - tEnemy.volume / 2, tEnemy.volume / 2,
+					tEnemy.volume / 2);
+			for (int j = 0; j < BulletList.size(); j++) {
 				Bullet tBullet = BulletList.get(j);
-				Rectangle Bullethitbox = new Rectangle(tBullet.x-tBullet.volume/2, tBullet.y-tBullet.volume/2, tBullet.volume/2, tBullet.volume/2);
-				if(Enemyhitbox.intersects(Bullethitbox)){
+				Rectangle Bullethitbox = new Rectangle(tBullet.x
+						- tBullet.volume / 2, tBullet.y - tBullet.volume / 2,
+						tBullet.volume / 2, tBullet.volume / 2);
+				if (Enemyhitbox.intersects(Bullethitbox)) {
 					tEnemy.health = tEnemy.health - tBullet.damage;
 					BulletList.remove(j);
 					j--;
-					if(tEnemy.health < 0){
+					if (tEnemy.health < 0) {
 						EnemyList.remove(i);
 						i--;
 					}
@@ -179,6 +185,7 @@ public class BattleFieldManager {
 			}
 		}
 	}
+
 	/**
 	 * 移动子弹并且自动移除出界子弹
 	 */
@@ -229,6 +236,8 @@ public class BattleFieldManager {
 	private boolean ks = false;
 	private boolean kd = false;
 	private double currentangle;
+	public boolean ml = false;
+	public long pressedtime = 0;
 
 	/**
 	 * 
@@ -308,12 +317,21 @@ public class BattleFieldManager {
 		// System.out.println("x:"+ship.x+"  y:  "+ship.y);
 	}
 
+	public void autoshoot() {
+		if (ml && (MainGame.gametime - pressedtime) % ship.w1.cd == 0) {
+			shootprocessor(autotarx, autotary);
+		//	System.out.println(autotarx+" "+)
+		}
+
+	}
+
 	public void shootprocessor(int mx, int my) {
 		// 计算大地图坐标
 		int cx = mx - 400;// 400=1/2windowsizex
 		int cy = 300 - my;
-		//System.out.println("shooting: visx:" + ship.visx + " visy:" + ship.visy
-		//		+ "cx:" + cx + "cy" + cy);
+		// System.out.println("shooting: visx:" + ship.visx + " visy:" +
+		// ship.visy
+		// + "cx:" + cx + "cy" + cy);
 		add(this.ship.w1.shoot(ship.x, ship.y, ship.visx, ship.visy, cx, cy));
 	}
 }

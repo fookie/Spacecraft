@@ -1,5 +1,8 @@
 package spacecraftcore;
 
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.geom.Point2D;
 import java.io.BufferedInputStream;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
@@ -115,7 +118,7 @@ public class BattleFieldManager {
 		updateship();// 更新飞船
 		updateEnemy();// 更新敌人
 		// 计算碰撞
-		
+		collisionupdate();
 		// 传递数据
 		sendImage();
 		return true;
@@ -151,6 +154,31 @@ public class BattleFieldManager {
 		}
 	}
 
+	/**
+	 * 计算碰撞
+	 */
+	
+	private void collisionupdate()
+	{
+		for(int i = 0; i < EnemyList.size(); i++){
+			EnemyList.get(i).update();
+			Enemy tEnemy = EnemyList.get(i);
+			Rectangle Enemyhitbox = new Rectangle(tEnemy.x-tEnemy.volume/2,tEnemy.y-tEnemy.volume/2, tEnemy.volume/2, tEnemy.volume/2);
+			for(int j = 0; j < BulletList.size(); j++){
+				Bullet tBullet = BulletList.get(j);
+				Rectangle Bullethitbox = new Rectangle(tBullet.x-tBullet.volume/2, tBullet.y-tBullet.volume/2, tBullet.volume/2, tBullet.volume/2);
+				if(Enemyhitbox.intersects(Bullethitbox)){
+					tEnemy.health = tEnemy.health - tBullet.damage;
+					BulletList.remove(j);
+					j--;
+					if(tEnemy.health < 0){
+						EnemyList.remove(i);
+						i--;
+					}
+				}
+			}
+		}
+	}
 	/**
 	 * 移动子弹并且自动移除出界子弹
 	 */

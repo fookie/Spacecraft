@@ -7,7 +7,7 @@ public class BasicWeapon extends Weapon {
 	public BasicWeapon() {
 		super.defaultbullet = 0;
 		super.clip = 10;
-		super.iv = 10;
+		super.iv = 20;
 		super.reload = 1;
 		super.ID = 0;
 	}

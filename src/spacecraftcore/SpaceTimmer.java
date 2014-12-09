@@ -7,7 +7,7 @@ public class SpaceTimmer implements Runnable{
 		while(true){
 		MainGame.bm.update();
 		try {
-			Thread.sleep(20);
+			Thread.sleep(19);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

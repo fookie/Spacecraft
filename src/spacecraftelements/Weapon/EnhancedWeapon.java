@@ -3,12 +3,12 @@ package spacecraftelements.Weapon;
 import spacecraftelements.Bullets.BasicBullet;
 import spacecraftelements.Bullets.Bullet;
 
-public class BasicWeapon extends Weapon {
-	public BasicWeapon() {
+public class EnhancedWeapon extends Weapon {
+	public EnhancedWeapon() {
 		super.defaultbullet = 0;
-		super.clip = 10;
+		super.clip = 30;
 		super.iv = 20;
-		super.reload = 1;
+		super.reload = 2;
 		super.ID = 0;
 		super.cd = 8;
 	}
@@ -22,8 +22,10 @@ public class BasicWeapon extends Weapon {
 		double cos = a / c;
 		int vx = (int) (((double) iv) * cos);
 		int vy = (int) (((double) iv) * sin);
-		Bullet[] bullet = new Bullet[1];
+		Bullet[] bullet = new Bullet[3];
 		bullet[0] = new BasicBullet(x, y, vx, vy);
+		bullet[1] = new BasicBullet(x, y, vx, vy);
+		bullet[2] = new BasicBullet(x, y, vx, vy);
 		return bullet;
 	}
 }

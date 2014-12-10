@@ -35,5 +35,5 @@ public abstract class Weapon {
 	 * 
 	 * @param
 	 */
-	public abstract Bullet shoot(int x,int y,int visx, int visy, int cx, int cy);
+	public abstract Bullet[] shoot(int x,int y,int visx, int visy, int cx, int cy);
 }

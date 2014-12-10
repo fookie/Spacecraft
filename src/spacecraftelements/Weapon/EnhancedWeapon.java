@@ -26,8 +26,8 @@ public class EnhancedWeapon extends Weapon {
 		int vx = (int) (((double) iv) * cos);
 		int vy = (int) (((double) iv) * sin);
 		Bullet[] bullet = new Bullet[3];
-		bullet[0] = new BasicBullet(x, y + 5, vx, vy);
-		bullet[1] = new BasicBullet(x, y - 5, vx, vy);
+		bullet[0] = new BasicBullet(x, y + 25, vx, vy);
+		bullet[1] = new BasicBullet(x, y - 25, vx, vy);
 		bullet[2] = new BasicBullet(x, y, vx, vy);
 		return bullet;
 	}

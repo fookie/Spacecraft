@@ -1,6 +1,5 @@
 package spacecraftelements.Weapon;
 
-import spacecraftelements.Bullets.BasicBullet;
 import spacecraftelements.Bullets.Bullet;
 
 /**

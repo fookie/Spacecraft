@@ -35,26 +35,49 @@ public class Repainter extends JPanel {
 	private int offsetx;
 	private int offsety;
 	protected int mapsizex, mapsizey;
-	// private Image iBuffer;
-	// private Graphics gBuffer;
+	private int before=0,after=0;
 
 	public Image bg = getToolkit().getImage("Images//bg1.jpg");
 	// public Image player = getToolkit().getImage("Images//player.png");
 
 	public List<Element> le = new LinkedList<Element>();
 
+	/**
+	 * 
+	 * 在游戏大地图上添加物件，会跟随屏幕卷动。
+	 * 
+	 * @param name
+	 * @param imagesize
+	 * @param x
+	 * @param y
+	 * @param d
+	 * @param layer
+	 */
 	public void add(String name, int imagesize, int x, int y, double d,
 			int layer) {
-
+		before++;
 		Element element = this.computeElement(name, imagesize, x, y, d, layer);
-		element.img = getToolkit().getImage(name);
-		// element.x = x;
-		// element.y = y;
-		element.rotatedegree = d;
-		element.layer = layer;
-		le.add(element);
+		if (element != null) {
+			element.img = getToolkit().getImage(name);
+			// element.x = x;
+			// element.y = y;
+			element.rotatedegree = d;
+			element.layer = layer;
+			le.add(element);
+			after++;
+		}
 	}
 
+	/**
+	 * 
+	 * 在屏幕的指定地点添加物件，不会随屏幕卷动，主要用于血条之类的物件。 屏幕中点坐标是(0,0)
+	 * 
+	 * @param name
+	 * @param x
+	 * @param y
+	 * @param angle
+	 * @param layer
+	 */
 	public void add_nooffset_element(String name, int x, int y, double angle,
 			int layer) {
 
@@ -83,7 +106,7 @@ public class Repainter extends JPanel {
 	 * }
 	 */
 	public void paint(Graphics g) {
-
+		System.out.println(before+" -> "+after);
 		// BufferedImage bg = (BufferedImage) getToolkit().getImage("bg1.jpg");
 		// BufferedImage player = (BufferedImage)
 		// getToolkit().getImage("player.png");
@@ -98,7 +121,7 @@ public class Repainter extends JPanel {
 
 		super.paint(g);
 		g.clearRect(0, 0, this.getWidth(), this.getHeight());
-		g.drawImage(bg,-offsetx-1280,offsety-722, this);//
+		g.drawImage(bg, -offsetx - 1280, offsety - 722, this);//
 		for (int i = 0; i < le.size(); i++) {// Need to optimize here
 			g.drawImage(rotateImage(le.get(i).img, le.get(i).rotatedegree),
 					le.get(i).x + (windowsizex / 2),
@@ -107,13 +130,12 @@ public class Repainter extends JPanel {
 			// g.drawImage(rotateImage(player,rotatedegree),0,y,this);
 			// g.drawImage(rotateImage(player,rotatedegree),50,y,this);
 			// g.drawImage(rotateImage(player,rotatedegree),100,y,this);
-
+		
 		// g.drawImage(bg,0,0,this);
+		before=0;
+		after=0;
 	}
 
-	// public void update(Graphics g){
-	// paint(g);
-	// }
 	public static BufferedImage rotateImage(Image bufferedimage, double degree) {
 		int w = bufferedimage.getWidth(null);
 		int h = bufferedimage.getHeight(null);
@@ -149,6 +171,13 @@ public class Repainter extends JPanel {
 	 */
 	private Element computeElement(String name, int Imagesize, int x, int y,
 			double d, int layer) {
+		if (((x - offsetx) < -windowsizex / 2)
+				|| ((x - offsetx) > windowsizex / 2)
+				|| (y - offsety) < -windowsizey / 2
+				|| (y - offsety) > windowsizey / 2) {
+			//System.out.println(name+"out");
+			return null;
+		}
 		Element e = new Element(name, x - offsetx - Imagesize, y - offsety
 				+ Imagesize, d, layer);
 		return e;
@@ -164,16 +193,16 @@ public class Repainter extends JPanel {
 	 */
 	public boolean computeOffset(SpaceShip s) {
 		bufferShip = MainGame.bm.getShip();
-			if (bufferShip.visx > (3 * (windowsizex) / 8)) {
-				bufferShip.visx = 3 * windowsizex / 8;
-			} else if (bufferShip.visx < -(3 * (windowsizex) / 8)) {
-				bufferShip.visx = -3 * windowsizex / 8;
-			}
-			if (bufferShip.visy > (3 * (windowsizey) / 8)) {
-				bufferShip.visy = 3 * windowsizey / 8;
-			} else if (bufferShip.visy < -(3 * (windowsizey) / 8)) {
-				bufferShip.visy = -3 * windowsizey / 8;
-			}
+		if (bufferShip.visx > (3 * (windowsizex) / 8)) {
+			bufferShip.visx = 3 * windowsizex / 8;
+		} else if (bufferShip.visx < -(3 * (windowsizex) / 8)) {
+			bufferShip.visx = -3 * windowsizex / 8;
+		}
+		if (bufferShip.visy > (3 * (windowsizey) / 8)) {
+			bufferShip.visy = 3 * windowsizey / 8;
+		} else if (bufferShip.visy < -(3 * (windowsizey) / 8)) {
+			bufferShip.visy = -3 * windowsizey / 8;
+		}
 		MainGame.bm.SetShip(bufferShip);
 		this.add_nooffset_element(bufferShip.ImageID, bufferShip.visx
 				- bufferShip.Imagesize, bufferShip.visy + bufferShip.Imagesize,

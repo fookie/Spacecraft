@@ -30,16 +30,16 @@ public class MainGame {
 		bm.loadmap("Data//scmaps//bigmap1600x1200.smp");
 //		bm.add(new BasicBullet(0, 0, 0, 0));
 //		bm.add(new BasicBullet(0, 0, 1, 1));
-		bm.add(new Palelin(0, 0, 0,0));
+		bm.add(new Palelin(0,0,0,0));
 		bm.add(new Slime(300,200));
 		bm.add(new Slime(300,0));
-		bm.add(new Slime(30,200));
-		bm.add(new Slime(500,200));
+			bm.add(new Slime(30,200));
+			bm.add(new Slime(500,200));
 		bm.add(new BasicBullet(-800,0,0,0));
 		bm.add(new BasicBullet(800,0,0,0));
 		bm.add(new BasicBullet(0,600,0,0));
 		bm.add(new BasicBullet(0,-600,0,0));
-		// mt.start();
+		 mt.start();
 
 //		for (int i = 0; i < 4; i++) {
 //			for(int j = 0; j < 4; j++){
@@ -61,7 +61,7 @@ public class MainGame {
 //			bm.add(new BasicBullet(-400,300,i,-j));
 //			}
 //		}
-		mt.start();
+//		mt.start();
 	}
 
 }

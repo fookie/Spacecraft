@@ -8,7 +8,11 @@ import spacecraftcore.ML;
 import spacecraftcore.MainGame;
 
 public class Test extends JFrame {
-   public Repainter repainter;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+public Repainter repainter;
    public KL kl;
    public ML ml;
    public int windowsizex=800;

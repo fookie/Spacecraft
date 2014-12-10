@@ -1,8 +1,6 @@
 package spacecraftcore;
 
-import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.geom.Point2D;
 import java.io.BufferedInputStream;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
@@ -114,7 +112,6 @@ public class BattleFieldManager {
 			System.out.println("没有加载地图，故无法更新战场数据");
 			return false;
 		}
-		// System.out.println(ml+" "+pressedtime);
 		// 基本计算
 		autoshoot();
 		updatebullet();// 更新子弹
@@ -286,7 +283,6 @@ public class BattleFieldManager {
 	}
 
 	public void Keyprocesser(Boolean i, char key) {
-
 		if (key == 'w') {
 			kw = i;
 		} else if (key == 'a') {
@@ -302,6 +298,7 @@ public class BattleFieldManager {
 	}
 
 	/**
+	 * 这个负责船体旋转的视觉效果
 	 * 
 	 * @param x
 	 * @param y
@@ -311,27 +308,21 @@ public class BattleFieldManager {
 		int t1 = (x - 400) - (ship.visx);
 		int t2 = (300 - y) - (ship.visy);
 		currentangle = -getangle(t1, t2);
-		// System.out.println("x:"+x+"  y:"+y+"    x2:"+(x-400-45)+"  y2  "+(300-y+45));
-		// System.out.println("t1:"+t1+"  t2:  "+t2+"a:"+currentangle);
-		// System.out.println("visx:"+ship.visx+"  vixy:  "+ship.visy+"\n");
-		// System.out.println("x:"+ship.x+"  y:  "+ship.y);
 	}
 
 	public void autoshoot() {
 		if (ml && (MainGame.gametime - pressedtime) % ship.w1.cd == 0) {
 			shootprocessor(autotarx, autotary);
-		//	System.out.println(autotarx+" "+)
+			// System.out.println(autotarx+" "+)
 		}
 
 	}
-
+	
 	public void shootprocessor(int mx, int my) {
 		// 计算大地图坐标
 		int cx = mx - 400;// 400=1/2windowsizex
 		int cy = 300 - my;
-		// System.out.println("shooting: visx:" + ship.visx + " visy:" +
-		// ship.visy
-		// + "cx:" + cx + "cy" + cy);
 		add(this.ship.w1.shoot(ship.x, ship.y, ship.visx, ship.visy, cx, cy));
+
 	}
 }

@@ -4,6 +4,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import displayConsole.Test;
+import spacecraft.event.RandomSlime;
 import spacecraftelements.Bullets.BasicBullet;
 import spacecraftelements.Enemy.Slime;
 import spacecraftelements.SpaceShip.Palelin;
@@ -28,17 +29,12 @@ public class MainGame {
 		Thread mt = new Thread(new SpaceTimmer());
 		bm = new BattleFieldManager();
 		bm.loadmap("Data//scmaps//bigmap1600x1200.smp");
-//		bm.add(new BasicBullet(0, 0, 0, 0));
-//		bm.add(new BasicBullet(0, 0, 1, 1));
 		bm.add(new Palelin(0,0,0,0));
 		bm.add(new Slime(300,200));
 		bm.add(new Slime(300,0));
-			bm.add(new Slime(30,200));
-			bm.add(new Slime(500,200));
-//		bm.add(new BasicBullet(-800,0,0,0));
-//		bm.add(new BasicBullet(800,0,0,0));
-//		bm.add(new BasicBullet(0,600,0,0));
-//		bm.add(new BasicBullet(0,-600,0,0));
+		bm.add(new Slime(30,200));
+		bm.add(new Slime(500,200));
+		bm.add(new RandomSlime(1600,1200));
 		 mt.start();
 
 //		for (int i = 0; i < 4; i++) {

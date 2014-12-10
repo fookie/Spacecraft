@@ -10,6 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import displayConsole.Element;
+import spacecraft.event.SpaceEvent;
 import spacecraftelements.Bullets.Bullet;
 import spacecraftelements.Enemy.Enemy;
 import spacecraftelements.SpaceShip.SpaceShip;
@@ -25,6 +26,7 @@ import spacecraftelements.SpaceShip.SpaceShip;
 public class BattleFieldManager {
 	private List<Bullet> BulletList = new LinkedList<Bullet>();
 	private List<Enemy> EnemyList = new LinkedList<Enemy>();
+	private List<SpaceEvent> EventList = new LinkedList<SpaceEvent>();
 	public SpaceShip ship = null;
 	public int mapx, mapy;
 	private String bgloc;
@@ -71,7 +73,10 @@ public class BattleFieldManager {
 		MainGame.test.setTitle("Spacecraft - running:" + mapaddress);
 		return true;
 	}
-
+	public boolean add(SpaceEvent e)
+	{
+		return EventList.add(e);
+	}
 	/**
 	 * 添加子弹
 	 * 
@@ -114,6 +119,7 @@ public class BattleFieldManager {
 		}
 		// 基本计算
 		autoshoot();
+		updateevent();
 		updatebullet();// 更新子弹
 		updateship();// 更新飞船
 		updateEnemy();// 更新敌人
@@ -122,6 +128,13 @@ public class BattleFieldManager {
 		// 传递数据
 		sendImage();
 		return true;
+	}
+
+	private void updateevent() {
+		for (int i = 0; i < EventList.size(); i++) {
+			EventList.get(i).execute();
+		}
+		
 	}
 
 	private void sendImage() {

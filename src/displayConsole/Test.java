@@ -45,7 +45,7 @@ public Repainter repainter;
 	public void setMapsize(int x,int y)
 	{
 		this.repainter.mapsizex=x;
-		this.repainter.mapsizex=y;
+		this.repainter.mapsizey=y;
 		this.repainter.windowsizex = MainGame.test.windowsizex;
 		this.repainter.windowsizey = MainGame.test.windowsizey;
 	}

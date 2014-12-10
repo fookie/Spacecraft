@@ -35,10 +35,10 @@ public class MainGame {
 		bm.add(new Slime(300,0));
 			bm.add(new Slime(30,200));
 			bm.add(new Slime(500,200));
-		bm.add(new BasicBullet(-800,0,0,0));
-		bm.add(new BasicBullet(800,0,0,0));
-		bm.add(new BasicBullet(0,600,0,0));
-		bm.add(new BasicBullet(0,-600,0,0));
+//		bm.add(new BasicBullet(-800,0,0,0));
+//		bm.add(new BasicBullet(800,0,0,0));
+//		bm.add(new BasicBullet(0,600,0,0));
+//		bm.add(new BasicBullet(0,-600,0,0));
 		 mt.start();
 
 //		for (int i = 0; i < 4; i++) {

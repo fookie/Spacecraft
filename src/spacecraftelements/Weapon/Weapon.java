@@ -31,9 +31,19 @@ public abstract class Weapon {
 	 */
 	public int cd;
 	/**
+	 * 散弹数量
+	 */
+	public int count = 1;
+	/**
 	 * 开火method
 	 * 
 	 * @param
 	 */
 	public abstract Bullet[] shoot(int x,int y,int visx, int visy, int cx, int cy);
+	/**
+	 * 返回散弹数
+	 */
+	public int count(){
+		return count;
+	}
 }

@@ -322,7 +322,11 @@ public class BattleFieldManager {
 		// 计算大地图坐标
 		int cx = mx - 400;// 400=1/2windowsizex
 		int cy = 300 - my;
-		add(this.ship.w1.shoot(ship.x, ship.y, ship.visx, ship.visy, cx, cy));
-
+		Bullet[] tBullets = new Bullet[this.ship.w1.count()];
+		tBullets = this.ship.w1.shoot(ship.x, ship.y, ship.visx, ship.visy, cx, cy);
+		for(int i = 0; i < this.ship.w1.count(); i++)
+		{
+			add(tBullets[i]);
+		}
 	}
 }

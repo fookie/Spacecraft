@@ -9,7 +9,10 @@ public class KL implements KeyListener
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+		if(e.getKeyChar()=='q')
+		{
+		MainGame.bm.ship.switchweapon();
+		}
 	}
 
 	@Override

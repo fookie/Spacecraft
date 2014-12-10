@@ -73,10 +73,11 @@ public class BattleFieldManager {
 		MainGame.test.setTitle("Spacecraft - running:" + mapaddress);
 		return true;
 	}
-	public boolean add(SpaceEvent e)
-	{
+
+	public boolean add(SpaceEvent e) {
 		return EventList.add(e);
 	}
+
 	/**
 	 * 添加子弹
 	 * 
@@ -134,7 +135,7 @@ public class BattleFieldManager {
 		for (int i = 0; i < EventList.size(); i++) {
 			EventList.get(i).execute();
 		}
-		
+
 	}
 
 	private void sendImage() {
@@ -233,10 +234,14 @@ public class BattleFieldManager {
 				ship.vy = 0;
 			}
 		}
+		if(((ship.x + ship.vx)>(mapx/2)||(ship.x + ship.vx)<-(mapx/2))!=true){
 		ship.x = ship.x + ship.vx;
 		ship.visx = ship.visx + ship.vx;
+		}
+		if(((ship.y + ship.vy)>(mapy/2)||(ship.y + ship.vy)<-(mapy/2))!=true){
 		ship.y = ship.y + ship.vy;
 		ship.visy = ship.visy + ship.vy;
+		}
 		ship.angle = currentangle;
 
 	}
@@ -330,15 +335,15 @@ public class BattleFieldManager {
 		}
 
 	}
-	
+
 	public void shootprocessor(int mx, int my) {
 		// 计算大地图坐标
 		int cx = mx - 400;// 400=1/2windowsizex
 		int cy = 300 - my;
 		Bullet[] tBullets = new Bullet[this.ship.w1.count()];
-		tBullets = this.ship.w1.shoot(ship.x, ship.y, ship.visx, ship.visy, cx, cy);
-		for(int i = 0; i < this.ship.w1.count(); i++)
-		{
+		tBullets = this.ship.w1.shoot(ship.x, ship.y, ship.visx, ship.visy, cx,
+				cy);
+		for (int i = 0; i < this.ship.w1.count(); i++) {
 			add(tBullets[i]);
 		}
 	}

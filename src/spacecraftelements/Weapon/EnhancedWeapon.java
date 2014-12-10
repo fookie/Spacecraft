@@ -1,7 +1,5 @@
 package spacecraftelements.Weapon;
 
-import javax.imageio.plugins.bmp.BMPImageWriteParam;
-
 import spacecraftelements.Bullets.BasicBullet;
 import spacecraftelements.Bullets.Bullet;
 
@@ -12,7 +10,7 @@ public class EnhancedWeapon extends Weapon {
 		super.iv = 20;
 		super.reload = 2;
 		super.ID = 0;
-		super.cd = 8;
+		super.cd = 13;
 		super.count = 3;
 	}
 

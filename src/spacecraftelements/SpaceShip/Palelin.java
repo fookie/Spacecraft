@@ -21,9 +21,13 @@ public class Palelin extends SpaceShip {
 
 	public void switchweapon() {
 		Weapon tw;
-		tw = w1;
-		w1 = w2;
-		w2 = tw;
+		if(w2==null){}
+		else
+		{
+			tw=w1;
+			w1=w2;
+			w2=tw;
+		}
 	}
 
 	public void updateweapon(Weapon nw) {

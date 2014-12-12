@@ -21,26 +21,24 @@ public class EnhancedWeapon extends Weapon {
 		c = Math.sqrt(a * a + b * b);
 		double sin = b / c;
 		double cos = a / c;
-		 double angle = Math.asin(sin);
+		double angle = Math.asin(sin);
 		int vx = (int) (((double) iv) * cos);
 		int vy = (int) (((double) iv) * sin);
 		Bullet[] bullet = new Bullet[5];
-		bullet[0] = new BasicBullet(x, y, vx, vy);
+//		bullet[0] = new BasicBullet(x, y, vx, vy);
 		// bullet[1] = new BasicBullet(x, y+15, vx, vy);
 		// bullet[2] = new BasicBullet(x, y-15, vx, vy);
-		 int tvx, tvy;
-		 for (int i = -60; i <= 60; i = i + 30) {
-		 if (i == 0) {
-		 continue;
-		 }
-		 tvx = (int) (iv * Math.cos(angle + i));
-		 tvy = (int) (iv * Math.sin(angle + i));
-		 bullet[i / 30 + 2] = new BasicBullet(x, y, tvx, tvy);
-		 }
-//		bullet[1] = new BasicBullet(x, y - 25, vx, vy);
-//		bullet[2] = new BasicBullet(x, y - 50, vx, vy);
-//		bullet[3] = new BasicBullet(x, y + 25, vx, vy);
-//		bullet[4] = new BasicBullet(x, y + 50, vx, vy);
+		int tvx, tvy, tj = 0;
+		for (int i = -60; i <= 60; i = i + 30) {
+			tvx = (int) (iv * Math.cos(angle + i));
+			tvy = (int) (iv * Math.sin(angle + i));
+			bullet[tj] = new BasicBullet(x, y, tvx, tvy);
+			tj++;
+		}
+		// bullet[1] = new BasicBullet(x, y - 25, vx, vy);
+		// bullet[2] = new BasicBullet(x, y - 50, vx, vy);
+		// bullet[3] = new BasicBullet(x, y + 25, vx, vy);
+		// bullet[4] = new BasicBullet(x, y + 50, vx, vy);
 		return bullet;
 	}
 }

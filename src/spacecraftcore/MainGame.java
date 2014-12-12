@@ -5,7 +5,6 @@ import java.awt.event.WindowEvent;
 
 import displayConsole.Test;
 import spacecraft.event.RandomSlime;
-import spacecraftelements.Bullets.BasicBullet;
 import spacecraftelements.Enemy.Slime;
 import spacecraftelements.SpaceShip.Palelin;
 
@@ -20,15 +19,14 @@ public class MainGame {
 	public static long gametime;
 
 	public static void main(String[] args) {
-		test = new Test();
+		Thread mt = new Thread(new SpaceTimmer());
+		bm = new BattleFieldManager();
+		test=bm.loadmap("Data//scmaps//bigmap1600x1200.smp");
 		test.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				System.exit(0);
 			}
 		});
-		Thread mt = new Thread(new SpaceTimmer());
-		bm = new BattleFieldManager();
-		bm.loadmap("Data//scmaps//bigmap1600x1200.smp");
 		bm.add(new Palelin(0,0,0,0));
 		bm.add(new Slime(300,200));
 		bm.add(new Slime(300,0));

@@ -10,6 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import displayConsole.Element;
+import displayConsole.Test;
 import spacecraft.event.SpaceEvent;
 import spacecraftelements.Bullets.Bullet;
 import spacecraftelements.Enemy.Enemy;
@@ -28,11 +29,10 @@ public class BattleFieldManager {
 	private List<Enemy> EnemyList = new LinkedList<Enemy>();
 	private List<SpaceEvent> EventList = new LinkedList<SpaceEvent>();
 	public SpaceShip ship = null;
-	public int mapx, mapy;
-	private String bgloc;
+	public int mapx, mapy;//地图实际大小
+	private String bgloc;//背景地址
 	private DataInputStream mapin;
-	public int autotarx, autotary;
-
+	public int autotarx, autotary;//按住自动发炮的变量
 	public SpaceShip getShip() {
 		return ship;
 	}
@@ -40,16 +40,21 @@ public class BattleFieldManager {
 	public void SetShip(SpaceShip ship) {
 		this.ship = ship;
 	}
-
-	public boolean loadmap(String mapaddress) {
-		MainGame.test.setTitle("Spacecraft - loding:" + mapaddress);
+	/**
+	 * 
+	 * 输入一个地图，输出一个窗口。地图有问题return null
+	 * 
+	 * @param mapaddress
+	 * @return
+	 */
+	public Test loadmap(String mapaddress) {
 		try {
 			mapin = new DataInputStream(new BufferedInputStream(
 					new FileInputStream(mapaddress)));
 		} catch (FileNotFoundException e) {
 			System.out.println(mapaddress + " 不存在，故无法加载地图");
 			e.printStackTrace();// 会出现红字
-			return false;
+			return null;
 		}
 		try {
 			bgloc = mapin.readUTF();
@@ -60,7 +65,7 @@ public class BattleFieldManager {
 		} catch (IOException e1) {
 			System.out.println("在读取地图:" + mapaddress + "时,无法获取基本信息，故无法加载地图");
 			e1.printStackTrace();
-			return false;
+			return null;
 		}
 		try {
 			mapin.close();
@@ -69,9 +74,7 @@ public class BattleFieldManager {
 			e.printStackTrace();
 		}
 		System.out.println("读取完成");
-		MainGame.test.setMapsize(mapx, mapy);
-		MainGame.test.setTitle("Spacecraft - running:" + mapaddress);
-		return true;
+		return new Test(bgloc,mapx,mapy);
 	}
 
 	public boolean add(SpaceEvent e) {
@@ -119,8 +122,8 @@ public class BattleFieldManager {
 			return false;
 		}
 		// 基本计算
-		autoshoot();
-		updateevent();
+		autoshoot();//自动射击
+		updateevent();//事件
 		updatebullet();// 更新子弹
 		updateship();// 更新飞船
 		updateEnemy();// 更新敌人
@@ -215,7 +218,7 @@ public class BattleFieldManager {
 			}
 		}
 	}
-
+	
 	private void updateship() {
 		if (((kw && ks) || (ka && kd)) != true) {// 如果上下键或者左右键被被同时按下则不操作
 			if (kw && (ship.vy <= 0)) {// W向上
@@ -299,7 +302,12 @@ public class BattleFieldManager {
 		}
 		return 0;
 	}
-
+	/**
+	 * 这个是管理按键的，注意：无论是按下还是松开都会触发这个!
+	 * 
+	 * @param i
+	 * @param key
+	 */
 	public void Keyprocesser(Boolean i, char key) {
 		if (key == 'w') {
 			kw = i;
@@ -331,7 +339,6 @@ public class BattleFieldManager {
 	public void autoshoot() {
 		if (ml && (MainGame.gametime - pressedtime) % ship.w1.cd == 0) {
 			shootprocessor(autotarx, autotary);
-			// System.out.println(autotarx+" "+)
 		}
 
 	}

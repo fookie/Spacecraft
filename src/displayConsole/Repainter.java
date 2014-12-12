@@ -29,14 +29,14 @@ public class Repainter extends JPanel {
 	public int y = 0;
 	public int rotatedegree = 0;
 	public int layer = 0;
-	private SpaceShip bufferShip;
+	private SpaceShip bufferShip;//临时变量用来存飞船
 	int windowsizex;
 	int windowsizey;
-	private int offsetx;
+	private int offsetx;//偏移量，滚屏用的
 	private int offsety;
-	protected int mapsizex, mapsizey;
-	private int before = 0, after = 0;
-
+	protected int mapsizex, mapsizey;//地图实际大小
+	private int before = 0, after = 0;//生成调试信息用的变量，没啥用，可以删了
+	public String bgloc;//背景地址
 	public Image bg = getToolkit().getImage("Images//testbg1600x1200.png");
 	// public Image player = getToolkit().getImage("Images//player.png");
 
@@ -90,23 +90,13 @@ public class Repainter extends JPanel {
 		le.add(element);
 	}
 
-	public Repainter() {
+	public Repainter(String bgloc) {
+		bgloc = this.bgloc;
 
 	}
 
-	/*
-	 * public Repainter(){ Thread t = new Thread(this); t.start(); }
-	 * 
-	 * //Thread here,aborted
-	 * 
-	 * public void run() { while(true){ try{ Thread.sleep(20);
-	 * }catch(InterruptedException e){} y+=2; rotatedegree+=5;
-	 * 
-	 * if(y>300){ y=-80; } if(rotatedegree>360){ rotatedegree=0; } repaint(); }
-	 * }
-	 */
 	public void paint(Graphics g) {
-		 System.out.println(before+" -> "+after);
+		System.out.println(before + " -> " + after);
 		// BufferedImage bg = (BufferedImage) getToolkit().getImage("bg1.jpg");
 		// BufferedImage player = (BufferedImage)
 		// getToolkit().getImage("player.png");
@@ -121,7 +111,8 @@ public class Repainter extends JPanel {
 
 		super.paint(g);
 		g.clearRect(0, 0, this.getWidth(), this.getHeight());
-		g.drawImage(bg, -offsetx - 400, offsety - 300, this);// 这个管背景的位置
+		g.drawImage(bg, -(mapsizex / 2 - windowsizex / 2) - offsetx,
+				-(mapsizey / 2 - windowsizey / 2) + offsety, this);//背景位置，offset为0时背景中心对准屏幕中心
 		for (int i = 0; i < le.size(); i++) {// Need to optimize here
 			g.drawImage(rotateImage(le.get(i).img, le.get(i).rotatedegree),
 					le.get(i).x + (windowsizex / 2),
@@ -200,7 +191,7 @@ public class Repainter extends JPanel {
 				bufferShip.visx = -3 * windowsizex / 8;
 			}
 		}
-		if ((bufferShip.y < -(mapsizey / 2 - windowsizey / 8) || bufferShip.y > (mapsizey / 2 - windowsizey / 8)) != true) {
+		if ((bufferShip.y < -(mapsizey / 2 - windowsizey / 8) || bufferShip.y > (mapsizey / 2 - windowsizey / 8)) != true) {//快到上下边界了
 			if (bufferShip.visy > (3 * (windowsizey) / 8)) {
 				bufferShip.visy = 3 * windowsizey / 8;
 			} else if (bufferShip.visy < -(3 * (windowsizey) / 8)) {

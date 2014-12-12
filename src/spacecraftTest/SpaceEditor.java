@@ -37,7 +37,6 @@ public class SpaceEditor {
 				dos.writeInt(x);// 写入实际大小
 				dos.writeInt(y);
 				
-
 			try {
 				dos.flush();
 				dos.close();

@@ -121,15 +121,17 @@ public class BattleFieldManager {
 			System.out.println("没有加载地图，故无法更新战场数据");
 			return false;
 		}
+		
+		collisionupdate();
 		// 基本计算
 		autoshoot();//自动射击
 		updateevent();//事件
 		updatebullet();// 更新子弹
-		updateship();// 更新飞船
+		updateship();// 更新飞船	
 		updateEnemy();// 更新敌人
 		// 计算碰撞
-		collisionupdate();
 		// 传递数据
+			
 		sendImage();
 		return true;
 	}
@@ -160,14 +162,19 @@ public class BattleFieldManager {
 					EnemyList.get(i).y,
 					-getangle(EnemyList.get(i).vx, EnemyList.get(i).vy), 2);
 		}
-
 		// 重新绘制
 		MainGame.test.repainter.repaint();
 	}
 
 	private void updateEnemy() {
 		for (int i = 0; i < EnemyList.size(); i++) {
+			if(EnemyList.get(i).health<0){
+				EnemyList.remove(i);
+				i--;
+			}
+			else{
 			EnemyList.get(i).update();
+			}
 		}
 	}
 
@@ -191,10 +198,11 @@ public class BattleFieldManager {
 					tEnemy.health = tEnemy.health - tBullet.damage;
 					BulletList.remove(j);
 					j--;
-					if (tEnemy.health < 0) {
-						EnemyList.remove(i);
-						i--;
-					}
+//					if (tEnemy.health < 0) {
+//						System.out.println(EnemyList.remove(i));
+//						//i--;
+//						System.out.println("i:"+i+"j"+j+"Esize"+EnemyList.size()+"Bsize"+BulletList.size());
+//					}
 				}
 			}
 		}
@@ -238,7 +246,7 @@ public class BattleFieldManager {
 			}
 		}
 		if(((ship.x + ship.vx)>(mapx/2)||(ship.x + ship.vx)<-(mapx/2))!=true){
-		ship.x = ship.x + ship.vx;
+		ship.x = ship.x + ship.vx;		
 		ship.visx = ship.visx + ship.vx;
 		}
 		if(((ship.y + ship.vy)>(mapy/2)||(ship.y + ship.vy)<-(mapy/2))!=true){

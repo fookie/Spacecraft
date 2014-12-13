@@ -42,17 +42,23 @@ public class BattleFieldManager {
 		this.ship = ship;
 	}
 	/**
+	 * 在这里输入输入窗口大小
 	 * 
-	 * 输入一个地图，输出一个窗口。地图有问题return null
-	 * 
-	 * @param mapaddress
-	 * @return
+	 * @param windowsizex
+	 * @param windowsizey
 	 */
 	public BattleFieldManager(int windowsizex,int windowsizey)
 	{
 		this.windowsizex=windowsizex;
 		this.windowsizey=windowsizey;
 	}
+	/**
+	 * 
+	 * 输入一个地图，输出一个窗口。地图有问题return null
+	 * 
+	 * @param mapaddress
+	 * @return
+	 */
 	public Test loadmap(String mapaddress) {
 		try {
 			mapin = new DataInputStream(new BufferedInputStream(

@@ -1,5 +1,7 @@
 package spacecraftcore;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -20,7 +22,10 @@ public class MainGame {
 
 	public static void main(String[] args) {
 		Thread mt = new Thread(new SpaceTimmer());
-		bm = new BattleFieldManager(1600,900);
+		Dimension srcDim = Toolkit.getDefaultToolkit().getScreenSize();  
+        System.out.println(srcDim.width);  
+        System.out.println(srcDim.height);  
+		bm = new BattleFieldManager(srcDim.width,srcDim.height);
 		test=bm.loadmap("Data//scmaps//bigmap1600x1200.smp");
 		test.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {

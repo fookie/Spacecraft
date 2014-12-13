@@ -96,7 +96,9 @@ public class Repainter extends JPanel {
 	}
 
 	public void paint(Graphics g) {
-		System.out.println(before + " -> " + after);
+		//System.out.println(before + " -> " + after);
+		//System.out.println(windowsizex+" "+windowsizey);
+		
 		// BufferedImage bg = (BufferedImage) getToolkit().getImage("bg1.jpg");
 		// BufferedImage player = (BufferedImage)
 		// getToolkit().getImage("player.png");

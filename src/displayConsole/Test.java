@@ -20,8 +20,8 @@ public class Test extends JFrame {
 	public Repainter repainter;
 	public KL kl;
 	public ML ml;
-	public int windowsizex = 800;//窗口大小
-	public int windowsizey = 600;
+	public int windowsizex;//窗口大小
+	public int windowsizey;
 	/**
 	 * 
 	 * 这个建造方法让battleFieldManager调用，初始化视觉方面的数据
@@ -31,15 +31,18 @@ public class Test extends JFrame {
 	 * @param mapx	实际场地大小
 	 * @param mapy
 	 */
-	public Test(String bgloc, int mapx, int mapy) {
+	public Test(String bgloc, int mapx, int mapy,int windowsizex,int windowsizey) {
+		this.windowsizex=windowsizex;
+		this.windowsizey=windowsizey;
 		this.setTitle("Spacecraft");
 		Container c = this.getContentPane();
 		repainter = new Repainter(bgloc);
 		c.add(repainter);
 		setMapsize(mapx,mapy);
-		this.setBounds(400, 200, windowsizex, windowsizey);
+		this.setBounds(0, 0, windowsizex, windowsizey);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
+		this.setUndecorated(true); //
 		this.setVisible(true);
 		// 事件部分
 		kl = new KL();

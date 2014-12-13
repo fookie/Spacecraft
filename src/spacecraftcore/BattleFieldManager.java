@@ -33,6 +33,7 @@ public class BattleFieldManager {
 	private String bgloc;//背景地址
 	private DataInputStream mapin;
 	public int autotarx, autotary;//按住自动发炮的变量
+	public int windowsizex,windowsizey;
 	public SpaceShip getShip() {
 		return ship;
 	}
@@ -47,6 +48,11 @@ public class BattleFieldManager {
 	 * @param mapaddress
 	 * @return
 	 */
+	public BattleFieldManager(int windowsizex,int windowsizey)
+	{
+		this.windowsizex=windowsizex;
+		this.windowsizey=windowsizey;
+	}
 	public Test loadmap(String mapaddress) {
 		try {
 			mapin = new DataInputStream(new BufferedInputStream(
@@ -74,7 +80,7 @@ public class BattleFieldManager {
 			e.printStackTrace();
 		}
 		System.out.println("读取完成");
-		return new Test(bgloc,mapx,mapy);
+		return new Test(bgloc,mapx,mapy,windowsizex,windowsizey);
 	}
 
 	public boolean add(SpaceEvent e) {
@@ -326,8 +332,8 @@ public class BattleFieldManager {
 		} else if (key == 'd') {
 			kd = i;
 		}
-		int t1 = (MainGame.test.ml.mx - 400 - 45) - (ship.visx);
-		int t2 = (300 - MainGame.test.ml.my + 45) - (ship.visy);
+		int t1 = (MainGame.test.ml.mx - windowsizex/2 - 45) - (ship.visx);
+		int t2 = (windowsizey/2 - MainGame.test.ml.my + 45) - (ship.visy);
 		currentangle = -getangle(t1, t2);
 	}
 
@@ -339,8 +345,8 @@ public class BattleFieldManager {
 	 * @author EveLIN
 	 */
 	public void Mouseprocessor(int x, int y) {
-		int t1 = (x - 400) - (ship.visx);
-		int t2 = (300 - y) - (ship.visy);
+		int t1 = (x - windowsizex/2) - (ship.visx);
+		int t2 = (windowsizey/2 - y) - (ship.visy);
 		currentangle = -getangle(t1, t2);
 	}
 
@@ -353,8 +359,9 @@ public class BattleFieldManager {
 
 	public void shootprocessor(int mx, int my) {
 		// 计算大地图坐标
-		int cx = mx - 400;// 400=1/2windowsizex
-		int cy = 300 - my;
+		int cx = mx - windowsizex/2;// 400=1/2windowsizex
+		int cy = windowsizey/2 - my;
+		System.out.println(ship.visx+" "+ship.visy);
 		Bullet[] tBullets = new Bullet[this.ship.w1.count()];
 		tBullets = this.ship.w1.shoot(ship.x, ship.y, ship.visx, ship.visy, cx,
 				cy);

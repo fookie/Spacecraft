@@ -20,13 +20,14 @@ public class MainGame {
 
 	public static void main(String[] args) {
 		Thread mt = new Thread(new SpaceTimmer());
-		bm = new BattleFieldManager();
+		bm = new BattleFieldManager(1600,900);
 		test=bm.loadmap("Data//scmaps//bigmap1600x1200.smp");
 		test.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				System.exit(0);
 			}
 		});
+	
 		bm.add(new Palelin(0,0,0,0));
 		bm.add(new Slime(300,200));
 		bm.add(new Slime(300,0));

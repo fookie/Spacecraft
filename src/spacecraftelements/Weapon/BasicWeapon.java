@@ -13,7 +13,7 @@ public class BasicWeapon extends Weapon {
 		super.cd = 8;
 	}
 
-	public Bullet[] shoot(int x, int y, int visx, int visy, int cx, int cy) {
+	public Bullet[] shoot(int x, int y, int visx, int visy, int cx, int cy, int f) {
 		double a, b, c;
 		a = cx - visx;
 		b = cy - visy;
@@ -23,7 +23,7 @@ public class BasicWeapon extends Weapon {
 		int vx = (int) (((double) iv) * cos);
 		int vy = (int) (((double) iv) * sin);
 		Bullet[] bullet = new Bullet[1];
-		bullet[0] = new BasicBullet(x, y, vx, vy);
+		bullet[0] = new BasicBullet(x, y, vx, vy, f);
 		return bullet;
 	}
 }

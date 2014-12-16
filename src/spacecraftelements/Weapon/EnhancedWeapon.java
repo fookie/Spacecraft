@@ -14,7 +14,7 @@ public class EnhancedWeapon extends Weapon {
 		super.count = 5;
 	}
 
-	public Bullet[] shoot(int x, int y, int visx, int visy, int cx, int cy) {
+	public Bullet[] shoot(int x, int y, int visx, int visy, int cx, int cy, int f) {
 		double a, b, c;
 		a = cx - visx;
 		b = cy - visy;
@@ -25,14 +25,16 @@ public class EnhancedWeapon extends Weapon {
 		int vx = (int) (((double) iv) * cos);
 		int vy = (int) (((double) iv) * sin);
 		Bullet[] bullet = new Bullet[5];
-//		bullet[0] = new BasicBullet(x, y, vx, vy);
+		bullet[0] = new BasicBullet(x, y, vx, vy, f);
 		// bullet[1] = new BasicBullet(x, y+15, vx, vy);
 		// bullet[2] = new BasicBullet(x, y-15, vx, vy);
 		int tvx, tvy, tj = 0;
-		for (int i = -60; i <= 60; i = i + 30) {
-			tvx = (int) (iv * Math.cos(angle + i));
-			tvy = (int) (iv * Math.sin(angle + i));
-			bullet[tj] = new BasicBullet(x, y, tvx, tvy);
+		for (int i = -30; i <= 30; i = i + 15) {
+			if (tj != 0) {
+				tvx = (int) (iv * Math.cos(angle + i));
+				tvy = (int) (iv * Math.sin(angle + i));
+				bullet[tj] = new BasicBullet(x, y, tvx, tvy, f);
+			}
 			tj++;
 		}
 		// bullet[1] = new BasicBullet(x, y - 25, vx, vy);

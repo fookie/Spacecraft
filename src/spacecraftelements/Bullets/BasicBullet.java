@@ -2,7 +2,7 @@ package spacecraftelements.Bullets;
 
 
 public class BasicBullet extends Bullet{
-	public BasicBullet(int x,int y,int vx,int vy){
+	public BasicBullet(int x,int y,int vx,int vy, int f){
 		//设定该子弹属性
 		super.x=x;
 		super.y=y;
@@ -14,6 +14,7 @@ public class BasicBullet extends Bullet{
 		super.ID = 0;
 		super.angle=0;
 		super.Imagesize=20;
+		super.faction = f;
 	}
 
 	@Override

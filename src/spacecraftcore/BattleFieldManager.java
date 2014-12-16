@@ -210,11 +210,6 @@ public class BattleFieldManager {
 					tEnemy.health = tEnemy.health - tBullet.damage;
 					BulletList.remove(j);
 					j--;
-//					if (tEnemy.health < 0) {
-//						System.out.println(EnemyList.remove(i));
-//						//i--;
-//						System.out.println("i:"+i+"j"+j+"Esize"+EnemyList.size()+"Bsize"+BulletList.size());
-//					}
 				}
 			}
 		}
@@ -370,7 +365,7 @@ public class BattleFieldManager {
 		System.out.println(ship.visx+" "+ship.visy);
 		Bullet[] tBullets = new Bullet[this.ship.w1.count()];
 		tBullets = this.ship.w1.shoot(ship.x, ship.y, ship.visx, ship.visy, cx,
-				cy);
+				cy, 0);
 		for (int i = 0; i < this.ship.w1.count(); i++) {
 			add(tBullets[i]);
 		}

@@ -96,20 +96,7 @@ public class Repainter extends JPanel {
 	}
 
 	public void paint(Graphics g) {
-		//System.out.println(before + " -> " + after);
-		//System.out.println(windowsizex+" "+windowsizey);
-		
-		// BufferedImage bg = (BufferedImage) getToolkit().getImage("bg1.jpg");
-		// BufferedImage player = (BufferedImage)
-		// getToolkit().getImage("player.png");
-		/*
-		 * if(iBuffer==null){
-		 * iBuffer=createImage(this.getSize().width,this.getSize().height);
-		 * gBuffer=iBuffer.getGraphics(); } gBuffer.setColor(getBackground());
-		 * gBuffer.fillRect(0, 0, this.getSize().width,this.getSize().height);
-		 * gBuffer.setColor(Color.red); gBuffer.fillOval(90,y,80,80);
-		 * g.drawImage(bg,0,0,this); g.drawImage(iBuffer,0,0,this);
-		 */
+
 
 		super.paint(g);
 		g.clearRect(0, 0, this.getWidth(), this.getHeight());

@@ -10,10 +10,13 @@ public class KL implements KeyListener {
 		if (e.getKeyChar() == 'q') {
 			MainGame.bm.ship.switchweapon();
 		}
-		if (e.getKeyChar() == 'e') {
-			System.exit(0);
+		if (e.getKeyChar() == 27) {//27ÊÇEscµÄascii Âë
+			MainGame.test.repainter.add_nooffset_element("Images//UI//paused400x250.png",-200,75, 0, 0);
+			MainGame.test.repainter.repaint();
+			MainGame.bm.paused=!MainGame.bm.paused;
 		}
-	}
+		}
+	
 
 	@Override
 	public void keyPressed(KeyEvent e) {

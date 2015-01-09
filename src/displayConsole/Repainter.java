@@ -35,7 +35,7 @@ public class Repainter extends JPanel {
 	private int offsetx;//偏移量，滚屏用的
 	private int offsety;
 	protected int mapsizex, mapsizey;//地图实际大小
-	private int before = 0, after = 0;//生成调试信息用的变量，没啥用，可以删了
+
 	public String bgloc;//背景地址
 	public Image bg = getToolkit().getImage("Images//testbg1600x1200.png");
 	// public Image player = getToolkit().getImage("Images//player.png");
@@ -55,7 +55,7 @@ public class Repainter extends JPanel {
 	 */
 	public void add(String name, int imagesize, int x, int y, double d,
 			int layer) {
-		before++;
+		
 		Element element = this.computeElement(name, imagesize, x, y, d, layer);
 		if (element != null) {
 			element.img = getToolkit().getImage(name);
@@ -64,7 +64,7 @@ public class Repainter extends JPanel {
 			element.rotatedegree = d;
 			element.layer = layer;
 			le.add(element);
-			after++;
+			
 		}
 	}
 
@@ -72,6 +72,7 @@ public class Repainter extends JPanel {
 	 * 
 	 * 在屏幕的指定地点添加物件，不会随屏幕卷动，主要用于血条之类的物件。 屏幕中点坐标是(0,0)
 	 * 
+	 * 由于此方法基本上用来添加UI，所以就没有imagesize，位置自行计算
 	 * @param name
 	 * @param x
 	 * @param y
@@ -112,8 +113,6 @@ public class Repainter extends JPanel {
 			// g.drawImage(rotateImage(player,rotatedegree),100,y,this);
 
 		// g.drawImage(bg,0,0,this);
-		before = 0;
-		after = 0;
 	}
 
 	public static BufferedImage rotateImage(Image bufferedimage, double degree) {

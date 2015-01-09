@@ -11,10 +11,10 @@ import java.util.List;
 
 import displayConsole.Element;
 import displayConsole.Test;
-import spacecraft.event.SpaceEvent;
 import spacecraftelements.Bullets.Bullet;
 import spacecraftelements.Enemy.Enemy;
 import spacecraftelements.SpaceShip.SpaceShip;
+import spacecraftevent.SpaceEvent;
 
 /**
  * BattleFieldManager负责更新战场以及地图，并把信息传递给DisplayManager
@@ -34,6 +34,7 @@ public class BattleFieldManager {
 	private DataInputStream mapin;
 	public int autotarx, autotary;//按住自动发炮的变量
 	public int windowsizex,windowsizey;
+	public boolean paused=false;
 	public SpaceShip getShip() {
 		return ship;
 	}
@@ -349,9 +350,11 @@ public class BattleFieldManager {
 		int t1 = (x - windowsizex/2) - (ship.visx);
 		int t2 = (windowsizey/2 - y) - (ship.visy);
 		currentangle = -getangle(t1, t2);
+		
 	}
 
 	public void autoshoot() {
+		
 		if (ml && (MainGame.gametime - pressedtime) % ship.w1.cd == 0) {
 			shootprocessor(autotarx, autotary);
 		}
@@ -360,6 +363,7 @@ public class BattleFieldManager {
 
 	public void shootprocessor(int mx, int my) {
 		// 计算大地图坐标
+		if(!paused){
 		int cx = mx - windowsizex/2;// 400=1/2windowsizex
 		int cy = windowsizey/2 - my;
 		System.out.println(ship.visx+" "+ship.visy);
@@ -368,6 +372,7 @@ public class BattleFieldManager {
 				cy, 0);
 		for (int i = 0; i < this.ship.w1.count(); i++) {
 			add(tBullets[i]);
+		}
 		}
 	}
 }

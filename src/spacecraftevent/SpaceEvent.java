@@ -1,4 +1,4 @@
-package spacecraft.event;
+package spacecraftevent;
 /**
  * 事件虚拟类，目前想到的功能1：游戏定时时间 功能2：以后物件的爆炸什么动画的都可以做成事件处理。
  * 

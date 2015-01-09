@@ -6,9 +6,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import displayConsole.Test;
-import spacecraft.event.RandomSlime;
 import spacecraftelements.Enemy.Slime;
 import spacecraftelements.SpaceShip.Palelin;
+import spacecraftevent.RandomSlime;
 
 /**
  * 考虑在主程序里加上各个Manager的全局变量
@@ -40,6 +40,7 @@ public class MainGame {
 		bm.add(new Slime(500,200));
 		bm.add(new RandomSlime(1600,1200));
 		 mt.start();
+		 
 
 //		for (int i = 0; i < 4; i++) {
 //			for(int j = 0; j < 4; j++){

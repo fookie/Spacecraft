@@ -1,4 +1,4 @@
-package spacecraft.event;
+package spacecraftevent;
 
 import spacecraftcore.MainGame;
 import spacecraftelements.Enemy.Slime;

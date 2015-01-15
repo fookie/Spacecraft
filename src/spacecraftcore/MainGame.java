@@ -22,9 +22,7 @@ public class MainGame {
 
 	public static void main(String[] args) {
 		Thread mt = new Thread(new SpaceTimmer());
-		Dimension srcDim = Toolkit.getDefaultToolkit().getScreenSize();  
-        System.out.println(srcDim.width);  
-        System.out.println(srcDim.height);  
+		Dimension srcDim = Toolkit.getDefaultToolkit().getScreenSize();   //获取屏幕分辨率
 		bm = new BattleFieldManager(srcDim.width,srcDim.height);
 		test=bm.loadmap("Data//scmaps//bigmap1600x1200.smp");
 		test.addWindowListener(new WindowAdapter() {
@@ -39,30 +37,7 @@ public class MainGame {
 		bm.add(new Slime(30,200));
 		bm.add(new Slime(500,200));
 		bm.add(new RandomSlime(1600,1200));
-		 mt.start();
-		 
-
-//		for (int i = 0; i < 4; i++) {
-//			for(int j = 0; j < 4; j++){
-//			bm.add(new BasicBullet(-400,-300,i,j));
-//			}
-//		}
-//		for (int i = 0; i < 4; i++) {
-//			for(int j = 0; j < 4; j++){
-//			bm.add(new BasicBullet(400,300,-i,-j));
-//			}
-//		}
-//		for (int i = 0; i < 4; i++) {
-//			for(int j = 0; j < 4; j++){
-//			bm.add(new BasicBullet(400,-300,-i,j));
-//			}
-//		}
-//		for (int i = 0; i < 4; i++) {
-//			for(int j = 0; j < 4; j++){
-//			bm.add(new BasicBullet(-400,300,i,-j));
-//			}
-//		}
-//		mt.start();
+		mt.start();
 	}
 
 }

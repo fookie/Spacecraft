@@ -12,7 +12,7 @@ import spacecraftcore.ML;
  * @author EveLIN
  *
  */
-public class Test extends JFrame {
+public class Gamewindow extends JFrame {
 	/**
 	 * 
 	 */
@@ -31,7 +31,7 @@ public class Test extends JFrame {
 	 * @param mapx	实际场地大小
 	 * @param mapy
 	 */
-	public Test(String bgloc, int mapx, int mapy,int windowsizex,int windowsizey) {
+	public Gamewindow(String bgloc, int mapx, int mapy,int windowsizex,int windowsizey) {
 		this.windowsizex=windowsizex;
 		this.windowsizey=windowsizey;
 		this.setTitle("Spacecraft");

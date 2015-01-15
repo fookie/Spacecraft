@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import displayConsole.Element;
-import displayConsole.Test;
+import displayConsole.Gamewindow;
 import spacecraftelements.Bullets.Bullet;
 import spacecraftelements.Enemy.Enemy;
 import spacecraftelements.SpaceShip.SpaceShip;
@@ -60,7 +60,7 @@ public class BattleFieldManager {
 	 * @param mapaddress
 	 * @return
 	 */
-	public Test loadmap(String mapaddress) {
+	public Gamewindow loadmap(String mapaddress) {
 		try {
 			mapin = new DataInputStream(new BufferedInputStream(
 					new FileInputStream(mapaddress)));
@@ -87,7 +87,7 @@ public class BattleFieldManager {
 			e.printStackTrace();
 		}
 		System.out.println("∂¡»°ÕÍ≥…");
-		return new Test(bgloc,mapx,mapy,windowsizex,windowsizey);
+		return new Gamewindow(bgloc,mapx,mapy,windowsizex,windowsizey);
 	}
 
 	public boolean add(SpaceEvent e) {

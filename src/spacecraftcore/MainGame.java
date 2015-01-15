@@ -5,7 +5,7 @@ import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import displayConsole.Test;
+import displayConsole.Gamewindow;
 import spacecraftelements.Enemy.Slime;
 import spacecraftelements.SpaceShip.Palelin;
 import spacecraftevent.RandomSlime;
@@ -17,7 +17,7 @@ import spacecraftevent.RandomSlime;
 
 public class MainGame {
 	public static BattleFieldManager bm;
-	public static Test test;
+	public static Gamewindow test;
 	public static long gametime;
 
 	public static void main(String[] args) {

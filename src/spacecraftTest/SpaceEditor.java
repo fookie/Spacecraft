@@ -12,7 +12,7 @@ public class SpaceEditor {
 	static DataOutputStream dos;
 
 	public static void main(String[] args) throws IOException {
-		writemap(1600, 1200, "Data\\scmaps\\bigmap1600x1200.smp", "Image//bg1.png"); // 生成地图
+		writemap(1600, 1200, "Data\\scmaps\\testmap1600x1200.smp", "Images//testbg1600x1200.png"); // 生成地图
 	}
 
 	/**

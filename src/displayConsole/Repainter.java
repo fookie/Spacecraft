@@ -6,8 +6,6 @@ import java.awt.Image;
 import java.awt.Transparency;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
-import java.util.List;
-
 import javax.swing.JPanel;
 
 import spacecraftcore.MainGame;
@@ -30,17 +28,17 @@ public class Repainter extends JPanel {
 	public int rotatedegree = 0;
 	public int layer = 0;
 	private SpaceShip bufferShip;//临时变量用来存飞船
-	int windowsizex;
-	int windowsizey;
+	public int windowsizex;
+	public int windowsizey;
 	private int offsetx;//偏移量，滚屏用的
 	private int offsety;
-	protected int mapsizex, mapsizey;//地图实际大小
+	public int mapsizex;//地图实际大小,也是背景图的大小
+	public int mapsizey;
 
 	public String bgloc;//背景地址
-	public Image bg = getToolkit().getImage("Images//testbg1600x1200.png");
-	// public Image player = getToolkit().getImage("Images//player.png");
+	public Image bg;
 
-	public List<Element> le = new LinkedList<Element>();
+	public LinkedList<Element> le = new LinkedList<Element>();
 
 	/**
 	 * 
@@ -92,7 +90,8 @@ public class Repainter extends JPanel {
 	}
 
 	public Repainter(String bgloc) {
-		bgloc = this.bgloc;
+		this.bgloc = bgloc;
+		this.bg = getToolkit().getImage(bgloc);
 
 	}
 
@@ -108,11 +107,6 @@ public class Repainter extends JPanel {
 					le.get(i).x + (windowsizex / 2),
 					(windowsizey / 2) - le.get(i).y, this);// !!!!!!
 		}// !!!!!!!!!这里也有转换坐标的部分!!!!!!!!!!!!
-			// g.drawImage(rotateImage(player,rotatedegree),0,y,this);
-			// g.drawImage(rotateImage(player,rotatedegree),50,y,this);
-			// g.drawImage(rotateImage(player,rotatedegree),100,y,this);
-
-		// g.drawImage(bg,0,0,this);
 	}
 
 	public static BufferedImage rotateImage(Image bufferedimage, double degree) {

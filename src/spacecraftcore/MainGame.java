@@ -6,11 +6,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import displayConsole.Gamewindow;
-import displayConsole.menu.Button_start;
 import displayConsole.menu.Menuwindow;
-import spacecraftelements.Enemy.Slime;
-import spacecraftelements.SpaceShip.Palelin;
-import spacecraftevent.RandomSlime;
 
 /**
  * 考虑在主程序里加上各个Manager的全局变量
@@ -18,13 +14,15 @@ import spacecraftevent.RandomSlime;
  */
 
 public class MainGame {
+	public static int gamestatus=0;//0菜单状态，1游戏状态
 	public static BattleFieldManager bm;
 	public static Gamewindow test;
 	public static Menuwindow mainmenu;
 	public static long gametime;
+	public static Thread mt;
 
 	public static void main(String[] args) {
-		Thread mt = new Thread(new SpaceTimmer());//新建线程
+		mt = new Thread(new SpaceTimmer());//新建线程
 		Dimension srcDim = Toolkit.getDefaultToolkit().getScreenSize();   //获取屏幕分辨率
 		mainmenu=new Menuwindow("Images//UI//menubg.png",srcDim.width,srcDim.height);
 		mainmenu.addWindowListener(new WindowAdapter() {

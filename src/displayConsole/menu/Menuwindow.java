@@ -77,6 +77,17 @@ public class Menuwindow extends JFrame {
 			}
 		}
 	}
+	public void mouseclick(int mx, int my)
+	{
+		mx = (mx - windowsizex/2);
+		my = (windowsizey/2 - my);
+		for (int i = 0; i < bs.size() ; i++) {
+			if (bs.get(i).buttonhitbox.contains(mx+(bs.get(i).buttonhitbox.width)/2, my+(bs.get(i).buttonhitbox.height)/2)) {
+				bs.get(i).click();
+				
+			}
+		}
+	}
 
 	public void update()
 	{

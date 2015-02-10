@@ -1,13 +1,13 @@
 package spacecraftcore;
 
 public class SpaceTimmer implements Runnable {
-	public int gamestatus=0;//0²Ëµ¥×´Ì¬£¬1ÓÎÏ·×´Ì¬
+	
 	private int sleeping_time=19;
 	@Override
 	public void run(){
 		while (true) 
 		{
-			if(gamestatus==1)
+			if(MainGame.gamestatus==1)
 			{
 				if (MainGame.bm.paused != true) {
 					MainGame.bm.update();
@@ -22,12 +22,13 @@ public class SpaceTimmer implements Runnable {
 					e.printStackTrace();
 				}				
 			}
-			else if(gamestatus==0)
+			else if(MainGame.gamestatus==0)
 			{
 				MainGame.mainmenu.update();
 				try 
 				{
 					Thread.sleep(sleeping_time);
+					MainGame.gametime = MainGame.gametime + 1;
 					
 				} catch (InterruptedException e) 
 				{

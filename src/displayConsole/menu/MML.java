@@ -24,6 +24,9 @@ public class MML implements MouseMotionListener,MouseListener{
 	}
 
 	public void mouseClicked(MouseEvent e) {
+		mx=e.getX();
+		my=e.getY();
+		MainGame.mainmenu.mouseclick(mx, my);
 		
 	}
 

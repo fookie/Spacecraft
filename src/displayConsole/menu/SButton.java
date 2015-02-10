@@ -14,4 +14,5 @@ public abstract class SButton {
 	Rectangle buttonhitbox=new Rectangle();
 	public abstract void setstatus(int s);
 	public abstract String getImage();
+	public abstract boolean click();
 }

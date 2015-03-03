@@ -41,8 +41,8 @@ public class Menuwindow extends JFrame {
 		this.setResizable(false);
 		this.setUndecorated(true); //
 		this.setVisible(true);
-		this.repainter.mapsizex = 1600;
-		this.repainter.mapsizey = 1200;
+		this.repainter.mapsizex = 900;
+		this.repainter.mapsizey = 506;//±³¾°Í¼³ß´ç
 		this.repainter.windowsizex = windowsizex;
 		this.repainter.windowsizey = windowsizey;
 		//

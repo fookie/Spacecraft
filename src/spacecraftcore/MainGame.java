@@ -24,7 +24,7 @@ public class MainGame {
 	public static void main(String[] args) {
 		mt = new Thread(new SpaceTimmer());//新建线程
 		Dimension srcDim = Toolkit.getDefaultToolkit().getScreenSize();   //获取屏幕分辨率
-		mainmenu=new Menuwindow("Images//UI//menubg.png",srcDim.width,srcDim.height);
+		mainmenu=new Menuwindow("Images//UI//menubg.jpg",srcDim.width,srcDim.height);
 		mainmenu.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				System.exit(0);

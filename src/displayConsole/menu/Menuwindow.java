@@ -16,19 +16,21 @@ import displayConsole.Repainter;
  */
 public class Menuwindow extends JFrame {
 	private int windowsizex, windowsizey;
-	private LinkedList<SButton> bs=new LinkedList<SButton>();
+	private LinkedList<SButton> bs = new LinkedList<SButton>();
 	public Repainter repainter;
 	public MML mml;
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-/**
- * 这部分其实是和GameMenu一样的
- * @param bgloc
- * @param windowsizex
- * @param windowsizey
- */
+
+	/**
+	 * 这部分其实是和GameMenu一样的
+	 * 
+	 * @param bgloc
+	 * @param windowsizex
+	 * @param windowsizey
+	 */
 	public Menuwindow(String bgloc, int windowsizex, int windowsizey) {
 		this.windowsizex = windowsizex;
 		this.windowsizey = windowsizey;
@@ -41,8 +43,8 @@ public class Menuwindow extends JFrame {
 		this.setResizable(false);
 		this.setUndecorated(true); //
 		this.setVisible(true);
-		this.repainter.mapsizex = 900;
-		this.repainter.mapsizey = 506;//背景图尺寸
+		this.repainter.mapsizex = 1600;
+		this.repainter.mapsizey = 1200;// 背景图尺寸
 		this.repainter.windowsizex = windowsizex;
 		this.repainter.windowsizey = windowsizey;
 		//
@@ -50,9 +52,10 @@ public class Menuwindow extends JFrame {
 		this.addMouseMotionListener(mml);
 		this.addMouseMotionListener(new MML());
 		this.addMouseListener(mml);
-		
-		//按钮
-		this.addbutton(new Button_start(-500,300));
+
+		// 按钮
+		this.addbutton(new Button_start(-500, 300));
+		this.addbutton(new Button_exit(-500, 200));
 	}
 
 	public void addbutton(SButton b) {
@@ -64,37 +67,52 @@ public class Menuwindow extends JFrame {
 	}
 
 	public void mousemove(int mx, int my) {
-		mx = (mx - windowsizex/2);
-		my = (windowsizey/2 - my);
-		for (int i = 0; i < bs.size() ; i++) {
-			if (bs.get(i).buttonhitbox.contains(mx+(bs.get(i).buttonhitbox.width)/2, my+(bs.get(i).buttonhitbox.height)/2)) {
+		mx = (mx - windowsizex / 2);
+		my = (windowsizey / 2 - my);
+		for (int i = 0; i < bs.size(); i++) {
+			if (bs.get(i).buttonhitbox.contains(mx
+					+ (bs.get(i).buttonhitbox.width) / 2, my
+					+ (bs.get(i).buttonhitbox.height) / 2)) {
 				bs.get(i).setstatus(1);
-				
-			}
-			else
-			{
+
+			} else {
 				bs.get(i).setstatus(0);
 			}
 		}
 	}
-	public void mouseclick(int mx, int my)
-	{
-		mx = (mx - windowsizex/2);
-		my = (windowsizey/2 - my);
-		for (int i = 0; i < bs.size() ; i++) {
-			if (bs.get(i).buttonhitbox.contains(mx+(bs.get(i).buttonhitbox.width)/2, my+(bs.get(i).buttonhitbox.height)/2)) {
+
+	public void mouseclick(int mx, int my) {
+		mx = (mx - windowsizex / 2);
+		my = (windowsizey / 2 - my);
+		for (int i = 0; i < bs.size(); i++) {
+			if (bs.get(i).buttonhitbox.contains(mx
+					+ (bs.get(i).buttonhitbox.width) / 2, my
+					+ (bs.get(i).buttonhitbox.height) / 2)) {
 				bs.get(i).click();
-				
 			}
 		}
 	}
 
-	public void update()
-	{
+	public void mousepressed(int mx, int my) {
+		mx = (mx - windowsizex / 2);
+		my = (windowsizey / 2 - my);
+		for (int i = 0; i < bs.size(); i++) {
+			if (bs.get(i).buttonhitbox.contains(mx
+					+ (bs.get(i).buttonhitbox.width) / 2, my
+					+ (bs.get(i).buttonhitbox.height) / 2)) {
+				bs.get(i).setstatus(2);
+			}
+		}
+	}
+
+	public void update() {
 		this.repainter.le = new LinkedList<Element>();
 		for (int i = 0; i < bs.size(); i++) {
-			this.repainter.add_nooffset_element(bs.get(i).getImage(), bs.get(i).buttonhitbox.x-(bs.get(i).buttonhitbox.width)/2, bs.get(i).buttonhitbox.y+(bs.get(i).buttonhitbox.height)/2, 0, 0);
-	}
+			this.repainter.add_nooffset_element(bs.get(i).getImage(),
+					bs.get(i).buttonhitbox.x - (bs.get(i).buttonhitbox.width)
+							/ 2, bs.get(i).buttonhitbox.y
+							+ (bs.get(i).buttonhitbox.height) / 2, 0, 0);
+		}
 		this.repainter.repaint();
 	}
 }

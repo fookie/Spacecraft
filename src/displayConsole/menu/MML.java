@@ -12,9 +12,9 @@ public class MML implements MouseMotionListener,MouseListener{
     
     
 	public void mouseDragged(MouseEvent e) {
-		mx=e.getX();
-		my=e.getY();
-		MainGame.mainmenu.mousemove(mx, my);
+//		mx=e.getX();
+//		my=e.getY();
+//		MainGame.mainmenu.mouseclick(mx, my);
 	}
 
 	public void mouseMoved(MouseEvent e) {
@@ -31,7 +31,9 @@ public class MML implements MouseMotionListener,MouseListener{
 	}
 
 	public void mousePressed(MouseEvent e) {
-	
+		mx = e.getX();
+		my = e.getY();
+		MainGame.mainmenu.mousepressed(mx, my);
 	}
 
 	public void mouseReleased(MouseEvent e) {
@@ -39,8 +41,7 @@ public class MML implements MouseMotionListener,MouseListener{
 	}
 
 	public void mouseEntered(MouseEvent e) {
-		
-	}
+	}	
 
 	public void mouseExited(MouseEvent e) {
 		

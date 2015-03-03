@@ -195,6 +195,22 @@ public class BattleFieldManager {
 					ItemList.get(i).y,
 					0, 2);
 		}}
+		if(ship.health==5){
+			MainGame.test.repainter.add_nooffset_element("Images//hp//hp5.png",-800,600,0,2);
+		}
+		if(ship.health==4){
+			MainGame.test.repainter.add_nooffset_element("Images//hp//hp4.png",-700,500,0,2);
+		}
+		if(ship.health==3){
+			MainGame.test.repainter.add_nooffset_element("Images//hp//hp3.png",-600,500,0,2);
+		}
+		if(ship.health==2){
+			MainGame.test.repainter.add_nooffset_element("Images//hp//hp2.png",-500,300,0,2);
+		}
+		if(ship.health==1){
+			MainGame.test.repainter.add_nooffset_element("Images//hp//hp1.png",-400,100,0,2);
+		}
+		
 		// ÖØÐÂ»æÖÆ
 		MainGame.test.repainter.repaint();
 	}
@@ -223,11 +239,21 @@ public class BattleFieldManager {
 			Rectangle Enemyhitbox = new Rectangle(tEnemy.x - tEnemy.volume / 2,
 					tEnemy.y - tEnemy.volume / 2, tEnemy.volume / 2,
 					tEnemy.volume / 2);
+			
+			Rectangle Shiphitbox = new Rectangle(ship.x-ship.volume / 2,ship.y-ship.volume / 2,ship.volume / 2,ship.volume / 2);
+			
+			if(Enemyhitbox.intersects(Shiphitbox)){
+				ship.health--;
+				EnemyList.remove(i);
+			    i--;
+			}
+			
 			for (int j = 0; j < BulletList.size(); j++) {
 				Bullet tBullet = BulletList.get(j);
 				Rectangle Bullethitbox = new Rectangle(tBullet.x
 						- tBullet.volume / 2, tBullet.y - tBullet.volume / 2,
 						tBullet.volume / 2, tBullet.volume / 2);
+				
 				if (Enemyhitbox.intersects(Bullethitbox)) {
 					tEnemy.health = tEnemy.health - tBullet.damage;
 					BulletList.remove(j);

@@ -11,7 +11,7 @@ public class Palelin extends SpaceShip {
 		super.y = y;
 		super.visx = visx;
 		super.visy = visy;
-		super.health = 100;
+		super.health = 5;
 		super.volume = 50;
 		super.w2 = new BasicWeapon();
 		super.w1 = new EnhancedWeapon();

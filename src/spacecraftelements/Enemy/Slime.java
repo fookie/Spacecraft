@@ -1,6 +1,9 @@
 package spacecraftelements.Enemy;
 
 import spacecraftcore.MainGame;
+import spacecraftelements.Items.H_bulletrain;
+import spacecraftelements.Items.SpaceItem;
+import spacecraftelements.Items.W_EnhancedWeapon;
 
 public class Slime extends Enemy {
 	public Slime(int x, int y) {
@@ -30,5 +33,21 @@ public class Slime extends Enemy {
 		x = x + vx;
 		y = y + vy;
 		return true;
+	}
+
+	@Override
+	public boolean giveitem() {
+		double r=Math.random();
+		if (r < 0.1) {
+			MainGame.bm.add(new W_EnhancedWeapon(x, y));
+			return true;
+		} else if(r>0.1&&r<0.2){
+			MainGame.bm.add(new H_bulletrain(x, y));
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 }

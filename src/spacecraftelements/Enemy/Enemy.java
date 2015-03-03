@@ -1,8 +1,9 @@
 package spacecraftelements.Enemy;
 
 import spacecraftelements.Updatable;
+import spacecraftelements.Items.SpaceItem;
 
-public class Enemy implements Updatable{
+public abstract class Enemy implements Updatable{
 	/**
 	 * µĞÈËÌùÍ¼
 	 */
@@ -38,4 +39,7 @@ public class Enemy implements Updatable{
 	public boolean update() {
 		return false;
 	}
+	
+	public abstract boolean giveitem();
+
 }

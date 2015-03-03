@@ -13,6 +13,8 @@ import displayConsole.Element;
 import displayConsole.Gamewindow;
 import spacecraftelements.Bullets.Bullet;
 import spacecraftelements.Enemy.Enemy;
+import spacecraftelements.Items.SpaceItem;
+import spacecraftelements.Items.W_EnhancedWeapon;
 import spacecraftelements.SpaceShip.SpaceShip;
 import spacecraftevent.SpaceEvent;
 
@@ -28,6 +30,7 @@ public class BattleFieldManager {
 	private List<Bullet> BulletList = new LinkedList<Bullet>();
 	private List<Enemy> EnemyList = new LinkedList<Enemy>();
 	private List<SpaceEvent> EventList = new LinkedList<SpaceEvent>();
+	private List<SpaceItem> ItemList = new LinkedList<SpaceItem>();
 	public SpaceShip ship = null;
 	public int mapx, mapy;//地图实际大小
 	private String bgloc;//背景地址
@@ -52,6 +55,7 @@ public class BattleFieldManager {
 	{
 		this.windowsizex=windowsizex;
 		this.windowsizey=windowsizey;
+		this.add(new W_EnhancedWeapon(200,200));
 	}
 	/**
 	 * 
@@ -128,6 +132,10 @@ public class BattleFieldManager {
 	public boolean add(Enemy e) {
 		return EnemyList.add(e);
 	}
+	
+	public boolean add(SpaceItem i){
+		return ItemList.add(i);
+	}
 
 	public boolean update() {
 		if (bgloc == null) {
@@ -143,19 +151,16 @@ public class BattleFieldManager {
 		updateship();// 更新飞船	
 		updateEnemy();// 更新敌人
 		// 计算碰撞
-		// 传递数据
-			
+		// 传递数据	
 		sendImage();
 		return true;
 	}
-
 	private void updateevent() {
 		for (int i = 0; i < EventList.size(); i++) {
 			EventList.get(i).execute();
 		}
 
 	}
-
 	private void sendImage() {
 		// 清空
 		MainGame.test.repainter.le = new LinkedList<Element>();
@@ -175,6 +180,14 @@ public class BattleFieldManager {
 					EnemyList.get(i).y,
 					-getangle(EnemyList.get(i).vx, EnemyList.get(i).vy), 2);
 		}
+		//传递物品
+		if(ItemList.size()!=0){
+		for (int i = 0; i < ItemList.size(); i++) {
+			MainGame.test.repainter.add(ItemList.get(i).imageID,
+					ItemList.get(i).imagesize, ItemList.get(i).x,
+					ItemList.get(i).y,
+					0, 2);
+		}}
 		// 重新绘制
 		MainGame.test.repainter.repaint();
 	}
@@ -182,6 +195,7 @@ public class BattleFieldManager {
 	private void updateEnemy() {
 		for (int i = 0; i < EnemyList.size(); i++) {
 			if(EnemyList.get(i).health<0){
+				EnemyList.get(i).giveitem();
 				EnemyList.remove(i);
 				i--;
 			}
@@ -196,7 +210,7 @@ public class BattleFieldManager {
 	 */
 
 	private void collisionupdate() {
-		for (int i = 0; i < EnemyList.size(); i++) {
+		for (int i = 0; i < EnemyList.size(); i++) {//这个循环判断是子弹与敌人之间的碰撞
 			EnemyList.get(i).update();
 			Enemy tEnemy = EnemyList.get(i);
 			Rectangle Enemyhitbox = new Rectangle(tEnemy.x - tEnemy.volume / 2,
@@ -214,7 +228,18 @@ public class BattleFieldManager {
 				}
 			}
 		}
-	}
+		for(int i = 0; i < ItemList.size(); i++)
+		{
+			SpaceItem tItem=ItemList.get(i);
+			Rectangle Itemhitbox=new Rectangle(tItem.x-tItem.imagesize/2,tItem.y-tItem.imagesize/2,50,50);
+			if(Itemhitbox.contains(ship.x, ship.y)){
+			tItem.getitem();
+			ItemList.remove(i);
+			i--;
+			}
+			}
+		}
+	
 
 	/**
 	 * 移动子弹并且自动移除出界子弹
@@ -366,7 +391,6 @@ public class BattleFieldManager {
 		if(!paused){
 		int cx = mx - windowsizex/2;// 400=1/2windowsizex
 		int cy = windowsizey/2 - my;
-		System.out.println(ship.visx+" "+ship.visy);
 		Bullet[] tBullets = new Bullet[this.ship.w1.count()];
 		tBullets = this.ship.w1.shoot(ship.x, ship.y, ship.visx, ship.visy, cx,
 				cy, 0);

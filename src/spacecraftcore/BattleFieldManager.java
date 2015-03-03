@@ -14,6 +14,7 @@ import displayConsole.Gamewindow;
 import spacecraftelements.Bullets.Bullet;
 import spacecraftelements.Enemy.Enemy;
 import spacecraftelements.Items.H_bulletrain;
+import spacecraftelements.Items.S_speedup;
 import spacecraftelements.Items.SpaceItem;
 import spacecraftelements.Items.W_EnhancedWeapon;
 import spacecraftelements.SpaceShip.SpaceShip;
@@ -56,7 +57,7 @@ public class BattleFieldManager {
 	{
 		this.windowsizex=windowsizex;
 		this.windowsizey=windowsizey;
-		this.add(new H_bulletrain(200,200));
+		this.add(new S_speedup(200,200));
 	}
 	/**
 	 * 
@@ -296,13 +297,13 @@ public class BattleFieldManager {
 	private void updateship() {
 		if (((kw && ks) || (ka && kd)) != true) {// 如果上下键或者左右键被被同时按下则不操作
 			if (kw && (ship.vy <= 0)) {// W向上
-				ship.vy = 10;
+				ship.vy = ship.maxv;
 			} else if (kd && (ship.vx <= 0)) {// d向右
-				ship.vx = 10;
+				ship.vx = ship.maxv;
 			} else if (ka && (ship.vx >= 0)) {// a向左
-				ship.vx = -10;
+				ship.vx = -ship.maxv;
 			} else if (ks && (ship.vy >= 0)) {// s向下
-				ship.vy = -10;
+				ship.vy = -ship.maxv;
 			}
 			if (!kd && !ka) {
 				ship.vx = 0;

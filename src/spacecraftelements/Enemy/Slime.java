@@ -2,7 +2,8 @@ package spacecraftelements.Enemy;
 
 import spacecraftcore.MainGame;
 import spacecraftelements.Items.H_bulletrain;
-import spacecraftelements.Items.SpaceItem;
+import spacecraftelements.Items.S_repair;
+import spacecraftelements.Items.S_speedup;
 import spacecraftelements.Items.W_EnhancedWeapon;
 
 public class Slime extends Enemy {
@@ -43,6 +44,14 @@ public class Slime extends Enemy {
 			return true;
 		} else if(r>0.1&&r<0.2){
 			MainGame.bm.add(new H_bulletrain(x, y));
+			return true;
+		}
+		else if(r>0.2&&r<0.3){
+			MainGame.bm.add(new S_speedup(x, y));
+			return true;
+		}
+		else if(r>0.3&&r<0.4){
+			MainGame.bm.add(new S_repair(x, y));
 			return true;
 		}
 		else

@@ -10,7 +10,7 @@ import spacecraftelements.Enemy.Slime;
 public class RandomSlime extends SpaceEvent {
 	int mapsizex;
 	int mapsizey;
-
+	
 	@Override
 	public boolean execute() {
 		if (MainGame.gametime % 50 == 0) {
@@ -36,6 +36,7 @@ public class RandomSlime extends SpaceEvent {
 	public RandomSlime(int mapsizex, int mapsizey) {
 		this.mapsizex = mapsizex;
 		this.mapsizey = mapsizey;
+		super.over=false;
 	}
 
 }

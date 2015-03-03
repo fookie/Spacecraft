@@ -13,6 +13,7 @@ import displayConsole.Element;
 import displayConsole.Gamewindow;
 import spacecraftelements.Bullets.Bullet;
 import spacecraftelements.Enemy.Enemy;
+import spacecraftelements.Items.H_bulletrain;
 import spacecraftelements.Items.SpaceItem;
 import spacecraftelements.Items.W_EnhancedWeapon;
 import spacecraftelements.SpaceShip.SpaceShip;
@@ -55,7 +56,7 @@ public class BattleFieldManager {
 	{
 		this.windowsizex=windowsizex;
 		this.windowsizey=windowsizey;
-		this.add(new W_EnhancedWeapon(200,200));
+		this.add(new H_bulletrain(200,200));
 	}
 	/**
 	 * 
@@ -158,6 +159,12 @@ public class BattleFieldManager {
 	private void updateevent() {
 		for (int i = 0; i < EventList.size(); i++) {
 			EventList.get(i).execute();
+			if(EventList.get(i).over==true)
+			{
+				EventList.remove(i);
+				i--;
+			}
+				
 		}
 
 	}

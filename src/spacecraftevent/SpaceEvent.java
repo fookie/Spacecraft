@@ -7,6 +7,7 @@ package spacecraftevent;
  *
  */
 public abstract class SpaceEvent {
+	public boolean over;
 	/**
 	 * 事件自行判断是否触发
 	 * 

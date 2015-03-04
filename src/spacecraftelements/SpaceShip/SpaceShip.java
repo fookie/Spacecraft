@@ -19,7 +19,7 @@ public abstract class SpaceShip {
 	/**
 	 * 飞船加速度，先不考虑
 	 */
-	public int ax, ay;
+	public int a;
 	/**
 	 * 最大速度
 	 */
@@ -33,12 +33,11 @@ public abstract class SpaceShip {
 	 * 速度(趋势)，每次更新时用
 	 */
 	public int vx, vy;
-	/**
-	 * 贴图地址，以后要是有必要可以改成ImageID[];
+	/*改成ImageID[];
 	 */
 	public String ImageID;
 	/**
-	 * 贴图的大小，正方形图片的直径。单位：像素
+	 * 贴图的大小，正方形图片边长的一半。单位：像素
 	 */
 	public int Imagesize;
 	/**

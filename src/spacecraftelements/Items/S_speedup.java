@@ -9,7 +9,7 @@ public class S_speedup extends SpaceItem{
 		super.x=x;
 		super.y=y;
 		super.imageID="Images//Item//speedup.png";
-		super.imagesize=50;
+		super.imagesize=25;
 	}
 	@Override
 	public boolean getitem() {

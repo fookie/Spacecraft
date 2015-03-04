@@ -12,8 +12,9 @@ public class KL implements KeyListener {
 		}
 		if (e.getKeyChar() == 27) {//27ÊÇEscµÄascii Âë
 			MainGame.test.repainter.add_nooffset_element("Images//UI//paused400x250.png",-200,75, 0, 0);
-			MainGame.test.repainter.repaint();
+			
 			MainGame.bm.paused=!MainGame.bm.paused;
+			MainGame.test.repainter.repaint();
 		}
 		}
 	

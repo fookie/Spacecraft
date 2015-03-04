@@ -9,7 +9,7 @@ public class S_repair extends SpaceItem{
 		super.x=x;
 		super.y=y;
 		super.imageID="Images//Item//repair.png";
-		super.imagesize=50;
+		super.imagesize=25;
 	}
 	@Override
 	public boolean getitem() {

@@ -48,6 +48,7 @@ public class Button_survival extends SButton{
 		Dimension srcDim = Toolkit.getDefaultToolkit().getScreenSize();
 		MainGame.bm = new BattleFieldManager(srcDim.width,srcDim.height);
 		MainGame.test=MainGame.bm.loadmap("Data//scmaps//testmap1600x1200.smp");
+		MainGame.mainmenu.setVisible(false);
 		MainGame.bm.add(new Palelin(0,0,0,0));
 		MainGame.bm.add(new RandomSlime(1600,1200));
 		MainGame.test.addWindowListener(new WindowAdapter() {
@@ -56,7 +57,7 @@ public class Button_survival extends SButton{
 			}
 		});
 		MainGame.gamestatus=1;
-		MainGame.mainmenu.setVisible(false);
+		//MainGame.mainmenu.setVisible(false);
 		return false;
 	}
 

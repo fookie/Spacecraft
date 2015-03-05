@@ -307,51 +307,27 @@ public class BattleFieldManager {
 	}
 
 	private void updateship() {
-		// if (((kw && ks) || (ka && kd)) != true) {// 如果上下键或者左右键被被同时按下则不操作
-		// if (kw && (ship.vy <= 0)) {// W向上
-		// ship.vy = ship.maxv;
-		// } else if (kd && (ship.vx <= 0)) {// d向右
-		// ship.vx = ship.maxv;
-		// } else if (ka && (ship.vx >= 0)) {// a向左
-		// ship.vx = -ship.maxv;
-		// } else if (ks && (ship.vy >= 0)) {// s向下
-		// ship.vy = -ship.maxv;
-		// }
-		// if (!kd && !ka) {
-		// ship.vx = 0;
-		// }
-		// if (!kw && !ks) {
-		// ship.vy = 0;
-		// }
-		// }
-		// if (((kw && ks) || (ka && kd)) != true) {// 如果上下键或者左右键被被同时按下则不操作
-		if (kw && !ks && (Math.abs(ship.vy) < ship.maxv)) {// W向上
-			ship.vy = ship.vy + ship.a;
-		} else if (kd && !ka && Math.abs(ship.vx) < ship.maxv) {// d向右
-			ship.vx = ship.vx + ship.a;
-		} else if (ka && !kd && Math.abs(ship.vx) < ship.maxv) {// a向左
-			ship.vx = ship.vx - ship.a;
-		} else if (ks && !kw && (Math.abs(ship.vy) < ship.maxv)) {// s向下
-			ship.vy = ship.vy - ship.a;
-		}
-		else if(kw&&kd)
-		{
-			if(ship.vy>0)
-			{
-				ship.vy=-ship.a;
+		if (((kw && ks) || (ka && kd)) != true) {// 如果上下键或者左右键被被同时按下则不操作
+			if (kw && (ship.vy <= 0)) {// W向上
+				ship.vy = ship.maxv;
+			} else if (kd && (ship.vx <= 0)) {// d向右
+				ship.vx = ship.maxv;
+			} else if (ka && (ship.vx >= 0)) {// a向左
+				ship.vx = -ship.maxv;
+			} else if (ks && (ship.vy >= 0)) {// s向下
+				ship.vy = -ship.maxv;
 			}
-			else if(ship.vy<0)
-			{
-				ship.vy=ship.a;
+			if (!kd && !ka) {
+				ship.vx = 0;
+			}
+			if (!kw && !ks) {
+				ship.vy = 0;
 			}
 		}
-		if (!kd && !ka) {
-			ship.vx = 0;
-		}
-		if (!kw && !ks) {
-			ship.vy = 0;
-		}
-		// }
+		
+		
+		System.out.println("vx:"+ship.vx+"vy"+ship.vy);
+		
 		if (((ship.x + ship.vx) > (mapx / 2) || (ship.x + ship.vx) < -(mapx / 2)) != true) {
 			ship.x = ship.x + ship.vx;
 			ship.visx = ship.visx + ship.vx;

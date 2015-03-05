@@ -13,11 +13,7 @@ import displayConsole.Element;
 import displayConsole.Gamewindow;
 import spacecraftelements.Bullets.Bullet;
 import spacecraftelements.Enemy.Enemy;
-import spacecraftelements.Items.H_bulletcircle;
-import spacecraftelements.Items.H_bulletrain;
-import spacecraftelements.Items.S_speedup;
 import spacecraftelements.Items.SpaceItem;
-import spacecraftelements.Items.W_EnhancedWeapon;
 import spacecraftelements.SpaceShip.SpaceShip;
 import spacecraftevent.SpaceEvent;
 
@@ -59,10 +55,6 @@ public class BattleFieldManager {
 	public BattleFieldManager(int windowsizex, int windowsizey) {
 		this.windowsizex = windowsizex;
 		this.windowsizey = windowsizey;
-		this.add(new H_bulletcircle(0, 200));
-		this.add(new H_bulletcircle(0, 100));
-		this.add(new H_bulletcircle(0, -100));
-		this.add(new H_bulletcircle(0, -200));
 	}
 
 	/**
@@ -171,9 +163,7 @@ public class BattleFieldManager {
 				EventList.remove(i);
 				i--;
 			}
-
 		}
-
 	}
 
 	private void sendImage() {
@@ -203,7 +193,10 @@ public class BattleFieldManager {
 					EnemyList.get(i).y,
 					-getangle(EnemyList.get(i).vx, EnemyList.get(i).vy), 2);
 		}
-
+		if(ship.health<=0)
+		{
+			MainGame.test.repainter.add_nooffset_element("Images//UI//gameover.png",-200,75, 0, 0);
+		}
 		if (ship.health == 5) {
 			MainGame.test.repainter.add_nooffset_element("Images//hp//hp5.png",
 					-800, 600, 0, 2);
@@ -299,7 +292,6 @@ public class BattleFieldManager {
 					|| BulletList.get(i).x < -(mapx / 2)
 					|| BulletList.get(i).y > (mapy / 2)
 					|| BulletList.get(i).y < -(mapy / 2)) {
-				// System.out.println(BulletList.get(i).toString()+"remove:out of range");
 				BulletList.remove(i);
 				i = i - 1;
 			}
@@ -307,7 +299,16 @@ public class BattleFieldManager {
 	}
 
 	private void updateship() {
-		if (((kw && ks) || (ka && kd)) != true) {// 如果上下键或者左右键被被同时按下则不操作
+		if(ship.health<=0)
+		{
+			ship.x=0;
+			ship.y=0;
+			ship.visx=0;
+			ship.visy=0;
+
+		}
+		
+		if (((kw && ks) || (ka && kd)||(ship.health<=0)) != true) {// 如果上下键或者左右键被被同时按下则不操作
 			if (kw && (ship.vy <= 0)) {// W向上
 				ship.vy = ship.maxv;
 			} else if (kd && (ship.vx <= 0)) {// d向右
@@ -319,14 +320,13 @@ public class BattleFieldManager {
 			}
 			if (!kd && !ka) {
 				ship.vx = 0;
-			}
+			}		
 			if (!kw && !ks) {
 				ship.vy = 0;
 			}
 		}
 		
 		
-		System.out.println("vx:"+ship.vx+"vy"+ship.vy);
 		
 		if (((ship.x + ship.vx) > (mapx / 2) || (ship.x + ship.vx) < -(mapx / 2)) != true) {
 			ship.x = ship.x + ship.vx;
@@ -439,7 +439,7 @@ public class BattleFieldManager {
 
 	public void shootprocessor(int mx, int my) {
 		// 计算大地图坐标
-		if (!paused) {
+		if (!paused&&ship.health>=0) {
 			int cx = mx - windowsizex / 2;// 400=1/2windowsizex
 			int cy = windowsizey / 2 - my;
 			Bullet[] tBullets = new Bullet[this.ship.w1.count()];

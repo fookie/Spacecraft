@@ -7,14 +7,28 @@ public class KL implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		if (e.getKeyChar() == 'q') {
+		if (e.getKeyChar() == 'q'&&!MainGame.bm.paused) {
 			MainGame.bm.ship.switchweapon();
 		}
-		if (e.getKeyChar() == 27) {//27是Esc的ascii 码
+		if (e.getKeyChar() == 27&&MainGame.bm.ship.health>=0) {//27是Esc的ascii 码
 			MainGame.test.repainter.add_nooffset_element("Images//UI//paused400x250.png",-200,75, 0, 0);
 			
 			MainGame.bm.paused=!MainGame.bm.paused;
 			MainGame.test.repainter.repaint();
+		}
+		if(e.getKeyChar() == 'q'&&(MainGame.bm.paused||MainGame.bm.ship.health<=0))
+		{
+			System.exit(0);
+		}
+		if(e.getKeyChar() == 'r'&&MainGame.bm.paused)
+		{
+			MainGame.bm.paused=!MainGame.bm.paused;
+		}
+		if(e.getKeyChar() == 'b'&&(MainGame.bm.paused||MainGame.bm.ship.health<=0))
+		{
+			MainGame.test.setVisible(false);
+			MainGame.mainmenu.setVisible(true);
+			MainGame.gamestatus=0;
 		}
 		}
 	

@@ -13,7 +13,7 @@ public abstract class Bullet implements Updatable{
 	 */
 	public String ImageID;
 	/**
-	 * 贴图的大小，正方形图片的直径。单位：像素
+	 * 贴图的大小，正方形图片的半径。单位：像素
 	 */
 	public int Imagesize;
 	/**

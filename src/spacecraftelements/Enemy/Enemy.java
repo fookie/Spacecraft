@@ -1,7 +1,6 @@
 package spacecraftelements.Enemy;
 
 import spacecraftelements.Updatable;
-import spacecraftelements.Items.SpaceItem;
 
 public abstract class Enemy implements Updatable{
 	/**

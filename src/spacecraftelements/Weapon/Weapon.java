@@ -36,7 +36,9 @@ public abstract class Weapon {
 	public int count = 1;
 	/**
 	 * 开火method
-	 * 
+	 * x， y为船体在内建坐标的位置
+	 * visx, visy为船体在屏幕坐标的位置
+	 * cx, cy为鼠标在屏幕上的坐标
 	 * @param
 	 */
 	public abstract Bullet[] shoot(int x,int y,int visx, int visy, int cx, int cy, int f);

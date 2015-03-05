@@ -9,11 +9,11 @@ public class BasicBullet extends Bullet{
 		super.vx=vx;
 		super.vy=vy;
 		super.damage=15;
-		super.volume = 10;
+		super.volume = 20;
 		super.ImageID="Images//bullet//basicbullet2.png";
 		super.ID = 0;
 		super.angle=0;
-		super.Imagesize=20;
+		super.Imagesize=10;
 		super.faction = f;
 	}
 

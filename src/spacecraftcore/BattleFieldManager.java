@@ -13,6 +13,7 @@ import displayConsole.Element;
 import displayConsole.Gamewindow;
 import spacecraftelements.Bullets.Bullet;
 import spacecraftelements.Enemy.Enemy;
+import spacecraftelements.Items.H_bulletcircle;
 import spacecraftelements.Items.SpaceItem;
 import spacecraftelements.SpaceShip.SpaceShip;
 import spacecraftevent.SpaceEvent;
@@ -55,6 +56,10 @@ public class BattleFieldManager {
 	public BattleFieldManager(int windowsizex, int windowsizey) {
 		this.windowsizex = windowsizex;
 		this.windowsizey = windowsizey;
+		add(new H_bulletcircle(400,400));
+		add(new H_bulletcircle(400,-400));
+		add(new H_bulletcircle(-400,400));
+		add(new H_bulletcircle(-400,-400));
 	}
 
 	/**
@@ -305,7 +310,10 @@ public class BattleFieldManager {
 			ship.y=0;
 			ship.visx=0;
 			ship.visy=0;
-
+			if(MainGame.gametime % 200 == 0)
+			{
+				add(new H_bulletcircle(0,0));
+			}
 		}
 		
 		if (((kw && ks) || (ka && kd)||(ship.health<=0)) != true) {// 如果上下键或者左右键被被同时按下则不操作

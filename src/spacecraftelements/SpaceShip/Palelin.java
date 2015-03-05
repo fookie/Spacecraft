@@ -15,8 +15,8 @@ public class Palelin extends SpaceShip {
 		super.a=100;
 		super.health = 5;
 		super.volume = 50;
-		super.w2 = new BasicWeapon();
-		super.w1 = new EnhancedWeapon();
+		super.w1 = new BasicWeapon();
+		super.w2 = new EnhancedWeapon();
 		super.ImageID = "Images//ship//palelin.png";
 		super.Imagesize=45;
 	}

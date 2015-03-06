@@ -444,7 +444,7 @@ public class BattleFieldManager {
 	public void shootprocessor(int mx, int my) {
 		// 计算大地图坐标
 		if (!paused&&ship.health>=0) {
-			int cx = mx - windowsizex / 2;// 400=1/2windowsizex
+			int cx = mx - windowsizex / 2;
 			int cy = windowsizey / 2 - my;
 			Bullet[] tBullets = new Bullet[this.ship.w1.count()];
 			tBullets = this.ship.w1.shoot(ship.x, ship.y, ship.visx, ship.visy,

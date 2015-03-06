@@ -13,7 +13,6 @@ public class ML implements MouseMotionListener,MouseListener{
 		mx=e.getX();
 		my=e.getY();
 		MainGame.bm.ml=true;
-		//System.out.println(mx+" "+my);
 		MainGame.bm.autotarx=mx;
 		MainGame.bm.autotary=my;
 		MainGame.bm.Mouseprocessor(mx,my);
@@ -30,8 +29,6 @@ public class ML implements MouseMotionListener,MouseListener{
 	}
 
 	public void mousePressed(MouseEvent e) {
-		//MainGame.bm.currentWeapon.shoot();
-		//System.out.println("x");
 		mx=e.getX();
 		my=e.getY();
 		MainGame.bm.autotarx=mx;

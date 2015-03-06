@@ -15,7 +15,10 @@ import spacecraftelements.Bullets.Bullet;
 import spacecraftelements.Enemy.Enemy;
 import spacecraftelements.Items.H_bulletcircle;
 import spacecraftelements.Items.SpaceItem;
+import spacecraftelements.Ornament.Hanabi;
+import spacecraftelements.Ornament.Ornament;
 import spacecraftelements.SpaceShip.SpaceShip;
+import spacecraftevent.DeathHanabi;
 import spacecraftevent.SpaceEvent;
 
 /**
@@ -31,6 +34,7 @@ public class BattleFieldManager {
 	private List<Enemy> EnemyList = new LinkedList<Enemy>();
 	private List<SpaceEvent> EventList = new LinkedList<SpaceEvent>();
 	private List<SpaceItem> ItemList = new LinkedList<SpaceItem>();
+	private List<Ornament> OList = new LinkedList<Ornament>();
 	public SpaceShip ship = null;
 	public int mapx, mapy;// 地图实际大小
 	private String bgloc;// 背景地址
@@ -137,6 +141,9 @@ public class BattleFieldManager {
 	public boolean add(SpaceItem i) {
 		return ItemList.add(i);
 	}
+	public boolean add(Ornament o) {
+		return OList.add(o);
+	}
 
 	public boolean update() {
 		if (bgloc == null) {
@@ -172,6 +179,19 @@ public class BattleFieldManager {
 		MainGame.test.repainter.le = new LinkedList<Element>();
 		// 传递飞船并计算偏移量
 		MainGame.test.repainter.computeOffset(ship);
+		// 传递特技
+				for (int i = 0; i < OList.size(); i++) {
+					
+					MainGame.test.repainter.add(
+							OList.get(i).getImage(),OList.get(i).imagesize, OList.get(i).x,
+							OList.get(i).y,
+							0, 0);
+					if(OList.get(i).over)
+					{
+						this.OList.remove(i);
+					}
+					
+				}
 		// 传递子弹
 		for (int i = 0; i < BulletList.size(); i++) {
 			MainGame.test.repainter.add(BulletList.get(i).ImageID,
@@ -227,6 +247,7 @@ public class BattleFieldManager {
 		for (int i = 0; i < EnemyList.size(); i++) {
 			if (EnemyList.get(i).health < 0) {
 				EnemyList.get(i).giveitem();
+				add(new Hanabi(EnemyList.get(i).x,EnemyList.get(i).y));
 				EnemyList.remove(i);
 				i--;
 			} else {
@@ -250,7 +271,7 @@ public class BattleFieldManager {
 			Rectangle Shiphitbox = new Rectangle(ship.x - ship.volume / 2,
 					ship.y - ship.volume / 2, ship.volume / 2, ship.volume / 2);
 
-			if (Enemyhitbox.intersects(Shiphitbox)) {
+			if (Enemyhitbox.intersects(Shiphitbox)) {//飞机碰上怪物怪物挂掉
 				ship.health--;
 				EnemyList.remove(i);
 				i--;

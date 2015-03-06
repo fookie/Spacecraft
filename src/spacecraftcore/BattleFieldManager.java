@@ -18,7 +18,6 @@ import spacecraftelements.Items.SpaceItem;
 import spacecraftelements.Ornament.Hanabi;
 import spacecraftelements.Ornament.Ornament;
 import spacecraftelements.SpaceShip.SpaceShip;
-import spacecraftevent.DeathHanabi;
 import spacecraftevent.SpaceEvent;
 
 /**
@@ -60,6 +59,9 @@ public class BattleFieldManager {
 	public BattleFieldManager(int windowsizex, int windowsizey) {
 		this.windowsizex = windowsizex;
 		this.windowsizey = windowsizey;
+		
+		//预处理
+		add(new Hanabi(0,0));
 	}
 
 	/**
@@ -179,19 +181,7 @@ public class BattleFieldManager {
 		MainGame.test.repainter.le = new LinkedList<Element>();
 		// 传递飞船并计算偏移量
 		MainGame.test.repainter.computeOffset(ship);
-		// 传递特技
-				for (int i = 0; i < OList.size(); i++) {
-					
-					MainGame.test.repainter.add(
-							OList.get(i).getImage(),OList.get(i).imagesize, OList.get(i).x,
-							OList.get(i).y,
-							0, 0);
-					if(OList.get(i).over)
-					{
-						this.OList.remove(i);
-					}
-					
-				}
+		
 		// 传递子弹
 		for (int i = 0; i < BulletList.size(); i++) {
 			MainGame.test.repainter.add(BulletList.get(i).ImageID,
@@ -206,6 +196,19 @@ public class BattleFieldManager {
 						ItemList.get(i).imagesize, ItemList.get(i).x,
 						ItemList.get(i).y, 0, 2);
 			}
+		}
+		// 传递特技
+		for (int i = 0; i < OList.size(); i++) {
+			
+			MainGame.test.repainter.add(
+					OList.get(i).getImage(),OList.get(i).imagesize, OList.get(i).x,
+					OList.get(i).y,
+					0, 0);
+			if(OList.get(i).over)
+			{
+				this.OList.remove(i);
+			}
+			
 		}
 		// 传递敌人
 		for (int i = 0; i < EnemyList.size(); i++) {

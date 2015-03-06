@@ -55,10 +55,6 @@ public class Button_survival extends SButton{
 		MainGame.bm.add(new H_bulletblast(400,-400));
 		MainGame.bm.add(new H_bulletblast(-400,400));
 		MainGame.bm.add(new H_bulletblast(-400,-400));
-		MainGame.bm.paused=!MainGame.bm.paused;
-		MainGame.bm.paused=!MainGame.bm.paused;
-		MainGame.test.repainter.add_nooffset_element("Images//UI//paused400x250.png",-200,75, 0, 0);
-		MainGame.test.repainter.repaint();
 		MainGame.test.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				System.exit(0);

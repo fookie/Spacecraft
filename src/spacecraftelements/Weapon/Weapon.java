@@ -7,6 +7,10 @@ import spacecraftelements.Bullets.Bullet;
  */
 public abstract class Weapon {
 	/**
+	 * ÎäÆ÷ID
+	 */
+	public int weaponID;
+	/**
 	 * Ö¸¶¨×Óµ¯ID
 	 */
 	public int defaultbullet;

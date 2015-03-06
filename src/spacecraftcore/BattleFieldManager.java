@@ -271,8 +271,8 @@ public class BattleFieldManager {
 		}
 		for (int i = 0; i < ItemList.size(); i++) {
 			SpaceItem tItem = ItemList.get(i);
-			Rectangle Itemhitbox = new Rectangle(tItem.x - tItem.imagesize / 2,
-					tItem.y - tItem.imagesize / 2, 50, 50);
+			Rectangle Itemhitbox = new Rectangle(tItem.x - tItem.imagesize,
+					tItem.y - tItem.imagesize, 50, 50);
 			if (Itemhitbox.contains(ship.x, ship.y)) {
 				tItem.getitem();
 				ItemList.remove(i);

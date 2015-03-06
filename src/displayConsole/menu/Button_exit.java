@@ -1,7 +1,5 @@
 package displayConsole.menu;
 
-import spacecraftcore.MainGame;
-
 public class Button_exit extends SButton {
 	int overnum = 3;
 	int status = 0;

@@ -56,10 +56,6 @@ public class BattleFieldManager {
 	public BattleFieldManager(int windowsizex, int windowsizey) {
 		this.windowsizex = windowsizex;
 		this.windowsizey = windowsizey;
-		add(new H_bulletcircle(400,400));
-		add(new H_bulletcircle(400,-400));
-		add(new H_bulletcircle(-400,400));
-		add(new H_bulletcircle(-400,-400));
 	}
 
 	/**

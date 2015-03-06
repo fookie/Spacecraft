@@ -7,6 +7,7 @@ import java.awt.event.WindowEvent;
 
 import spacecraftcore.BattleFieldManager;
 import spacecraftcore.MainGame;
+import spacecraftelements.Items.H_bulletcircle;
 import spacecraftelements.SpaceShip.Palelin;
 import spacecraftevent.RandomSlime;
 
@@ -44,13 +45,17 @@ public class Button_survival extends SButton{
 	}
 	@Override
 	public boolean click() {
-		// TODO Auto-generated method stub
 		Dimension srcDim = Toolkit.getDefaultToolkit().getScreenSize();
 		MainGame.bm = new BattleFieldManager(srcDim.width,srcDim.height);
 		MainGame.test=MainGame.bm.loadmap("Data//scmaps//testmap1600x1200.smp");
-		
+		//加载生存模式要素
 		MainGame.bm.add(new Palelin(0,0,0,0));
 		MainGame.bm.add(new RandomSlime(1600,1200));
+		MainGame.bm.add(new H_bulletcircle(400,400));
+		MainGame.bm.add(new H_bulletcircle(400,-400));
+		MainGame.bm.add(new H_bulletcircle(-400,400));
+		MainGame.bm.add(new H_bulletcircle(-400,-400));
+		
 		MainGame.test.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				System.exit(0);
@@ -58,7 +63,7 @@ public class Button_survival extends SButton{
 		});
 		MainGame.gamestatus=1;
 		MainGame.mainmenu.setVisible(false);
-		return false;
+		return true;
 	}
 
 }

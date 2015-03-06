@@ -34,6 +34,8 @@ public class ML implements MouseMotionListener,MouseListener{
 		//System.out.println("x");
 		mx=e.getX();
 		my=e.getY();
+		MainGame.bm.autotarx=mx;
+		MainGame.bm.autotary=my;
 		MainGame.bm.ml=true;
 		MainGame.bm.shootprocessor(mx, my);
 		MainGame.bm.pressedtime=MainGame.gametime;

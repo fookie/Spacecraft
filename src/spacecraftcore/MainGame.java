@@ -20,6 +20,7 @@ public class MainGame {
 	public static Menuwindow mainmenu;
 	public static long gametime;
 	public static Thread mt;
+	public static boolean cansendimage=true;
 
 	public static void main(String[] args) {
 		mt = new Thread(new SpaceTimmer());//新建线程

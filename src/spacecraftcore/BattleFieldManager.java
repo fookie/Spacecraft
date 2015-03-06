@@ -177,6 +177,7 @@ public class BattleFieldManager {
 	}
 
 	private void sendImage() {
+		if(MainGame.cansendimage){
 		// 清空
 		MainGame.test.repainter.le = new LinkedList<Element>();
 		// 传递飞船并计算偏移量
@@ -244,6 +245,7 @@ public class BattleFieldManager {
 
 		// 重新绘制
 		MainGame.test.repainter.repaint();
+		}
 	}
 
 	private void updateEnemy() {

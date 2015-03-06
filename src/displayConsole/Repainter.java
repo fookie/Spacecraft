@@ -97,7 +97,7 @@ public class Repainter extends JPanel {
 
 	public void paint(Graphics g) {
 
-
+		MainGame.cansendimage=false;
 		super.paint(g);
 		g.clearRect(0, 0, this.getWidth(), this.getHeight());
 		g.drawImage(bg, -(mapsizex / 2 - windowsizex / 2) - offsetx,
@@ -107,13 +107,23 @@ public class Repainter extends JPanel {
 					le.get(i).x + (windowsizex / 2),
 					(windowsizey / 2) - le.get(i).y, this);// !!!!!!
 		}// !!!!!!!!!这里也有转换坐标的部分!!!!!!!!!!!!
+		MainGame.cansendimage=true;
 	}
 
 	public static BufferedImage rotateImage(Image bufferedimage, double degree) {
 		int w = bufferedimage.getWidth(null);
 		int h = bufferedimage.getHeight(null);
+		
+		
+		
 		// int type = ((BufferedImage)
 		// bufferedimage).getColorModel().getTransparency();
+		if(w==-1||h==-1)
+		{
+			w=1;
+			h=1;
+		}
+		
 		BufferedImage img = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
 		Graphics2D graphics2d = img.createGraphics();// Key Code to implement
 														// the Transparency

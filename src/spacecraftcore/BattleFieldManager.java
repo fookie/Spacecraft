@@ -13,7 +13,7 @@ import displayConsole.Element;
 import displayConsole.Gamewindow;
 import spacecraftelements.Bullets.Bullet;
 import spacecraftelements.Enemy.Enemy;
-import spacecraftelements.Items.H_bulletcircle;
+import spacecraftelements.Items.H_bulletblast;
 import spacecraftelements.Items.SpaceItem;
 import spacecraftelements.Ornament.Hanabi;
 import spacecraftelements.Ornament.Ornament;
@@ -329,7 +329,7 @@ public class BattleFieldManager {
 			ship.visy=0;
 			if(MainGame.gametime % 200 == 0)
 			{
-				add(new H_bulletcircle(0,0));
+				add(new H_bulletblast(0,0));
 			}
 		}
 		

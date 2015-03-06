@@ -8,7 +8,7 @@ public class Hanabi extends Ornament {
 	public Hanabi(int x, int y){
 		super.x = x;
 		super.y = y;
-		super.imagesize = 202;
+		super.imagesize = 20;
 		super.imageID = "Images//hp//";
 		super.over=false;
 	}

@@ -1,7 +1,6 @@
 package spacecraftelements.SpaceShip;
 
 import spacecraftelements.Weapon.BasicWeapon;
-import spacecraftelements.Weapon.Shotgun;
 import spacecraftelements.Weapon.Weapon;
 
 public class Palelin extends SpaceShip {
@@ -16,7 +15,7 @@ public class Palelin extends SpaceShip {
 		super.health = 5;
 		super.volume = 50;
 		super.w1 = new BasicWeapon();
-		super.w2 = new Shotgun();
+		super.w2 = null;
 		super.ImageID = "Images//ship//palelin.png";
 		super.Imagesize=45;
 	}

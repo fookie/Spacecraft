@@ -2,9 +2,14 @@ package spacecraftelements.Weapon;
 
 import spacecraftelements.Bullets.BasicBullet;
 import spacecraftelements.Bullets.Bullet;
-
+/**
+ * WeaponID: 1
+ * @author Paulay
+ *
+ */
 public class Shotgun extends Weapon {
 	public Shotgun() {
+		super.weaponID = 1;
 		super.defaultbullet = 0;
 		super.clip = 30;
 		super.iv = 20;
@@ -23,7 +28,7 @@ public class Shotgun extends Weapon {
 		double sin = b / c;
 		double cos = a / c;
 		double angle = Math.asin(sin);
-		if (a < 0){
+		if (a < 0) {
 			angle = -angle + Math.PI;
 		}
 		int vx = (int) (((double) iv) * cos);

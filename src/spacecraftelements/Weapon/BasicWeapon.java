@@ -2,9 +2,14 @@ package spacecraftelements.Weapon;
 
 import spacecraftelements.Bullets.BasicBullet;
 import spacecraftelements.Bullets.Bullet;
-
+/**
+ * WeaponID: 0
+ * @author Paulay
+ *
+ */
 public class BasicWeapon extends Weapon {
 	public BasicWeapon() {
+		super.weaponID = 0;
 		super.defaultbullet = 0;
 		super.clip = 10;
 		super.iv = 20;
@@ -13,7 +18,8 @@ public class BasicWeapon extends Weapon {
 		super.cd = 8;
 	}
 
-	public Bullet[] shoot(int x, int y, int visx, int visy, int cx, int cy, int f) {
+	public Bullet[] shoot(int x, int y, int visx, int visy, int cx, int cy,
+			int f) {
 		double a, b, c;
 		a = cx - visx;
 		b = cy - visy;

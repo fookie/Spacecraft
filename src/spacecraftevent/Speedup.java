@@ -16,7 +16,6 @@ public class Speedup extends SpaceEvent {
 
 	@Override
 	public boolean executenow() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

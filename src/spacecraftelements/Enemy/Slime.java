@@ -5,7 +5,8 @@ import spacecraftelements.Items.H_bulletblast;
 import spacecraftelements.Items.H_bulletrain;
 import spacecraftelements.Items.S_repair;
 import spacecraftelements.Items.S_speedup;
-import spacecraftelements.Items.W_EnhancedWeapon;
+import spacecraftelements.Items.W_Shotgun;
+import spacecraftelements.Items.W_StarWeapon;
 
 public class Slime extends Enemy {
 	public Slime(int x, int y) {
@@ -41,7 +42,7 @@ public class Slime extends Enemy {
 	public boolean giveitem() {
 		double r=Math.random();
 		if (r < 0.1) {
-			MainGame.bm.add(new W_EnhancedWeapon(x, y));
+			MainGame.bm.add(new W_StarWeapon(x, y));
 			return true;
 		} else if(r>0.1&&r<0.2){
 			MainGame.bm.add(new H_bulletrain(x, y));
@@ -57,6 +58,9 @@ public class Slime extends Enemy {
 		}
 		else if(r>0.4&&r<0.5){
 			MainGame.bm.add(new H_bulletblast(x, y));
+			return true;
+		}else if (r > 0.5 && r < 0.6) {
+			MainGame.bm.add(new W_Shotgun(x, y));
 			return true;
 		}
 		else

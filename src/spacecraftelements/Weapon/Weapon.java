@@ -38,7 +38,14 @@ public abstract class Weapon {
 	 * 散弹数量
 	 */
 	public int count = 1;
-
+	/**
+	 * 武器图标地址 
+	 */
+	public String ImageLoc;
+	/**
+	 * 武器图标大小
+	 */
+	public int ImageSize = 25;
 	/**
 	 * 开火method x， y为船体在内建坐标的位置 visx, visy为船体在屏幕坐标的位置 cx, cy为鼠标在屏幕上的坐标
 	 * 

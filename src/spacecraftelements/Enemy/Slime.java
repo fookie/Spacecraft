@@ -5,6 +5,7 @@ import spacecraftelements.Items.H_bulletblast;
 import spacecraftelements.Items.H_bulletrain;
 import spacecraftelements.Items.S_repair;
 import spacecraftelements.Items.S_speedup;
+import spacecraftelements.Items.W_BasicWeapon;
 import spacecraftelements.Items.W_Shotgun;
 import spacecraftelements.Items.W_StarWeapon;
 
@@ -61,6 +62,9 @@ public class Slime extends Enemy {
 			return true;
 		}else if (r > 0.5 && r < 0.6) {
 			MainGame.bm.add(new W_Shotgun(x, y));
+			return true;
+		}else if (r > 0.6 && r < 0.61) {
+			MainGame.bm.add(new W_BasicWeapon(x, y));
 			return true;
 		}
 		else

@@ -17,6 +17,7 @@ public class Shotgun extends Weapon {
 		super.ID = 0;
 		super.cd = 13;
 		super.count = 5;
+		super.ImageLoc = "Images//Item//shotgun.png";
 	}
 
 	public Bullet[] shoot(int x, int y, int visx, int visy, int cx, int cy,

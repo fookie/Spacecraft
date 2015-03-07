@@ -16,6 +16,7 @@ public class BasicWeapon extends Weapon {
 		super.reload = 1;
 		super.ID = 0;
 		super.cd = 8;
+		super.ImageLoc = "Images//Item//basicweapon.png";
 	}
 
 	public Bullet[] shoot(int x, int y, int visx, int visy, int cx, int cy,

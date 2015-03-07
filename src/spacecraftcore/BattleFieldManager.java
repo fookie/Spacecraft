@@ -11,6 +11,7 @@ import java.util.List;
 
 import displayConsole.Element;
 import displayConsole.Gamewindow;
+import displayConsole.WeaponSlot;
 import spacecraftelements.Bullets.Bullet;
 import spacecraftelements.Enemy.Enemy;
 import spacecraftelements.Items.H_bulletblast;
@@ -242,6 +243,9 @@ public class BattleFieldManager {
 			MainGame.test.repainter.add_nooffset_element("Images//hp//hp1.png",
 					-400, 100, 0, 2);
 		}
+		
+		//显示武器槽
+		WeaponSlot.displayweapon(ship);
 
 		// 重新绘制
 		MainGame.test.repainter.repaint();

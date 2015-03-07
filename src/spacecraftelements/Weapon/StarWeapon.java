@@ -17,6 +17,7 @@ public class StarWeapon extends Weapon {
 		super.ID = 0;
 		super.cd = 10;
 		super.count = 5;
+		super.ImageLoc = "Images//Item//starweapon.png";
 	}
 
 	public Bullet[] shoot(int x, int y, int visx, int visy, int cx, int cy,

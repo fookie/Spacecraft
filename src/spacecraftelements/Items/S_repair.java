@@ -1,7 +1,6 @@
 package spacecraftelements.Items;
 
 import spacecraftcore.MainGame;
-import spacecraftevent.Speedup;
 
 public class S_repair extends SpaceItem{
 	public S_repair(int x,int y)

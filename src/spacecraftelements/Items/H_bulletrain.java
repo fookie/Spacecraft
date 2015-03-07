@@ -1,8 +1,6 @@
 package spacecraftelements.Items;
 
 import spacecraftcore.MainGame;
-import spacecraftelements.Bullets.BasicBullet;
-import spacecraftelements.Bullets.Bullet;
 import spacecraftevent.BulletRain;
 
 public class H_bulletrain extends SpaceItem{

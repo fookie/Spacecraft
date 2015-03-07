@@ -227,8 +227,9 @@ public class BattleFieldManager {
 						-getangle(EnemyList.get(i).vx, EnemyList.get(i).vy), 2);
 			}
 			if (ship.health <= 0) {
-				MainGame.test.repainter.add_nooffset_element(
-						"Images//UI//gameover.png", -200, 75, 0, 0);
+				//MainGame.test.repainter.add_nooffset_element(
+				//      "Images//UI//gameover.png", -200, 75, 0, 0);
+				MainGame.test.repainter.add_nooffset_element("Images//UI//gameoverfull.png",-(int)MainGame.srcDim.getWidth()+650,(int)MainGame.srcDim.getHeight()-350, 0, 0);
 			}
 			if (ship.health > 5) {
 				MainGame.test.repainter.add_nooffset_element(

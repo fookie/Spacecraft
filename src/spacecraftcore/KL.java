@@ -12,7 +12,8 @@ public class KL implements KeyListener {
 		}
 		if (e.getKeyChar() == 27&&MainGame.bm.ship.health>=0) {//27ÊÇEscµÄascii Âë
 			MainGame.bm.paused=!MainGame.bm.paused;
-			MainGame.test.repainter.add_nooffset_element("Images//UI//paused400x250.png",-200,75, 0, 0);
+			//MainGame.test.repainter.add_nooffset_element("Images//UI//paused400x250.png",-200,75, 0, 0);
+			MainGame.test.repainter.add_nooffset_element("Images//UI//pausedfull.png",-(int)MainGame.srcDim.getWidth()+650,(int)MainGame.srcDim.getHeight()-350, 0, 0);
 			MainGame.test.repainter.repaint();
 		}
 		if(e.getKeyChar() == 'q'&&(MainGame.bm.paused||MainGame.bm.ship.health<=0))

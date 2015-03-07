@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.awt.Transparency;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
+
 import javax.swing.JPanel;
 
 import spacecraftcore.MainGame;
@@ -34,7 +35,7 @@ public class Repainter extends JPanel {
 	private int offsety;
 	public int mapsizex;//地图实际大小,也是背景图的大小
 	public int mapsizey;
-
+	public int abx, aby;//在地图上的坐标
 	public String bgloc;//背景地址
 	public Image bg;
 
@@ -88,7 +89,26 @@ public class Repainter extends JPanel {
 		element.layer = layer;
 		le.add(element);
 	}
-
+/**
+ * 用于在屏幕坐标与内建坐标间转换
+ * @param x 屏幕坐标系上的横坐标（左上角为(0, 0))
+ * @return 换算后的在内建坐标系上的横坐标
+ */
+	public int onscreenx(int x){
+		abx = x - windowsizex/2;
+		return abx;
+	}   
+	
+	/**
+	 * 用于在屏幕坐标与内建坐标间转换
+	 * @param y 屏幕坐标系上的纵坐标（左上角为(0, 0))
+	 * @return 换算后的在内建坐标系上的纵坐标
+	 */
+	public int onscreeny(int y){
+		aby = y + windowsizey/2;
+		return aby;
+	}
+	
 	public Repainter(String bgloc) {
 		this.bgloc = bgloc;
 		this.bg = getToolkit().getImage(bgloc);
@@ -204,4 +224,5 @@ public class Repainter extends JPanel {
 		}
 
 	}
+	
 }

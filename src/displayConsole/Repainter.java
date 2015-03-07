@@ -28,15 +28,15 @@ public class Repainter extends JPanel {
 	public int y = 0;
 	public int rotatedegree = 0;
 	public int layer = 0;
-	private SpaceShip bufferShip;//临时变量用来存飞船
+	private SpaceShip bufferShip;// 临时变量用来存飞船
 	public int windowsizex;
 	public int windowsizey;
-	private int offsetx;//偏移量，滚屏用的
+	private int offsetx;// 偏移量，滚屏用的
 	private int offsety;
-	public int mapsizex;//地图实际大小,也是背景图的大小
+	public int mapsizex;// 地图实际大小,也是背景图的大小
 	public int mapsizey;
-	public int abx, aby;//在地图上的坐标
-	public String bgloc;//背景地址
+	public int abx, aby;// 在地图上的坐标
+	public String bgloc;// 背景地址
 	public Image bg;
 
 	public LinkedList<Element> le = new LinkedList<Element>();
@@ -54,7 +54,7 @@ public class Repainter extends JPanel {
 	 */
 	public void add(String name, int imagesize, int x, int y, double d,
 			int layer) {
-		
+
 		Element element = this.computeElement(name, imagesize, x, y, d, layer);
 		if (element != null) {
 			element.img = getToolkit().getImage(name);
@@ -63,7 +63,7 @@ public class Repainter extends JPanel {
 			element.rotatedegree = d;
 			element.layer = layer;
 			le.add(element);
-			
+
 		}
 	}
 
@@ -72,6 +72,7 @@ public class Repainter extends JPanel {
 	 * 在屏幕的指定地点添加物件，不会随屏幕卷动，主要用于血条之类的物件。 屏幕中点坐标是(0,0)
 	 * 
 	 * 由于此方法基本上用来添加UI，所以就没有imagesize，位置自行计算
+	 * 
 	 * @param name
 	 * @param x
 	 * @param y
@@ -89,26 +90,31 @@ public class Repainter extends JPanel {
 		element.layer = layer;
 		le.add(element);
 	}
-/**
- * 用于在屏幕坐标与内建坐标间转换
- * @param x 屏幕坐标系上的横坐标（左上角为(0, 0))
- * @return 换算后的在内建坐标系上的横坐标
- */
-	public int onscreenx(int x){
-		abx = x - windowsizex/2;
-		return abx;
-	}   
-	
+
 	/**
 	 * 用于在屏幕坐标与内建坐标间转换
-	 * @param y 屏幕坐标系上的纵坐标（左上角为(0, 0))
+	 * 
+	 * @param x
+	 *            屏幕坐标系上的横坐标（左上角为(0, 0))
+	 * @return 换算后的在内建坐标系上的横坐标
+	 */
+	public int onscreenx(int x) {
+		abx = x - windowsizex / 2;
+		return abx;
+	}
+
+	/**
+	 * 用于在屏幕坐标与内建坐标间转换
+	 * 
+	 * @param y
+	 *            屏幕坐标系上的纵坐标（左上角为(0, 0))
 	 * @return 换算后的在内建坐标系上的纵坐标
 	 */
-	public int onscreeny(int y){
-		aby = y + windowsizey/2;
+	public int onscreeny(int y) {
+		aby = y + windowsizey / 2;
 		return aby;
 	}
-	
+
 	public Repainter(String bgloc) {
 		this.bgloc = bgloc;
 		this.bg = getToolkit().getImage(bgloc);
@@ -117,33 +123,37 @@ public class Repainter extends JPanel {
 
 	public void paint(Graphics g) {
 
-		MainGame.cansendimage=false;
+		MainGame.cansendimage = false;
 		super.paint(g);
 		g.clearRect(0, 0, this.getWidth(), this.getHeight());
 		g.drawImage(bg, -(mapsizex / 2 - windowsizex / 2) - offsetx,
-				-(mapsizey / 2 - windowsizey / 2) + offsety, this);//背景位置，offset为0时背景中心对准屏幕中心
+				-(mapsizey / 2 - windowsizey / 2) + offsety, this);// 背景位置，offset为0时背景中心对准屏幕中心
 		for (int i = 0; i < le.size(); i++) {// Need to optimize here
-			g.drawImage(rotateImage(le.get(i).img, le.get(i).rotatedegree),
-					le.get(i).x + (windowsizex / 2),
-					(windowsizey / 2) - le.get(i).y, this);// !!!!!!
+			if (le.get(i).rotatedegree != 0) {
+				g.drawImage(rotateImage(le.get(i).img, le.get(i).rotatedegree),
+						le.get(i).x + (windowsizex / 2),
+						(windowsizey / 2) - le.get(i).y, this);
+			} else {
+				g.drawImage(le.get(i).img, le.get(i).x + (windowsizex / 2),
+						(windowsizey / 2) - le.get(i).y, this);
+			}
+			// !!!!!!
 		}// !!!!!!!!!这里也有转换坐标的部分!!!!!!!!!!!!
-		MainGame.cansendimage=true;
+		MainGame.cansendimage = true;
 	}
 
 	public static BufferedImage rotateImage(Image bufferedimage, double degree) {
 		int w = bufferedimage.getWidth(null);
 		int h = bufferedimage.getHeight(null);
-		
-		
-		
+
 		// int type = ((BufferedImage)
 		// bufferedimage).getColorModel().getTransparency();
-		if(w==-1||h==-1)
-		{
-			w=1;
-			h=1;
+		if (w == -1 || h == -1) {
+			w = 1;
+			h = 1;
+		//	System.out.println("ERROR:can't get size degree="+degree);
 		}
-		
+
 		BufferedImage img = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
 		Graphics2D graphics2d = img.createGraphics();// Key Code to implement
 														// the Transparency
@@ -203,7 +213,7 @@ public class Repainter extends JPanel {
 				bufferShip.visx = -3 * windowsizex / 8;
 			}
 		}
-		if ((bufferShip.y < -(mapsizey / 2 - windowsizey / 8) || bufferShip.y > (mapsizey / 2 - windowsizey / 8)) != true) {//快到上下边界了
+		if ((bufferShip.y < -(mapsizey / 2 - windowsizey / 8) || bufferShip.y > (mapsizey / 2 - windowsizey / 8)) != true) {// 快到上下边界了
 			if (bufferShip.visy > (3 * (windowsizey) / 8)) {
 				bufferShip.visy = 3 * windowsizey / 8;
 			} else if (bufferShip.visy < -(3 * (windowsizey) / 8)) {
@@ -224,5 +234,5 @@ public class Repainter extends JPanel {
 		}
 
 	}
-	
+
 }

@@ -15,7 +15,7 @@ public class Hanabi extends Ornament {
 
 	@Override
 	public String getImage() {
-		if(nowid<14)
+		if(nowid<13)
 		{
 			nowid++;
 			return imageID+nowid+".png";

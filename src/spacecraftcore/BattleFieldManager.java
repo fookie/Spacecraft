@@ -273,6 +273,10 @@ public class BattleFieldManager {
 			// ÖØÐÂ»æÖÆ
 			MainGame.test.repainter.repaint();
 		}
+		else
+		{
+			//System.out.println("WARNING:can't paint image when bullet:"+BulletList.size());
+		}
 	}
 
 	private void updateEnemy() {

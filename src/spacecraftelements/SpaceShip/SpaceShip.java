@@ -17,9 +17,9 @@ public abstract class SpaceShip {
 	 */
 	public int visx,visy;
 	/**
-	 * 飞船加速度，先不考虑
+	 * 飞船加速度,质量(只与移动有关)
 	 */
-	public int a;
+	public int a,m;
 	/**
 	 * 最大速度
 	 */

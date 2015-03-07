@@ -60,9 +60,9 @@ public class BattleFieldManager {
 	public BattleFieldManager(int windowsizex, int windowsizey) {
 		this.windowsizex = windowsizex;
 		this.windowsizey = windowsizey;
-		
-		//预处理
-		add(new Hanabi(0,0));
+
+		// 预处理
+		add(new Hanabi(0, 0));
 	}
 
 	/**
@@ -144,6 +144,7 @@ public class BattleFieldManager {
 	public boolean add(SpaceItem i) {
 		return ItemList.add(i);
 	}
+
 	public boolean add(Ornament o) {
 		return OList.add(o);
 	}
@@ -178,81 +179,92 @@ public class BattleFieldManager {
 	}
 
 	private void sendImage() {
-		if(MainGame.cansendimage){
-		// 清空
-		MainGame.test.repainter.le = new LinkedList<Element>();
-		// 传递飞船并计算偏移量
-		MainGame.test.repainter.computeOffset(ship);
-		
-		// 传递子弹
-		for (int i = 0; i < BulletList.size(); i++) {
-			MainGame.test.repainter.add(BulletList.get(i).ImageID,
-					BulletList.get(i).Imagesize, BulletList.get(i).x,
-					BulletList.get(i).y,
-					-getangle(BulletList.get(i).vx, BulletList.get(i).vy), 2);
-		}
-		// 传递物品
-		if (ItemList.size() != 0) {
-			for (int i = 0; i < ItemList.size(); i++) {
-				MainGame.test.repainter.add(ItemList.get(i).imageID,
-						ItemList.get(i).imagesize, ItemList.get(i).x,
-						ItemList.get(i).y, 0, 2);
-			}
-		}
-		// 传递特技
-		for (int i = 0; i < OList.size(); i++) {
-			
-			MainGame.test.repainter.add(
-					OList.get(i).getImage(),OList.get(i).imagesize, OList.get(i).x,
-					OList.get(i).y,
-					0, 0);
-			if(OList.get(i).over)
-			{
-				this.OList.remove(i);
-			}
-			
-		}
-		// 传递敌人
-		for (int i = 0; i < EnemyList.size(); i++) {
-			MainGame.test.repainter.add(EnemyList.get(i).imageID,
-					EnemyList.get(i).imagesize, EnemyList.get(i).x,
-					EnemyList.get(i).y,
-					-getangle(EnemyList.get(i).vx, EnemyList.get(i).vy), 2);
-		}
-		if(ship.health<=0)
-		{
-			MainGame.test.repainter.add_nooffset_element("Images//UI//gameover.png",-200,75, 0, 0);
-		}
-		if (ship.health > 5) {
-			MainGame.test.repainter.add_nooffset_element("Images//hp//hpover.png",
-					MainGame.test.repainter.onscreenx(0), MainGame.test.repainter.onscreeny(0), 0, 2);
-		}
-		if (ship.health == 5) {
-			MainGame.test.repainter.add_nooffset_element("Images//hp//hp5.png",
-					MainGame.test.repainter.onscreenx(0), MainGame.test.repainter.onscreeny(0), 0, 2);
-		}
-		if (ship.health == 4) {
-			MainGame.test.repainter.add_nooffset_element("Images//hp//hp4.png",
-					MainGame.test.repainter.onscreenx(0), MainGame.test.repainter.onscreeny(0), 0, 2);
-		}
-		if (ship.health == 3) {
-			MainGame.test.repainter.add_nooffset_element("Images//hp//hp3.png",
-					MainGame.test.repainter.onscreenx(0), MainGame.test.repainter.onscreeny(0), 0, 2);
-		}
-		if (ship.health == 2) {
-			MainGame.test.repainter.add_nooffset_element("Images//hp//hp2.png",
-					MainGame.test.repainter.onscreenx(0), MainGame.test.repainter.onscreeny(0), 0, 2);
-		}
-		if (ship.health == 1) {
-			MainGame.test.repainter.add_nooffset_element("Images//hp//hp1.png",
-					MainGame.test.repainter.onscreenx(0), MainGame.test.repainter.onscreeny(0), 0, 2);
-		}
-		
-		//显示武器槽
-		WeaponSlot.displayweapon(ship);
+		if (MainGame.cansendimage) {
+			// 清空
+			MainGame.test.repainter.le = new LinkedList<Element>();
+			// 传递飞船并计算偏移量
+			MainGame.test.repainter.computeOffset(ship);
 
-		// 重新绘制
-		MainGame.test.repainter.repaint();
+			// 传递子弹
+			for (int i = 0; i < BulletList.size(); i++) {
+				MainGame.test.repainter.add(BulletList.get(i).ImageID,
+						BulletList.get(i).Imagesize, BulletList.get(i).x,
+						BulletList.get(i).y,
+						-getangle(BulletList.get(i).vx, BulletList.get(i).vy),
+						2);
+			}
+			// 传递物品
+			if (ItemList.size() != 0) {
+				for (int i = 0; i < ItemList.size(); i++) {
+					MainGame.test.repainter.add(ItemList.get(i).imageID,
+							ItemList.get(i).imagesize, ItemList.get(i).x,
+							ItemList.get(i).y, 0, 2);
+				}
+			}
+			// 传递特技
+			for (int i = 0; i < OList.size(); i++) {
+
+				MainGame.test.repainter.add(OList.get(i).getImage(),
+						OList.get(i).imagesize, OList.get(i).x, OList.get(i).y,
+						0, 0);
+				if (OList.get(i).over) {
+					this.OList.remove(i);
+				}
+
+			}
+			// 传递敌人
+			for (int i = 0; i < EnemyList.size(); i++) {
+				MainGame.test.repainter.add(EnemyList.get(i).imageID,
+						EnemyList.get(i).imagesize, EnemyList.get(i).x,
+						EnemyList.get(i).y,
+						-getangle(EnemyList.get(i).vx, EnemyList.get(i).vy), 2);
+			}
+			if (ship.health <= 0) {
+				MainGame.test.repainter.add_nooffset_element(
+						"Images//UI//gameover.png", -200, 75, 0, 0);
+			}
+			if (ship.health > 5) {
+				MainGame.test.repainter.add_nooffset_element(
+						"Images//hp//hpover.png",
+						MainGame.test.repainter.onscreenx(0),
+						MainGame.test.repainter.onscreeny(0), 0, 2);
+			}
+			if (ship.health == 5) {
+				MainGame.test.repainter.add_nooffset_element(
+						"Images//hp//hp5.png",
+						MainGame.test.repainter.onscreenx(0),
+						MainGame.test.repainter.onscreeny(0), 0, 2);
+			}
+			if (ship.health == 4) {
+				MainGame.test.repainter.add_nooffset_element(
+						"Images//hp//hp4.png",
+						MainGame.test.repainter.onscreenx(0),
+						MainGame.test.repainter.onscreeny(0), 0, 2);
+			}
+			if (ship.health == 3) {
+				MainGame.test.repainter.add_nooffset_element(
+						"Images//hp//hp3.png",
+						MainGame.test.repainter.onscreenx(0),
+						MainGame.test.repainter.onscreeny(0), 0, 2);
+			}
+			if (ship.health == 2) {
+				MainGame.test.repainter.add_nooffset_element(
+						"Images//hp//hp2.png",
+						MainGame.test.repainter.onscreenx(0),
+						MainGame.test.repainter.onscreeny(0), 0, 2);
+			}
+			if (ship.health == 1) {
+				MainGame.test.repainter.add_nooffset_element(
+						"Images//hp//hp1.png",
+						MainGame.test.repainter.onscreenx(0),
+						MainGame.test.repainter.onscreeny(0), 0, 2);
+			}
+
+			// 显示武器槽
+			WeaponSlot.displayweapon(ship);
+
+			// 重新绘制
+			MainGame.test.repainter.repaint();
 		}
 	}
 
@@ -260,7 +272,7 @@ public class BattleFieldManager {
 		for (int i = 0; i < EnemyList.size(); i++) {
 			if (EnemyList.get(i).health < 0) {
 				EnemyList.get(i).giveitem();
-				add(new Hanabi(EnemyList.get(i).x,EnemyList.get(i).y));
+				add(new Hanabi(EnemyList.get(i).x, EnemyList.get(i).y));
 				EnemyList.remove(i);
 				i--;
 			} else {
@@ -284,7 +296,7 @@ public class BattleFieldManager {
 			Rectangle Shiphitbox = new Rectangle(ship.x - ship.volume / 2,
 					ship.y - ship.volume / 2, ship.volume / 2, ship.volume / 2);
 
-			if (Enemyhitbox.intersects(Shiphitbox)) {//飞机碰上怪物怪物挂掉
+			if (Enemyhitbox.intersects(Shiphitbox)) {// 飞机碰上怪物怪物挂掉
 				ship.health--;
 				EnemyList.remove(i);
 				i--;
@@ -334,38 +346,75 @@ public class BattleFieldManager {
 	}
 
 	private void updateship() {
-		if(ship.health<=0)
-		{
-			ship.x=0;
-			ship.y=0;
-			ship.visx=0;
-			ship.visy=0;
-			if(MainGame.gametime % 200 == 0)
-			{
-				add(new H_bulletblast(0,0));
+		if (ship.health <= 0) {
+			ship.x = 0;
+			ship.y = 0;
+			ship.visx = 0;
+			ship.visy = 0;
+			if (MainGame.gametime % 200 == 0) {
+				add(new H_bulletblast(0, 0));
 			}
 		}
-		
-		if (((kw && ks) || (ka && kd)||(ship.health<=0)) != true) {// 如果上下键或者左右键被被同时按下则不操作
-			if (kw && (ship.vy <= 0)) {// W向上
-				ship.vy = ship.maxv;
-			} else if (kd && (ship.vx <= 0)) {// d向右
+
+		// if (((kw && ks) || (ka && kd)||(ship.health<=0)) != true) {//
+		// 如果上下键或者左右键被被同时按下则不操作
+		// if (kw && (ship.vy <= 0)) {// W向上
+		// ship.vy = ship.maxv;
+		// } else if (kd && (ship.vx <= 0)) {// d向右
+		// ship.vx = ship.maxv;
+		// } else if (ka && (ship.vx >= 0)) {// a向左
+		// ship.vx = -ship.maxv;
+		// } else if (ks && (ship.vy >= 0)) {// s向下
+		// ship.vy = -ship.maxv;
+		// }
+		// if (!kd && !ka) {
+		// ship.vx = 0;
+		// }
+		// if (!kw && !ks) {
+		// ship.vy = 0;
+		// }
+		// }
+
+		if (ship.vx > 0) {// 下面这几行保证飞船在不按键时能停住
+			ship.vx = ship.vx - ship.m;
+		} else if (ship.vx < 0) {
+			ship.vx = ship.vx + ship.m;
+		}
+		if (ship.vy > 0) {
+			ship.vy = ship.vy - ship.m;
+		} else if (ship.vy < 0) {
+			ship.vy = ship.vy + ship.m;
+		}
+		// 下面处理按键
+		if (kw && !ks) {
+			ship.vy = ship.vy + ship.a;
+		}
+		if (ks && !kw) {
+			ship.vy = ship.vy - ship.a;
+		}
+		if (kd && !ka) {
+			ship.vx = ship.vx + ship.a;
+		}
+		if (ka && !kd) {
+			ship.vx = ship.vx - ship.a;
+		}
+
+		if (Math.abs(ship.vx) > ship.maxv) {
+			if (ship.vx > 0) {
 				ship.vx = ship.maxv;
-			} else if (ka && (ship.vx >= 0)) {// a向左
+			} else {
 				ship.vx = -ship.maxv;
-			} else if (ks && (ship.vy >= 0)) {// s向下
+			}
+		}
+		if (Math.abs(ship.vy) > ship.maxv) {
+			if (ship.vy > 0) {
+				ship.vy = ship.maxv;
+			} else {
 				ship.vy = -ship.maxv;
 			}
-			if (!kd && !ka) {
-				ship.vx = 0;
-			}		
-			if (!kw && !ks) {
-				ship.vy = 0;
-			}
 		}
-		
-		
-		
+
+		// 到了
 		if (((ship.x + ship.vx) > (mapx / 2) || (ship.x + ship.vx) < -(mapx / 2)) != true) {
 			ship.x = ship.x + ship.vx;
 			ship.visx = ship.visx + ship.vx;
@@ -477,7 +526,7 @@ public class BattleFieldManager {
 
 	public void shootprocessor(int mx, int my) {
 		// 计算大地图坐标
-		if (!paused&&ship.health>=0) {
+		if (!paused && ship.health >= 0) {
 			int cx = mx - windowsizex / 2;
 			int cy = windowsizey / 2 - my;
 			Bullet[] tBullets = new Bullet[this.ship.w1.count()];

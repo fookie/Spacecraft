@@ -5,5 +5,6 @@ public abstract class SpaceItem {
 	public int imagesize;//ÌùÍ¼´óĞ¡
 	public int x;
 	public int y;//Î»ÖÃ
+	public int timeup=600;
 	public abstract boolean getitem();
 }

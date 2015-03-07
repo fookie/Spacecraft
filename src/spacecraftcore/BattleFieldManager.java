@@ -159,6 +159,7 @@ public class BattleFieldManager {
 		// 基本计算
 		autoshoot();// 自动射击
 		updateevent();// 事件
+		updateItem();
 		updatebullet();// 更新子弹
 		updateship();// 更新飞船
 		updateEnemy();// 更新敌人
@@ -196,9 +197,15 @@ public class BattleFieldManager {
 			// 传递物品
 			if (ItemList.size() != 0) {
 				for (int i = 0; i < ItemList.size(); i++) {
-					MainGame.test.repainter.add(ItemList.get(i).imageID,
-							ItemList.get(i).imagesize, ItemList.get(i).x,
-							ItemList.get(i).y, 0, 2);
+					if ((ItemList.get(i).timeup < 30 && ItemList.get(i).timeup > 15)
+							|| (ItemList.get(i).timeup < 60 && ItemList.get(i).timeup > 45)
+							|| (ItemList.get(i).timeup < 90 && ItemList.get(i).timeup > 75)) {
+
+					} else {
+						MainGame.test.repainter.add(ItemList.get(i).imageID,
+								ItemList.get(i).imagesize, ItemList.get(i).x,
+								ItemList.get(i).y, 0, 2);
+					}
 				}
 			}
 			// 传递特技
@@ -277,6 +284,18 @@ public class BattleFieldManager {
 				i--;
 			} else {
 				EnemyList.get(i).update();
+			}
+		}
+	}
+
+	private void updateItem() {
+		if (ItemList.size() != 0) {
+			for (int i = 0; i < ItemList.size(); i++) {
+				ItemList.get(i).timeup--;
+				if (ItemList.get(i).timeup <= 0) {
+					ItemList.remove(i);
+					i--;
+				}
 			}
 		}
 	}

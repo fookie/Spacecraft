@@ -13,7 +13,7 @@ public class S_speedup extends SpaceItem{
 	}
 	@Override
 	public boolean getitem() {
-		MainGame.bm.ship.maxv=MainGame.bm.ship.maxv+6;
+		MainGame.bm.ship.maxv=MainGame.bm.ship.maxv+4;
 		MainGame.bm.add(new Speedup(MainGame.gametime));
 		return false;
 	}

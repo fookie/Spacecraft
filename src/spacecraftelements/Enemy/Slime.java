@@ -42,10 +42,10 @@ public class Slime extends Enemy {
 	@Override
 	public boolean giveitem() {
 		double r=Math.random();
-		if (r < 0.1) {
+		if (r < 0.05) {
 			MainGame.bm.add(new W_StarWeapon(x, y));
 			return true;
-		} else if(r>0.1&&r<0.2){
+		} else if(r>0.15&&r<0.2){
 			MainGame.bm.add(new H_bulletrain(x, y));
 			return true;
 		}
@@ -60,7 +60,7 @@ public class Slime extends Enemy {
 		else if(r>0.4&&r<0.5){
 			MainGame.bm.add(new H_bulletblast(x, y));
 			return true;
-		}else if (r > 0.5 && r < 0.6) {
+		}else if (r > 0.55 && r < 0.6) {
 			MainGame.bm.add(new W_Shotgun(x, y));
 			return true;
 		}else if (r > 0.6 && r < 0.61) {

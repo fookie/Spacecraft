@@ -8,7 +8,7 @@ public class Speedup extends SpaceEvent {
 	@Override
 	public boolean execute() {
 		if (MainGame.gametime - time > 400) {
-			MainGame.bm.ship.maxv = MainGame.bm.ship.maxv - 6;
+			MainGame.bm.ship.maxv = MainGame.bm.ship.maxv - 4;
 			over=true;
 		}
 		return true;

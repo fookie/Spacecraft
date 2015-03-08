@@ -35,9 +35,7 @@ public abstract class Enemy implements Updatable{
 	/**
 	 * 	敌人自更新
 	 */
-	public boolean update() {
-		return false;
-	}
+	public abstract boolean update();
 	
 	public abstract boolean giveitem();
 

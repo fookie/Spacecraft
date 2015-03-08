@@ -13,6 +13,7 @@ import displayConsole.Element;
 import displayConsole.Gamewindow;
 import displayConsole.WeaponSlot;
 import spacecraftelements.Bullets.Bullet;
+import spacecraftelements.Enemy.Bigslime;
 import spacecraftelements.Enemy.Enemy;
 import spacecraftelements.Items.H_bulletblast;
 import spacecraftelements.Items.SpaceItem;
@@ -62,7 +63,9 @@ public class BattleFieldManager {
 		this.windowsizey = windowsizey;
 
 		// ‘§¥¶¿Ì
-		add(new Hanabi(0, 0));
+		add(new Hanabi(-800, -600));
+		
+		add(new Bigslime(200,200, (int) (windowsizex*0.7), (int) (windowsizey*0.7)));
 	}
 
 	/**

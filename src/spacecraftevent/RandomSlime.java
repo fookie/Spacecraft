@@ -1,6 +1,7 @@
 package spacecraftevent;
 
 import spacecraftcore.MainGame;
+import spacecraftelements.Enemy.Bigslime;
 import spacecraftelements.Enemy.Slime;
 
 /**
@@ -13,17 +14,17 @@ public class RandomSlime extends SpaceEvent {
 	
 	@Override
 	public boolean execute() {
-		if (MainGame.gametime % 50 == 0) {
-			MainGame.bm.add(new Slime((int) (Math.random() * 1000) % mapsizex,
-					(int) (Math.random() * 1000) % mapsizey));
+		if (MainGame.gametime % 70 == 0) {
+			MainGame.bm.add(new Slime((int) (Math.random() * 3000) % mapsizex,
+					(int) (Math.random() * 3000) % mapsizey));
 		}
 		return true;
 	}
 
 	@Override
 	public boolean executenow() {
-		MainGame.bm.add(new Slime((int) (Math.random() * 1000) % mapsizex,
-				(int) (Math.random() * 1000) % mapsizey));
+		MainGame.bm.add(new Slime((int) (Math.random() * 3000) % mapsizex,
+				(int) (Math.random() * 3000) % mapsizey));
 		return true;
 	}
 

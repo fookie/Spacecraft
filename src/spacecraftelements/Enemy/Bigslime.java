@@ -2,7 +2,6 @@ package spacecraftelements.Enemy;
 
 import spacecraftcore.MainGame;
 import spacecraftelements.Bullets.BlueBullet;
-import spacecraftelements.Items.H_bulletblast;
 import spacecraftelements.Items.S_repair;
 
 public class Bigslime extends Enemy{
@@ -12,7 +11,7 @@ public class Bigslime extends Enemy{
 		super.y = y;
 		super.damage = 1;
 		super.health = 500;
-		super.v = 2;
+		super.v = 3;
 		super.volume = 100;
 		super.imageID = "Images//enemy//bigslime.png";
 		super.imagesize = 50;

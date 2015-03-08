@@ -157,7 +157,7 @@ public class BattleFieldManager {
 			System.out.println("没有加载地图，故无法更新战场数据");
 			return false;
 		}
-
+		System.out.println(MainGame.gametime+" update");
 		collisionupdate();
 		// 基本计算
 		autoshoot();// 自动射击
@@ -284,6 +284,7 @@ public class BattleFieldManager {
 	}
 
 	private void updateEnemy() {
+		System.out.println(MainGame.gametime+" updateEnemy");
 		for (int i = 0; i < EnemyList.size(); i++) {
 			if (EnemyList.get(i).health < 0) {
 				EnemyList.get(i).giveitem();
@@ -314,7 +315,7 @@ public class BattleFieldManager {
 
 	private void collisionupdate() {
 		for (int i = 0; i < EnemyList.size(); i++) {// 这个循环判断是子弹与敌人之间的碰撞
-			EnemyList.get(i).update();
+		//	EnemyList.get(i).update();
 			Enemy tEnemy = EnemyList.get(i);
 			Rectangle Enemyhitbox = new Rectangle(tEnemy.x - tEnemy.volume / 2,
 					tEnemy.y - tEnemy.volume / 2, tEnemy.volume / 2,

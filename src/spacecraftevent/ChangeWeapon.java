@@ -14,7 +14,7 @@ public class ChangeWeapon {
  * @return
  */
 	public static boolean change(int id, Weapon name) {
-		if (MainGame.bm.ship.w2 == null) {
+		if (MainGame.bm.ship.w2 == null && MainGame.bm.ship.w1 != name) {
 			MainGame.bm.ship.w2 = name;
 		} else {
 			if (MainGame.bm.ship.w1.weaponID != id

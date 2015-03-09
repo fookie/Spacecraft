@@ -3,8 +3,8 @@ package spacecraftelements.Enemy;
 import spacecraftcore.MainGame;
 import spacecraftelements.Bullets.BlueBullet;
 import spacecraftelements.Items.S_repair;
-import spacecraftelements.Ornament.Hanabi;
-import spacecraftelements.Ornament.Ornament;
+import spacecraftelements.SpecialEffect.BigBlast;
+import spacecraftelements.SpecialEffect.SpecialEffect;
 
 public class Bigslime extends Enemy{
 	int tarx,tary,mapsizex,mapsizey;
@@ -14,7 +14,7 @@ public class Bigslime extends Enemy{
 		super.damage = 1;
 		super.health = 500;
 		super.v = 3;
-		super.volume = 100;
+		super.volume = 110;
 		super.imageID = "Images//enemy//bigslime.png";
 		super.imagesize = 50;
 		this.mapsizex=mapsizex;
@@ -24,14 +24,14 @@ public class Bigslime extends Enemy{
 		super.getscore=125;
 	}
 	@Override
-	public Ornament deathwhisper() {
+	public SpecialEffect deathwhisper() {
 		MainGame.bm.add(new S_repair(x+10, y+10));
 		for(int i=-5;i<6;i++)
 		{
 			MainGame.bm.add(new BlueBullet(x, y, i,(int) Math.sqrt(20-i*i), 1));
 			MainGame.bm.add(new BlueBullet(x, y, i,-(int) Math.sqrt(20-i*i), 1));
 		}
-		return new Hanabi(x,y);
+		return new BigBlast(x,y);
 	}
 	@Override
 	public boolean update() {

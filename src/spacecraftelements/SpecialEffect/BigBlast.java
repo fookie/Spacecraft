@@ -1,15 +1,15 @@
-package spacecraftelements.Ornament;
+package spacecraftelements.SpecialEffect;
 
 /**
  * »ù´¡ÊµÌå
  */
-public class Hanabi extends Ornament {
+public class BigBlast extends SpecialEffect {
 	int nowid=1;
-	public Hanabi(int x, int y){
+	public BigBlast(int x, int y){
 		super.x = x;
 		super.y = y;
-		super.imagesize = 20;
-		super.imageID = "Images//hp//";
+		super.imagesize = 50;
+		super.imageID = "Images//SpecialEffects//BigBlast//";
 		super.over=false;
 	}
 
@@ -30,7 +30,6 @@ public class Hanabi extends Ornament {
 
 	@Override
 	public boolean update() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	}

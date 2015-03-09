@@ -18,9 +18,9 @@ import spacecraftelements.Enemy.Bigslime;
 import spacecraftelements.Enemy.Enemy;
 import spacecraftelements.Items.H_bulletblast;
 import spacecraftelements.Items.SpaceItem;
-import spacecraftelements.Ornament.Hanabi;
-import spacecraftelements.Ornament.Ornament;
 import spacecraftelements.SpaceShip.SpaceShip;
+import spacecraftelements.SpecialEffect.SmallBlast;
+import spacecraftelements.SpecialEffect.SpecialEffect;
 import spacecraftevent.SpaceEvent;
 
 /**
@@ -36,7 +36,7 @@ public class BattleFieldManager {
 	private List<Enemy> EnemyList = new LinkedList<Enemy>();
 	private List<SpaceEvent> EventList = new LinkedList<SpaceEvent>();
 	private List<SpaceItem> ItemList = new LinkedList<SpaceItem>();
-	private List<Ornament> OList = new LinkedList<Ornament>();
+	private List<SpecialEffect> OList = new LinkedList<SpecialEffect>();
 	public SpaceShip ship = null;
 	public int mapx, mapy;// 地图实际大小
 	private String bgloc;// 背景地址
@@ -44,7 +44,8 @@ public class BattleFieldManager {
 	public int autotarx, autotary;// 按住自动发炮的变量
 	public int windowsizex, windowsizey;
 	public boolean paused = false;
-	public int score=0;
+	public int score = 0;
+
 	public SpaceShip getShip() {
 		return ship;
 	}
@@ -64,9 +65,10 @@ public class BattleFieldManager {
 		this.windowsizey = windowsizey;
 
 		// 预处理
-		add(new Hanabi(-800, -600));
-		
-		add(new Bigslime(200,200, (int) (windowsizex*0.7), (int) (windowsizey*0.7)));
+		add(new SmallBlast(-800, -600));
+
+		add(new Bigslime(200, 200, (int) (windowsizex * 0.7),
+				(int) (windowsizey * 0.7)));
 	}
 
 	/**
@@ -149,7 +151,7 @@ public class BattleFieldManager {
 		return ItemList.add(i);
 	}
 
-	public boolean add(Ornament o) {
+	public boolean add(SpecialEffect o) {
 		return OList.add(o);
 	}
 
@@ -229,57 +231,37 @@ public class BattleFieldManager {
 						EnemyList.get(i).y,
 						-getangle(EnemyList.get(i).vx, EnemyList.get(i).vy), 2);
 			}
+			
+			//GameOver↓
+			
 			if (ship.health <= 0) {
-				//MainGame.test.repainter.add_nooffset_element(
-				//      "Images//UI//gameover.png", -200, 75, 0, 0);
-				MainGame.test.repainter.add_nooffset_element("Images//UI//gameoverfull.png",-(int)MainGame.srcDim.getWidth()+650,(int)MainGame.srcDim.getHeight()-350, 0, 0);
+				MainGame.test.repainter.add_nooffset_element(
+						"Images//UI//gameover.png", -200, 75, 0, 0);
+				// MainGame.test.repainter.add_nooffset_element("Images//UI//gameoverfull.png",-1280,722,
+				// 0, 0);
 			}
+
+			// 生命值判断↓
+
 			if (ship.health > 5) {
 				MainGame.test.repainter.add_nooffset_element(
-						"Images//hp//hpover.png",
+						"Images//InGameHUD//hpBar//hpover.png",
 						MainGame.test.repainter.onscreenx(0),
 						MainGame.test.repainter.onscreeny(0), 0, 2);
-			}
-			if (ship.health == 5) {
+			} else {
 				MainGame.test.repainter.add_nooffset_element(
-						"Images//hp//hp5.png",
-						MainGame.test.repainter.onscreenx(0),
-						MainGame.test.repainter.onscreeny(0), 0, 2);
-			}
-			if (ship.health == 4) {
-				MainGame.test.repainter.add_nooffset_element(
-						"Images//hp//hp4.png",
-						MainGame.test.repainter.onscreenx(0),
-						MainGame.test.repainter.onscreeny(0), 0, 2);
-			}
-			if (ship.health == 3) {
-				MainGame.test.repainter.add_nooffset_element(
-						"Images//hp//hp3.png",
-						MainGame.test.repainter.onscreenx(0),
-						MainGame.test.repainter.onscreeny(0), 0, 2);
-			}
-			if (ship.health == 2) {
-				MainGame.test.repainter.add_nooffset_element(
-						"Images//hp//hp2.png",
-						MainGame.test.repainter.onscreenx(0),
-						MainGame.test.repainter.onscreeny(0), 0, 2);
-			}
-			if (ship.health == 1) {
-				MainGame.test.repainter.add_nooffset_element(
-						"Images//hp//hp1.png",
+						"Images//InGameHUD//hpBar//hp" + ship.health + ".png",
 						MainGame.test.repainter.onscreenx(0),
 						MainGame.test.repainter.onscreeny(0), 0, 2);
 			}
 
-			// 显示武器槽
+			// 显示武器槽↓
 			WeaponSlot.displayweapon(ship);
 			Scoreprinter.printscore(score);
-			// 重新绘制
+			// 重新绘制↓
 			MainGame.test.repainter.repaint();
-		}
-		else
-		{
-			//System.out.println("WARNING:can't paint image when bullet:"+BulletList.size());
+		} else {
+			// System.out.println("WARNING:can't paint image when bullet:"+BulletList.size());
 		}
 	}
 
@@ -287,7 +269,7 @@ public class BattleFieldManager {
 		for (int i = 0; i < EnemyList.size(); i++) {
 			if (EnemyList.get(i).health < 0) {
 				add(EnemyList.get(i).deathwhisper());
-				score=score+EnemyList.get(i).getscore;
+				score = score + EnemyList.get(i).getscore;
 				EnemyList.remove(i);
 				i--;
 			} else {
@@ -314,7 +296,7 @@ public class BattleFieldManager {
 
 	private void collisionupdate() {
 		for (int i = 0; i < EnemyList.size(); i++) {// 这个循环判断是子弹与敌人之间的碰撞
-		//	EnemyList.get(i).update();
+			// EnemyList.get(i).update();
 			Enemy tEnemy = EnemyList.get(i);
 			Rectangle Enemyhitbox = new Rectangle(tEnemy.x - tEnemy.volume / 2,
 					tEnemy.y - tEnemy.volume / 2, tEnemy.volume / 2,

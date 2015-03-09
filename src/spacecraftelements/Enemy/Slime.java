@@ -8,8 +8,8 @@ import spacecraftelements.Items.S_speedup;
 import spacecraftelements.Items.W_BasicWeapon;
 import spacecraftelements.Items.W_Shotgun;
 import spacecraftelements.Items.W_StarWeapon;
-import spacecraftelements.Ornament.Hanabi;
-import spacecraftelements.Ornament.Ornament;
+import spacecraftelements.SpecialEffect.SmallBlast;
+import spacecraftelements.SpecialEffect.SpecialEffect;
 
 public class Slime extends Enemy {
 	public Slime(int x, int y) {
@@ -43,7 +43,7 @@ public class Slime extends Enemy {
 	}
 
 	@Override
-	public Ornament deathwhisper() {
+	public SpecialEffect deathwhisper() {
 		double r=Math.random();
 		if (r < 0.05) {
 			MainGame.bm.add(new W_StarWeapon(x, y));
@@ -63,6 +63,6 @@ public class Slime extends Enemy {
 		}else if (r > 0.6 && r < 0.61) {
 			MainGame.bm.add(new W_BasicWeapon(x, y));
 		}
-		return new Hanabi(x,y);
+		return new SmallBlast(x,y);
 	}
 }

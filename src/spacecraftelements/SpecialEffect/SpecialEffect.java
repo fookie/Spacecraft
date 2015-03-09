@@ -1,10 +1,10 @@
-package spacecraftelements.Ornament;
+package spacecraftelements.SpecialEffect;
 
 import spacecraftelements.Updatable;
 /**
  *		特效相关
  */
-public abstract class Ornament implements Updatable{
+public abstract class SpecialEffect implements Updatable{
 	/**
 	 * 		特效坐标
 	 */

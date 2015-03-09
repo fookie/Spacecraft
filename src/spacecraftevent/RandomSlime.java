@@ -16,6 +16,7 @@ public class RandomSlime extends SpaceEvent {
 		if (MainGame.gametime % 70 == 0) {
 			MainGame.bm.add(new Slime((int) (Math.random() * 3000) % mapsizex,
 					(int) (Math.random() * 3000) % mapsizey));
+//			MainGame.bm.add(new Bigslime((int) (Math.random() * 3000) % mapsizex, ((int) (Math.random() * 3000) % mapsizey), 1600, 1200));
 		}
 		return true;
 	}

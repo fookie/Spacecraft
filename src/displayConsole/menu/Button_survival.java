@@ -9,6 +9,7 @@ import spacecraftcore.BattleFieldManager;
 import spacecraftcore.MainGame;
 import spacecraftelements.Items.H_bulletblast;
 import spacecraftelements.SpaceShip.Palelin;
+import spacecraftevent.RandomBigSlime;
 import spacecraftevent.RandomSlime;
 
 public class Button_survival extends SButton{
@@ -51,6 +52,7 @@ public class Button_survival extends SButton{
 		//加载生存模式要素
 		MainGame.bm.add(new Palelin(0,0,0,0));
 		MainGame.bm.add(new RandomSlime(1600,1200));
+		MainGame.bm.add(new RandomBigSlime(1600,1200));
 		MainGame.bm.add(new H_bulletblast(400,400));
 		MainGame.bm.add(new H_bulletblast(400,-400));
 		MainGame.bm.add(new H_bulletblast(-400,400));

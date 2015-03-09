@@ -1,7 +1,6 @@
 package spacecraftevent;
 
 import spacecraftcore.MainGame;
-import spacecraftelements.Enemy.Bigslime;
 import spacecraftelements.Enemy.Slime;
 
 /**

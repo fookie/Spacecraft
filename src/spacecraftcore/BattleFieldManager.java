@@ -11,6 +11,7 @@ import java.util.List;
 
 import displayConsole.Element;
 import displayConsole.Gamewindow;
+import displayConsole.Scoreprinter;
 import displayConsole.WeaponSlot;
 import spacecraftelements.Bullets.Bullet;
 import spacecraftelements.Enemy.Bigslime;
@@ -43,7 +44,7 @@ public class BattleFieldManager {
 	public int autotarx, autotary;// 按住自动发炮的变量
 	public int windowsizex, windowsizey;
 	public boolean paused = false;
-
+	public int score=0;
 	public SpaceShip getShip() {
 		return ship;
 	}
@@ -157,7 +158,6 @@ public class BattleFieldManager {
 			System.out.println("没有加载地图，故无法更新战场数据");
 			return false;
 		}
-		System.out.println(MainGame.gametime+" update");
 		collisionupdate();
 		// 基本计算
 		autoshoot();// 自动射击
@@ -273,7 +273,7 @@ public class BattleFieldManager {
 
 			// 显示武器槽
 			WeaponSlot.displayweapon(ship);
-
+			Scoreprinter.printscore(score);
 			// 重新绘制
 			MainGame.test.repainter.repaint();
 		}
@@ -284,11 +284,10 @@ public class BattleFieldManager {
 	}
 
 	private void updateEnemy() {
-		System.out.println(MainGame.gametime+" updateEnemy");
 		for (int i = 0; i < EnemyList.size(); i++) {
 			if (EnemyList.get(i).health < 0) {
-				EnemyList.get(i).giveitem();
-				add(new Hanabi(EnemyList.get(i).x, EnemyList.get(i).y));
+				add(EnemyList.get(i).deathwhisper());
+				score=score+EnemyList.get(i).getscore;
 				EnemyList.remove(i);
 				i--;
 			} else {

@@ -13,6 +13,7 @@ public class H_bulletrain extends SpaceItem{
 	@Override
 	public boolean getitem() {
 		MainGame.bm.add(new BulletRain());
+		MainGame.bm.score+=15;
 		return true;
 	}
 

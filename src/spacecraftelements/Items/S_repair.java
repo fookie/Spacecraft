@@ -13,6 +13,7 @@ public class S_repair extends SpaceItem{
 	@Override
 	public boolean getitem() {
 		MainGame.bm.ship.health=MainGame.bm.ship.health+1;
+		MainGame.bm.score+=15;
 		return false;
 	}
 

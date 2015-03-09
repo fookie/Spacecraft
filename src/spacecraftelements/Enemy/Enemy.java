@@ -1,6 +1,7 @@
 package spacecraftelements.Enemy;
 
 import spacecraftelements.Updatable;
+import spacecraftelements.Ornament.Ornament;
 
 public abstract class Enemy implements Updatable{
 	/**
@@ -35,8 +36,9 @@ public abstract class Enemy implements Updatable{
 	/**
 	 * 	敌人自更新
 	 */
+	public int getscore;
 	public abstract boolean update();
 	
-	public abstract boolean giveitem();
+	public abstract Ornament deathwhisper();
 
 }

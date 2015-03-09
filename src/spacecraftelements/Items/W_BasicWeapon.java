@@ -1,5 +1,6 @@
 package spacecraftelements.Items;
 
+import spacecraftcore.MainGame;
 import spacecraftelements.Weapon.BasicWeapon;
 import spacecraftevent.ChangeWeapon;
 
@@ -14,6 +15,7 @@ public class W_BasicWeapon extends SpaceItem {
 	@Override
 	public boolean getitem() {
 		ChangeWeapon.change(0, new BasicWeapon());
+		MainGame.bm.score+=75;
 		return false;
 	}
 

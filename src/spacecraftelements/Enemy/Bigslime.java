@@ -3,6 +3,8 @@ package spacecraftelements.Enemy;
 import spacecraftcore.MainGame;
 import spacecraftelements.Bullets.BlueBullet;
 import spacecraftelements.Items.S_repair;
+import spacecraftelements.Ornament.Hanabi;
+import spacecraftelements.Ornament.Ornament;
 
 public class Bigslime extends Enemy{
 	int tarx,tary,mapsizex,mapsizey;
@@ -19,16 +21,17 @@ public class Bigslime extends Enemy{
 		this.mapsizey=mapsizey;
 		tarx=(int) (Math.random()*mapsizex)*(-1)^x;
 		tary=(int) (Math.random()*mapsizey)*(-1)^y;
+		super.getscore=125;
 	}
 	@Override
-	public boolean giveitem() {
+	public Ornament deathwhisper() {
 		MainGame.bm.add(new S_repair(x+10, y+10));
 		for(int i=-5;i<6;i++)
 		{
 			MainGame.bm.add(new BlueBullet(x, y, i,(int) Math.sqrt(20-i*i), 1));
 			MainGame.bm.add(new BlueBullet(x, y, i,-(int) Math.sqrt(20-i*i), 1));
 		}
-		return false;
+		return new Hanabi(x,y);
 	}
 	@Override
 	public boolean update() {

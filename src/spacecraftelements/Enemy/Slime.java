@@ -8,6 +8,8 @@ import spacecraftelements.Items.S_speedup;
 import spacecraftelements.Items.W_BasicWeapon;
 import spacecraftelements.Items.W_Shotgun;
 import spacecraftelements.Items.W_StarWeapon;
+import spacecraftelements.Ornament.Hanabi;
+import spacecraftelements.Ornament.Ornament;
 
 public class Slime extends Enemy {
 	public Slime(int x, int y) {
@@ -19,6 +21,7 @@ public class Slime extends Enemy {
 		super.volume = 40;
 		super.imageID = "Images//enemy//slime.png";
 		super.imagesize = 20;
+		super.getscore=9;
 	}
 
 	public boolean update() {
@@ -40,36 +43,26 @@ public class Slime extends Enemy {
 	}
 
 	@Override
-	public boolean giveitem() {
+	public Ornament deathwhisper() {
 		double r=Math.random();
 		if (r < 0.05) {
 			MainGame.bm.add(new W_StarWeapon(x, y));
-			return true;
 		} else if(r>0.15&&r<0.2){
 			MainGame.bm.add(new H_bulletrain(x, y));
-			return true;
 		}
 		else if(r>0.2&&r<0.25){
 			MainGame.bm.add(new S_speedup(x, y));
-			return true;
 		}
 		else if(r>0.3&&r<0.4){
 			MainGame.bm.add(new S_repair(x, y));
-			return true;
 		}
 		else if(r>0.4&&r<0.5){
 			MainGame.bm.add(new H_bulletblast(x, y));
-			return true;
 		}else if (r > 0.55 && r < 0.6) {
 			MainGame.bm.add(new W_Shotgun(x, y));
-			return true;
 		}else if (r > 0.6 && r < 0.61) {
 			MainGame.bm.add(new W_BasicWeapon(x, y));
-			return true;
 		}
-		else
-		{
-			return false;
-		}
+		return new Hanabi(x,y);
 	}
 }

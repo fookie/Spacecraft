@@ -234,9 +234,15 @@ public class BattleFieldManager {
 			
 			//GameOver¡ý
 			
-			if (ship.health <= 0) {
+			if (ship.health <= 0&&score<10000) {
 				MainGame.test.repainter.add_nooffset_element(
 						"Images//UI//gameover.png", -200, 75, 0, 0);
+				// MainGame.test.repainter.add_nooffset_element("Images//UI//gameoverfull.png",-1280,722,
+				// 0, 0);
+			}
+			if (ship.health <= 0&&score>10000) {
+				MainGame.test.repainter.add_nooffset_element(
+						"Images//UI//win.png", -200, 75, 0, 0);
 				// MainGame.test.repainter.add_nooffset_element("Images//UI//gameoverfull.png",-1280,722,
 				// 0, 0);
 			}
@@ -355,7 +361,7 @@ public class BattleFieldManager {
 	}
 
 	private void updateship() {
-		if (ship.health <= 0) {
+		if (ship.health <= 0||score>10000) {
 			ship.x = 0;
 			ship.y = 0;
 			ship.visx = 0;

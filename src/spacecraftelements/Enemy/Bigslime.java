@@ -19,8 +19,8 @@ public class Bigslime extends Enemy{
 		super.imagesize = 50;
 		this.mapsizex=mapsizex;
 		this.mapsizey=mapsizey;
-		tarx=(int) (Math.random()*mapsizex)*(-1)^x;
-		tary=(int) (Math.random()*mapsizey)*(-1)^y;
+		tarx=(int) (Math.random()*mapsizex*0.75)*(-1)^x;
+		tary=(int) (Math.random()*mapsizey*0.75)*(-1)^y;
 		super.getscore=125;
 	}
 	@Override
@@ -36,10 +36,9 @@ public class Bigslime extends Enemy{
 	@Override
 	public boolean update() {
 		
-		if (x == tarx && y == tary) {
-			tarx=(int) (Math.random()*mapsizex)*(-1)^x;
-			tary=(int) (Math.random()*mapsizey)*(-1)^y;
-			
+		if (Math.abs(x - tarx)<20 && Math.abs(y - tary)<20) {
+			tarx=(int) (Math.random()*mapsizex*0.75)*(-1)^x;
+			tary=(int) (Math.random()*mapsizey*0.75)*(-1)^y;
 			return false;
 		}
 		int x1, y1;

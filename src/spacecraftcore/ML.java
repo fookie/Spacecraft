@@ -9,7 +9,7 @@ public class ML implements MouseMotionListener,MouseListener{
     public int mx,my;
     
     
-	public void mouseDragged(MouseEvent e) {
+	public void mouseDragged(MouseEvent e) {//hole the mouse button to auto shoot
 		mx=e.getX();
 		my=e.getY();
 		MainGame.bm.ml=true;

@@ -3,7 +3,6 @@ package spacecraftelements.Bullets;
 
 public class BlueBullet extends Bullet{
 	public BlueBullet(int x,int y,int vx,int vy, int f){
-		//设定该子弹属性
 		super.x=x;
 		super.y=y;
 		super.vx=vx;

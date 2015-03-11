@@ -5,7 +5,7 @@ package spacecraftelements;
  */
 public interface Updatable {
 	/**
-	 * @return 是否成功更新
+	 * @return 是否成功更新//update succfully
 	 */
 	public abstract boolean update();
 }

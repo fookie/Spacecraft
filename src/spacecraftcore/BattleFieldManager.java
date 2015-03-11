@@ -38,10 +38,10 @@ public class BattleFieldManager {
 	private List<SpaceItem> ItemList = new LinkedList<SpaceItem>();
 	private List<SpecialEffect> OList = new LinkedList<SpecialEffect>();
 	public SpaceShip ship = null;
-	public int mapx, mapy;// 地图实际大小
-	private String bgloc;// 背景地址
+	public int mapx, mapy;// 地图实际大小//mapsize
+	private String bgloc;// 背景地址//background image location
 	private DataInputStream mapin;
-	public int autotarx, autotary;// 按住自动发炮的变量
+	public int autotarx, autotary;// 按住自动发炮的变量//
 	public int windowsizex, windowsizey;
 	public boolean paused = false;
 	public int score = 0;
@@ -55,7 +55,8 @@ public class BattleFieldManager {
 	}
 
 	/**
-	 * 在这里输入输入窗口大小
+	 * 
+	 * 在这里输入输入窗口大小</br>BattlefieldManager get the windowsize here
 	 * 
 	 * @param windowsizex
 	 * @param windowsizey
@@ -64,7 +65,7 @@ public class BattleFieldManager {
 		this.windowsizex = windowsizex;
 		this.windowsizey = windowsizey;
 
-		// 预处理
+		// 预处理//load image to prevent lag
 		add(new SmallBlast(-800, -600));
 
 		add(new Bigslime(200, 200, (int) (windowsizex * 0.7),
@@ -72,7 +73,7 @@ public class BattleFieldManager {
 	}
 
 	/**
-	 * 
+	 * input a map(*.smp),and it will return  a frame,if the map has broken it will return null
 	 * 输入一个地图，输出一个窗口。地图有问题return null
 	 * 
 	 * @param mapaddress
@@ -83,8 +84,8 @@ public class BattleFieldManager {
 			mapin = new DataInputStream(new BufferedInputStream(
 					new FileInputStream(mapaddress)));
 		} catch (FileNotFoundException e) {
-			System.out.println(mapaddress + " 不存在，故无法加载地图");
-			e.printStackTrace();// 会出现红字
+			System.out.println(mapaddress + " 不存在，故无法加载地图");//(chinese:XX is not exist ,can't load the map)
+			e.printStackTrace();// 会出现红字//print StackTrace
 			return null;
 		}
 		try {
@@ -92,19 +93,19 @@ public class BattleFieldManager {
 			mapx = mapin.readInt();
 			mapy = mapin.readInt();
 			System.out.println("正在处理" + mapaddress + "\n背景地址：" + bgloc
-					+ "地图实际大小：" + mapx + "x" + mapy);
+					+ "地图实际大小：" + mapx + "x" + mapy);//(Chinese Loading XXX ,location XXX mapsize:XXX)
 		} catch (IOException e1) {
-			System.out.println("在读取地图:" + mapaddress + "时,无法获取基本信息，故无法加载地图");
+			System.out.println("在读取地图:" + mapaddress + "时,无法获取基本信息，故无法加载地图");//(Chinese :The map XXX has broken ,can't load the map)
 			e1.printStackTrace();
 			return null;
 		}
 		try {
 			mapin.close();
 		} catch (IOException e) {
-			System.out.println("在读取地图:" + mapaddress + "时,无法关闭流，读取失败。");
+			System.out.println("在读取地图:" + mapaddress + "时,无法关闭流，读取失败。");//(Chinese can't close the stream,error)
 			e.printStackTrace();
 		}
-		System.out.println("读取完成");
+		System.out.println("读取完成");//(finished)
 		return new Gamewindow(bgloc, mapx, mapy, windowsizex, windowsizey);
 	}
 
@@ -116,7 +117,7 @@ public class BattleFieldManager {
 	 * 添加子弹
 	 * 
 	 * @param Bullet
-	 * @return 是否成功添加
+	 * @return 是否成功添加(if it load successfully)
 	 */
 	public boolean add(Bullet b) {
 		return BulletList.add(b);
@@ -126,7 +127,7 @@ public class BattleFieldManager {
 	 * 添加SpaceShip，只能添加一次
 	 * 
 	 * @param SpaceShip
-	 * @return 是否成功添加
+	 * @return 是否成功添加(if it load successfully)
 	 */
 	public boolean add(SpaceShip s) {
 		if (ship == null) {
@@ -141,7 +142,7 @@ public class BattleFieldManager {
 	 * 添加敌人
 	 * 
 	 * @param Enemy
-	 * @return 是否成功添加
+	 * @return 是否成功添加(if it load successfully)
 	 */
 	public boolean add(Enemy e) {
 		return EnemyList.add(e);
@@ -157,12 +158,12 @@ public class BattleFieldManager {
 
 	public boolean update() {
 		if (bgloc == null) {
-			System.out.println("没有加载地图，故无法更新战场数据");
+			System.out.println("没有加载地图，故无法更新战场数据");//(no map ,can;t update)
 			return false;
 		}
 		collisionupdate();
 		// 基本计算
-		autoshoot();// 自动射击
+		autoshoot();// 自动射击//(Chinese is the translate of the method name)
 		updateevent();// 事件
 		updateItem();
 		updatebullet();// 更新子弹
@@ -185,13 +186,13 @@ public class BattleFieldManager {
 	}
 
 	private void sendImage() {
-		if (MainGame.cansendimage) {
-			// 清空
+		if (MainGame.cansendimage) {//"can send image"means Repainter is ready for painting 
+			// 清空//clear the image
 			MainGame.test.repainter.le = new LinkedList<Element>();
-			// 传递飞船并计算偏移量
+			// 传递飞船并计算偏移量//compute offset
 			MainGame.test.repainter.computeOffset(ship);
 
-			// 传递子弹
+			// 传递子弹//send bullet to screen
 			for (int i = 0; i < BulletList.size(); i++) {
 				MainGame.test.repainter.add(BulletList.get(i).ImageID,
 						BulletList.get(i).Imagesize, BulletList.get(i).x,
@@ -199,7 +200,7 @@ public class BattleFieldManager {
 						-getangle(BulletList.get(i).vx, BulletList.get(i).vy),
 						2);
 			}
-			// 传递物品
+			// 传递物品//send items to screen
 			if (ItemList.size() != 0) {
 				for (int i = 0; i < ItemList.size(); i++) {
 					if ((ItemList.get(i).timeup < 30 && ItemList.get(i).timeup > 15)
@@ -213,7 +214,7 @@ public class BattleFieldManager {
 					}
 				}
 			}
-			// 传递特技
+			// 传递特技//send Ornament to screen
 			for (int i = 0; i < OList.size(); i++) {
 
 				MainGame.test.repainter.add(OList.get(i).getImage(),
@@ -224,7 +225,7 @@ public class BattleFieldManager {
 				}
 
 			}
-			// 传递敌人
+			// 传递敌人//send enemy to screen
 			for (int i = 0; i < EnemyList.size(); i++) {
 				MainGame.test.repainter.add(EnemyList.get(i).imageID,
 						EnemyList.get(i).imagesize, EnemyList.get(i).x,
@@ -243,7 +244,7 @@ public class BattleFieldManager {
 						"Images//UI//win.png", -200, 75, 0, 0);
 			}
 
-			// 生命值判断↓
+			// 生命值判断↓//Hp
 
 			if (ship.health > 5) {
 				MainGame.test.repainter.add_nooffset_element(
@@ -257,10 +258,10 @@ public class BattleFieldManager {
 						MainGame.test.repainter.onscreeny(0), 0, 2);
 			}
 
-			// 显示武器槽↓
+			// 显示武器槽↓//displatweapon
 			WeaponSlot.displayweapon(ship);
 			Scoreprinter.printscore(score);
-			// 重新绘制↓
+			// 重新绘制↓//repaint
 			MainGame.test.repainter.repaint();
 		} else {
 			// System.out.println("WARNING:can't paint image when bullet:"+BulletList.size());
@@ -293,11 +294,11 @@ public class BattleFieldManager {
 	}
 
 	/**
-	 * 计算碰撞
+	 * 计算碰撞compute collision 	
 	 */
 
 	private void collisionupdate() {
-		for (int i = 0; i < EnemyList.size(); i++) {// 这个循环判断是子弹与敌人之间的碰撞
+		for (int i = 0; i < EnemyList.size(); i++) {// 这个循环判断是子弹与敌人之间的碰撞//collision between enemy and bullet
 			// EnemyList.get(i).update();
 			Enemy tEnemy = EnemyList.get(i);
 			Rectangle Enemyhitbox = new Rectangle(tEnemy.x - tEnemy.volume / 2,
@@ -307,7 +308,7 @@ public class BattleFieldManager {
 			Rectangle Shiphitbox = new Rectangle(ship.x - ship.volume / 2,
 					ship.y - ship.volume / 2, ship.volume / 2, ship.volume / 2);
 
-			if (Enemyhitbox.intersects(Shiphitbox)) {// 飞机碰上怪物怪物挂掉
+			if (Enemyhitbox.intersects(Shiphitbox)) {// 飞机碰上怪物怪物挂掉//Enemy hit the ship
 				ship.health--;
 				EnemyList.remove(i);
 				i--;
@@ -340,12 +341,13 @@ public class BattleFieldManager {
 
 	/**
 	 * 移动子弹并且自动移除出界子弹
+	 * update bullet and remove the bullet which is out of map
 	 */
 	private void updatebullet() {
 		for (int i = 0; i < BulletList.size(); i++) {
 			BulletList.get(i).update();
 			// 计算部分
-			// 超出边界
+			// 超出边界out of map
 			if (BulletList.get(i).x > (mapx / 2)
 					|| BulletList.get(i).x < -(mapx / 2)
 					|| BulletList.get(i).y > (mapy / 2)
@@ -386,7 +388,7 @@ public class BattleFieldManager {
 		// }
 		// }
 
-		if (ship.vx > 0) {// 下面这几行保证飞船在不按键时能停住
+		if (ship.vx > 0) {// 下面这几行保证飞船在不按键时能停住this lines will stop the ship when player do not press any button
 			ship.vx = ship.vx - ship.m;
 		} else if (ship.vx < 0) {
 			ship.vx = ship.vx + ship.m;
@@ -396,7 +398,7 @@ public class BattleFieldManager {
 		} else if (ship.vy < 0) {
 			ship.vy = ship.vy + ship.m;
 		}
-		// 下面处理按键
+		// 下面处理按键//add a to the v
 		if (kw && !ks) {
 			ship.vy = ship.vy + ship.a;
 		}
@@ -410,7 +412,7 @@ public class BattleFieldManager {
 			ship.vx = ship.vx - ship.a;
 		}
 
-		if (Math.abs(ship.vx) > ship.maxv) {
+		if (Math.abs(ship.vx) > ship.maxv) {//ship can't be faster than its max speed
 			if (ship.vx > 0) {
 				ship.vx = ship.maxv;
 			} else {
@@ -447,6 +449,7 @@ public class BattleFieldManager {
 	public long pressedtime = 0;
 
 	/**
+	 * compute angle
 	 * 
 	 * @param x
 	 * @param y
@@ -493,6 +496,7 @@ public class BattleFieldManager {
 	}
 
 	/**
+	 * The "KL" use this to send imformation to this class
 	 * 这个是管理按键的，注意：无论是按下还是松开都会触发这个!
 	 * 
 	 * @param i
@@ -514,6 +518,7 @@ public class BattleFieldManager {
 	}
 
 	/**
+	 * this method will make the ship always face the cursor
 	 * 这个负责船体旋转的视觉效果
 	 * 
 	 * @param x
@@ -526,7 +531,7 @@ public class BattleFieldManager {
 		currentangle = -getangle(t1, t2);
 
 	}
-
+	//hold the mouse button ,ship will auto shoot
 	public void autoshoot() {
 
 		if (ml && (MainGame.gametime - pressedtime) % ship.w1.cd == 0) {
@@ -536,7 +541,6 @@ public class BattleFieldManager {
 	}
 
 	public void shootprocessor(int mx, int my) {
-		// 计算大地图坐标
 		if (!paused && ship.health >= 0) {
 			int cx = mx - windowsizex / 2;
 			int cy = windowsizey / 2 - my;

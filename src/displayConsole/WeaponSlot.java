@@ -2,7 +2,10 @@ package displayConsole;
 
 import spacecraftcore.MainGame;
 import spacecraftelements.SpaceShip.SpaceShip;
-
+/**
+ * @author Paulay
+ *
+ */
 public class WeaponSlot {
 	public static String emptyslot = "Images//InGameHUD//Weaponslot//emptyslot.png";
 	

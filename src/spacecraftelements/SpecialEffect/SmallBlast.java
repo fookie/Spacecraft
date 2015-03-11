@@ -1,7 +1,7 @@
 package spacecraftelements.SpecialEffect;
 
 /**
- * 基础实体
+ * 基础特效
  */
 public class SmallBlast extends SpecialEffect {
 	int nowid=1;

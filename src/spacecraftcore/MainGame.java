@@ -14,7 +14,7 @@ import displayConsole.menu.Menuwindow;
  */
 
 public class MainGame {
-	public static int gamestatus=0;//0菜单状态，1游戏状态
+	public static int gamestatus=0;//0菜单状态，1游戏状态//0:menu mode 1:gamemode
 	public static BattleFieldManager bm;
 	public static Gamewindow test;
 	public static Menuwindow mainmenu;
@@ -24,8 +24,8 @@ public class MainGame {
 	public static Dimension srcDim = Toolkit.getDefaultToolkit().getScreenSize();
 
 	public static void main(String[] args) {
-		mt = new Thread(new SpaceTimmer());//新建线程
-		srcDim = Toolkit.getDefaultToolkit().getScreenSize();   //获取屏幕分辨率
+		mt = new Thread(new SpaceTimmer());//新建线程//new thread
+		srcDim = Toolkit.getDefaultToolkit().getScreenSize();   //获取屏幕分辨率//get screensize
 		mainmenu=new Menuwindow("Images//UI//menubg.jpg",srcDim.width,srcDim.height);
 		mainmenu.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {

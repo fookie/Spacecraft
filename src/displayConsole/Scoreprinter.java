@@ -1,7 +1,11 @@
 package displayConsole;
 
 import spacecraftcore.MainGame;
-
+/**
+ * show score
+ * @author hale
+ *
+ */
 public class Scoreprinter {
 	public static void printscore(int s)
 	{

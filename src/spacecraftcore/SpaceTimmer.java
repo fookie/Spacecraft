@@ -1,7 +1,9 @@
 package spacecraftcore;
 
 public class SpaceTimmer implements Runnable {
-	
+	/**
+	 * Game thread
+	 */
 	private int sleeping_time=19;
 	@Override
 	public void run(){

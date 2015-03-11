@@ -28,6 +28,8 @@ public class Slime extends Enemy {
 		if (x == MainGame.bm.getShip().x && y == MainGame.bm.getShip().y) {
 			return false;
 		}
+		if(hit==true){this.imageID = "Images//enemy//slime1.png";hit=false;}
+		else {this.imageID = "Images//enemy//slime.png";}//hint when hit
 		int x1, y1;
 		double ratiox, ratioy, third;
 		x1 = MainGame.bm.getShip().x - x;

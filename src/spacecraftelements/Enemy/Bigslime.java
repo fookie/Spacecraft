@@ -41,6 +41,8 @@ public class Bigslime extends Enemy{
 			tary=(int) (Math.random()*mapsizey*0.75)*(-1)^y;
 			return false;
 		}
+		if(hit==true){this.imageID = "Images//enemy//bigslime1.png";hit=false;}
+		else {this.imageID = "Images//enemy//bigslime.png";}//hint when hit
 		int x1, y1;
 		double ratiox, ratioy, third;
 		x1 = tarx - x;

@@ -38,6 +38,7 @@ public abstract class Enemy implements Updatable{
 	 */
 	public int getscore;
 	public abstract boolean update();
+	public boolean hit=false;
 	
 	public abstract SpecialEffect deathwhisper();
 

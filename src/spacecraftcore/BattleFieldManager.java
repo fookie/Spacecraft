@@ -308,7 +308,7 @@ public class BattleFieldManager {
 			Rectangle Shiphitbox = new Rectangle(ship.x - ship.volume / 2,
 					ship.y - ship.volume / 2, ship.volume / 2, ship.volume / 2);
 
-			if (Enemyhitbox.intersects(Shiphitbox)) {// 飞机碰上怪物怪物挂掉//Enemy hit the ship
+			if (Enemyhitbox.intersects(Shiphitbox)) {// 飞机碰上怪物怪物挂掉//Enemy hit the ship then delete it
 				ship.health--;
 				EnemyList.remove(i);
 				i--;
@@ -322,6 +322,9 @@ public class BattleFieldManager {
 
 				if (Enemyhitbox.intersects(Bullethitbox)) {
 					tEnemy.health = tEnemy.health - tBullet.damage;
+					//tEnemy.imageID = "Images//enemy//slime1.png";
+					//tEnemy.imageID = "Images//enemy//slime.png";
+                    tEnemy.hit = true;
 					BulletList.remove(j);
 					j--;
 				}

@@ -25,17 +25,6 @@ public class Button_exit extends SButton {
 		if (status == 0) {
 			return Default;
 		} else if (status == 1) {
-			// if(MainGame.gametime%12==0)
-			// {
-			// f=0;
-			// }
-			// else if(MainGame.gametime%12==4)
-			// {
-			// f=1;
-			// }else if(MainGame.gametime%12==8)
-			// {
-			// f=2;
-			// }
 			f = 0;
 			return over + f + ".png";
 		} else {
@@ -45,9 +34,6 @@ public class Button_exit extends SButton {
 
 	@Override
 	public boolean click() {
-		// 展开另外两个按钮
-		// MainGame.mainmenu.addbutton(new Button_survival(-320,300));
-		// MainGame.mainmenu.addbutton(new Button_story(-320,230));
 		System.exit(0);
 		return false;
 	}

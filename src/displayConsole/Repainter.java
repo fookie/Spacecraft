@@ -13,8 +13,9 @@ import spacecraftcore.MainGame;
 import spacecraftelements.SpaceShip.SpaceShip;
 
 /**
- * 
- * @author EveLIn
+ * 注意：由于这是项目初期的类，后来由多人多次修改，因此内容相对混乱，但因为在多处使用，难以下手优化。<br/>
+ * Attention: As this is a class written on the initial stage of the project and have been edited by different persons later, the content may be confused. But we have used this in many parts of the program, thus it's hard to optimize this part for us now. 
+ * @Initialauthor EveLIn
  *
  */
 
@@ -28,22 +29,23 @@ public class Repainter extends JPanel {
 	public int y = 0;
 	public int rotatedegree = 0;
 	public int layer = 0;
-	private SpaceShip bufferShip;// 临时变量用来存飞船
+	private SpaceShip bufferShip;// 临时变量用来存飞船 //A temporary variable to store the ship.
 	public int windowsizex;
 	public int windowsizey;
-	private int offsetx;// 偏移量，滚屏用的
+	private int offsetx;// 偏移量，滚屏用的           //The offset used to scroll the screen.
 	private int offsety;
-	public int mapsizex;// 地图实际大小,也是背景图的大小
+	public int mapsizex;// 地图实际大小,也是背景图的大小	//Size of background pic.
 	public int mapsizey;
-	public int abx, aby;// 在地图上的坐标
-	public String bgloc;// 背景地址
+	public int abx, aby;// 在地图上的坐标					//Coordinate on the MAP.
+	public String bgloc;// 背景地址							//Location of background.
 	public Image bg;
 
 	public LinkedList<Element> le = new LinkedList<Element>();
 
 	/**
 	 * 
-	 * 在游戏大地图上添加物件，会跟随屏幕卷动。
+	 * 在游戏大地图上添加物件，会跟随屏幕卷动。<br/>
+	 * This part is to add items on the map, they can scroll with screen.
 	 * 
 	 * @param name
 	 * @param imagesize
@@ -69,10 +71,10 @@ public class Repainter extends JPanel {
 
 	/**
 	 * 
-	 * 在屏幕的指定地点添加物件，不会随屏幕卷动，主要用于血条之类的物件。 屏幕中点坐标是(0,0)
-	 * 
-	 * 由于此方法基本上用来添加UI，所以就没有imagesize，位置自行计算
-	 * 
+	 * 在屏幕的指定地点添加物件，不会随屏幕卷动，主要用于血条之类的物件。 屏幕中点坐标是(0,0)<br/>
+	 * This part is to add items on the specify positions. They won't scroll with screen. Mostly used by HPBar and such UI elements and the midpoint of screen is the origin.<br/>
+	 * 由于此方法基本上用来添加UI，所以就没有imagesize，位置自行计算。注：这点属于开始的设计缺陷，为了方便使用，下方已添加转换用方法 <br/>
+	 * Due to this method is used to add UI elements, it has no imagesize parameter, and the positions should be calculated by programmer. Note: This is the drawback of early vision. For the consideration of convenience, the following part is the converting method.   
 	 * @param name
 	 * @param x
 	 * @param y
@@ -92,11 +94,10 @@ public class Repainter extends JPanel {
 	}
 
 	/**
-	 * 用于在屏幕坐标与内建坐标间转换
-	 * 
-	 * @param x
-	 *            屏幕坐标系上的横坐标（左上角为(0, 0))
-	 * @return 换算后的在内建坐标系上的横坐标
+	 * 用于在屏幕坐标与内建坐标间转换（横坐标）<br/>
+	 * Used to convert coordinates of on screen to coordinates on the maps.(x-coordinate)  
+	 * @param x  屏幕坐标系上的横坐标（左上角为(0, 0)) <br/> The x-coordinates on screen. （The top left corner of screen is the origin.)
+	 * @return 换算后的在内建坐标系上的横坐标<br/> The x-coordinates on map.
 	 */
 	public int onscreenx(int x) {
 		abx = x - windowsizex / 2;
@@ -104,10 +105,9 @@ public class Repainter extends JPanel {
 	}
 
 	/**
-	 * 用于在屏幕坐标与内建坐标间转换
+	 * 用于在屏幕坐标与内建坐标间转换（纵坐标）<br/>
 	 * 
-	 * @param y
-	 *            屏幕坐标系上的纵坐标（左上角为(0, 0))
+	 * @param y 屏幕坐标系上的纵坐标（左上角为(0, 0))
 	 * @return 换算后的在内建坐标系上的纵坐标
 	 */
 	public int onscreeny(int y) {
@@ -127,8 +127,8 @@ public class Repainter extends JPanel {
 		super.paint(g);
 		g.clearRect(0, 0, this.getWidth(), this.getHeight());
 		g.drawImage(bg, -(mapsizex / 2 - windowsizex / 2) - offsetx,
-				-(mapsizey / 2 - windowsizey / 2) + offsety, this);// 背景位置，offset为0时背景中心对准屏幕中心
-		for (int i = 0; i < le.size(); i++) {// Need to optimize here
+				-(mapsizey / 2 - windowsizey / 2) + offsety, this);// 背景位置，offset为0时背景中心对准屏幕中心  //Position of background texture. When the offset value is 0, it's aligned to the midpoint of screen.
+		for (int i = 0; i < le.size(); i++) {
 			if (le.get(i).rotatedegree != 0) {
 				g.drawImage(rotateImage(le.get(i).img, le.get(i).rotatedegree),
 						le.get(i).x + (windowsizex / 2),
@@ -138,7 +138,7 @@ public class Repainter extends JPanel {
 						(windowsizey / 2) - le.get(i).y, this);
 			}
 			// !!!!!!
-		}// !!!!!!!!!这里也有转换坐标的部分!!!!!!!!!!!!
+		}// !!!!!!!!!这里也有转换坐标的部分!!!!!!!!!!!!  //Attention: This part contains coordinate conversion.
 		MainGame.cansendimage = true;
 	}
 
@@ -146,25 +146,17 @@ public class Repainter extends JPanel {
 		int w = bufferedimage.getWidth(null);
 		int h = bufferedimage.getHeight(null);
 
-		// int type = ((BufferedImage)
-		// bufferedimage).getColorModel().getTransparency();
 		if (w == -1 || h == -1) {
 			w = 1;
 			h = 1;
-		//	System.out.println("ERROR:can't get size degree="+degree);
 		}
 
 		BufferedImage img = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
-		Graphics2D graphics2d = img.createGraphics();// Key Code to implement
-														// the Transparency
+		Graphics2D graphics2d = img.createGraphics();// Key Code to implement the Transparency
 		img = graphics2d.getDeviceConfiguration().createCompatibleImage(w, h,
 				Transparency.TRANSLUCENT);
 		graphics2d.dispose();
 		graphics2d = img.createGraphics();
-		// (graphics2d = (img = new BufferedImage(w, h, type))
-		// .createGraphics()).setRenderingHint(
-		// RenderingHints.KEY_INTERPOLATION,
-		// RenderingHints.VALUE_INTERPOLATION_BILINEAR);
 		graphics2d.rotate(Math.toRadians(degree), w / 2, h / 2);
 		graphics2d.drawImage(bufferedimage, 0, 0, null);
 		graphics2d.dispose();
@@ -172,15 +164,15 @@ public class Repainter extends JPanel {
 	}
 
 	/**
-	 * 组装一个以相对坐标存储的元素
-	 * 
+	 * 组装一个以相对坐标存储的元素<br/>
+	 * Create an element to store relative coordinates.  
 	 * @author Hale
 	 * @param name
 	 * @param x
 	 * @param y
 	 * @param d
 	 * @param layer
-	 * @return 以相对坐标存储的元素
+	 * @return 以相对坐标存储的元素<br/>The element stores relative coordinates.
 	 */
 	private Element computeElement(String name, int Imagesize, int x, int y,
 			double d, int layer) {
@@ -188,7 +180,6 @@ public class Repainter extends JPanel {
 				|| ((x - offsetx) > windowsizex / 2)
 				|| (y - offsety) < -windowsizey / 2
 				|| (y - offsety) > windowsizey / 2) {
-			// System.out.println(name+"out");
 			return null;
 		}
 		Element e = new Element(name, x - offsetx - Imagesize, y - offsety
@@ -198,8 +189,8 @@ public class Repainter extends JPanel {
 	}
 
 	/**
-	 * 计算飞船可视坐标与内建坐标的偏差，为下一步生成元素做准备
-	 * 
+	 * 计算飞船可视坐标与内建坐标的偏差，为下一步生成元素做准备<br/>
+	 * Compute the offset between screen coordinates and map coordinates of the SHIP.
 	 * @param s
 	 * @return
 	 * @author Hale
@@ -224,7 +215,7 @@ public class Repainter extends JPanel {
 		this.add_nooffset_element(bufferShip.ImageID, bufferShip.visx
 				- bufferShip.Imagesize, bufferShip.visy + bufferShip.Imagesize,
 				bufferShip.angle, 2);
-		// 计算偏差
+		// 计算偏差 //Compute the offset
 		offsetx = bufferShip.x - bufferShip.visx;
 		offsety = bufferShip.y - bufferShip.visy;
 		if (offsetx == 0 && offsety == 0)

@@ -9,8 +9,8 @@ import displayConsole.Element;
 import displayConsole.Repainter;
 
 /**
- * 带菜单的窗口，可以放入按钮
- * 
+ * 带菜单的窗口，可以放入按钮<br/>
+ * This is a window with menu, we can put buttons on it.
  * @author Hale
  *
  */
@@ -25,8 +25,8 @@ public class Menuwindow extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 这部分其实是和GameMenu一样的
-	 * 
+	 * 这部分其实是和GameMenu一样的<br/>
+	 * This part is same as GameMenu
 	 * @param bgloc
 	 * @param windowsizex
 	 * @param windowsizey
@@ -41,19 +41,19 @@ public class Menuwindow extends JFrame {
 		this.setBounds(0, 0, windowsizex, windowsizey);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
-		this.setUndecorated(true); //
+		this.setUndecorated(true);
 		this.setVisible(true);
 		this.repainter.mapsizex = 1600;
-		this.repainter.mapsizey = 1200;// 背景图尺寸
+		this.repainter.mapsizey = 1200;// 背景图尺寸  Size of background pic.(Texture of entire battlefield).   
 		this.repainter.windowsizex = windowsizex;
 		this.repainter.windowsizey = windowsizey;
-		//
+		
 		mml = new MML();
 		this.addMouseMotionListener(mml);
 		this.addMouseMotionListener(new MML());
 		this.addMouseListener(mml);
 
-		// 按钮
+		// 按钮 //Buttons
 		this.addbutton(new Button_start(-500, 300));
 		this.addbutton(new Button_exit(-500, 200));
 	}

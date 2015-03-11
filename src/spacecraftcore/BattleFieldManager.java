@@ -25,8 +25,8 @@ import spacecraftevent.SpaceEvent;
 
 /**
  * BattleFieldManager负责更新战场以及地图，并把信息传递给DisplayManager
- * 
- * @method 添加元素：add();更新战场数据及逻辑 update();
+ * This class is in charge of battlefield updating and pass data to DisplayManager.
+ * @method 添加元素：add()<br/>更新战场数据及逻辑(Update battle data and logics) update();
  * 
  * @author Hale
  *
@@ -237,14 +237,10 @@ public class BattleFieldManager {
 			if (ship.health <= 0&&score<10000) {
 				MainGame.test.repainter.add_nooffset_element(
 						"Images//UI//gameover.png", -200, 75, 0, 0);
-				// MainGame.test.repainter.add_nooffset_element("Images//UI//gameoverfull.png",-1280,722,
-				// 0, 0);
 			}
 			if (ship.health <= 0&&score>10000) {
 				MainGame.test.repainter.add_nooffset_element(
 						"Images//UI//win.png", -200, 75, 0, 0);
-				// MainGame.test.repainter.add_nooffset_element("Images//UI//gameoverfull.png",-1280,722,
-				// 0, 0);
 			}
 
 			// 生命值判断↓

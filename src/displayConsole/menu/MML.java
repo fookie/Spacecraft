@@ -12,9 +12,6 @@ public class MML implements MouseMotionListener,MouseListener{
     
     
 	public void mouseDragged(MouseEvent e) {
-//		mx=e.getX();
-//		my=e.getY();
-//		MainGame.mainmenu.mouseclick(mx, my);
 	}
 
 	public void mouseMoved(MouseEvent e) {

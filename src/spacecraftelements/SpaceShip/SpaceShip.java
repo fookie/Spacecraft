@@ -33,8 +33,6 @@ public abstract class SpaceShip {
 	 * 速度(趋势)，每次更新时用
 	 */
 	public int vx, vy;
-	/*改成ImageID[];
-	 */
 	public String ImageID;
 	/**
 	 * 贴图的大小，正方形图片边长的一半。单位：像素

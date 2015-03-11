@@ -36,7 +36,7 @@ public class Button_start extends SButton {
 
 	@Override
 	public boolean click() {
-		// 展开另外两个按钮
+		// 展开另外两个按钮  //Expand the list of other two buttons
 		MainGame.mainmenu.addbutton(new Button_survival(-320, 300));
 		MainGame.mainmenu.addbutton(new Button_evasion(-320, 230));
 		return false;

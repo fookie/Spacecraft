@@ -9,13 +9,13 @@ package spacecraftevent;
 public abstract class SpaceEvent {
 	public boolean over;
 	/**
-	 * 事件自行判断是否触发
+	 * 事件自行判断是否触发 the event will check whether it should happen by itself
 	 * 
 	 * @return
 	 */
 	public abstract boolean execute();
 	/**
-	 * 立即触发该时间（无视事件自带的条件）
+	 * 立即触发该时间（无视事件自带的条件） execute it now ignoring its checking
 	 * @return
 	 */
 	public abstract boolean executenow();

@@ -25,7 +25,7 @@ public class BigBlast extends SpecialEffect {
 			super.over=true;
 			return imageID+"13.png";
 		}
-		
+		//upadating the imageID to regenerate different images in a row to show a blowing effect
 	}
 
 	@Override

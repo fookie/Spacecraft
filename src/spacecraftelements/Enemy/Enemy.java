@@ -5,19 +5,19 @@ import spacecraftelements.SpecialEffect.SpecialEffect;
 
 public abstract class Enemy implements Updatable{
 	/**
-	 * 敌人贴图
+	 * 敌人贴图 image path
 	 */
 	public String imageID;
 	/**
-	 * 敌人贴图大小
+	 * 敌人贴图大小 image size
 	 */
 	public int imagesize;
 	/**
-	 *  敌人生成位置
+	 *  敌人生成位置 initial position
 	 */
 	public int x, y;
 	/**
-	 * 	敌人攻击力
+	 * 	敌人攻击力 damage
 	 */
 	public int damage;
 	/**

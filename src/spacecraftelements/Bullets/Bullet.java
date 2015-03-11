@@ -9,31 +9,31 @@ import spacecraftelements.Updatable;
  */
 public abstract class Bullet implements Updatable{
 	/**
-	 * 		子弹贴图路径
+	 * 		子弹贴图路径 The image path in disk
 	 */
 	public String ImageID;
 	/**
-	 * 贴图的大小，正方形图片的半径。单位：像素
+	 * 贴图的大小，正方形图片的半径。单位：像素 images' size,pix
 	 */
 	public int Imagesize;
 	/**
-	 * 		子弹速度
+	 * 		子弹速度  bullets' speed
 	 */
 	public int vx,vy;
 	/**
-	 * 		子弹加速度（可选）
+	 * 		子弹加速度（可选） bullets' acceleration
 	 */
 	public int ax, ay;
 	/**
-	 * 		子弹初始生成位置
+	 * 		子弹初始生成位置 initial position when borned
 	 */
 	public int x, y;
 	/**
-	 *		子弹朝向角度 	
+	 *		子弹朝向角度 	bullets' heading direction
 	 */
 	public double angle;
 	/**
-	 * 		子弹伤害值
+	 * 		子弹伤害值  
 	 */
 	public int damage;
 	/**

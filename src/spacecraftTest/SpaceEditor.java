@@ -16,7 +16,7 @@ public class SpaceEditor {
 	}
 
 	/**
-	 * 参数，实际大小x,y,输出地址,背景地址
+	 * 参数，实际大小x,y,输出地址,背景地址 
 	 * 
 	 * @param x(mapsize)
 	 * @param y

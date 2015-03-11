@@ -10,7 +10,7 @@ public class KL implements KeyListener {
 		if (e.getKeyChar() == 'q'&&!MainGame.bm.paused) {
 			MainGame.bm.ship.switchweapon();
 		}
-		if (e.getKeyChar() == 27&&MainGame.bm.ship.health>=0) {//27是Esc的ASCII码 
+		if (e.getKeyChar() == 27&&MainGame.bm.ship.health>=0) {//27是Esc的ASCII码   '27' stands for ESC in the ASCII . 
 			MainGame.bm.paused=!MainGame.bm.paused;
 			MainGame.test.repainter.add_nooffset_element("Images//UI//paused400x250.png",-200,75, 0, 0);
 			MainGame.test.repainter.repaint();

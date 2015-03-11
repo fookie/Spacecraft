@@ -277,7 +277,7 @@ public class BattleFieldManager {
 				i--;
 			} else {
 				EnemyList.get(i).update();
-			}
+			}//check Enemy in the list ,if still alive then update the status of it
 		}
 	}
 
@@ -288,7 +288,7 @@ public class BattleFieldManager {
 				if (ItemList.get(i).timeup <= 0) {
 					ItemList.remove(i);
 					i--;
-				}
+				}//remove picakable item when time is out
 			}
 		}
 	}

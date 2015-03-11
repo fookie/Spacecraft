@@ -322,8 +322,6 @@ public class BattleFieldManager {
 
 				if (Enemyhitbox.intersects(Bullethitbox)) {
 					tEnemy.health = tEnemy.health - tBullet.damage;
-					//tEnemy.imageID = "Images//enemy//slime1.png";
-					//tEnemy.imageID = "Images//enemy//slime.png";
                     tEnemy.hit = true;
 					BulletList.remove(j);
 					j--;

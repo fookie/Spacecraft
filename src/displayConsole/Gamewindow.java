@@ -51,6 +51,10 @@ public class Gamewindow extends JFrame {
 		this.addMouseMotionListener(ml);
 		this.addMouseMotionListener(new ML());
 		this.addMouseListener(ml);
+		Toolkit tk = this.getToolkit();
+		Image img = tk.getImage("");
+		Cursor cu = tk.createCustomCursor(img,new Point(20,5),"hud"); 
+		this.setCursor(cu);
 	}
 	/**
 	 * 

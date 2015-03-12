@@ -6,7 +6,7 @@ import java.awt.event.MouseMotionListener;
 
 public class ML implements MouseMotionListener,MouseListener{
 	
-    public int mx,my;
+    public static int mx,my;
     
     
 	public void mouseDragged(MouseEvent e) {//hole the mouse button to auto shoot

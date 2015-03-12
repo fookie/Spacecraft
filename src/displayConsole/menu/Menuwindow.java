@@ -1,6 +1,10 @@
 package displayConsole.menu;
 
 import java.awt.Container;
+import java.awt.Cursor;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.Toolkit;
 import java.util.LinkedList;
 
 import javax.swing.JFrame;
@@ -19,6 +23,10 @@ public class Menuwindow extends JFrame {
 	private LinkedList<SButton> bs = new LinkedList<SButton>();
 	public Repainter repainter;
 	public MML mml;
+	//Toolkit tk = this.getToolkit();
+	//Image img = tk.getImage("Images//UI//mouse//hudtry.png");
+	//Cursor cu = tk.createCustomCursor(img,new Point(20,5),"hud"); 
+
 	/**
 	 * 
 	 */
@@ -47,6 +55,8 @@ public class Menuwindow extends JFrame {
 		this.repainter.mapsizey = 1200;// ±³¾°Í¼³ß´ç  Size of background pic.(Texture of entire battlefield).   
 		this.repainter.windowsizex = windowsizex;
 		this.repainter.windowsizey = windowsizey;
+		
+		//this.setCursor(cu);
 		
 		mml = new MML();
 		this.addMouseMotionListener(mml);

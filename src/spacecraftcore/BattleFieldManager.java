@@ -11,6 +11,7 @@ import java.util.List;
 
 import displayConsole.Element;
 import displayConsole.Gamewindow;
+import displayConsole.Mousehud;
 import displayConsole.Scoreprinter;
 import displayConsole.WeaponSlot;
 import spacecraftelements.Bullets.Bullet;
@@ -257,6 +258,8 @@ public class BattleFieldManager {
 						MainGame.test.repainter.onscreenx(0),
 						MainGame.test.repainter.onscreeny(0), 0, 2);
 			}
+			
+			Mousehud.showHud(ML.mx,ML.my);
 
 			// ÏÔÊ¾ÎäÆ÷²Û¡ý//displatweapon
 			WeaponSlot.displayweapon(ship);

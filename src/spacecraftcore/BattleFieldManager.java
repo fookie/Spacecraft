@@ -162,6 +162,7 @@ public class BattleFieldManager {
 			System.out.println("没有加载地图，故无法更新战场数据");//(no map ,can;t update)
 			return false;
 		}
+//		System.out.println("A");
 		collisionupdate();
 		// 基本计算
 		autoshoot();// 自动射击//(Chinese is the translate of the method name)

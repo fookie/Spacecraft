@@ -26,6 +26,7 @@ public class KL implements KeyListener {
 		if(e.getKeyChar() == 'b'&&(MainGame.bm.paused||MainGame.bm.ship.health<=0))
 		{
 			MainGame.test.setVisible(false);
+			MainGame.test.dispose();
 			MainGame.mainmenu.setVisible(true);
 			MainGame.gamestatus=0;
 		}

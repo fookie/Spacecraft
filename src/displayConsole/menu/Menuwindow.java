@@ -1,10 +1,6 @@
 package displayConsole.menu;
 
 import java.awt.Container;
-import java.awt.Cursor;
-import java.awt.Image;
-import java.awt.Point;
-import java.awt.Toolkit;
 import java.util.LinkedList;
 
 import javax.swing.JFrame;

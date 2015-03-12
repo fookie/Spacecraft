@@ -338,6 +338,10 @@ public class BattleFieldManager {
 					tItem.y - tItem.imagesize, 50, 50);
 			if (Itemhitbox.contains(ship.x, ship.y)) {
 				tItem.getitem();
+				if(ship.health>=0){
+				Thread t = new Thread(new SoundController("Sounds//bonus.wav"));
+				t.start();
+				} 	
 				ItemList.remove(i);
 				i--;
 			}
@@ -517,8 +521,8 @@ public class BattleFieldManager {
 		} else if (key == 'd') {
 			kd = i;
 		}
-		int t1 = (MainGame.test.ml.mx - windowsizex / 2 - 45) - (ship.visx);
-		int t2 = (windowsizey / 2 - MainGame.test.ml.my + 45) - (ship.visy);
+		int t1 = (ML.mx - windowsizex / 2 - 45) - (ship.visx);
+		int t2 = (windowsizey / 2 - ML.my + 45) - (ship.visy);
 		currentangle = -getangle(t1, t2);
 	}
 

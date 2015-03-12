@@ -1,5 +1,6 @@
 package spacecraftelements.Weapon;
 
+import spacecraftcore.SoundController;
 import spacecraftelements.Bullets.BasicBullet;
 import spacecraftelements.Bullets.Bullet;
 /**
@@ -38,6 +39,8 @@ public class StarWeapon extends Weapon {
 		bullet[0] = new BasicBullet(x, y, vx, vy, f);
 		int tvx, tvy = 0;
 		int tj = 1;
+		Thread t = new Thread(new SoundController("Sounds//weapon2.wav"));
+		t.start();
 		for (int i = -30; i <= 30; i = i + 15) {
 			if (i != 0) {
 				tvx = (int) (iv * Math.cos(angle + i));

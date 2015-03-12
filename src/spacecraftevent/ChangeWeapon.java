@@ -20,6 +20,7 @@ public class ChangeWeapon {
 			if (MainGame.bm.ship.w1.weaponID != id
 					&& MainGame.bm.ship.w2.weaponID != id) {
 				MainGame.bm.ship.w1 = name;
+				
 			}
 		}
 		return false;

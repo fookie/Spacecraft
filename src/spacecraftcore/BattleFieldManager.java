@@ -20,7 +20,6 @@ import spacecraftelements.Enemy.Enemy;
 import spacecraftelements.Items.H_bulletblast;
 import spacecraftelements.Items.SpaceItem;
 import spacecraftelements.SpaceShip.SpaceShip;
-import spacecraftelements.SpecialEffect.SmallBlast;
 import spacecraftelements.SpecialEffect.SpecialEffect;
 import spacecraftevent.SpaceEvent;
 
@@ -67,7 +66,7 @@ public class BattleFieldManager {
 		this.windowsizey = windowsizey;
 
 		// 预处理//load image to prevent lag
-		add(new SmallBlast(-800, -600));
+		
 
 		add(new Bigslime(200, 200, (int) (windowsizex * 0.7),
 				(int) (windowsizey * 0.7)));
@@ -165,7 +164,7 @@ public class BattleFieldManager {
 //		System.out.println("A");
 		collisionupdate();
 		// 基本计算
-		autoshoot();// 自动射击//(Chinese is the translate of the method name)
+		autoshoot();// 自动射击//(Chinese is the translation of the method name)
 		updateevent();// 事件
 		updateItem();
 		updatebullet();// 更新子弹
@@ -187,7 +186,7 @@ public class BattleFieldManager {
 		}
 	}
 
-	private void sendImage() {
+	public void sendImage() {
 		if (MainGame.cansendimage) {//"can send image"means Repainter is ready for painting 
 			// 清空//clear the image
 			MainGame.test.repainter.le = new LinkedList<Element>();

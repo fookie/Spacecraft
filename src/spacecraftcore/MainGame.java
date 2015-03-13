@@ -14,7 +14,7 @@ import displayConsole.menu.Menuwindow;
  */
 
 public class MainGame {
-	public static int gamestatus=0;//0²Ëµ¥×´Ì¬£¬1ÓÎÏ·×´Ì¬//0:menu mode 1:gamemode
+	public static int gamestatus=0;//0²Ëµ¥×´Ì¬£¬1ÓÎÏ·×´Ì¬,2,¼ÓÔØ×´Ì¬//0:menu mode 1:gamemode 2:loading
 	public static BattleFieldManager bm;
 	public static Gamewindow test;
 	public static Menuwindow mainmenu;

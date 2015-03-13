@@ -62,7 +62,7 @@ public class Button_survival extends SButton{
 				System.exit(0);
 			}
 		});
-		MainGame.gamestatus=1;
+		MainGame.gamestatus=2;
 		MainGame.mainmenu.setVisible(false);
 		return true;
 	}

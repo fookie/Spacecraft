@@ -1,11 +1,9 @@
 package displayConsole;
 
-import spacecraftcore.ML;
 import spacecraftcore.MainGame;
 
 public class Mousehud {
 	public static void showHud(int x, int y) {
-		int i = 1;
 
 		int f =(int) Math.floor((MainGame.gametime % 207)/3 );
 

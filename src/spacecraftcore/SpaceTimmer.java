@@ -37,6 +37,19 @@ public class SpaceTimmer implements Runnable {
 					e.printStackTrace();
 				}	
 			}
+			else if(MainGame.gamestatus==2)
+			{
+				BattleFieldLoader.loadBattleField();
+				try 
+				{
+					Thread.sleep(sleeping_time);
+					MainGame.gametime = MainGame.gametime + 1;
+					
+				} catch (InterruptedException e) 
+				{
+					e.printStackTrace();
+				}	
+			}
 		}
 	}
 }

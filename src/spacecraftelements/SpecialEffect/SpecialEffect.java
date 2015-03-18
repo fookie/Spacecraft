@@ -13,7 +13,7 @@ public abstract class SpecialEffect implements Updatable{
 	 * 		特效贴图
 	 */
 	public String imageID;
-	public int imagesize;
+	public int imagesizex,imagesizey;
 	/**
 	 * 特效是否结束
 	 */

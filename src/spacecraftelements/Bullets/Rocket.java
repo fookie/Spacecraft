@@ -16,7 +16,8 @@ public class Rocket extends Bullet {
 		super.ImageID = "Images//bullet//basicbullet2.png";
 		super.ID = 2;
 		super.angle = 0;
-		super.Imagesize = 10;
+		super.imagesizex = 10;
+		super.imagesizey = 10;
 		super.faction = f;
 	}
 	public boolean update() {

@@ -8,7 +8,8 @@ public class BigBlast extends SpecialEffect {
 	public BigBlast(int x, int y){
 		super.x = x;
 		super.y = y;
-		super.imagesize = 50;
+		super.imagesizex = 50;
+		super.imagesizey = 50;
 		super.imageID = "Images//SpecialEffects//BigBlast//";
 		super.over=false;
 	}

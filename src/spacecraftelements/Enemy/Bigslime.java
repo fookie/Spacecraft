@@ -16,7 +16,8 @@ public class Bigslime extends Enemy{
 		super.v = 3;
 		super.volume = 110;
 		super.imageID = "Images//enemy//bigslime.png";
-		super.imagesize = 50;
+		super.imagesizex = 50;
+		super.imagesizey = 50;
 		this.mapsizex=mapsizex;
 		this.mapsizey=mapsizey;
 		tarx=(int) (Math.random()*mapsizex*0.75)*(-1)^x;

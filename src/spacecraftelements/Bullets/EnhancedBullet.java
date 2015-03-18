@@ -12,7 +12,8 @@ public class EnhancedBullet extends Bullet{
 		super.ImageID = "Images//bullet//basicbullet2.png";
 		super.ID = 3;
 		super.angle = 0;
-		super.Imagesize = 10;
+		super.imagesizex = 10;
+		super.imagesizey = 10;
 	}
 
 	public boolean update() {

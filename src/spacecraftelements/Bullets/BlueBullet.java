@@ -12,7 +12,8 @@ public class BlueBullet extends Bullet{
 		super.ImageID="Images//bullet//bluebullet.png";
 		super.ID = 1;
 		super.angle=0;
-		super.Imagesize=10;
+		super.imagesizex=10;
+		super.imagesizey=10;
 		super.faction = f;
 	}
 

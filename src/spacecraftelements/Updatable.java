@@ -1,7 +1,7 @@
 package spacecraftelements;
 /**
- * 这个主要是保证其他元件有update()；
- * 
+ * 这个主要是保证其他元件有update()；<br/>
+ * This is to ensure other elements have update()
  */
 public interface Updatable {
 	/**

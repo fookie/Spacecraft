@@ -2,7 +2,7 @@ package spacecraftelements.Bullets;
 
 
 public class BlueBullet extends Bullet{
-	public BlueBullet(int x,int y,int vx,int vy, int f){
+	public BlueBullet(double x,double y,double vx,double vy, int f){
 		super.x=x;
 		super.y=y;
 		super.vx=vx;

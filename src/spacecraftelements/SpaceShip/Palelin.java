@@ -2,6 +2,7 @@ package spacecraftelements.SpaceShip;
 
 import spacecraftcore.SoundController;
 import spacecraftelements.Weapon.BasicWeapon;
+import spacecraftelements.Weapon.RocketLauncher;
 import spacecraftelements.Weapon.Weapon;
 
 public class Palelin extends SpaceShip {
@@ -17,7 +18,7 @@ public class Palelin extends SpaceShip {
 		super.health = 5;
 		super.volume = 50;
 		super.w1 = new BasicWeapon();
-		super.w2 = null;
+		super.w2 = new RocketLauncher();
 		super.ImageID = "Images//ship//palelin2.png";
 		super.Imagesize = 45;
 	}

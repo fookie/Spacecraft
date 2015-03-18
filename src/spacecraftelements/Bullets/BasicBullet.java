@@ -2,7 +2,7 @@ package spacecraftelements.Bullets;
 
 
 public class BasicBullet extends Bullet{
-	public BasicBullet(int x,int y,int vx,int vy, int f){
+	public BasicBullet(double x,double y,double vx,double vy, int f){
 		//设定该子弹属性 //bulid the bullet
 		super.x=x;
 		super.y=y;

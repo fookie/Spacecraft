@@ -196,9 +196,9 @@ public class BattleFieldManager {
 			// 传递子弹//send bullet to screen
 			for (int i = 0; i < BulletList.size(); i++) {
 				MainGame.test.repainter.add(BulletList.get(i).ImageID,
-						BulletList.get(i).Imagesize, BulletList.get(i).x,
-						BulletList.get(i).y,
-						-getangle(BulletList.get(i).vx, BulletList.get(i).vy),
+						BulletList.get(i).Imagesize, (int)BulletList.get(i).x,
+						(int)BulletList.get(i).y,
+						-getangle((int)BulletList.get(i).vx, (int)BulletList.get(i).vy),
 						2);
 			}
 			// 传递物品//send items to screen
@@ -215,7 +215,7 @@ public class BattleFieldManager {
 					}
 				}
 			}
-			// 传递特技//send Ornament to screen
+			// 传递特技//send SpecialEffect to screen
 			for (int i = 0; i < OList.size(); i++) {
 
 				MainGame.test.repainter.add(OList.get(i).getImage(),
@@ -319,8 +319,8 @@ public class BattleFieldManager {
 
 			for (int j = 0; j < BulletList.size(); j++) {
 				Bullet tBullet = BulletList.get(j);
-				Rectangle Bullethitbox = new Rectangle(tBullet.x
-						- tBullet.volume / 2, tBullet.y - tBullet.volume / 2,
+				Rectangle Bullethitbox = new Rectangle((int)tBullet.x
+						- tBullet.volume / 2,(int) tBullet.y - tBullet.volume / 2,
 						tBullet.volume / 2, tBullet.volume / 2);
 
 				if (Enemyhitbox.intersects(Bullethitbox)) {

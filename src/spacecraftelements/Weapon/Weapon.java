@@ -25,7 +25,11 @@ public abstract class Weapon {
 	/**
 	 * 出膛速度
 	 */
-	public int iv;
+	public double iv;
+	/**
+	 * 出膛加速度
+	 */
+	public double ia = 0;
 	/**
 	 * 武器ID
 	 */

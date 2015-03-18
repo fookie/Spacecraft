@@ -19,15 +19,15 @@ public abstract class Bullet implements Updatable{
 	/**
 	 * 		子弹速度  bullets' speed
 	 */
-	public int vx,vy;
+	public double vx,vy;
 	/**
 	 * 		子弹加速度（可选） bullets' acceleration
 	 */
-	public int ax, ay;
+	public double ax, ay;
 	/**
-	 * 		子弹初始生成位置 initial position when borned
+	 * 		子弹初始生成位置 initial position
 	 */
-	public int x, y;
+	public double x, y;
 	/**
 	 *		子弹朝向角度 	bullets' heading direction
 	 */

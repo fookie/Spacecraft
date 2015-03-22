@@ -213,7 +213,7 @@ public class Repainter extends JPanel {
 		}
 		MainGame.bm.SetShip(bufferShip);
 		this.add_nooffset_element(bufferShip.ImageID, bufferShip.visx
-				- bufferShip.Imagesize, bufferShip.visy + bufferShip.Imagesize,
+				- bufferShip.imagesizex, bufferShip.visy + bufferShip.imagesizey,
 				bufferShip.angle, 2);
 		// ¼ÆËãÆ«²î //Compute the offset
 		offsetx = bufferShip.x - bufferShip.visx;

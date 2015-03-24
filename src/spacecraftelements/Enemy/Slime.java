@@ -20,8 +20,7 @@ public class Slime extends Enemy {
 		super.v = 4;
 		super.volume = 40;
 		super.imageID = "Images//enemy//slime.png";
-		super.imagesizex = 20;
-		super.imagesizey = 20;
+		super.imagesize = 20;
 		super.getscore=9;
 	}
 

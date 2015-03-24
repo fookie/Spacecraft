@@ -11,7 +11,7 @@ public abstract class Enemy implements Updatable{
 	/**
 	 * 敌人贴图大小 image size
 	 */
-	public int imagesizex,imagesizey;
+	public int imagesize;
 	/**
 	 *  敌人生成位置 initial position
 	 */

@@ -196,7 +196,7 @@ public class BattleFieldManager {
 			// 传递子弹//send bullet to screen
 			for (int i = 0; i < BulletList.size(); i++) {
 				MainGame.test.repainter.add(BulletList.get(i).ImageID,
-						BulletList.get(i).imagesizex,BulletList.get(i).imagesizey, (int)BulletList.get(i).x,
+						BulletList.get(i).Imagesize, (int)BulletList.get(i).x,
 						(int)BulletList.get(i).y,
 						-getangle((int)BulletList.get(i).vx, (int)BulletList.get(i).vy),
 						2);
@@ -210,7 +210,7 @@ public class BattleFieldManager {
 
 					} else {
 						MainGame.test.repainter.add(ItemList.get(i).imageID,
-								ItemList.get(i).imagesize,ItemList.get(i).imagesize, ItemList.get(i).x,
+								ItemList.get(i).imagesize, ItemList.get(i).x,
 								ItemList.get(i).y, 0, 2);
 					}
 				}
@@ -219,7 +219,7 @@ public class BattleFieldManager {
 			for (int i = 0; i < OList.size(); i++) {
 
 				MainGame.test.repainter.add(OList.get(i).getImage(),
-						OList.get(i).imagesizex,OList.get(i).imagesizey ,OList.get(i).x, OList.get(i).y,
+						OList.get(i).imagesize, OList.get(i).x, OList.get(i).y,
 						0, 0);
 				if (OList.get(i).over) {
 					this.OList.remove(i);
@@ -229,7 +229,7 @@ public class BattleFieldManager {
 			// 传递敌人//send enemy to screen
 			for (int i = 0; i < EnemyList.size(); i++) {
 				MainGame.test.repainter.add(EnemyList.get(i).imageID,
-						EnemyList.get(i).imagesizex,EnemyList.get(i).imagesizey, EnemyList.get(i).x,
+						EnemyList.get(i).imagesize, EnemyList.get(i).x,
 						EnemyList.get(i).y,
 						-getangle(EnemyList.get(i).vx, EnemyList.get(i).vy), 2);
 			}

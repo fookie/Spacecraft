@@ -15,7 +15,7 @@ public abstract class Bullet implements Updatable{
 	/**
 	 * 贴图的大小，正方形图片的半径。单位：像素 images' size,pix
 	 */
-	public int imagesizex,imagesizey;
+	public int Imagesize;
 	/**
 	 * 		子弹速度  bullets' speed
 	 */

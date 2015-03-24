@@ -54,10 +54,10 @@ public class Repainter extends JPanel {
 	 * @param d
 	 * @param layer
 	 */
-	public void add(String name, int imagesizex,int imagesizey, int x, int y, double d,
+	public void add(String name, int imagesize, int x, int y, double d,
 			int layer) {
 
-		Element element = this.computeElement(name, imagesizex,imagesizey, x, y, d, layer);
+		Element element = this.computeElement(name, imagesize, x, y, d, layer);
 		if (element != null) {
 			element.img = getToolkit().getImage(name);
 			// element.x = x;
@@ -174,7 +174,7 @@ public class Repainter extends JPanel {
 	 * @param layer
 	 * @return 以相对坐标存储的元素<br/>The element stores relative coordinates.
 	 */
-	private Element computeElement(String name, int imagesizex,int imagesizey, int x, int y,
+	private Element computeElement(String name, int Imagesize, int x, int y,
 			double d, int layer) {
 		if (((x - offsetx) < -windowsizex / 2)
 				|| ((x - offsetx) > windowsizex / 2)
@@ -182,8 +182,8 @@ public class Repainter extends JPanel {
 				|| (y - offsety) > windowsizey / 2) {
 			return null;
 		}
-		Element e = new Element(name, x - offsetx - imagesizex, y - offsety
-				+ imagesizey, d, layer);
+		Element e = new Element(name, x - offsetx - Imagesize, y - offsety
+				+ Imagesize, d, layer);
 		return e;
 
 	}
@@ -213,7 +213,7 @@ public class Repainter extends JPanel {
 		}
 		MainGame.bm.SetShip(bufferShip);
 		this.add_nooffset_element(bufferShip.ImageID, bufferShip.visx
-				- bufferShip.imagesizex, bufferShip.visy + bufferShip.imagesizey,
+				- bufferShip.Imagesize, bufferShip.visy + bufferShip.Imagesize,
 				bufferShip.angle, 2);
 		// 计算偏差 //Compute the offset
 		offsetx = bufferShip.x - bufferShip.visx;

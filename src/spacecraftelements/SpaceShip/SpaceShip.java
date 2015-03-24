@@ -37,7 +37,7 @@ public abstract class SpaceShip {
 	/**
 	 * 贴图的大小，正方形图片边长的一半。单位：像素
 	 */
-	public int imagesizex,imagesizey;
+	public int Imagesize;
 	/**
 	 * 两个武器;w1是现在装备的武器
 	 */

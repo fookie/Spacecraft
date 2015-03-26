@@ -12,11 +12,11 @@ public class BulletRain extends SpaceEvent {
 	public boolean execute() {
 		if (MainGame.gametime % 70 == 0) {
 			for (int i = 0; i < 28; i=i+2) {
-				MainGame.bm.add(new BasicBullet(-600 + i * 50, 600, 1 - x, -9
+				MainGame.bm.add(new BasicBullet(-600 + i * 50, 600, 3 - x, -12
 						- x, 0));
 			}
 			for (int i = 1; i < 28; i=i+2) {
-				MainGame.bm.add(new BlueBullet(-600 + i * 50, 600, 1 - x, -9
+				MainGame.bm.add(new BlueBullet(-600 + i * 50, 600, 3 - x, -12
 						- x, 0));
 			}
 			x++;

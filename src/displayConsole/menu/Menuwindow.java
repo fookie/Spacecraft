@@ -112,7 +112,7 @@ public class Menuwindow extends JFrame {
 	}
 
 	public void update() {
-		this.repainter.le = new LinkedList<Element>();
+		this.repainter.le.clear();
 		for (int i = 0; i < bs.size(); i++) {
 			this.repainter.add_nooffset_element(bs.get(i).getImage(),
 					bs.get(i).buttonhitbox.x - (bs.get(i).buttonhitbox.width)

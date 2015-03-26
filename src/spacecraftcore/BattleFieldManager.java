@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
-import displayConsole.Element;
 import displayConsole.Gamewindow;
 import displayConsole.Mousehud;
 import displayConsole.Scoreprinter;
@@ -17,6 +16,7 @@ import displayConsole.WeaponSlot;
 import spacecraftelements.Bullets.Bullet;
 import spacecraftelements.Enemy.Bigslime;
 import spacecraftelements.Enemy.Enemy;
+import spacecraftelements.Enemy.Kamikaze;
 import spacecraftelements.Items.H_bulletblast;
 import spacecraftelements.Items.SpaceItem;
 import spacecraftelements.SpaceShip.SpaceShip;
@@ -32,8 +32,8 @@ import spacecraftevent.SpaceEvent;
  *
  */
 public class BattleFieldManager {
-	private List<Bullet> BulletList = new LinkedList<Bullet>();
-	private List<Enemy> EnemyList = new LinkedList<Enemy>();
+	public List<Bullet> BulletList = new LinkedList<Bullet>();
+	public List<Enemy> EnemyList = new LinkedList<Enemy>();
 	private List<SpaceEvent> EventList = new LinkedList<SpaceEvent>();
 	private List<SpaceItem> ItemList = new LinkedList<SpaceItem>();
 	private List<SpecialEffect> OList = new LinkedList<SpecialEffect>();
@@ -45,6 +45,7 @@ public class BattleFieldManager {
 	public int windowsizex, windowsizey;
 	public boolean paused = false;
 	public int score = 0;
+	public int imgnum=0;
 
 	public SpaceShip getShip() {
 		return ship;
@@ -68,7 +69,7 @@ public class BattleFieldManager {
 		// 预处理//load image to prevent lag
 		
 
-		add(new Bigslime(200, 200, (int) (windowsizex * 0.7),
+		add(new Kamikaze(200, 200, (int) (windowsizex * 0.7),
 				(int) (windowsizey * 0.7)));
 	}
 
@@ -189,7 +190,8 @@ public class BattleFieldManager {
 	public void sendImage() {
 		if (MainGame.cansendimage) {//"can send image"means Repainter is ready for painting 
 			// 清空//clear the image
-			MainGame.test.repainter.le = new LinkedList<Element>();
+			MainGame.test.repainter.le.clear();
+			imgnum=0;
 			// 传递飞船并计算偏移量//compute offset
 			MainGame.test.repainter.computeOffset(ship);
 
@@ -263,7 +265,7 @@ public class BattleFieldManager {
 
 			// 显示武器槽↓//displatweapon
 			WeaponSlot.displayweapon(ship);
-			Scoreprinter.printscore(score);
+			Scoreprinter.printscore(imgnum);
 			// 重新绘制↓//repaint
 			MainGame.test.repainter.repaint();
 		} else {

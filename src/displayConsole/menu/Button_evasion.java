@@ -7,6 +7,7 @@ import java.awt.event.WindowEvent;
 
 import spacecraftcore.BattleFieldManager;
 import spacecraftcore.MainGame;
+import spacecraftelements.Items.H_bulletrain;
 import spacecraftelements.Items.S_repair;
 import spacecraftelements.SpaceShip.Palelin;
 
@@ -50,10 +51,10 @@ public class Button_evasion extends SButton{
 		MainGame.test=MainGame.bm.loadmap("Data//scmaps//testmap1600x1200.smp");
 		//加载躲子弹模式要素 //Load the elements of Evasion mode.
 		MainGame.bm.add(new Palelin(0,0,0,0));
-		MainGame.bm.add(new S_repair(400,400));
-		MainGame.bm.add(new S_repair(400,-400));
-		MainGame.bm.add(new S_repair(-400,400));
-		MainGame.bm.add(new S_repair(-400,-400));
+		MainGame.bm.add(new H_bulletrain(400,400));
+		MainGame.bm.add(new H_bulletrain(400,-400));
+		MainGame.bm.add(new H_bulletrain(-400,400));
+		MainGame.bm.add(new H_bulletrain(-400,-400));
 		
 		MainGame.test.repainter.add_nooffset_element("Images//UI//paused400x250.png",-200,75, 0, 0);
 		MainGame.test.repainter.repaint();

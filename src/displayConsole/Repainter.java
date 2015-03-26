@@ -59,6 +59,7 @@ public class Repainter extends JPanel {
 
 		Element element = this.computeElement(name, imagesize, x, y, d, layer);
 		if (element != null) {
+			MainGame.bm.imgnum++;
 			element.img = getToolkit().getImage(name);
 			// element.x = x;
 			// element.y = y;
@@ -124,7 +125,7 @@ public class Repainter extends JPanel {
 	public void paint(Graphics g) {
 
 		MainGame.cansendimage = false;
-		super.paint(g);
+		//super.paint(g);
 		g.clearRect(0, 0, this.getWidth(), this.getHeight());
 		g.drawImage(bg, -(mapsizex / 2 - windowsizex / 2) - offsetx,
 				-(mapsizey / 2 - windowsizey / 2) + offsety, this);// 背景位置，offset为0时背景中心对准屏幕中心  //Position of background texture. When the offset value is 0, it's aligned to the midpoint of screen.
@@ -141,6 +142,28 @@ public class Repainter extends JPanel {
 		}// !!!!!!!!!这里也有转换坐标的部分!!!!!!!!!!!!  //Attention: This part contains coordinate conversion.
 		MainGame.cansendimage = true;
 	}
+	
+//	public void paint(Graphics g) {
+//		MainGame.cansendimage = false;
+//		g.clearRect(0, 0, this.getWidth(), this.getHeight());
+//		g.drawImage(bg, -(mapsizex / 2 - windowsizex / 2) - offsetx,-(mapsizey / 2 - windowsizey / 2) + offsety, this);
+//		
+//		
+//		
+//		
+//		//这部分将处理
+//		for (int i = 0; i < le.size(); i++) {
+//		if (le.get(i).rotatedegree != 0) {
+//			g.drawImage(rotateImage(le.get(i).img, le.get(i).rotatedegree),
+//					le.get(i).x + (windowsizex / 2),
+//					(windowsizey / 2) - le.get(i).y, this);
+//		} else {
+//			g.drawImage(le.get(i).img, le.get(i).x + (windowsizex / 2),
+//					(windowsizey / 2) - le.get(i).y, this);
+//		}
+//		}
+//		MainGame.cansendimage=true;
+//	}
 
 	public static BufferedImage rotateImage(Image bufferedimage, double degree) {
 		int w = bufferedimage.getWidth(null);

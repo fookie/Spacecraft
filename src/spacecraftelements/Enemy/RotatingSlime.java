@@ -1,6 +1,8 @@
 package spacecraftelements.Enemy;
 
 import spacecraftcore.MainGame;
+import spacecraftelements.SpecialEffect.BigBlast;
+import spacecraftelements.SpecialEffect.SmallBlast;
 import spacecraftelements.SpecialEffect.SpecialEffect;
 /**
  * 
@@ -76,7 +78,7 @@ public class RotatingSlime extends Enemy{
 	}
 
 	public SpecialEffect deathwhisper() {
-		return null;
+		return new BigBlast(x,y);
 	}
 
 }

@@ -36,9 +36,11 @@ public abstract class Enemy implements Updatable{
 	/**
 	 * 	敌人自更新
 	 */
+	public double rotation;
 	public int getscore;
 	public abstract boolean update();
 	public boolean hit=false;
+    public static int centerx,centery;
 	
 	public abstract SpecialEffect deathwhisper();
 

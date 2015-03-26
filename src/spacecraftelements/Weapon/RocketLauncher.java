@@ -21,7 +21,7 @@ public class RocketLauncher extends Weapon {
 		fa = 1;
 		super.reload = 1;
 		super.cd = 19;
-		super.ImageLoc = "Images//Item//basicweapon.png";
+		super.ImageLoc = "Images//Item//rocketlauncher.png";
 
 	}
 

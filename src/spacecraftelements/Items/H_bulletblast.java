@@ -14,8 +14,8 @@ public class H_bulletblast extends SpaceItem{
 	public boolean getitem() {
 		for(int i=-5;i<6;i++)
 		{
-			MainGame.bm.add(new BlueBullet(x, y, i,(int) Math.sqrt(20-i*i), 1));
-			MainGame.bm.add(new BlueBullet(x, y, i,-(int) Math.sqrt(20-i*i), 1));
+			MainGame.bm.add(new BlueBullet(x, y, i,(int) Math.sqrt(20-i*i), 0));
+			MainGame.bm.add(new BlueBullet(x, y, i,-(int) Math.sqrt(20-i*i), 0));
 			
 		}
 		MainGame.bm.score+=15;

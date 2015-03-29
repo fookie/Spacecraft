@@ -2,7 +2,6 @@ package spacecraftelements.Enemy;
 
 import spacecraftcore.MainGame;
 import spacecraftelements.SpecialEffect.BigBlast;
-import spacecraftelements.SpecialEffect.SmallBlast;
 import spacecraftelements.SpecialEffect.SpecialEffect;
 /**
  * 
@@ -46,6 +45,7 @@ public class RotatingSlime extends Enemy{
 		vy = (int) (((double) v) * ratioy);
 		x = x + vx;
 		y = y + vy;*/
+		@SuppressWarnings("unused")
 		double x1,y1,x2,y2,leap;
 		double ratiox, ratioy, third,cos,sin;
 

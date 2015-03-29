@@ -5,7 +5,6 @@ import java.util.LinkedList;
 
 import javax.swing.JFrame;
 
-import displayConsole.Element;
 import displayConsole.Repainter;
 
 /**

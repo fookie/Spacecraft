@@ -2,7 +2,6 @@ package spacecraftelements.Enemy;
 
 import spacecraftcore.MainGame;
 import spacecraftelements.SpecialEffect.BigBlast;
-import spacecraftelements.SpecialEffect.SmallBlast;
 import spacecraftelements.SpecialEffect.SpecialEffect;
 /**
  * 
@@ -14,6 +13,9 @@ public class Kamikaze extends Enemy{
     public double angle;
     public int radius=100;
     public int tarx,tary,mapsizex,mapsizey;
+    public int centerx;
+	public int centery;
+	public long starttime;
     //public static int centerx,centery;
 	public Kamikaze(int x, int y,int mapsizex,int mapsizey) {
 	    super.x = x;
@@ -27,6 +29,7 @@ public class Kamikaze extends Enemy{
 		super.getscore=100;
 		tarx=(int) (Math.random()*mapsizex*0.75)*(-1)^x;
 		tary=(int) (Math.random()*mapsizey*0.75)*(-1)^y;
+		starttime=MainGame.gametime;
 
 	}
 
@@ -53,9 +56,10 @@ public class Kamikaze extends Enemy{
 		y = y + vy;	
 		this.centerx = x;
 		this.centery = y;
-		if (MainGame.gametime % 15==0&&MainGame.gametime<300){
+		
+		if ((MainGame.gametime-starttime) % 15==0&&(MainGame.gametime-starttime)<135){
 	        MainGame.bm.add(new RotatingSlime(x+radius,y,this,radius));
-
+	        System.out.println(MainGame.gametime-starttime);
 		}
 
 

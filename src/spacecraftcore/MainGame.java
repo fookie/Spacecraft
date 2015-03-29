@@ -19,6 +19,7 @@ public class MainGame {
 	public static Gamewindow test;
 	public static Menuwindow mainmenu;
 	public static long gametime;
+	public static int nowdiff=0;//躲避模式的现在难度
 	public static Thread mt;
 	public static boolean cansendimage=true;
 	public static Dimension srcDim = Toolkit.getDefaultToolkit().getScreenSize();

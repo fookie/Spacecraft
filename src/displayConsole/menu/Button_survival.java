@@ -5,6 +5,7 @@ import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import de.hardcode.jxinput.keyboard.JXKeyboardInputDevice;
 import spacecraftcore.BattleFieldManager;
 import spacecraftcore.MainGame;
 import spacecraftelements.Items.H_bulletblast;
@@ -50,6 +51,8 @@ public class Button_survival extends SButton{
 		MainGame.bm = new BattleFieldManager(srcDim.width,srcDim.height);
 		MainGame.test=MainGame.bm.loadmap("Data//scmaps//testmap1600x1200.smp");
 		//加载生存模式要素      //Load the elements of survival mode
+		
+		//MainGame.ji=new JXKeyboardInputDevice(MainGame.test);
 		MainGame.bm.add(new Palelin(0,0,0,0));
 		MainGame.bm.add(new RandomSlime(1600,1200));
 		MainGame.bm.add(new RandomBigSlime(1600,1200));

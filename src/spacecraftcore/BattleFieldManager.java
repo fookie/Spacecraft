@@ -165,6 +165,10 @@ public class BattleFieldManager {
 			System.out.println("没有加载地图，故无法更新战场数据");// (no map ,can;t update)
 			return false;
 		}
+		
+	//	System.out.println(MainGame.ji.);
+		
+		
 		// System.out.println("A");
 		collisionupdate();
 		// 基本计算
@@ -288,6 +292,13 @@ public class BattleFieldManager {
 				i--;
 			} else {
 				EnemyList.get(i).update();
+				if (EnemyList.get(i).x > (mapx / 2)
+						|| EnemyList.get(i).x < -(mapx / 2)
+						|| EnemyList.get(i).y > (mapy / 2)
+						|| EnemyList.get(i).y < -(mapy / 2)) {
+					EnemyList.remove(i);
+					i = i - 1;
+				}
 			}// check Enemy in the list ,if still alive then update the status
 				// of it
 		}

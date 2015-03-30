@@ -42,15 +42,13 @@ public class Stigis extends Enemy{
 		ratioy = ((double) y1) / third;
 		vx = (int) (((double) v) * ratiox);
 		vy = (int) (((double) v) * ratioy);
-
-
-
 		
 		if ((MainGame.gametime-starttime) % 5==0){
 	        MainGame.bm.add(new Basickamikaze(x,y,targetangle));
+	       // MainGame.bm.add(new Basickamikaze(x,y,targetangle+180));
 	        //System.out.println(MainGame.gametime-starttime);&&(MainGame.gametime-starttime)<135
 		}
-		targetangle = targetangle + 2;
+		targetangle = targetangle + 5;
 
 		x = x + vx;
 		y = y + vy;	

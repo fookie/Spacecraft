@@ -40,7 +40,7 @@ public class Kamikaze extends Enemy{
 			tary=(int) (Math.random()*mapsizey*0.75)*(-1)^y;
 			return false;
 		}
-		if(hit==true){this.imageID = "Images//enemy//star.png";hit=false;}
+		if(hit==true){this.imageID = "Images//enemy//star1.png";hit=false;}
 		else {this.imageID = "Images//enemy//star.png";}//hint when hit
 		int x1, y1;
 		double ratiox, ratioy, third;

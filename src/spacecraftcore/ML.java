@@ -16,6 +16,7 @@ public class ML implements MouseMotionListener,MouseListener{
 		MainGame.bm.autotarx=mx;
 		MainGame.bm.autotary=my;
 		MainGame.bm.Mouseprocessor(mx,my);
+		MainGame.bm.isshooting = true;
 	}
 
 	public void mouseMoved(MouseEvent e) {
@@ -34,6 +35,7 @@ public class ML implements MouseMotionListener,MouseListener{
 		MainGame.bm.autotarx=mx;
 		MainGame.bm.autotary=my;
 		MainGame.bm.ml=true;
+		MainGame.bm.isshooting = true;
 		MainGame.bm.shootprocessor(mx, my);
 		MainGame.bm.pressedtime=MainGame.gametime;
 		
@@ -41,6 +43,7 @@ public class ML implements MouseMotionListener,MouseListener{
 
 	public void mouseReleased(MouseEvent e) {
 		MainGame.bm.ml=false;
+		MainGame.bm.isshooting = false;
 		MainGame.bm.pressedtime=0;
 	}
 

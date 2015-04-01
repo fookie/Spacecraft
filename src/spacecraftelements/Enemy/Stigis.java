@@ -31,7 +31,7 @@ public class Stigis extends Enemy{
 			tary=(int) (Math.random()*mapsizey*0.75)*(-1)^y;
 			return false;
 		}
-		if(hit==true){this.imageID = "Images//enemy//star.png";hit=false;}
+		if(hit==true){this.imageID = "Images//enemy//star1.png";hit=false;}
 		else {this.imageID = "Images//enemy//star.png";}//hint when hit
 		int x1, y1;
 		double ratiox, ratioy, third;
@@ -45,16 +45,13 @@ public class Stigis extends Enemy{
 		
 		if ((MainGame.gametime-starttime) % 5==0){
 	        MainGame.bm.add(new Basickamikaze(x,y,targetangle));
-	       // MainGame.bm.add(new Basickamikaze(x,y,targetangle+180));
-	        //System.out.println(MainGame.gametime-starttime);&&(MainGame.gametime-starttime)<135
+	        MainGame.bm.add(new Basickamikaze(x,y,targetangle+180));
 		}
 		targetangle = targetangle + 5;
 
 		x = x + vx;
 		y = y + vy;	
 		
-
-
 		return true;
 	}
 

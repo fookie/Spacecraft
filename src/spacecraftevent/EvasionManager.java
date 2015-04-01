@@ -1,6 +1,7 @@
 package spacecraftevent;
 
 import spacecraftcore.MainGame;
+import spacecraftelements.Enemy.Stigis;
 /**
  * 躲避模式管理器
  * 
@@ -15,7 +16,8 @@ public class EvasionManager extends SpaceEvent{
 	@Override
 	public boolean execute() {
 		if(MainGame.nowdiff<nowtardiff){
-		MainGame.bm.add(new BulletRain(1));
+		//MainGame.bm.add(new BulletRain(1));
+		
 		
 		
 		}

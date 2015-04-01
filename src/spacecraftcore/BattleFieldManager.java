@@ -15,6 +15,8 @@ import displayConsole.Scoreprinter;
 import displayConsole.WeaponSlot;
 import spacecraftelements.Bullets.Bullet;
 import spacecraftelements.Enemy.Enemy;
+import spacecraftelements.Enemy.Splinter;
+import spacecraftelements.Enemy.Stigis;
 import spacecraftelements.Items.H_bulletblast;
 import spacecraftelements.Items.SpaceItem;
 import spacecraftelements.SpaceShip.SpaceShip;
@@ -46,6 +48,7 @@ public class BattleFieldManager {
 	public boolean paused = false;
 	public int score = 0;
 	public int imgnum = 0;
+	public static boolean isshooting=false;
 
 	public SpaceShip getShip() {
 		return ship;
@@ -70,6 +73,8 @@ public class BattleFieldManager {
 
 		// add(new Kamikaze(200, 200, (int) (windowsizex * 0.7),
 		// (int) (windowsizey * 0.7)));
+		//add(new Stigis(200, 200, (int) (windowsizex * 0.7),(int) (windowsizey * 0.7)));
+		//add(new Splinter(200,200,180));
 	}
 
 	/**
@@ -110,7 +115,7 @@ public class BattleFieldManager {
 			e.printStackTrace();
 		}
 		System.out.println("∂¡»°ÕÍ≥…");// (finished)
-		return new Gamewindow(bgloc, mapx, mapy, windowsizex, windowsizey);
+		return new Gamewindow(bgloc, mapx+400, mapy+300, windowsizex, windowsizey);
 	}
 
 	public boolean add(SpaceEvent e) {

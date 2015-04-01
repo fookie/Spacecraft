@@ -1,5 +1,9 @@
 package spacecraftelements.SpaceShip;
 
+import spacecraftelements.Weapon.BasicWeapon;
+import spacecraftelements.Weapon.RocketLauncher;
+import spacecraftelements.Weapon.Shotgun;
+import spacecraftelements.Weapon.StarWeapon;
 import spacecraftelements.Weapon.Weapon;
 
 /**
@@ -7,6 +11,12 @@ import spacecraftelements.Weapon.Weapon;
  *
  */
 public abstract class SpaceShip {
+	
+	public static BasicWeapon bw = new BasicWeapon();
+	public static RocketLauncher rl = new RocketLauncher();
+	public static Shotgun sg = new Shotgun();
+	public static StarWeapon sw = new StarWeapon();
+	
 	public double angle;
 	/**
 	 * 游戏内建坐标

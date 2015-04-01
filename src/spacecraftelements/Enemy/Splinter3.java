@@ -4,31 +4,20 @@ import spacecraftcore.MainGame;
 import spacecraftelements.SpecialEffect.SmallBlast;
 import spacecraftelements.SpecialEffect.SpecialEffect;
 
-public class Basickamikaze extends Enemy{
-	public double angle;
-
-	public Basickamikaze(int x,int y,double initialangle){
-		super.x = x;
-		super.y = y;
-		super.damage = 1;
-		super.health = 50;
-		super.v = 10;
-		super.volume = 40;
-		super.imageID = "Images//bullet//blue.png";
-		super.imagesize = 20;
-		super.getscore = 0;
-		this.angle = initialangle %360;
+public class Splinter3 extends Basickamikaze{
+	long starttime;
+	long lifetime = 0;
+	public Splinter3(int x, int y, double initialangle) {
+		super(x, y, initialangle);
+		this.starttime =MainGame.gametime;
 	}
 
 	public boolean update() {
 		if (x == MainGame.bm.getShip().x && y == MainGame.bm.getShip().y) {
-			this.health=-1;
 			return false;
 		}
 
 		double ratiox, ratioy;
-		//ratiox = Math.cos(angle*Math.PI/180);
-		//ratioy = Math.sin(angle*Math.PI/180);
 		if(angle==180){
 			ratiox = -1.0;
 			ratioy = 0;
@@ -39,13 +28,24 @@ public class Basickamikaze extends Enemy{
 		}
 		vx = (int) (((double) v) * ratiox);
 		vy = (int) (((double) v) * ratioy);
+		
+		if (lifetime==40){
+			//System.out.println("Why");
+			MainGame.bm.add(new Splinter4(x,y,45));
+			MainGame.bm.add(new Splinter4(x,y,135));
+			MainGame.bm.add(new Splinter4(x,y,225));
+			MainGame.bm.add(new Splinter4(x,y,315));
+			//System.out.println("Here???");
+			
+			this.health=-1;
+			
+		}
+		lifetime++;
 		x = x + vx;
 		y = y + vy;
-
 		return true;
 	}
 
-	@Override
 	public SpecialEffect deathwhisper() {
 		return new SmallBlast(x, y);
 	}

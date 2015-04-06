@@ -14,9 +14,10 @@ public class RotatingSlime extends Enemy{
 	public int centerx,centery;
 	public int radius;
 	public double angle2center = 90;
-	public Kamikaze mom;
+	public Enemy mom;
 	public double rotation = 3;
-	public RotatingSlime(int x, int y,Kamikaze mother,int radius) {
+	public double starttime;
+	public RotatingSlime(int x, int y,Enemy mother,int radius) {
 		super.x = x;
 		super.y = y;
 		super.damage = 1;
@@ -27,13 +28,17 @@ public class RotatingSlime extends Enemy{
 		super.imagesize = 20;
 		super.getscore=9;
         this.mom = mother;
-		this.radius = 200;
+		this.radius = mother.radius;
+		this.starttime = MainGame.gametime;
 	}
 	public boolean update() {
 		if (x == MainGame.bm.getShip().x && y == MainGame.bm.getShip().y) {
 			return false;
 		}
-		if(hit==true){this.imageID = "Images//enemy//circle.png";hit=false;}
+		if((MainGame.gametime-starttime)>200){
+			this.health = -1;
+		}
+		if(hit==true){this.imageID = "Images//enemy//circle1.png";hit=false;}
 		else {this.imageID = "Images//enemy//circle.png";}//hint when hit
 		/*int x1, y1;
 		double ratiox, ratioy, third;

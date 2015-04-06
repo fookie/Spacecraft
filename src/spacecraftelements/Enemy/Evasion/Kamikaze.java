@@ -12,10 +12,7 @@ import spacecraftelements.SpecialEffect.SpecialEffect;
  */
 public class Kamikaze extends Enemy{
     public double angle;
-    public int radius=100;
     public int tarx,tary,mapsizex,mapsizey;
-    public int centerx;
-	public int centery;
 	public long starttime;
     //public static int centerx,centery;
 	public Kamikaze(int x, int y,int mapsizex,int mapsizey) {
@@ -24,13 +21,14 @@ public class Kamikaze extends Enemy{
 		super.damage = 2;
 		super.health = 200;
 		super.v = 4;
-		super.volume = 40;
+		super.volume = 100;
 		super.imageID = "Images//enemy//star.png";
 		super.imagesize = 50;
 		super.getscore=100;
 		tarx=(int) (Math.random()*mapsizex*0.75)*(-1)^x;
 		tary=(int) (Math.random()*mapsizey*0.75)*(-1)^y;
 		starttime=MainGame.gametime;
+		super.radius = 200;
 
 	}
 
@@ -39,7 +37,7 @@ public class Kamikaze extends Enemy{
 		if (Math.abs(x - tarx)<20 && Math.abs(y - tary)<20) {
 			tarx=(int) (Math.random()*mapsizex*0.75)*(-1)^x;
 			tary=(int) (Math.random()*mapsizey*0.75)*(-1)^y;
-			return false;
+			
 		}
 		if(hit==true){this.imageID = "Images//enemy//star1.png";hit=false;}
 		else {this.imageID = "Images//enemy//star.png";}//hint when hit
@@ -62,10 +60,9 @@ public class Kamikaze extends Enemy{
 	        MainGame.bm.add(new RotatingSlime(x+radius,y,this,radius));
 	        System.out.println(MainGame.gametime-starttime);
 		}
-
-
-		
-
+		if((MainGame.gametime-starttime)>150){
+			this.radius++;
+		}
 
 		return true;
 	}

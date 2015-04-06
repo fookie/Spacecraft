@@ -1,6 +1,7 @@
 package spacecraftelements.Enemy.Evasion;
 
 import spacecraftcore.MainGame;
+import spacecraftelements.Bullets.EnemyBullet;
 import spacecraftelements.Enemy.Enemy;
 import spacecraftelements.SpecialEffect.BigBlast;
 import spacecraftelements.SpecialEffect.SpecialEffect;
@@ -17,7 +18,7 @@ public class Stigis extends Enemy{
 		super.damage = 2;
 		super.health = 200;
 		super.v = 4;
-		super.volume = 40;
+		super.volume = 80;
 		super.imageID = "Images//enemy//star.png";
 		super.imagesize = 50;
 		super.getscore=100;
@@ -44,9 +45,9 @@ public class Stigis extends Enemy{
 		vx = (int) (((double) v) * ratiox);
 		vy = (int) (((double) v) * ratioy);
 		
-		if ((MainGame.gametime-starttime) % 5==0){
-	        MainGame.bm.add(new Basickamikaze(x,y,targetangle));
-	        MainGame.bm.add(new Basickamikaze(x,y,targetangle+180));
+		if ((MainGame.gametime-starttime) % 5==0&&(MainGame.gametime-starttime)<200){
+	        MainGame.bm.add(new EnemyBullet(x,y,targetangle));
+	        MainGame.bm.add(new EnemyBullet(x,y,targetangle+180));
 		}
 		targetangle = targetangle + 5;
 

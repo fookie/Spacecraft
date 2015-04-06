@@ -2,6 +2,7 @@ package spacecraftelements.Enemy.Evasion;
 
 import spacecraftcore.MainGame;
 import spacecraftelements.Bullets.BlueBullet;
+import spacecraftelements.Bullets.EnemyBullet;
 import spacecraftelements.Enemy.Enemy;
 import spacecraftelements.Items.S_repair;
 import spacecraftelements.SpecialEffect.BigBlast;
@@ -57,7 +58,7 @@ public class horizonslider extends Enemy{
 		y = y + vy;
 		
 		if (MainGame.gametime % 20 == 0) {
-	        MainGame.bm.add(new Basickamikaze(x,y,-90));
+	        MainGame.bm.add(new EnemyBullet(x,y,-90));
 		}
 		return true;
 	}

@@ -113,9 +113,9 @@ public class BattleFieldManager {
 			e.printStackTrace();
 		}
 		System.out.println("读取完成");// (finished)
-		return new Gamewindow(bgloc, mapx+400, mapy+300, windowsizex, windowsizey);
+		return new Gamewindow(bgloc, mapx, mapy, windowsizex, windowsizey);
 	}
-
+	
 	public boolean add(SpaceEvent e) {
 		return EventList.add(e);
 	}
@@ -346,7 +346,7 @@ public class BattleFieldManager {
 				Rectangle Bullethitbox = new Rectangle((int) tBullet.x
 						- tBullet.volume / 2, (int) tBullet.y - tBullet.volume
 						/ 2, tBullet.volume / 2, tBullet.volume / 2);
-				System.out.println(tBullet.faction);
+				//System.out.println(tBullet.faction);
 				if (tBullet.faction == 0) {// 己方子弹
 					if (Enemyhitbox.intersects(Bullethitbox)) {
 						tEnemy.health = tEnemy.health - tBullet.damage;
@@ -373,7 +373,7 @@ public class BattleFieldManager {
 			Rectangle Bullethitbox = new Rectangle((int) tBullet.x
 					- tBullet.volume / 2, (int) tBullet.y - tBullet.volume
 					/ 2, tBullet.volume / 2, tBullet.volume / 2);
-			System.out.println(tBullet.faction);
+			//System.out.println(tBullet.faction);
 			if (tBullet.faction == 1)// 敌方子弹
 			{
 				if (Shiphitbox.intersects(Bullethitbox)) {

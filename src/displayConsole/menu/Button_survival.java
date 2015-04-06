@@ -48,7 +48,7 @@ public class Button_survival extends SButton{
 	public boolean click() {
 		Dimension srcDim = Toolkit.getDefaultToolkit().getScreenSize();
 		MainGame.bm = new BattleFieldManager(srcDim.width,srcDim.height);
-		MainGame.test=MainGame.bm.loadmap("Data//scmaps//testmap1600x1200.smp");
+		MainGame.test=MainGame.bm.loadmap("Data//scmaps//spacemap1.smp");
 		//加载生存模式要素      //Load the elements of survival mode
 		
 		//MainGame.ji=new JXKeyboardInputDevice(MainGame.test);

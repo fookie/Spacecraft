@@ -1,5 +1,7 @@
 package displayConsole;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -140,6 +142,9 @@ public class Repainter extends JPanel {
 			}
 			// !!!!!!
 		}// !!!!!!!!!这里也有转换坐标的部分!!!!!!!!!!!!  //Attention: This part contains coordinate conversion.
+		
+		
+		print_debug_message(g);
 		MainGame.cansendimage = true;
 	}
 	
@@ -248,5 +253,21 @@ public class Repainter extends JPanel {
 		}
 
 	}
-
+	private void print_debug_message(Graphics g)
+	{
+		int line=0;
+		g.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		g.setColor(new Color(255, 255, 255));
+		g.drawString("SpaceCraft - debug", windowsizex-250, 200);
+		line++;
+		if(MainGame.gamestatus==1)
+		{
+			g.drawString("shipx:"+MainGame.bm.ship.x+"shipy"+MainGame.bm.ship.y, windowsizex-250, 200+line*15);
+			line++;
+			g.drawString("visx:"+MainGame.bm.ship.visx+"visy"+MainGame.bm.ship.visy, windowsizex-250, 200+line*15);
+			line++;
+			g.drawString("mapx:"+mapsizex+"mapy"+mapsizey, windowsizex-250, 200+line*15);
+			line++;
+		}
+	}
 }

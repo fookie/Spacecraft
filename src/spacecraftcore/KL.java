@@ -15,6 +15,10 @@ public class KL implements KeyListener {
 			MainGame.test.repainter.add_nooffset_element("Images//UI//paused400x250.png",-200,75, 0, 0);
 			MainGame.test.repainter.repaint();
 		}
+		if(e.getKeyChar() == 17)//Ctrl+Q
+		{
+			MainGame.debug=!MainGame.debug;
+		}
 		if(e.getKeyChar() == 'q'&&(MainGame.bm.paused||MainGame.bm.ship.health<=0))
 		{
 			System.exit(0);

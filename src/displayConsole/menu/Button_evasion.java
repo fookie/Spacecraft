@@ -50,7 +50,7 @@ public class Button_evasion extends SButton{
 	public boolean click() {
 		Dimension srcDim = Toolkit.getDefaultToolkit().getScreenSize();
 		MainGame.bm = new BattleFieldManager(srcDim.width,srcDim.height);
-		MainGame.test=MainGame.bm.loadmap("Data//scmaps//testmap1600x1200.smp");
+		MainGame.test=MainGame.bm.loadmap("Data//scmaps//spacemap1.smp");
 		//加载躲子弹模式要素 //Load the elements of Evasion mode.
 		MainGame.bm.add(new Palelin(0,0,0,0));
 		MainGame.bm.add(new S_repair(400,400));

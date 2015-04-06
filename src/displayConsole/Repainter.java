@@ -143,8 +143,7 @@ public class Repainter extends JPanel {
 			// !!!!!!
 		}// !!!!!!!!!这里也有转换坐标的部分!!!!!!!!!!!!  //Attention: This part contains coordinate conversion.
 		
-		
-		print_debug_message(g);
+		if(MainGame.debug)print_debug_message(g);
 		MainGame.cansendimage = true;
 	}
 	
@@ -266,7 +265,7 @@ public class Repainter extends JPanel {
 			line++;
 			g.drawString("visx:"+MainGame.bm.ship.visx+"visy"+MainGame.bm.ship.visy, windowsizex-250, 200+line*15);
 			line++;
-			g.drawString("mapx:"+mapsizex+"mapy"+mapsizey, windowsizex-250, 200+line*15);
+			g.drawString("gametime"+MainGame.gametime, windowsizex-250, 200+line*15);
 			line++;
 		}
 	}

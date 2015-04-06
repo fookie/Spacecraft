@@ -277,7 +277,7 @@ public class BattleFieldManager {
 
 			// 显示武器槽↓//displayweapon
 			WeaponSlot.displayweapon(ship);
-			Scoreprinter.printscore(imgnum);
+			Scoreprinter.printscore(score);
 			// 重新绘制↓//repaint
 			MainGame.test.repainter.repaint();
 		} else {
@@ -294,13 +294,13 @@ public class BattleFieldManager {
 				i--;
 			} else {
 				EnemyList.get(i).update();
-				if (EnemyList.get(i).x > (mapx / 2)
-						|| EnemyList.get(i).x < -(mapx / 2)
-						|| EnemyList.get(i).y > (mapy / 2)
-						|| EnemyList.get(i).y < -(mapy / 2)) {
-					EnemyList.remove(i);
-					i = i - 1;
-				}
+//				if (EnemyList.get(i).x > (mapx / 2)
+//						|| EnemyList.get(i).x < -(mapx / 2)
+//						|| EnemyList.get(i).y > (mapy / 2)
+//						|| EnemyList.get(i).y < -(mapy / 2)) {
+//					EnemyList.remove(i);
+//					i = i - 1;
+//				}
 			}// check Enemy in the list ,if still alive then update the status
 				// of it
 		}
@@ -356,6 +356,7 @@ public class BattleFieldManager {
 						BulletList.remove(j);
 						j--;
 					}
+					
 				}
 			}
 		}

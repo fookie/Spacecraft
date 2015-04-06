@@ -23,6 +23,7 @@ public class MainGame {
 	public static int nowdiff=0;//躲避模式的现在难度
 	public static Thread mt;
 	public static boolean cansendimage=true;
+	public static boolean debug=false;
 	public static Dimension srcDim = Toolkit.getDefaultToolkit().getScreenSize();
 
 	public static void main(String[] args) {

@@ -1,8 +1,10 @@
 package spacecraftcore;
 
 public class BattleFieldLoader {
+	int time=0;
 	public static void loadBattleField()
 	{
+		
 		for(int i=0;i<69;i++){
 		MainGame.test.repainter.add_nooffset_element("Images//UI//mouse//hud ("
 				+ i + ").png", -400+i*6,

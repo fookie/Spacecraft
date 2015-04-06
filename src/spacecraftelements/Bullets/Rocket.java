@@ -23,13 +23,13 @@ public class Rocket extends Bullet {
 		x += vx;
 		y += vy;
 		if((vx + ax) * vx <= 0){
-			vx = 0;
 			ax = fax;
+			vx *= 0.0001;
 			ImageID = "Images//bullet//Rocketac.png";
 		}
 		if((vy + ay)*vy <= 0){
-			vy = 0;
 			ay = fay;
+			vy *= 0.0001;
 			ImageID = "Images//bullet//Rocketac.png";
 		}
 		vx += ax;

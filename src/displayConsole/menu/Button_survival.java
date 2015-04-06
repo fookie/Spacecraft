@@ -5,7 +5,6 @@ import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import de.hardcode.jxinput.keyboard.JXKeyboardInputDevice;
 import spacecraftcore.BattleFieldManager;
 import spacecraftcore.MainGame;
 import spacecraftelements.Items.H_bulletblast;

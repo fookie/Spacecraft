@@ -12,7 +12,6 @@ import spacecraftelements.Enemy.Stigis;
 import spacecraftelements.Enemy.horizonslider;
 import spacecraftelements.Items.S_repair;
 import spacecraftelements.SpaceShip.Palelin;
-import spacecraftevent.EvasionManager;
 
 public class Button_evasion extends SButton{
 	int overnum=3;

@@ -1,7 +1,6 @@
 package spacecraftevent;
 
 import spacecraftcore.MainGame;
-import spacecraftelements.Enemy.Stigis;
 /**
  * 躲避模式管理器
  * 

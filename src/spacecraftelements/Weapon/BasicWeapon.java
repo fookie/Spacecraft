@@ -15,7 +15,6 @@ public class BasicWeapon extends Weapon {
 		super.clip = 10;
 		super.iv = 20;
 		super.reload = 1;
-		super.ID = 0;
 		super.cd = 8;
 		super.ImageLoc = "Images//Item//basicweapon.png";
 		

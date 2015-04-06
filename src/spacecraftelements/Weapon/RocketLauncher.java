@@ -4,7 +4,7 @@ import spacecraftelements.Bullets.Bullet;
 import spacecraftelements.Bullets.Rocket;
 
 /**
- * WeaponID: 0
+ * WeaponID: 3
  * 
  * @author Paulay
  *

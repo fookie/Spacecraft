@@ -31,10 +31,6 @@ public abstract class Weapon {
 	 */
 	public double ia = 0;
 	/**
-	 * ÎäÆ÷ID
-	 */
-	public int ID;
-	/**
 	 * ¿ª»ğ¼ä¸ô
 	 */
 	public int cd;

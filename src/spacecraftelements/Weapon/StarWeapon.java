@@ -15,7 +15,6 @@ public class StarWeapon extends Weapon {
 		super.clip = 30;
 		super.iv = 20;
 		super.reload = 2;
-		super.ID = 0;
 		super.cd = 10;
 		super.count = 5;
 		super.ImageLoc = "Images//Item//starweapon.png";

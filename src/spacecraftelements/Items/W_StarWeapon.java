@@ -1,7 +1,6 @@
 package spacecraftelements.Items;
 
 import spacecraftcore.MainGame;
-import spacecraftelements.SpaceShip.SpaceShip;
 import spacecraftelements.Weapon.StarWeapon;
 import spacecraftevent.ChangeWeapon;
 
@@ -15,7 +14,7 @@ public class W_StarWeapon extends SpaceItem {
 
 	@Override
 	public boolean getitem() {
-		ChangeWeapon.change(2, SpaceShip.sw);
+		ChangeWeapon.change(2, new StarWeapon());
 		MainGame.bm.score+=15;
 		return false;
 	}

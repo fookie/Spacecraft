@@ -15,8 +15,6 @@ import displayConsole.Scoreprinter;
 import displayConsole.WeaponSlot;
 import spacecraftelements.Bullets.Bullet;
 import spacecraftelements.Enemy.Enemy;
-import spacecraftelements.Enemy.Splinter;
-import spacecraftelements.Enemy.Stigis;
 import spacecraftelements.Items.H_bulletblast;
 import spacecraftelements.Items.SpaceItem;
 import spacecraftelements.SpaceShip.SpaceShip;
@@ -48,7 +46,7 @@ public class BattleFieldManager {
 	public boolean paused = false;
 	public int score = 0;
 	public int imgnum = 0;
-	public static boolean isshooting=false;
+	public boolean isshooting=false;
 
 	public SpaceShip getShip() {
 		return ship;
@@ -99,7 +97,7 @@ public class BattleFieldManager {
 			mapx = mapin.readInt();
 			mapy = mapin.readInt();
 			System.out.println("正在处理" + mapaddress + "\n背景地址：" + bgloc
-					+ "地图实际大小：" + mapx + "x" + mapy);// (Chinese Loading XXX
+					+ "地图实际大小：" + mapx + "x" + mapy);// (Chinese Loading 
 
 		} catch (IOException e1) {
 			System.out.println("在读取地图:" + mapaddress + "时,无法获取基本信息，故无法加载地图");// (Chinese
@@ -210,13 +208,17 @@ public class BattleFieldManager {
 
 			// 传递子弹//send bullet to screen
 			for (int i = 0; i < BulletList.size(); i++) {
+//				if (BulletList.get(i).ID == 2){
+//					angle = -getangle((int) BulletList.get(i).ax,(int) BulletList.get(i).ay);
+//				}else{
+//					angle = -getangle((int) BulletList.get(i).vx,(int) BulletList.get(i).vy);
+//				}
 				MainGame.test.repainter.add(
 						BulletList.get(i).ImageID,
 						BulletList.get(i).Imagesize,
 						(int) BulletList.get(i).x,
 						(int) BulletList.get(i).y,
-						-getangle((int) BulletList.get(i).vx,
-								(int) BulletList.get(i).vy), 2);
+						-getangle(BulletList.get(i).vx,BulletList.get(i).vy), 2);
 			}
 			// 传递物品//send items to screen
 			if (ItemList.size() != 0) {
@@ -278,7 +280,7 @@ public class BattleFieldManager {
 
 			Mousehud.showHud(ML.mx, ML.my);
 
-			// 显示武器槽↓//displatweapon
+			// 显示武器槽↓//displayweapon
 			WeaponSlot.displayweapon(ship);
 			Scoreprinter.printscore(imgnum);
 			// 重新绘制↓//repaint
@@ -520,7 +522,7 @@ public class BattleFieldManager {
 	 * @return
 	 * @author EveLIN
 	 */
-	public double getangle(int x, int y) {
+	public double getangle(double x, double y) {
 		double ans;
 		double temp = (double) y / x;
 		if (y > 0) {

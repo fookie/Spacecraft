@@ -8,13 +8,12 @@ import javax.swing.SwingUtilities;
 import de.hardcode.jxinput.Button;
 import de.hardcode.jxinput.JXInputDevice;
 import de.hardcode.jxinput.JXInputManager;
+import de.hardcode.jxinput.directinput.DirectInputDevice;
 import de.hardcode.jxinput.keyboard.JXKeyboardInputDevice;
 import de.hardcode.jxinput.virtual.JXVirtualInputDevice;
 
 public class ControllerInput implements ActionListener {
-	private JXKeyboardInputDevice   mKeyboardDevice = null;
-	private JXVirtualInputDevice    mVirtualDevice  = null;
-	private JXInputDevice ji=JXInputManager.getJXInputDevice( 1);
+	private DirectInputDevice  mdid = null;
 	Button m_up;//m:move 
 	Button m_down;
 	Button m_left;
@@ -30,6 +29,10 @@ public class ControllerInput implements ActionListener {
 			}
 		});
 	}
-
+	void configureDirectInputDevice()
+	{
+		mdid=new DirectInputDevice(0);
+		
+	}
 	
 }

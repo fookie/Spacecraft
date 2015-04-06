@@ -1,4 +1,4 @@
-package spacecraftelements.Enemy;
+package spacecraftelements.Enemy.Evasion;
 
 import spacecraftcore.MainGame;
 import spacecraftelements.SpecialEffect.SmallBlast;

@@ -1,26 +1,27 @@
-package spacecraftelements.Enemy;
+package spacecraftelements.Enemy.Evasion;
 
 import spacecraftcore.MainGame;
 import spacecraftelements.Bullets.BlueBullet;
+import spacecraftelements.Enemy.Enemy;
 import spacecraftelements.Items.S_repair;
 import spacecraftelements.SpecialEffect.BigBlast;
 import spacecraftelements.SpecialEffect.SpecialEffect;
 
-public class Bigslime extends Enemy{
+public class horizonslider extends Enemy{
 	int tarx,tary,mapsizex,mapsizey;
-	public Bigslime(int x, int y,int mapsizex,int mapsizey) {
+	public horizonslider(int x, int y,int mapsizex,int mapsizey) {
 		super.x = x;
 		super.y = y;
 		super.damage = 1;
 		super.health = 500;
-		super.v = 3;
+		super.v = 4;
 		super.volume = 110;
-		super.imageID = "Images//enemy//bigslime.png";
+		super.imageID = "Images//enemy//slider.png";
 		super.imagesize = 50;
 		this.mapsizex=mapsizex;
 		this.mapsizey=mapsizey;
 		tarx=(int) (Math.random()*mapsizex*0.75)*(-1)^x;
-		tary=(int) (Math.random()*mapsizey*0.75)*(-1)^y;
+		tary=y;
 		super.getscore=125;
 	}
 	@Override
@@ -38,11 +39,11 @@ public class Bigslime extends Enemy{
 		
 		if (Math.abs(x - tarx)<20 && Math.abs(y - tary)<20) {
 			tarx=(int) (Math.random()*mapsizex*0.75)*(-1)^x;
-			tary=(int) (Math.random()*mapsizey*0.75)*(-1)^y;
+			tary=y;
 			return false;
 		}
-		if(hit==true){this.imageID = "Images//enemy//bigslime1.png";hit=false;}
-		else {this.imageID = "Images//enemy//bigslime.png";}//hint when hit
+		if(hit==true){this.imageID = "Images//enemy//slider1.png";hit=false;}
+		else {this.imageID = "Images//enemy//star.png";}//hint when hit
 		int x1, y1;
 		double ratiox, ratioy, third;
 		x1 = tarx - x;
@@ -55,14 +56,9 @@ public class Bigslime extends Enemy{
 		x = x + vx;
 		y = y + vy;
 		
-		if (MainGame.gametime % 200 == 0) {
-			MainGame.bm.add(new Slime(x+55,y+55));
-			MainGame.bm.add(new Slime(x+55,y-55));
-			MainGame.bm.add(new Slime(x-55,y+55));
-			MainGame.bm.add(new Slime(x-55,y-55));
+		if (MainGame.gametime % 20 == 0) {
+	        MainGame.bm.add(new Basickamikaze(x,y,-90));
 		}
 		return true;
 	}
-
-	
 }

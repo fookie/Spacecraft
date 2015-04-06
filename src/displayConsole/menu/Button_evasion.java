@@ -7,9 +7,9 @@ import java.awt.event.WindowEvent;
 
 import spacecraftcore.BattleFieldManager;
 import spacecraftcore.MainGame;
-import spacecraftelements.Enemy.Kamikaze;
-import spacecraftelements.Enemy.Stigis;
-import spacecraftelements.Enemy.horizonslider;
+import spacecraftelements.Enemy.Evasion.Kamikaze;
+import spacecraftelements.Enemy.Evasion.Stigis;
+import spacecraftelements.Enemy.Evasion.horizonslider;
 import spacecraftelements.Items.S_repair;
 import spacecraftelements.SpaceShip.Palelin;
 

@@ -1,7 +1,7 @@
 package spacecraftelements.SpecialEffect;
 
 /**
- * 基础实体
+ * 大爆炸特效
  */
 public class BigBlast extends SpecialEffect {
 	int nowid=1;

@@ -1,6 +1,7 @@
-package spacecraftelements.Enemy;
+package spacecraftelements.Enemy.Survival;
 
 import spacecraftcore.MainGame;
+import spacecraftelements.Enemy.Enemy;
 import spacecraftelements.Items.H_bulletblast;
 import spacecraftelements.Items.H_bulletrain;
 import spacecraftelements.Items.S_repair;

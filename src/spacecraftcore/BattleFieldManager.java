@@ -208,11 +208,6 @@ public class BattleFieldManager {
 
 			// ´«µÝ×Óµ¯//send bullet to screen
 			for (int i = 0; i < BulletList.size(); i++) {
-//				if (BulletList.get(i).ID == 2){
-//					angle = -getangle((int) BulletList.get(i).ax,(int) BulletList.get(i).ay);
-//				}else{
-//					angle = -getangle((int) BulletList.get(i).vx,(int) BulletList.get(i).vy);
-//				}
 				MainGame.test.repainter.add(
 						BulletList.get(i).ImageID,
 						BulletList.get(i).Imagesize,

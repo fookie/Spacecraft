@@ -1,7 +1,7 @@
 package spacecraftevent;
 
 import spacecraftcore.MainGame;
-import spacecraftelements.Enemy.Bigslime;
+import spacecraftelements.Enemy.Survival.Bigslime;
 
 /**
  * 随机刷史莱姆的事件

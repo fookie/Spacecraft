@@ -124,8 +124,31 @@ public class Repainter extends JPanel {
 
 	}
 
-	public void paint(Graphics g) {
-
+//	public void paint(Graphics g) {
+//
+//		MainGame.cansendimage = false;
+//		//super.paint(g);
+//		g.clearRect(0, 0, this.getWidth(), this.getHeight());
+//		g.drawImage(bg, -(mapsizex / 2 - windowsizex / 2) - offsetx,
+//				-(mapsizey / 2 - windowsizey / 2) + offsety, this);// 背景位置，offset为0时背景中心对准屏幕中心  //Position of background texture. When the offset value is 0, it's aligned to the midpoint of screen.
+//		for (int i = 0; i < le.size(); i++) {
+//			if (le.get(i).rotatedegree != 0) {
+//				g.drawImage(rotateImage(le.get(i).img, le.get(i).rotatedegree),
+//						le.get(i).x + (windowsizex / 2),
+//						(windowsizey / 2) - le.get(i).y, this);
+//			} else {
+//				g.drawImage(le.get(i).img, le.get(i).x + (windowsizex / 2),
+//						(windowsizey / 2) - le.get(i).y, this);
+//			}
+//			// !!!!!!
+//		}// !!!!!!!!!这里也有转换坐标的部分!!!!!!!!!!!!  //Attention: This part contains coordinate conversion.
+//		
+//		if(MainGame.debug)print_debug_message(g);
+//		MainGame.cansendimage = true;
+//	}
+	public void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
 		MainGame.cansendimage = false;
 		//super.paint(g);
 		g.clearRect(0, 0, this.getWidth(), this.getHeight());
@@ -146,28 +169,6 @@ public class Repainter extends JPanel {
 		if(MainGame.debug)print_debug_message(g);
 		MainGame.cansendimage = true;
 	}
-	
-//	public void paint(Graphics g) {
-//		MainGame.cansendimage = false;
-//		g.clearRect(0, 0, this.getWidth(), this.getHeight());
-//		g.drawImage(bg, -(mapsizex / 2 - windowsizex / 2) - offsetx,-(mapsizey / 2 - windowsizey / 2) + offsety, this);
-//		
-//		
-//		
-//		
-//		//这部分将处理
-//		for (int i = 0; i < le.size(); i++) {
-//		if (le.get(i).rotatedegree != 0) {
-//			g.drawImage(rotateImage(le.get(i).img, le.get(i).rotatedegree),
-//					le.get(i).x + (windowsizex / 2),
-//					(windowsizey / 2) - le.get(i).y, this);
-//		} else {
-//			g.drawImage(le.get(i).img, le.get(i).x + (windowsizex / 2),
-//					(windowsizey / 2) - le.get(i).y, this);
-//		}
-//		}
-//		MainGame.cansendimage=true;
-//	}
 
 	public static BufferedImage rotateImage(Image bufferedimage, double degree) {
 		int w = bufferedimage.getWidth(null);
@@ -266,6 +267,10 @@ public class Repainter extends JPanel {
 			g.drawString("visx:"+MainGame.bm.ship.visx+"visy"+MainGame.bm.ship.visy, windowsizex-250, 200+line*15);
 			line++;
 			g.drawString("gametime"+MainGame.gametime, windowsizex-250, 200+line*15);
+			line++;
+			g.drawString("BattleFeild Data", windowsizex-250, 200+line*15);
+			line++;
+			g.drawString("Enemy: "+MainGame.bm.EnemyList.size()+" Bullet:"+MainGame.bm.BulletList.size(), windowsizex-250, 200+line*15);
 			line++;
 		}
 	}

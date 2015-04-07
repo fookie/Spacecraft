@@ -51,7 +51,7 @@ public class Button_survival extends SButton{
 		MainGame.test=MainGame.bm.loadmap("Data//scmaps//spacemap1.smp");
 		//加载生存模式要素      //Load the elements of survival mode
 		
-		//MainGame.ji=new JXKeyboardInputDevice(MainGame.test);
+		
 		MainGame.bm.add(new Palelin(0,0,0,0));
 		MainGame.bm.add(new RandomSlime(1600,1200));
 		MainGame.bm.add(new RandomBigSlime(1600,1200));
@@ -59,6 +59,10 @@ public class Button_survival extends SButton{
 		MainGame.bm.add(new H_bulletblast(400,-400));
 		MainGame.bm.add(new H_bulletblast(-400,400));
 		MainGame.bm.add(new H_bulletblast(-400,-400));
+		for(int j = 0;j<10;j++)
+		{
+			MainGame.bm.add(new H_bulletblast(100,j*40));
+		}
 		MainGame.test.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				System.exit(0);

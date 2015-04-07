@@ -57,9 +57,7 @@ public class Button_evasion extends SButton{
 		MainGame.bm.add(new S_repair(400,400));
 		MainGame.bm.add(new S_repair(400,-400));
 		MainGame.bm.add(new S_repair(-400,400));
-		MainGame.bm.add(new S_repair(-400,-400));
-		//MainGame.bm.add(new EvasionManager());
-		//MainGame.bm.add(new Stigis(200, 200, (int) (MainGame.bm.windowsizex * 0.7),(int) (MainGame.bm.windowsizey * 0.7)));
+		MainGame.bm.add(new S_repair(-400,-400));		
 		MainGame.bm.add(new Kamikaze(400, -200, (int) (MainGame.bm.windowsizex * 0.7),(int) (MainGame.bm.windowsizey * 0.7)));
 		//MainGame.bm.add(new horizonslider(300,300,(int) (MainGame.bm.windowsizex * 0.7),(int) (MainGame.bm.windowsizey * 0.7)));
 		MainGame.bm.add(new KochiyaSanae(400, -200, (int) (MainGame.bm.windowsizex * 0.7),(int) (MainGame.bm.windowsizey * 0.7)));

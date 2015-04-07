@@ -19,7 +19,12 @@ public class BattleFieldLoader {
 			MainGame.test.repainter.add_nooffset_element("Images//SpecialEffects//BigBlast//"+i+".png", 0,
 					i, 0, 2);
 			}
-	
+		MainGame.test.repainter.add_nooffset_element("Images//bullets//bluebullet.png", 0,
+			8, 0, 2);
+		MainGame.test.repainter.add_nooffset_element("Images//bullets//purple.png", 0,
+				8, 0, 2);
+		MainGame.test.repainter.add_nooffset_element("Images//bullets//blue.png", 0,
+				8, 0, 2);
 		MainGame.test.repainter.repaint();
 		MainGame.gamestatus=1;
 	}

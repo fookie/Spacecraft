@@ -5,7 +5,6 @@ import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import de.hardcode.jxinput.directinput.DirectInputDevice;
 import displayConsole.Gamewindow;
 import displayConsole.menu.Menuwindow;
 
@@ -28,7 +27,6 @@ public class MainGame {
 
 	public static void main(String[] args) {
 		mt = new Thread(new SpaceTimmer());//新建线程//new thread
-		System.out.println(DirectInputDevice.getNumberOfDevices());
 		srcDim = Toolkit.getDefaultToolkit().getScreenSize();   //获取屏幕分辨率//get screensize
 		mainmenu=new Menuwindow("Images//UI//menubg.jpg",srcDim.width,srcDim.height);
 		mainmenu.addWindowListener(new WindowAdapter() {

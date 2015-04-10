@@ -5,7 +5,11 @@ import java.applet.AudioClip;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
-
+/**
+ * Play sound effects for the game
+ * @author Paulay
+ *
+ */
 public class SoundController implements Runnable{
 	private String loc;
 	public SoundController(String path){

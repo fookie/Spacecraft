@@ -29,11 +29,9 @@ public class BasicWeapon extends Weapon {
 		c = Math.sqrt(a * a + b * b);
 		double sin = b / c;
 		double cos = a / c;
-//		int vx = (int) (((double) iv) * cos);
-//		int vy = (int) (((double) iv) * sin);
 		double vx = iv * cos;
 		double vy = iv * sin;
-		Thread t = new Thread(new SoundController("Sounds//BasicWeapon.wav"));
+		Thread t = new Thread(new SoundController("Sounds//BasicWeapon.wav"));		//play sound FX
 		t.start();
 		Bullet[] bullet = new Bullet[1];
 		bullet[0] = new BasicBullet(x, y, vx, vy, f);

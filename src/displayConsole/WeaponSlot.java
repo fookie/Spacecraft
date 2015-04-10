@@ -3,6 +3,7 @@ package displayConsole;
 import spacecraftcore.MainGame;
 import spacecraftelements.SpaceShip.SpaceShip;
 /**
+ * Weaponslot in the corner of the screen
  * @author Paulay
  *
  */

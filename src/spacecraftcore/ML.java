@@ -3,7 +3,11 @@ package spacecraftcore;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-
+/**
+ * Mouselistener during the game
+ * @author Hale
+ *
+ */
 public class ML implements MouseMotionListener,MouseListener{
 	
     public static int mx,my;

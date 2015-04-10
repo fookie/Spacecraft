@@ -2,7 +2,11 @@ package spacecraftcore;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
+/**
+ * Keylistener for during the game 
+ * @author Hale
+ *
+ */
 public class KL implements KeyListener {
 
 	@Override

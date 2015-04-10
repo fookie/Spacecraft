@@ -6,7 +6,11 @@ import java.awt.event.MouseMotionListener;
 
 import spacecraftcore.MainGame;
 import spacecraftcore.SoundController;
-
+/**
+ * Mouselistener for menu
+ * @author Hale
+ *
+ */
 public class MML implements MouseMotionListener,MouseListener{
 	
     public int mx,my;

@@ -1,5 +1,9 @@
 package spacecraftcore;
-
+/**
+ * Preload some pictures to reduce lag during the game
+ * @author Hale
+ *
+ */
 public class BattleFieldLoader {
 	int time=0;
 	public static void loadBattleField()

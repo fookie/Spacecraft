@@ -1,7 +1,11 @@
 package displayConsole;
 
 import spacecraftcore.MainGame;
-
+/**
+ * Cursor
+ * @author EveLIN
+ *
+ */
 public class Mousehud {
 	public static void showHud(int x, int y) {
 

@@ -42,7 +42,7 @@ public class BattleFieldManager {
 	public int mapx, mapy;// 地图实际大小//mapsize
 	private String bgloc;// 背景地址//background image location
 	private DataInputStream mapin;
-	public int autotarx, autotary;// 按住自动发炮的变量//
+	public int autotarx, autotary;// 按住自动发炮的变量//autoshoot target
 	public int windowsizex, windowsizey;
 	public boolean paused = false;
 	public int score = 0;
@@ -69,7 +69,7 @@ public class BattleFieldManager {
 		this.windowsizey = windowsizey;
 
 		// 预处理//load image to prevent lag
-		add(new Bigslime(100, 100, 1600, 1200));
+	//	add(new Bigslime(100, 100, 1600, 1200));
 		// add(new BigS(200, 200, (int) (windowsizex * 0.7),
 		// (int) (windowsizey * 0.7)));
 		//add(new Stigis(200, 200, (int) (windowsizex * 0.7),(int) (windowsizey * 0.7)));
@@ -88,8 +88,7 @@ public class BattleFieldManager {
 			mapin = new DataInputStream(new BufferedInputStream(
 					new FileInputStream(mapaddress)));
 		} catch (FileNotFoundException e) {
-			System.out.println(mapaddress + " 不存在，故无法加载地图");// (chinese:XX is
-
+			System.out.println(mapaddress + " 不存在，故无法加载地图");// (chinese:XX not exist)
 			e.printStackTrace();// 会出现红字//print StackTrace
 			return null;
 		}
@@ -98,7 +97,7 @@ public class BattleFieldManager {
 			mapx = mapin.readInt();
 			mapy = mapin.readInt();
 			System.out.println("正在处理" + mapaddress + "\n背景地址：" + bgloc
-					+ "地图实际大小：" + mapx + "x" + mapy);// (Chinese Loading 
+					+ "地图实际大小：" + mapx + "x" + mapy);// (Chinese Loading )
 
 		} catch (IOException e1) {
 			System.out.println("在读取地图:" + mapaddress + "时,无法获取基本信息，故无法加载地图");// (Chinese
@@ -343,14 +342,14 @@ public class BattleFieldManager {
 						- tBullet.volume / 2, (int) tBullet.y - tBullet.volume
 						/ 2, tBullet.volume / 2, tBullet.volume / 2);
 				//System.out.println(tBullet.faction);
-				if (tBullet.faction == 0) {// 己方子弹
+				if (tBullet.faction == 0) {// 己方子弹our bullet
 					if (Enemyhitbox.intersects(Bullethitbox)) {
 						tEnemy.health = tEnemy.health - tBullet.damage;
 						tEnemy.hit = true;
 						BulletList.remove(j);
 						j--;
 					}
-				} else if (tBullet.faction == 1)// 敌方子弹
+				} else if (tBullet.faction == 1)// 敌方子弹emeny bullet
 				{
 					if (Shiphitbox.intersects(Bullethitbox)) {
 						ship.health--;
@@ -364,7 +363,7 @@ public class BattleFieldManager {
 		
 		
 		
-		if(EnemyList.size()==0){//没有敌人时，单独处理子弹和飞船
+		if(EnemyList.size()==0){//没有敌人时，单独处理子弹和飞船//if no enemy ,we only deal with bullet and ship.
 		for (int j = 0; j < BulletList.size(); j++) {
 			Bullet tBullet = BulletList.get(j);
 			Rectangle Bullethitbox = new Rectangle((int) tBullet.x
@@ -490,7 +489,8 @@ public class BattleFieldManager {
 			}
 		}
 
-		// 到了
+		// 滚屏的部分代码
+		//This lines will change ship's position both on screen and in game.
 		if (((ship.x + ship.vx) > (mapx / 2) || (ship.x + ship.vx) < -(mapx / 2)) != true) {
 			ship.x = ship.x + ship.vx;
 			ship.visx = ship.visx + ship.vx;
@@ -519,7 +519,7 @@ public class BattleFieldManager {
 	 * @return
 	 * @author EveLIN
 	 */
-	public double getangle(double x, double y) {
+	public static double getangle(double x, double y) {
 		double ans;
 		double temp = (double) y / x;
 		if (y > 0) {

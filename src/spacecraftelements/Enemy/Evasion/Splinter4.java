@@ -30,7 +30,7 @@ public class Splinter4 extends Basickamikaze{
 		vx =  (((double) v) * ratiox);
 		vy =  (((double) v) * ratioy);
 		
-		if (this.lifetime==40){
+		if (this.lifetime==100){
 			this.health=-1;
 		}
 		x = x + vx;

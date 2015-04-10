@@ -72,6 +72,9 @@ public class KochiyaSanae extends Enemy{
 			if((MainGame.gametime-starttime) % 50==0&&(MainGame.gametime-starttime)<151){
 	            MainGame.bm.add(new horizonslider(x,y,(int) (MainGame.bm.windowsizex * 0.7),(int) (MainGame.bm.windowsizey * 0.7)));
 			}
+			if((MainGame.gametime-starttime)%300==0){
+				MainGame.bm.add(new Splinter(x,y,90));
+			}
 
 			return true;
 		}

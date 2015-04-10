@@ -32,10 +32,10 @@ public class Splinter2 extends Basickamikaze{
 		
 		if (this.lifetime==40){
 			//System.out.println("Why");
-			MainGame.bm.add(new Splinter3(x,y,45));
-			MainGame.bm.add(new Splinter3(x,y,135));
-			MainGame.bm.add(new Splinter3(x,y,225));
-			MainGame.bm.add(new Splinter3(x,y,315));
+			MainGame.bm.add(new Splinter3(x,y,60));
+			MainGame.bm.add(new Splinter3(x,y,150));
+			MainGame.bm.add(new Splinter3(x,y,240));
+			MainGame.bm.add(new Splinter3(x,y,330));
 			//System.out.println("Here???");
 			
 			this.health=-1;

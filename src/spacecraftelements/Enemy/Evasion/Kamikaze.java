@@ -6,15 +6,14 @@ import spacecraftelements.SpecialEffect.BigBlast;
 import spacecraftelements.SpecialEffect.SpecialEffect;
 /**
  * 
- * @author Pimba
- * Mothership Core 
+ * @author EveLIn
+ * As the center for circular rotating enemies 
  * The core of rotation object
  */
 public class Kamikaze extends Enemy{
     public double angle,tarx,tary;
     public int mapsizex,mapsizey;
 	public long starttime;
-    //public static int centerx,centery;
 	public Kamikaze(int x, int y,int mapsizex,int mapsizey) {
 	    super.x = x;
 		super.y = y;
@@ -57,11 +56,13 @@ public class Kamikaze extends Enemy{
 		this.centery = y;
 		
 		if ((MainGame.gametime-starttime) % 15==0&&(MainGame.gametime-starttime)<135){
-	        MainGame.bm.add(new RotatingSlime(x+radius,y,this,radius));
-	        System.out.println(MainGame.gametime-starttime);
+	        MainGame.bm.add(new RotatingSlime(x+radius,y,this,radius));// adding rotating enemies here with it
 		}
 		if((MainGame.gametime-starttime)>150){
-			this.radius++;
+			this.radius++;                 
+		}
+		if((MainGame.gametime-starttime)>300){
+			this.health = -1; //remove this one when its life time is over 300
 		}
 
 		return true;

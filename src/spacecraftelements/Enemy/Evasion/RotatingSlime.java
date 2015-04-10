@@ -6,12 +6,12 @@ import spacecraftelements.SpecialEffect.BigBlast;
 import spacecraftelements.SpecialEffect.SpecialEffect;
 /**
  * 
- * @author Pimba
+ * @author EveLIn
  * Rotating Object
  *
  */
 public class RotatingSlime extends Enemy{
-	public int centerx,centery;
+	public int centerx,centery; // the coordinates of its rotating center
 	public int radius;
 	public double angle2center = 90;
 	public Enemy mom;

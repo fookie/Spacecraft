@@ -13,7 +13,7 @@ import spacecraftelements.SpecialEffect.SmallBlast;
 import spacecraftelements.SpecialEffect.SpecialEffect;
 
 public class Slime extends Enemy {
-	public Slime(int x, int y) {
+	public Slime(double x, double y) {
 		super.x = x;
 		super.y = y;
 		super.damage = 1;
@@ -35,15 +35,15 @@ public class Slime extends Enemy {
 		} else {
 			this.imageID = "Images//enemy//slime.png";
 		}// hint when hit
-		int x1, y1;
+		double x1, y1;
 		double ratiox, ratioy, third;
-		x1 = (int) (MainGame.bm.getShip().x - x);
-		y1 = (int) (MainGame.bm.getShip().y - y);
-		third = Math.sqrt((double) x1 * x1 + y1 * y1);
-		ratiox = ((double) x1) / third;
-		ratioy = ((double) y1) / third;
-		vx = (int) (((double) v) * ratiox);
-		vy = (int) (((double) v) * ratioy);
+		x1 =  (MainGame.bm.getShip().x - x);
+		y1 = (MainGame.bm.getShip().y - y);
+		third = Math.sqrt( x1 * x1 + y1 * y1);
+		ratiox = (x1) / third;
+		ratioy = (y1) / third;
+		vx = ( v * ratiox);
+		vy =  ( v * ratioy);
 		x = x + vx;
 		y = y + vy;
 		return true;

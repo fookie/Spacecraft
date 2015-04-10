@@ -4,11 +4,11 @@ import spacecraftcore.MainGame;
 import spacecraftevent.BulletRain;
 
 public class H_bulletrain extends SpaceItem{
-	public H_bulletrain(int x,int y){
+	public H_bulletrain(double x,double y){
 	super.imageID="Images//Item//bulletrain.png";
 	super.imagesize=25;
-	super.x=x;
-	super.y=y;
+	super.x=(int)x;
+	super.y=(int)y;
 	}
 	@Override
 	public boolean getitem() {

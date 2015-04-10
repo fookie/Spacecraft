@@ -8,7 +8,7 @@ public class Splinter2 extends Basickamikaze{
 	long starttime;
 	long lifetime = 0;
 
-	public Splinter2(int x, int y, double initialangle) {
+	public Splinter2(double x, double y, double initialangle) {
 		super(x, y, initialangle);
 		this.starttime =MainGame.gametime;
 	}
@@ -27,8 +27,8 @@ public class Splinter2 extends Basickamikaze{
 		ratiox = Math.cos(angle*Math.PI/180);
 	    ratioy = Math.sin(angle*Math.PI/180);
 		}
-		vx = (int) (((double) v) * ratiox);
-		vy = (int) (((double) v) * ratioy);
+		vx =  (((double) v) * ratiox);
+		vy =  (((double) v) * ratioy);
 		
 		if (this.lifetime==40){
 			//System.out.println("Why");

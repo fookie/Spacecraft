@@ -9,8 +9,9 @@ import spacecraftelements.SpecialEffect.BigBlast;
 import spacecraftelements.SpecialEffect.SpecialEffect;
 
 public class horizonslider extends Enemy{
-	int tarx,tary,mapsizex,mapsizey;
-	public horizonslider(int x, int y,int mapsizex,int mapsizey) {
+	int mapsizex,mapsizey;
+	double tarx,tary;
+	public horizonslider(double x, double y,int mapsizex,int mapsizey) {
 		super.x = x;
 		super.y = y;
 		super.damage = 1;
@@ -21,7 +22,7 @@ public class horizonslider extends Enemy{
 		super.imagesize = 50;
 		this.mapsizex=mapsizex;
 		this.mapsizey=mapsizey;
-		tarx=(int) (Math.random()*mapsizex*0.75)*(-1)^x;
+		tarx=(int) (Math.random()*mapsizex*0.75)*((-1)^(int)x);
 		tary=y;
 		super.getscore=125;
 	}
@@ -39,21 +40,22 @@ public class horizonslider extends Enemy{
 	public boolean update() {
 		
 		if (Math.abs(x - tarx)<20 && Math.abs(y - tary)<20) {
-			tarx=(int) (Math.random()*mapsizex*0.75)*(-1)^x;
+			tarx= (Math.random()*mapsizex*0.75)*((-1)^(int)x);
 			tary=y;
 			return false;
 		}
 		if(hit==true){this.imageID = "Images//enemy//slider1.png";hit=false;}
 		else {this.imageID = "Images//enemy//star.png";}//hint when hit
-		int x1, y1;
+		double x1;
+		double y1;
 		double ratiox, ratioy, third;
 		x1 = tarx - x;
 		y1 = tary - y;
 		third = Math.sqrt((double) x1 * x1 + y1 * y1);
 		ratiox = ((double) x1) / third;
 		ratioy = ((double) y1) / third;
-		vx = (int) (((double) v) * ratiox);
-		vy = (int) (((double) v) * ratioy);
+		vx =  (((double) v) * ratiox);
+		vy = (((double) v) * ratioy);
 		x = x + vx;
 		y = y + vy;
 		

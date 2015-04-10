@@ -7,7 +7,7 @@ import spacecraftelements.SpecialEffect.SpecialEffect;
 public class Splinter3 extends Basickamikaze{
 	long starttime;
 	long lifetime = 0;
-	public Splinter3(int x, int y, double initialangle) {
+	public Splinter3(double x, double y, double initialangle) {
 		super(x, y, initialangle);
 		this.starttime =MainGame.gametime;
 	}
@@ -26,8 +26,8 @@ public class Splinter3 extends Basickamikaze{
 		ratiox = Math.cos(angle*Math.PI/180);
 	    ratioy = Math.sin(angle*Math.PI/180);
 		}
-		vx = (int) (((double) v) * ratiox);
-		vy = (int) (((double) v) * ratioy);
+		vx =  (((double) v) * ratiox);
+		vy =  (((double) v) * ratioy);
 		
 		if (lifetime==40){
 			//System.out.println("Why");

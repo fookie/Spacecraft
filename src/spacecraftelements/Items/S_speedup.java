@@ -4,10 +4,10 @@ import spacecraftcore.MainGame;
 import spacecraftevent.Speedup;
 
 public class S_speedup extends SpaceItem{
-	public S_speedup(int x,int y)
+	public S_speedup(double x,double y)
 	{
-		super.x=x;
-		super.y=y;
+		super.x=(int)x;
+		super.y=(int)y;
 		super.imageID="Images//Item//speedup.png";
 		super.imagesize=25;
 	}

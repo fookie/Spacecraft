@@ -8,7 +8,8 @@ import spacecraftelements.SpecialEffect.BigBlast;
 import spacecraftelements.SpecialEffect.SpecialEffect;
 
 public class Bigslime extends Enemy{
-	int tarx,tary,mapsizex,mapsizey;
+	int mapsizex,mapsizey;
+	double tarx,tary;
 	public Bigslime(int x, int y,int mapsizex,int mapsizey) {
 		super.x = x;
 		super.y = y;
@@ -20,8 +21,8 @@ public class Bigslime extends Enemy{
 		super.imagesize = 50;
 		this.mapsizex=mapsizex;
 		this.mapsizey=mapsizey;
-		tarx=(int) (Math.random()*mapsizex*0.75)*(-1)^x;
-		tary=(int) (Math.random()*mapsizey*0.75)*(-1)^y;
+		tarx= (Math.random()*mapsizex*0.75)*((-1)^(int)x);
+		tary= (Math.random()*mapsizey*0.75)*((-1)^(int)y);
 		super.getscore=125;
 	}
 	@Override
@@ -38,21 +39,21 @@ public class Bigslime extends Enemy{
 	public boolean update() {
 		
 		if (Math.abs(x - tarx)<20 && Math.abs(y - tary)<20) {
-			tarx=(int) (Math.random()*mapsizex*0.75)*(-1)^x;
-			tary=(int) (Math.random()*mapsizey*0.75)*(-1)^y;
+			tarx=(Math.random()*mapsizex*0.75)*((-1)^(int)x);
+			tary= (Math.random()*mapsizey*0.75)*((-1)^(int)y);
 			return false;
 		}
 		if(hit==true){this.imageID = "Images//enemy//bigslime1.png";hit=false;}
 		else {this.imageID = "Images//enemy//bigslime.png";}//hint when hit
-		int x1, y1;
+		double x1, y1;
 		double ratiox, ratioy, third;
 		x1 = tarx - x;
 		y1 = tary - y;
-		third = Math.sqrt((double) x1 * x1 + y1 * y1);
-		ratiox = ((double) x1) / third;
-		ratioy = ((double) y1) / third;
-		vx = (int) (((double) v) * ratiox);
-		vy = (int) (((double) v) * ratioy);
+		third = Math.sqrt( x1 * x1 + y1 * y1);
+		ratiox = ( x1) / third;
+		ratioy = ( y1) / third;
+		vx =  (( v) * ratiox);
+		vy =  (( v) * ratioy);
 		x = x + vx;
 		y = y + vy;
 		

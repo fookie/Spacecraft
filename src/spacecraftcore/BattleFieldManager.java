@@ -15,6 +15,7 @@ import displayConsole.Scoreprinter;
 import displayConsole.WeaponSlot;
 import spacecraftelements.Bullets.Bullet;
 import spacecraftelements.Enemy.Enemy;
+import spacecraftelements.Enemy.Survival.Bigslime;
 import spacecraftelements.Items.H_bulletblast;
 import spacecraftelements.Items.SpaceItem;
 import spacecraftelements.SpaceShip.SpaceShip;
@@ -68,8 +69,8 @@ public class BattleFieldManager {
 		this.windowsizey = windowsizey;
 
 		// 预处理//load image to prevent lag
-
-		// add(new Kamikaze(200, 200, (int) (windowsizex * 0.7),
+		add(new Bigslime(100, 100, 1600, 1200));
+		// add(new BigS(200, 200, (int) (windowsizex * 0.7),
 		// (int) (windowsizey * 0.7)));
 		//add(new Stigis(200, 200, (int) (windowsizex * 0.7),(int) (windowsizey * 0.7)));
 		//add(new Splinter(200,200,180));
@@ -243,8 +244,8 @@ public class BattleFieldManager {
 			// 传递敌人//send enemy to screen
 			for (int i = 0; i < EnemyList.size(); i++) {
 				MainGame.test.repainter.add(EnemyList.get(i).imageID,
-						EnemyList.get(i).imagesize, EnemyList.get(i).x,
-						EnemyList.get(i).y,
+						EnemyList.get(i).imagesize, (int)EnemyList.get(i).x,
+						(int)EnemyList.get(i).y,
 						-getangle(EnemyList.get(i).vx, EnemyList.get(i).vy), 2);
 			}
 
@@ -328,8 +329,8 @@ public class BattleFieldManager {
 
 		for (int i = 0; i < EnemyList.size(); i++) {// 这个循环基本处理了所有需要处理的东西//collision between enemy and bullet
 			Enemy tEnemy = EnemyList.get(i);
-			Rectangle Enemyhitbox = new Rectangle(tEnemy.x - tEnemy.volume / 2,
-					tEnemy.y - tEnemy.volume / 2, tEnemy.volume / 2,
+			Rectangle Enemyhitbox = new Rectangle((int)tEnemy.x - tEnemy.volume / 2,
+					(int)tEnemy.y - tEnemy.volume / 2, tEnemy.volume / 2,
 					tEnemy.volume / 2);
 			if (Enemyhitbox.intersects(Shiphitbox)) {// 飞机碰上怪物怪物挂掉//dedete Enemy ship then delete
 				ship.health--;

@@ -4,11 +4,11 @@ import spacecraftcore.MainGame;
 import spacecraftelements.Bullets.BlueBullet;
 
 public class H_bulletblast extends SpaceItem{
-	public H_bulletblast(int x,int y){
+	public H_bulletblast(double x,double y){
 	super.imageID="Images//Item//bulletblast.png";
 	super.imagesize=25;
-	super.x=x;
-	super.y=y;
+	super.x=(int)x;
+	super.y=(int)y;
 	}
 	@Override
 	public boolean getitem() {

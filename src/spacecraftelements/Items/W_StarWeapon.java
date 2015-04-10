@@ -5,11 +5,11 @@ import spacecraftelements.Weapon.StarWeapon;
 import spacecraftevent.ChangeWeapon;
 
 public class W_StarWeapon extends SpaceItem {
-	public W_StarWeapon(int x, int y) {
+	public W_StarWeapon(double x, double y) {
 		super.imageID = "Images//Item//starweapon.png";
 		super.imagesize = 25;
-		super.x = x;
-		super.y = y;
+		super.x = (int) x;
+		super.y = (int) y;
 	}
 
 	@Override

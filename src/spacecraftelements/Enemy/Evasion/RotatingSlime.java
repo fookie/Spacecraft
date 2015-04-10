@@ -17,7 +17,7 @@ public class RotatingSlime extends Enemy{
 	public Enemy mom;
 	public double rotation = 3;
 	public double starttime;
-	public RotatingSlime(int x, int y,Enemy mother,int radius) {
+	public RotatingSlime(double x, double y,Enemy mother,int radius) {
 		super.x = x;
 		super.y = y;
 		super.damage = 1;
@@ -73,8 +73,8 @@ public class RotatingSlime extends Enemy{
 		third = Math.sqrt((double) x1 * x1 + y1 * y1);
 		ratiox = ((double) x1) / third;
 		ratioy = ((double) y1) / third;
-		vx = (int) (((double) v) * ratiox);
-		vy = (int) (((double) v) * ratioy);
+		vx =  (((double) v) * ratiox);
+		vy =  (((double) v) * ratioy);
 		x = x + vx;
 		y = y + vy;
 		angle2center = (angle2center + rotation)%360;

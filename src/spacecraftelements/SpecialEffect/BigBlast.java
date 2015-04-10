@@ -5,9 +5,9 @@ package spacecraftelements.SpecialEffect;
  */
 public class BigBlast extends SpecialEffect {
 	int nowid=1;
-	public BigBlast(int x, int y){
-		super.x = x;
-		super.y = y;
+	public BigBlast(double x, double y){
+		super.x = (int) x;
+		super.y = (int) y;
 		super.imagesize = 50;
 		super.imageID = "Images//SpecialEffects//BigBlast//";
 		super.over=false;
@@ -15,10 +15,10 @@ public class BigBlast extends SpecialEffect {
 
 	@Override
 	public String getImage() {
-		if(nowid<13)
+		if(nowid<26)
 		{
 			nowid++;
-			return imageID+nowid+".png";
+			return imageID+nowid/2+".png";
 		}
 		else
 		{

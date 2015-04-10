@@ -8,7 +8,7 @@ import spacecraftelements.SpecialEffect.SpecialEffect;
 public class Basickamikaze extends Enemy{
 	public double angle;
 
-	public Basickamikaze(int x,int y,double initialangle){
+	public Basickamikaze(double x,double y,double initialangle){
 		super.x = x;
 		super.y = y;
 		super.damage = 1;
@@ -38,8 +38,8 @@ public class Basickamikaze extends Enemy{
 		ratiox = Math.cos(angle*Math.PI/180);
 	    ratioy = Math.sin(angle*Math.PI/180);
 		}
-		vx = (int) (((double) v) * ratiox);
-		vy = (int) (((double) v) * ratioy);
+		vx = (v * ratiox);
+		vy =  (v * ratioy);
 		x = x + vx;
 		y = y + vy;
 

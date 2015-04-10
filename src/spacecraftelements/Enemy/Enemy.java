@@ -15,7 +15,8 @@ public abstract class Enemy implements Updatable{
 	/**
 	 *  敌人生成位置 initial position
 	 */
-	public int x, y;
+	public double x;
+	public double y;
 	/**
 	 * 	敌人攻击力 damage
 	 */
@@ -23,8 +24,8 @@ public abstract class Enemy implements Updatable{
 	/**
 	 *  敌人移动速度
 	 */
-	public int v;
-	public int vx,vy;
+	public double v;
+	public double vx,vy;
 	/**
 	 * 	敌人血量
 	 */
@@ -40,7 +41,7 @@ public abstract class Enemy implements Updatable{
 	public int getscore;
 	public abstract boolean update();
 	public boolean hit=false;
-	public int centerx,centery;
+	public double centerx,centery;
 	public int radius;
    
 	

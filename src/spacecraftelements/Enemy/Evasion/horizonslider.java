@@ -22,7 +22,7 @@ public class horizonslider extends Enemy{
 		super.imagesize = 50;
 		this.mapsizex=mapsizex;
 		this.mapsizey=mapsizey;
-		tarx=(int) (Math.random()*mapsizex*0.75)*((-1)^(int)x);
+		tarx=(int) (Math.random()*mapsizex*0.75)*((int)Math.pow(-1,(int)x));
 		tary=y;
 		super.getscore=125;
 	}
@@ -40,7 +40,7 @@ public class horizonslider extends Enemy{
 	public boolean update() {
 		
 		if (Math.abs(x - tarx)<20 && Math.abs(y - tary)<20||MainGame.gametime%200==0) {
-			tarx= (Math.random()*mapsizex*0.75)*((-1)^(int)x);
+			tarx= (Math.random()*mapsizex*0.75)*((int)Math.pow(-1,(int)x));
 			tary=y;
 			
 		}

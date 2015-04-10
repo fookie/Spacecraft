@@ -15,7 +15,6 @@ import displayConsole.Scoreprinter;
 import displayConsole.WeaponSlot;
 import spacecraftelements.Bullets.Bullet;
 import spacecraftelements.Enemy.Enemy;
-import spacecraftelements.Enemy.Survival.Bigslime;
 import spacecraftelements.Items.H_bulletblast;
 import spacecraftelements.Items.SpaceItem;
 import spacecraftelements.SpaceShip.SpaceShip;
@@ -69,7 +68,7 @@ public class BattleFieldManager {
 		this.windowsizey = windowsizey;
 
 		// ‘§¥¶¿Ì//load image to prevent lag
-	//	add(new Bigslime(100, 100, 1600, 1200));
+		//add(new Bigslime(100, 100, 2500, 1200));
 		// add(new BigS(200, 200, (int) (windowsizex * 0.7),
 		// (int) (windowsizey * 0.7)));
 		//add(new Stigis(200, 200, (int) (windowsizex * 0.7),(int) (windowsizey * 0.7)));

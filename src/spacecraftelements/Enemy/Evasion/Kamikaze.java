@@ -24,8 +24,8 @@ public class Kamikaze extends Enemy{
 		super.imageID = "Images//enemy//star.png";
 		super.imagesize = 50;
 		super.getscore=100;
-		tarx= (Math.random()*mapsizex*0.75)*((-1)^(int)x);
-		tary= (Math.random()*mapsizey*0.75)*((-1)^(int)y);
+		tarx= (Math.random()*mapsizex*0.75)*((int)Math.pow(-1,(int)x));
+		tary= (Math.random()*mapsizey*0.75)*((int)Math.pow(-1,(int)y));
 		starttime=MainGame.gametime;
 		super.radius = 200;
 
@@ -34,8 +34,8 @@ public class Kamikaze extends Enemy{
 	public boolean update() {
 
 		if (Math.abs(x - tarx)<20 && Math.abs(y - tary)<20) {
-			tarx= (Math.random()*mapsizex*0.75)*((-1)^(int)x);
-			tary= (Math.random()*mapsizey*0.75)*((-1)^(int)y);
+			tarx= (Math.random()*mapsizex*0.75)*((int)Math.pow(-1,(int)x));
+			tary= (Math.random()*mapsizey*0.75)*((int)Math.pow(-1,(int)y));
 			
 		}
 		if(hit==true){this.imageID = "Images//enemy//star1.png";hit=false;}

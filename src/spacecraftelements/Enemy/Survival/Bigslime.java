@@ -21,8 +21,10 @@ public class Bigslime extends Enemy{
 		super.imagesize = 50;
 		this.mapsizex=mapsizex;
 		this.mapsizey=mapsizey;
-		tarx= (Math.random()*mapsizex*0.75)*((-1)^(int)x);
-		tary= (Math.random()*mapsizey*0.75)*((-1)^(int)y);
+		tarx= (Math.random()*mapsizex*0.4)*((int)Math.pow(-1,(int)x));
+		tary= (Math.random()*mapsizey*0.4)*((int)Math.pow(-1,y));
+		//int a=(int) Math.pow(-1,3);
+		
 		super.getscore=125;
 	}
 	@Override
@@ -39,8 +41,9 @@ public class Bigslime extends Enemy{
 	public boolean update() {
 		
 		if (Math.abs(x - tarx)<20 && Math.abs(y - tary)<20) {
-			tarx=(Math.random()*mapsizex*0.75)*((-1)^(int)x);
-			tary= (Math.random()*mapsizey*0.75)*((-1)^(int)y);
+			tarx=(Math.random()*mapsizex*0.4)*((int)Math.pow(-1,(int)y));
+			tary= (Math.random()*mapsizey*0.4)*((int)Math.pow(-1,(int)x));
+			//System.out.println(tarx+" "+tary);
 			return false;
 		}
 		if(hit==true){this.imageID = "Images//enemy//bigslime1.png";hit=false;}

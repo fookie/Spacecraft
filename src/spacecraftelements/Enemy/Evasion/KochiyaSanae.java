@@ -34,8 +34,8 @@ public class KochiyaSanae extends Enemy{
 		public boolean update() {
 
 			if (Math.abs(x - tarx)<20 && Math.abs(y - tary)<20) {
-				tarx= (Math.random()*mapsizex*0.75)*((-1)^(int)x);
-				tary= (Math.random()*mapsizey*0.75)*((-1)^(int)y);
+				tarx= (Math.random()*mapsizex*0.75)*((int)Math.pow(-1,(int)x));
+				tary= (Math.random()*mapsizey*0.75)*((int)Math.pow(-1,(int)y));
 				return false;
 			}
 			if(hit==true){this.imageID = "Images//enemy//boss1.png";hit=false;}
@@ -66,8 +66,8 @@ public class KochiyaSanae extends Enemy{
 			if ((MainGame.gametime-starttime) % 220==0){
 	           
 	            //MainGame.bm.add(new Kamikaze(x, y,  (MainGame.bm.windowsizex * 0.7),(MainGame.bm.windowsizey * 0.7)));
-				tarx=(int) (Math.random()*mapsizex*0.50)*((-1)^(int)x);
-				tary=(int) (Math.random()*mapsizey*0.50)*((-1)^(int)y);
+				tarx=(int) (Math.random()*mapsizex*0.50)*((int)Math.pow(-1,(int)x));
+				tary=(int) (Math.random()*mapsizey*0.50)*((int)Math.pow(-1,(int)y));
 			}
 			if((MainGame.gametime-starttime) % 50==0&&(MainGame.gametime-starttime)<151){
 	            MainGame.bm.add(new horizonslider(x,y,(int) (MainGame.bm.windowsizex * 0.7),(int) (MainGame.bm.windowsizey * 0.7)));

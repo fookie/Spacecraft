@@ -1,14 +1,18 @@
 package spacecraftcore;
 
+
 public class SpaceTimmer implements Runnable {
 	/**
 	 * Game thread
 	 */
 	private int sleeping_time=19;
+//	static int threadnum;
+//	public static int threadcount;
 	@Override
 	public void run(){
 		while (true) 
 		{
+//			threadnum = (Thread.getAllStackTraces()).size();
 			if(MainGame.gamestatus==1)
 			{
 				if (MainGame.bm.paused != true) {
@@ -50,6 +54,8 @@ public class SpaceTimmer implements Runnable {
 					e.printStackTrace();
 				}	
 			}
+//			if(MainGame.gametime % 200 == 0){
+//			threadcount = (Thread.getAllStackTraces()).size() - threadnum;}
 		}
 	}
 }

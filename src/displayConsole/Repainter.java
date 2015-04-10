@@ -260,6 +260,7 @@ public class Repainter extends JPanel {
 		g.setColor(new Color(255, 255, 255));
 		g.drawString("SpaceCraft - debug", windowsizex-250, 200);
 		line++;
+//		Map map = Thread.getAllStackTraces();
 		if(MainGame.gamestatus==1)
 		{
 			g.drawString("shipx:"+MainGame.bm.ship.x+"shipy"+MainGame.bm.ship.y, windowsizex-250, 200+line*15);
@@ -272,6 +273,8 @@ public class Repainter extends JPanel {
 			line++;
 			g.drawString("Enemy: "+MainGame.bm.EnemyList.size()+" Bullet:"+MainGame.bm.BulletList.size(), windowsizex-250, 200+line*15);
 			line++;
+//			g.drawString("Thread:" + map.size()+" Increase:"+SpaceTimmer.threadcount, windowsizex-250, 200+line*15);
+//			line++;
 		}
 	}
 }

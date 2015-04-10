@@ -21,6 +21,7 @@ public class SoundController implements Runnable{
 			ac = Applet.newAudioClip(cbUrl);
 			ac.play();
 			Thread.sleep(10000);
+			ac.stop();
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e) {

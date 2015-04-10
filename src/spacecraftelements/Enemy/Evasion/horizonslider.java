@@ -39,10 +39,10 @@ public class horizonslider extends Enemy{
 	@Override
 	public boolean update() {
 		
-		if (Math.abs(x - tarx)<20 && Math.abs(y - tary)<20) {
+		if (Math.abs(x - tarx)<20 && Math.abs(y - tary)<20||MainGame.gametime%200==0) {
 			tarx= (Math.random()*mapsizex*0.75)*((-1)^(int)x);
 			tary=y;
-			return false;
+			
 		}
 		if(hit==true){this.imageID = "Images//enemy//slider1.png";hit=false;}
 		else {this.imageID = "Images//enemy//star.png";}//hint when hit

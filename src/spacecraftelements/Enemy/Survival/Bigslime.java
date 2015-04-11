@@ -22,7 +22,7 @@ public class Bigslime extends Enemy{
 		this.mapsizex=mapsizex;
 		this.mapsizey=mapsizey;
 		tarx= (Math.random()*mapsizex*0.4)*((int)Math.pow(-1,(int)x));
-		tary= (Math.random()*mapsizey*0.4)*((int)Math.pow(-1,y));
+		tary= (Math.random()*mapsizey*0.4)*((int)Math.pow(-1,(int)y));
 		//int a=(int) Math.pow(-1,3);
 		
 		super.getscore=125;

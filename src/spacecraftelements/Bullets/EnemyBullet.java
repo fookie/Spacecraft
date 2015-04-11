@@ -4,7 +4,7 @@ import spacecraftcore.MainGame;
 
 public class EnemyBullet extends Bullet{
 	public double angle;
-	public int v;
+	public int v=10;
 
 	public EnemyBullet(double x,double y,double initialangle){
 		super.x = x;
@@ -72,7 +72,11 @@ public class EnemyBullet extends Bullet{
 		super.Imagesize = 50;
 		super.faction = 1;
 		this.angle = initialangle %360;
-		this.v = 10;
+	}
+	public EnemyBullet(double x,double y,double initialangle,int color,int v){
+		this(x,y,initialangle,color);
+		this.v=v;
+	}
+	
 	}
 
-}

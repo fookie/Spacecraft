@@ -8,8 +8,6 @@ import java.awt.event.WindowEvent;
 import spacecraftcore.BattleFieldManager;
 import spacecraftcore.MainGame;
 import spacecraftelements.Enemy.Evasion.Bossix;
-import spacecraftelements.Enemy.Evasion.Kamikaze;
-import spacecraftelements.Enemy.Evasion.KochiyaSanae;
 import spacecraftelements.Items.S_repair;
 import spacecraftelements.SpaceShip.Palelin;
 

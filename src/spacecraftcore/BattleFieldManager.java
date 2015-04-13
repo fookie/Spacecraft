@@ -16,7 +16,13 @@ import displayConsole.WeaponSlot;
 import spacecraftelements.Bullets.Bullet;
 import spacecraftelements.Enemy.Enemy;
 import spacecraftelements.Items.H_bulletblast;
+import spacecraftelements.Items.H_bulletrain;
+import spacecraftelements.Items.S_repair;
+import spacecraftelements.Items.S_speedup;
 import spacecraftelements.Items.SpaceItem;
+import spacecraftelements.Items.W_BasicWeapon;
+import spacecraftelements.Items.W_Shotgun;
+import spacecraftelements.Items.W_StarWeapon;
 import spacecraftelements.SpaceShip.SpaceShip;
 import spacecraftelements.SpecialEffect.SpecialEffect;
 import spacecraftevent.SpaceEvent;
@@ -612,6 +618,32 @@ public class BattleFieldManager {
 			for (int i = 0; i < this.ship.w1.count(); i++) {
 				add(tBullets[i]);
 			}
+		}
+	}
+	/**
+	 * Create a item on the map
+	 * 
+	 * 
+	 * @param x
+	 * @param y
+	 * @param l : level of item 
+	 */
+	public static void createitem(double x,double y,double l){
+		double r = Math.random()*100;
+		if (r < 5) {
+			MainGame.bm.add(new W_StarWeapon(x, y));
+		} else if (r > 15 && r < 20) {
+			MainGame.bm.add(new H_bulletrain(x, y));
+		} else if (r > 20 && r < 25) {
+			MainGame.bm.add(new S_speedup(x, y));
+		} else if (r > 30 && r < 40) {
+			MainGame.bm.add(new S_repair(x, y));
+		} else if (r > 40 && r < 50) {
+			MainGame.bm.add(new H_bulletblast(x, y));
+		} else if (r > 55 && r < 60+l) {
+			MainGame.bm.add(new W_Shotgun(x, y));
+		} else if (r > 60+l && r < 61+l) {
+			MainGame.bm.add(new W_BasicWeapon(x, y));
 		}
 	}
 }

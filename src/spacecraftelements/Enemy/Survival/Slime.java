@@ -1,14 +1,8 @@
 package spacecraftelements.Enemy.Survival;
 
+import spacecraftcore.BattleFieldManager;
 import spacecraftcore.MainGame;
 import spacecraftelements.Enemy.Enemy;
-import spacecraftelements.Items.H_bulletblast;
-import spacecraftelements.Items.H_bulletrain;
-import spacecraftelements.Items.S_repair;
-import spacecraftelements.Items.S_speedup;
-import spacecraftelements.Items.W_BasicWeapon;
-import spacecraftelements.Items.W_Shotgun;
-import spacecraftelements.Items.W_StarWeapon;
 import spacecraftelements.SpecialEffect.SmallBlast;
 import spacecraftelements.SpecialEffect.SpecialEffect;
 
@@ -51,22 +45,7 @@ public class Slime extends Enemy {
 
 	@Override
 	public SpecialEffect deathwhisper() {
-		double r = Math.random();
-		if (r < 0.05) {
-			MainGame.bm.add(new W_StarWeapon(x, y));
-		} else if (r > 0.15 && r < 0.2) {
-			MainGame.bm.add(new H_bulletrain(x, y));
-		} else if (r > 0.2 && r < 0.25) {
-			MainGame.bm.add(new S_speedup(x, y));
-		} else if (r > 0.3 && r < 0.4) {
-			MainGame.bm.add(new S_repair(x, y));
-		} else if (r > 0.4 && r < 0.5) {
-			MainGame.bm.add(new H_bulletblast(x, y));
-		} else if (r > 0.55 && r < 0.6) {
-			MainGame.bm.add(new W_Shotgun(x, y));
-		} else if (r > 0.6 && r < 0.61) {
-			MainGame.bm.add(new W_BasicWeapon(x, y));
-		}
+		BattleFieldManager.createitem(x, y, 2);
 		return new SmallBlast(x, y);
 	}
 }

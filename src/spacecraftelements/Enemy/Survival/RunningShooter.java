@@ -2,22 +2,22 @@ package spacecraftelements.Enemy.Survival;
 
 import spacecraftcore.BattleFieldManager;
 import spacecraftcore.MainGame;
-import spacecraftelements.Bullets.BlueBullet;
+import spacecraftelements.Bullets.EnemyBullet;
 import spacecraftelements.Enemy.Enemy;
 import spacecraftelements.SpecialEffect.BigBlast;
 import spacecraftelements.SpecialEffect.SpecialEffect;
 
-public class Bigslime extends Enemy{
+public class RunningShooter extends Enemy{
 	int mapsizex,mapsizey;
 	double tarx,tary;
-	public Bigslime(double x, double y,int mapsizex,int mapsizey) {
+	public RunningShooter(double x, double y,int mapsizex,int mapsizey) {
 		super.x = x;
 		super.y = y;
 		super.damage = 1;
-		super.health = 250;
-		super.v = 3;
+		super.health = 100;
+		super.v = 7;
 		super.volume = 110;
-		super.imageID = "Images//enemy//bigslime.png";
+		super.imageID = "Images//enemy//star.png";
 		super.imagesize = 50;
 		this.mapsizex=mapsizex;
 		this.mapsizey=mapsizey;
@@ -30,10 +30,8 @@ public class Bigslime extends Enemy{
 	@Override
 	public SpecialEffect deathwhisper() {
 		BattleFieldManager.createitem(x, y, 2);
-		for(int i=-5;i<6;i++)
-		{
-			MainGame.bm.add(new BlueBullet(x, y, i,(int) Math.sqrt(20-i*i), 1));
-			MainGame.bm.add(new BlueBullet(x, y, i,-(int) Math.sqrt(20-i*i), 1));
+		for (int i = 0; i < 9; i++) {
+			MainGame.bm.add(new EnemyBullet(x, y, i * 40, 4));
 		}
 		return new BigBlast(x,y);
 	}
@@ -45,9 +43,7 @@ public class Bigslime extends Enemy{
 			tary= (Math.random()*mapsizey*0.4)*((int)Math.pow(-1,(int)x));
 			//System.out.println(tarx+" "+tary);
 			return false;
-		}
-		if(hit==true){this.imageID = "Images//enemy//bigslime1.png";hit=false;}
-		else {this.imageID = "Images//enemy//bigslime.png";}//hint when hit
+		}//hint when hit
 		double x1, y1;
 		double ratiox, ratioy, third;
 		x1 = tarx - x;
@@ -60,11 +56,8 @@ public class Bigslime extends Enemy{
 		x = x + vx;
 		y = y + vy;
 		
-		if (MainGame.gametime % (600+Math.random()*100) == 0) {
-			MainGame.bm.add(new Slime(x+55,y+55));
-			MainGame.bm.add(new Slime(x+55,y-55));
-			MainGame.bm.add(new Slime(x-55,y+55));
-			MainGame.bm.add(new Slime(x-55,y-55));
+		if (MainGame.gametime % 50 == 0) {
+			MainGame.bm.add(new EnemyBullet(x,y,BattleFieldManager.getangle(vx,vy),2,12));
 		}
 		return true;
 	}

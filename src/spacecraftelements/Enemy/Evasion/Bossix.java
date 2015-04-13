@@ -72,7 +72,7 @@ public class Bossix extends Enemy {
 		// AI part 2 using skills
 		if (skillstatus >= skillstoptime) {
 			skillstatus = 0;
-			skillid = (int) ((Math.random() * 100) % 6);
+			skillid = (int) ((Math.random() * 100) % 7);
 		}
 		if (skillid == 0) {
 			bulletlaser(skillstatus);
@@ -86,6 +86,8 @@ public class Bossix extends Enemy {
 			suddenshot(skillstatus);
 		} else if (skillid == 5) {
 			Slaser(skillstatus);
+		} else if (skillid == 6) {
+			Bulletgoaround(skillstatus);
 		}
 		return true;
 
@@ -150,9 +152,12 @@ public class Bossix extends Enemy {
 			skillstoptime = 2;
 
 		}
-		if (Math.random() > 0.7) {
-			MainGame.bm.add(new Kamikaze((int) ((Math.random() * mapsizex * 0.4) * ((int) Math.pow(-1, (int) x))), (int) ((Math.random() * mapsizey * 0.4)
-					* ((int) Math.pow(-1, (int) y))),
+		if (Math.random() > 0.5) {
+			MainGame.bm.add(new Kamikaze(
+					(int) ((Math.random() * mapsizex * 0.4) * ((int) Math.pow(
+							-1, (int) x))),
+					(int) ((Math.random() * mapsizey * 0.4) * ((int) Math.pow(
+							-1, (int) y))),
 					(int) (MainGame.bm.windowsizex * 0.7),
 					(int) (MainGame.bm.windowsizey * 0.7)));
 		}
@@ -203,14 +208,12 @@ public class Bossix extends Enemy {
 				v = 2;
 			}
 			if (s % 3 == 0) {
-				if(s%2==0){
-				MainGame.bm.add(new EnemyBullet(x, y, skillangle+s%4, s % 6,
-						15+s%4 ));
-				}
-				else
-				{
-					MainGame.bm.add(new EnemyBullet(x, y, skillangle-s%4, s % 6,
-							15+s%4 ));
+				if (s % 2 == 0) {
+					MainGame.bm.add(new EnemyBullet(x, y, skillangle + s % 4,
+							s % 6, 15 + s % 4));
+				} else {
+					MainGame.bm.add(new EnemyBullet(x, y, skillangle - s % 4,
+							s % 6, 15 + s % 4));
 				}
 
 			}
@@ -233,18 +236,31 @@ public class Bossix extends Enemy {
 			v = 5;
 		} else {
 			double angle = BattleFieldManager.getangle(vx, vy);
-			
-				if (s % 5 == 0) {
-					MainGame.bm
-							.add(new EnemyBullet(x, y, angle + s, s % 4, 13));
-					MainGame.bm
-					.add(new EnemyBullet(x, y, angle - s, s % 4, 13));
-				}
-			
+
+			if (s % 5 == 0) {
+				MainGame.bm.add(new EnemyBullet(x, y, angle + s, s % 4, 13));
+				MainGame.bm.add(new EnemyBullet(x, y, angle - s, s % 4, 13));
+			}
 		}
 
 		if (s == 89) {
 			v = 2;
+		}
+		skillstatus++;
+	}
+
+	private void Bulletgoaround(int s) {
+		double angle = BattleFieldManager.getangle(vx, vy);
+		if (s == 0) {
+			skillstoptime = 90;
+			movestatus = 1;
+
+		}
+		if (s % 4 == 0) {
+			MainGame.bm.add(new EnemyBullet(x, y, angle + s * 4 + 180, s % 5,
+					13));
+		} else if(s % 4 == 2){
+			MainGame.bm.add(new EnemyBullet(x, y, angle + s * 4, s % 5, 13));
 		}
 		skillstatus++;
 	}

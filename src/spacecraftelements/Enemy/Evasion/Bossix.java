@@ -151,7 +151,8 @@ public class Bossix extends Enemy {
 
 		}
 		if (Math.random() > 0.7) {
-			MainGame.bm.add(new Kamikaze(400, -200,
+			MainGame.bm.add(new Kamikaze((int) ((Math.random() * mapsizex * 0.4) * ((int) Math.pow(-1, (int) x))), (int) ((Math.random() * mapsizey * 0.4)
+					* ((int) Math.pow(-1, (int) y))),
 					(int) (MainGame.bm.windowsizex * 0.7),
 					(int) (MainGame.bm.windowsizey * 0.7)));
 		}
@@ -202,8 +203,15 @@ public class Bossix extends Enemy {
 				v = 2;
 			}
 			if (s % 3 == 0) {
-				MainGame.bm.add(new EnemyBullet(x, y, skillangle, s % 6,
-						15 + s % 5));
+				if(s%2==0){
+				MainGame.bm.add(new EnemyBullet(x, y, skillangle+s%4, s % 6,
+						15+s%4 ));
+				}
+				else
+				{
+					MainGame.bm.add(new EnemyBullet(x, y, skillangle-s%4, s % 6,
+							15+s%4 ));
+				}
 
 			}
 			if (s % 3 == 1) {

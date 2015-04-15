@@ -1,6 +1,6 @@
 package spacecraftelements.Weapon;
 
-import spacecraftcore.SoundController;
+import spacecraftcore.SoundController2;
 import spacecraftelements.Bullets.Bullet;
 import spacecraftelements.Bullets.Rocket;
 
@@ -41,7 +41,7 @@ public class RocketLauncher extends Weapon {
 		double fax = fa * cos;
 		double fay = fa * sin;									//some calculation for rockets movement
 		Bullet[] rocket = new Rocket[1];
-		Thread t = new Thread(new SoundController("Sounds//RocketLauncher.wav"));
+		Thread t = new Thread(new SoundController2("Sounds//RocketLauncher.wav"));
 		t.start();
 		rocket[0] = new Rocket(x, y, vx, vy, ax, ay, f, fax, fay);
 		return rocket;

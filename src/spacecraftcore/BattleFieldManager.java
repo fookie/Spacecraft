@@ -53,7 +53,6 @@ public class BattleFieldManager {
 	public int score = 0;
 	public int imgnum = 0;
 	public boolean isshooting=false;
-
 	public SpaceShip getShip() {
 		return ship;
 	}
@@ -395,7 +394,7 @@ public class BattleFieldManager {
 			if (Itemhitbox.intersects(Shiphitbox)) {
 				tItem.getitem();
 				if (ship.health >= 0) {
-					Thread t = new Thread(new SoundController(
+					Thread t = new Thread(new SoundController2(
 							"Sounds//bonus.wav"));
 					t.start();
 				}

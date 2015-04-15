@@ -1,6 +1,6 @@
 package spacecraftelements.Weapon;
 
-import spacecraftcore.SoundController;
+import spacecraftcore.SoundController2;
 import spacecraftelements.Bullets.BasicBullet;
 import spacecraftelements.Bullets.Bullet;
 /**
@@ -17,8 +17,6 @@ public class BasicWeapon extends Weapon {
 		super.reload = 1;
 		super.cd = 8;
 		super.ImageLoc = "Images//Item//basicweapon.png";
-		
-		
 	}
 
 	public Bullet[] shoot(int x, int y, int visx, int visy, int cx, int cy,
@@ -31,8 +29,10 @@ public class BasicWeapon extends Weapon {
 		double cos = a / c;
 		double vx = iv * cos;
 		double vy = iv * sin;
-		Thread t = new Thread(new SoundController("Sounds//BasicWeapon.wav"));		//play sound FX
+		Thread t = new Thread(new SoundController2("Sounds//BasicWeapon.wav"));		//play sound FX
 		t.start();
+//		String add= "Sounds//BasicWeapon.wav";
+//		SoundFXPlayer.play(add);
 		Bullet[] bullet = new Bullet[1];
 		bullet[0] = new BasicBullet(x, y, vx, vy, f);
 		return bullet;

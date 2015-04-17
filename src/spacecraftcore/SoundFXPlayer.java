@@ -11,13 +11,23 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+/**
+ * Core class for sound FXs playing by SourceDataLine. <br/>
+ * 
+ * Referenced from https://www3.ntu.edu.sg/home/ehchua/programming/java/J8c_PlayingSound.html
+ * 
+ */
 public class SoundFXPlayer {
 
 	public SoundFXPlayer() {
 	}
 
+	/**
+	 * Write relevant data to the mixer via sound data line.
+	 * @param add
+	 */
 	public static void play(String add) {
-		int BUFFER_SIZE = 128 * 1024; // 64 KB
+		int BUFFER_SIZE = 128 * 1024; // 128 KB
 		SourceDataLine soundLine = null;
 		// Set up an audio input stream piped from the sound file.
 		try {

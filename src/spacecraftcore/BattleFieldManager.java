@@ -394,7 +394,7 @@ public class BattleFieldManager {
 			if (Itemhitbox.intersects(Shiphitbox)) {
 				tItem.getitem();
 				if (ship.health >= 0) {
-					Thread t = new Thread(new SoundController2(
+					Thread t = new Thread(new SoundController(
 							"Sounds//bonus.wav"));
 					t.start();
 				}

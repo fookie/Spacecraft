@@ -1,6 +1,6 @@
 package spacecraftelements.Weapon;
 
-import spacecraftcore.SoundController2;
+import spacecraftcore.SoundController;
 import spacecraftelements.Bullets.BasicBullet;
 import spacecraftelements.Bullets.Bullet;
 /**
@@ -29,7 +29,7 @@ public class BasicWeapon extends Weapon {
 		double cos = a / c;
 		double vx = iv * cos;
 		double vy = iv * sin;
-		Thread t = new Thread(new SoundController2("Sounds//BasicWeapon.wav"));		//play sound FX
+		Thread t = new Thread(new SoundController("Sounds//BasicWeapon.wav"));		//play sound FX
 		t.start();
 //		String add= "Sounds//BasicWeapon.wav";
 //		SoundFXPlayer.play(add);

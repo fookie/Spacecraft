@@ -1,6 +1,6 @@
 package spacecraftelements.SpaceShip;
 
-import spacecraftcore.SoundController2;
+import spacecraftcore.SoundController;
 import spacecraftelements.Weapon.BasicWeapon;
 import spacecraftelements.Weapon.RocketLauncher;
 import spacecraftelements.Weapon.Weapon;
@@ -27,10 +27,10 @@ public class Palelin extends SpaceShip {
 	public void switchweapon() {
 		Weapon tw;
 		if (w2 == null) {
-			Thread t = new Thread(new SoundController2("Sounds//cantchange.wav"));
+			Thread t = new Thread(new SoundController("Sounds//cantchange.wav"));
 			t.start();
 		} else {
-			Thread t = new Thread(new SoundController2(
+			Thread t = new Thread(new SoundController(
 					"Sounds//changeweapon.wav"));
 			t.start();
 			tw = w1;

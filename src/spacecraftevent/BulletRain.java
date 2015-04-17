@@ -1,7 +1,7 @@
 package spacecraftevent;
 
 import spacecraftcore.MainGame;
-import spacecraftcore.SoundController2;
+import spacecraftcore.SoundController;
 import spacecraftelements.Bullets.BasicBullet;
 import spacecraftelements.Bullets.BlueBullet;
 
@@ -22,7 +22,7 @@ public class BulletRain extends SpaceEvent {
 						- x, f));
 			}
 			x++;
-			Thread t = new Thread(new SoundController2("Sounds//heart.wav"));
+			Thread t = new Thread(new SoundController("Sounds//heart.wav"));
 			t.start();
 			if (x > 2) {
 				super.over = true;

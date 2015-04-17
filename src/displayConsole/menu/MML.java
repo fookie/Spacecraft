@@ -5,7 +5,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import spacecraftcore.MainGame;
-import spacecraftcore.SoundController2;
+import spacecraftcore.SoundController;
 /**
  * Mouselistener for menu
  * @author Hale
@@ -29,7 +29,7 @@ public class MML implements MouseMotionListener,MouseListener{
 		mx=e.getX();
 		my=e.getY();
 		MainGame.mainmenu.mouseclick(mx, my);
-		Thread t = new Thread(new SoundController2("Sounds//click1.wav"));
+		Thread t = new Thread(new SoundController("Sounds//click1.wav"));
 		t.start();
 		
 	}

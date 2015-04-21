@@ -22,6 +22,7 @@ public class Bossix extends Enemy {
 	private int skillstoptime;
 	private double skillangle;
 	private int movestatus = 0;// 0-跟随 1-随机
+	private int nowimage = 0;
 
 	public Bossix(int x, int y, int mapsizex, int mapsizey) {
 		super.x = x;
@@ -29,10 +30,10 @@ public class Bossix extends Enemy {
 		super.damage = 2;
 		super.health = 2000;
 		super.v = 2;
-		super.volume = 200;
+		super.volume = 180;
 		super.imageID = "Images//enemy//Bossix.png";
 		super.imagesize = 100;
-		super.getscore = 100;
+		super.getscore = 10000;
 		tarx = (Math.random() * mapsizex * 0.4) * ((int) Math.pow(-1, (int) x));
 		tary = (Math.random() * mapsizey * 0.4) * ((int) Math.pow(-1, (int) y));
 		starttime = MainGame.gametime;
@@ -40,8 +41,20 @@ public class Bossix extends Enemy {
 	}
 
 	public boolean update() {
+		// change image
+		if (nowimage > 147) {
+			nowimage = 0;
+		} else {
+			nowimage +=3;
+		}
+		if (nowimage < 10) {
+			this.imageID = "Images//enemy//boss//boss_0000" + nowimage+".png";
+		} else if (nowimage < 100) {
+			this.imageID = "Images//enemy//boss//boss_000" + nowimage+".png";
+		} else {
+			this.imageID = "Images//enemy//boss//boss_00" + nowimage+".png";
+		}
 		// AI par1 move
-
 		// 根据当前移动策略选择目标
 		if (movestatus == 1) {
 			if (Math.abs(x - tarx) < 20 && Math.abs(y - tary) < 20) {
@@ -259,7 +272,7 @@ public class Bossix extends Enemy {
 		if (s % 4 == 0) {
 			MainGame.bm.add(new EnemyBullet(x, y, angle + s * 4 + 180, s % 5,
 					13));
-		} else if(s % 4 == 2){
+		} else if (s % 4 == 2) {
 			MainGame.bm.add(new EnemyBullet(x, y, angle + s * 4, s % 5, 13));
 		}
 		skillstatus++;

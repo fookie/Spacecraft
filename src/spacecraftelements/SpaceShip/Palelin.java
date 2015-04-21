@@ -2,7 +2,6 @@ package spacecraftelements.SpaceShip;
 
 import spacecraftcore.SoundController;
 import spacecraftelements.Weapon.BasicWeapon;
-import spacecraftelements.Weapon.RocketLauncher;
 import spacecraftelements.Weapon.Shotgun;
 import spacecraftelements.Weapon.Weapon;
 

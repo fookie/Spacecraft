@@ -253,15 +253,16 @@ public class BattleFieldManager {
 			}
 
 			// GameOver↓
-
-			if (ship.health <= 0 && score < 10000) {
+			if ( score > 10000) {
+				MainGame.test.repainter.add_nooffset_element(
+						"Images//UI//win.png", -200, 75, 0, 0);
+				ship.health=-1;
+			}
+			else if (ship.health <= 0 && score < 10000) {
 				MainGame.test.repainter.add_nooffset_element(
 						"Images//UI//gameover.png", -200, 75, 0, 0);
 			}
-			if (ship.health <= 0 && score > 10000) {
-				MainGame.test.repainter.add_nooffset_element(
-						"Images//UI//win.png", -200, 75, 0, 0);
-			}
+			
 
 			// 生命值判断↓//Hp
 
@@ -383,10 +384,7 @@ public class BattleFieldManager {
 				}
 			}
 		}
-		}
-		
-		
-		
+		}	
 		for (int i = 0; i < ItemList.size(); i++) {
 			SpaceItem tItem = ItemList.get(i);
 			Rectangle Itemhitbox = new Rectangle(tItem.x - tItem.imagesize,
@@ -432,25 +430,6 @@ public class BattleFieldManager {
 				add(new H_bulletblast(0, 0));
 			}
 		}
-
-		// if (((kw && ks) || (ka && kd)||(ship.health<=0)) != true) {//
-		// 如果上下键或者左右键被被同时按下则不操作
-		// if (kw && (ship.vy <= 0)) {// W向上
-		// ship.vy = ship.maxv;
-		// } else if (kd && (ship.vx <= 0)) {// d向右
-		// ship.vx = ship.maxv;
-		// } else if (ka && (ship.vx >= 0)) {// a向左
-		// ship.vx = -ship.maxv;
-		// } else if (ks && (ship.vy >= 0)) {// s向下
-		// ship.vy = -ship.maxv;
-		// }
-		// if (!kd && !ka) {
-		// ship.vx = 0;
-		// }
-		// if (!kw && !ks) {
-		// ship.vy = 0;
-		// }
-		// }
 
 		if (ship.vx > 0) {// 下面这几行保证飞船在不按键时能停住this lines will stop the ship when
 							// player do not press any button

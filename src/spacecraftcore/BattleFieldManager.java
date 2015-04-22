@@ -23,6 +23,7 @@ import spacecraftelements.Items.SpaceItem;
 import spacecraftelements.Items.W_BasicWeapon;
 import spacecraftelements.Items.W_Shotgun;
 import spacecraftelements.Items.W_StarWeapon;
+import spacecraftelements.Items.W_rocketlauncher;
 import spacecraftelements.SpaceShip.SpaceShip;
 import spacecraftelements.SpecialEffect.SpecialEffect;
 import spacecraftevent.SpaceEvent;
@@ -306,7 +307,8 @@ public class BattleFieldManager {
 		for (int i = 0; i < EnemyList.size(); i++) {
 			if (EnemyList.get(i).health < 0) {
 				add(EnemyList.get(i).deathwhisper());
-				score = score + EnemyList.get(i).getscore;
+				if(score<10000){
+				score = score + EnemyList.get(i).getscore;}
 				EnemyList.remove(i);
 				i--;
 			} else {
@@ -436,9 +438,8 @@ public class BattleFieldManager {
 			ship.y = 0;
 			ship.visx = 0;
 			ship.visy = 0;
-			if (MainGame.gametime % 200 == 0) {
-				add(new H_bulletblast(0, 0));
-			}
+			ship.ImageID="";
+			
 		}
 
 		if (ship.vx > 0) {// 下面这几行保证飞船在不按键时能停住this lines will stop the ship when
@@ -626,14 +627,16 @@ public class BattleFieldManager {
 			MainGame.bm.add(new H_bulletrain(x, y));
 		} else if (r > 20 && r < 25) {
 			MainGame.bm.add(new S_speedup(x, y));
-		} else if (r > 30 && r < 40) {
+		} else if (r > 30 && r < 37) {
 			MainGame.bm.add(new S_repair(x, y));
-		} else if (r > 40 && r < 50) {
+		} else if (r > 40 && r < 47) {
 			MainGame.bm.add(new H_bulletblast(x, y));
 		} else if (r > 55 && r < 60 + l) {
 			MainGame.bm.add(new W_Shotgun(x, y));
 		} else if (r > 60 + l && r < 61 + l) {
 			MainGame.bm.add(new W_BasicWeapon(x, y));
+		}else if (r > 61 + l && r < 64 + l) {
+			MainGame.bm.add(new W_rocketlauncher(x, y));
 		}
 	}
 }

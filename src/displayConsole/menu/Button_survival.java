@@ -59,10 +59,7 @@ public class Button_survival extends SButton{
 		MainGame.bm.add(new H_bulletblast(400,-400));
 		MainGame.bm.add(new H_bulletblast(-400,400));
 		MainGame.bm.add(new H_bulletblast(-400,-400));
-		for(int j = 0;j<10;j++)
-		{
-			MainGame.bm.add(new H_bulletblast(100,j*40));
-		}
+		
 		MainGame.test.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				System.exit(0);

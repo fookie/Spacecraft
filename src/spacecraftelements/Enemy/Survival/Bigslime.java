@@ -60,7 +60,7 @@ public class Bigslime extends Enemy{
 		x = x + vx;
 		y = y + vy;
 		
-		if (MainGame.gametime % (600+Math.random()*100) == 0) {
+		if (MainGame.gametime % (400-(int)(Math.random()*100)) == 0) {
 			MainGame.bm.add(new Slime(x+55,y+55));
 			MainGame.bm.add(new Slime(x+55,y-55));
 			MainGame.bm.add(new Slime(x-55,y+55));

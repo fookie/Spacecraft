@@ -223,20 +223,20 @@ public class Bossix extends Enemy {
 			if (s % 3 == 0) {
 				if (s % 2 == 0) {
 					MainGame.bm.add(new EnemyBullet(x, y, skillangle + s % 4,
-							s % 6, 15 + s % 4));
+							(int)((MainGame.gametime+s))% 8, 15 + s % 4));
 				} else {
 					MainGame.bm.add(new EnemyBullet(x, y, skillangle - s % 4,
-							s % 6, 15 + s % 4));
+							(int)((MainGame.gametime+s))% 8, 15 + s % 4));
 				}
 
 			}
 			if (s % 3 == 1) {
 				MainGame.bm.add(new EnemyBullet(x, y, skillangle - 10 - s % 8,
-						s % 6, 15 + s % 5));
+						(int)((MainGame.gametime+s))% 8, 15 + s % 5));
 			}
 			if (s % 3 == 2) {
 				MainGame.bm.add(new EnemyBullet(x, y, skillangle + 10 + s % 8,
-						s % 6, 15 + s % 5));
+						(int)((MainGame.gametime+s))% 8, 15 + s % 5));
 			}
 		}
 		skillstatus++;
@@ -251,8 +251,8 @@ public class Bossix extends Enemy {
 			double angle = BattleFieldManager.getangle(vx, vy);
 
 			if (s % 5 == 0) {
-				MainGame.bm.add(new EnemyBullet(x, y, angle + s, s % 4, 13));
-				MainGame.bm.add(new EnemyBullet(x, y, angle - s, s % 4, 13));
+				MainGame.bm.add(new EnemyBullet(x, y, angle + s, (int)((MainGame.gametime+s))% 8, 13));
+				MainGame.bm.add(new EnemyBullet(x, y, angle - s, (int)((MainGame.gametime+s))% 8, 13));
 			}
 		}
 
@@ -270,10 +270,10 @@ public class Bossix extends Enemy {
 
 		}
 		if (s % 4 == 0) {
-			MainGame.bm.add(new EnemyBullet(x, y, angle + s * 4 + 180, s % 5,
+			MainGame.bm.add(new EnemyBullet(x, y, angle + s * 4 + 180, (int)((MainGame.gametime+s))% 8,
 					13));
 		} else if (s % 4 == 2) {
-			MainGame.bm.add(new EnemyBullet(x, y, angle + s * 4, s % 5, 13));
+			MainGame.bm.add(new EnemyBullet(x, y, angle + s * 4, (int)((MainGame.gametime+s))% 8, 13));
 		}
 		skillstatus++;
 	}

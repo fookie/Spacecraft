@@ -31,8 +31,6 @@ public class BasicWeapon extends Weapon {
 		double vy = iv * sin;
 		Thread t = new Thread(new SoundController("Sounds//BasicWeapon.wav"));		//play sound FX
 		t.start();
-//		String add= "Sounds//BasicWeapon.wav";
-//		SoundFXPlayer.play(add);
 		Bullet[] bullet = new Bullet[1];
 		bullet[0] = new BasicBullet(x, y, vx, vy, f);
 		return bullet;

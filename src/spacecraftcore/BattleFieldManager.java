@@ -52,7 +52,9 @@ public class BattleFieldManager {
 	public boolean paused = false;
 	public int score = 0;
 	public int imgnum = 0;
-	public boolean isshooting=false;
+	public boolean isshooting = false;
+	public long cautiontime = 0;
+
 	public SpaceShip getShip() {
 		return ship;
 	}
@@ -73,11 +75,11 @@ public class BattleFieldManager {
 		this.windowsizey = windowsizey;
 
 		// 预处理//load image to prevent lag
-		//add(new Bigslime(100, 100, 2500, 1200));
+		// add(new Bigslime(100, 100, 2500, 1200));
 		// add(new BigS(200, 200, (int) (windowsizex * 0.7),
 		// (int) (windowsizey * 0.7)));
-		//add(new Stigis(200, 200, (int) (windowsizex * 0.7),(int) (windowsizey * 0.7)));
-		//add(new Splinter(200,200,180));
+		// add(new Stigis(200, 200, (int) (windowsizex * 0.7),(int) (windowsizey * 0.7)));
+		// add(new Splinter(200,200,180));
 	}
 
 	/**
@@ -119,7 +121,7 @@ public class BattleFieldManager {
 		System.out.println("读取完成");// (finished)
 		return new Gamewindow(bgloc, mapx, mapy, windowsizex, windowsizey);
 	}
-	
+
 	public boolean add(SpaceEvent e) {
 		return EventList.add(e);
 	}
@@ -172,10 +174,9 @@ public class BattleFieldManager {
 			System.out.println("没有加载地图，故无法更新战场数据");// (no map ,can;t update)
 			return false;
 		}
-		
-	//	System.out.println(MainGame.ji.);
-		
-		
+
+		// System.out.println(MainGame.ji.);
+
 		// System.out.println("A");
 		collisionupdate();
 		// 基本计算
@@ -212,12 +213,11 @@ public class BattleFieldManager {
 
 			// 传递子弹//send bullet to screen
 			for (int i = 0; i < BulletList.size(); i++) {
-				MainGame.test.repainter.add(
-						BulletList.get(i).ImageID,
-						BulletList.get(i).Imagesize,
-						(int) BulletList.get(i).x,
+				MainGame.test.repainter.add(BulletList.get(i).ImageID,
+						BulletList.get(i).Imagesize, (int) BulletList.get(i).x,
 						(int) BulletList.get(i).y,
-						-getangle(BulletList.get(i).vx,BulletList.get(i).vy), 2);
+						-getangle(BulletList.get(i).vx, BulletList.get(i).vy),
+						2);
 			}
 			// 传递物品//send items to screen
 			if (ItemList.size() != 0) {
@@ -247,22 +247,20 @@ public class BattleFieldManager {
 			// 传递敌人//send enemy to screen
 			for (int i = 0; i < EnemyList.size(); i++) {
 				MainGame.test.repainter.add(EnemyList.get(i).imageID,
-						EnemyList.get(i).imagesize, (int)EnemyList.get(i).x,
-						(int)EnemyList.get(i).y,
+						EnemyList.get(i).imagesize, (int) EnemyList.get(i).x,
+						(int) EnemyList.get(i).y,
 						-getangle(EnemyList.get(i).vx, EnemyList.get(i).vy), 2);
 			}
 
 			// GameOver↓
-			if ( score > 10000) {
+			if (score > 10000) {
 				MainGame.test.repainter.add_nooffset_element(
 						"Images//UI//win.png", -200, 75, 0, 0);
-				ship.health=-1;
-			}
-			else if (ship.health <= 0 && score < 10000) {
+				ship.health = -1;
+			} else if (ship.health <= 0 && score < 10000) {
 				MainGame.test.repainter.add_nooffset_element(
 						"Images//UI//gameover.png", -200, 75, 0, 0);
 			}
-			
 
 			// 生命值判断↓//Hp
 
@@ -271,11 +269,25 @@ public class BattleFieldManager {
 						"Images//InGameHUD//hpBar//hpover.png",
 						MainGame.test.repainter.onscreenx(0),
 						MainGame.test.repainter.onscreeny(0), 0, 2);
+				cautiontime = 0;
 			} else {
 				MainGame.test.repainter.add_nooffset_element(
 						"Images//InGameHUD//hpBar//hp" + ship.health + ".png",
 						MainGame.test.repainter.onscreenx(0),
 						MainGame.test.repainter.onscreeny(0), 0, 2);
+				if (ship.health == 1) {
+					if (cautiontime == 0) {
+						cautiontime = MainGame.gametime;
+					}
+					if (Math.abs(MainGame.gametime - cautiontime) % 120 == 0) {
+						Thread t = new Thread(new SoundController(
+								"Sounds//alert.wav"));
+						t.start();
+						cautiontime = MainGame.gametime;
+					}
+				}else{
+					cautiontime = 0;
+				}
 			}
 
 			Mousehud.showHud(ML.mx, ML.my);
@@ -299,13 +311,13 @@ public class BattleFieldManager {
 				i--;
 			} else {
 				EnemyList.get(i).update();
-//				if (EnemyList.get(i).x > (mapx / 2)
-//						|| EnemyList.get(i).x < -(mapx / 2)
-//						|| EnemyList.get(i).y > (mapy / 2)
-//						|| EnemyList.get(i).y < -(mapy / 2)) {
-//					EnemyList.remove(i);
-//					i = i - 1;
-//				}
+				// if (EnemyList.get(i).x > (mapx / 2)
+				// || EnemyList.get(i).x < -(mapx / 2)
+				// || EnemyList.get(i).y > (mapy / 2)
+				// || EnemyList.get(i).y < -(mapy / 2)) {
+				// EnemyList.remove(i);
+				// i = i - 1;
+				// }
 			}// check Enemy in the list ,if still alive then update the status
 				// of it
 		}
@@ -333,9 +345,9 @@ public class BattleFieldManager {
 
 		for (int i = 0; i < EnemyList.size(); i++) {// 这个循环基本处理了所有需要处理的东西//collision between enemy and bullet
 			Enemy tEnemy = EnemyList.get(i);
-			Rectangle Enemyhitbox = new Rectangle((int)tEnemy.x - tEnemy.volume / 2,
-					(int)tEnemy.y - tEnemy.volume / 2, tEnemy.volume / 2,
-					tEnemy.volume / 2);
+			Rectangle Enemyhitbox = new Rectangle((int) tEnemy.x
+					- tEnemy.volume / 2, (int) tEnemy.y - tEnemy.volume / 2,
+					tEnemy.volume / 2, tEnemy.volume / 2);
 			if (Enemyhitbox.intersects(Shiphitbox)) {// 飞机碰上怪物怪物挂掉//dedete Enemy ship then delete
 				ship.health--;
 				EnemyList.remove(i);
@@ -346,7 +358,7 @@ public class BattleFieldManager {
 				Rectangle Bullethitbox = new Rectangle((int) tBullet.x
 						- tBullet.volume / 2, (int) tBullet.y - tBullet.volume
 						/ 2, tBullet.volume / 2, tBullet.volume / 2);
-				//System.out.println(tBullet.faction);
+				// System.out.println(tBullet.faction);
 				if (tBullet.faction == 0) {// 己方子弹our bullet
 					if (Enemyhitbox.intersects(Bullethitbox)) {
 						tEnemy.health = tEnemy.health - tBullet.damage;
@@ -361,30 +373,28 @@ public class BattleFieldManager {
 						BulletList.remove(j);
 						j--;
 					}
-					
+
 				}
 			}
 		}
-		
-		
-		
-		if(EnemyList.size()==0){//没有敌人时，单独处理子弹和飞船//if no enemy ,we only deal with bullet and ship.
-		for (int j = 0; j < BulletList.size(); j++) {
-			Bullet tBullet = BulletList.get(j);
-			Rectangle Bullethitbox = new Rectangle((int) tBullet.x
-					- tBullet.volume / 2, (int) tBullet.y - tBullet.volume
-					/ 2, tBullet.volume / 2, tBullet.volume / 2);
-			//System.out.println(tBullet.faction);
-			if (tBullet.faction == 1)// 敌方子弹
-			{
-				if (Shiphitbox.intersects(Bullethitbox)) {
-					ship.health--;
-					BulletList.remove(j);
-					j--;
+
+		if (EnemyList.size() == 0) {// 没有敌人时，单独处理子弹和飞船//if no enemy ,we only deal with bullet and ship.
+			for (int j = 0; j < BulletList.size(); j++) {
+				Bullet tBullet = BulletList.get(j);
+				Rectangle Bullethitbox = new Rectangle((int) tBullet.x
+						- tBullet.volume / 2, (int) tBullet.y - tBullet.volume
+						/ 2, tBullet.volume / 2, tBullet.volume / 2);
+				// System.out.println(tBullet.faction);
+				if (tBullet.faction == 1)// 敌方子弹
+				{
+					if (Shiphitbox.intersects(Bullethitbox)) {
+						ship.health--;
+						BulletList.remove(j);
+						j--;
+					}
 				}
 			}
 		}
-		}	
 		for (int i = 0; i < ItemList.size(); i++) {
 			SpaceItem tItem = ItemList.get(i);
 			Rectangle Itemhitbox = new Rectangle(tItem.x - tItem.imagesize,
@@ -473,7 +483,7 @@ public class BattleFieldManager {
 		}
 
 		// 滚屏的部分代码
-		//This lines will change ship's position both on screen and in game.
+		// This lines will change ship's position both on screen and in game.
 		if (((ship.x + ship.vx) > (mapx / 2) || (ship.x + ship.vx) < -(mapx / 2)) != true) {
 			ship.x = ship.x + ship.vx;
 			ship.visx = ship.visx + ship.vx;
@@ -598,16 +608,18 @@ public class BattleFieldManager {
 			}
 		}
 	}
+
 	/**
 	 * Create a item on the map
 	 * 
 	 * 
 	 * @param x
 	 * @param y
-	 * @param l : level of item 
+	 * @param l
+	 *            : level of item
 	 */
-	public static void createitem(double x,double y,double l){
-		double r = Math.random()*100;
+	public static void createitem(double x, double y, double l) {
+		double r = Math.random() * 100;
 		if (r < 5) {
 			MainGame.bm.add(new W_StarWeapon(x, y));
 		} else if (r > 15 && r < 20) {
@@ -618,9 +630,9 @@ public class BattleFieldManager {
 			MainGame.bm.add(new S_repair(x, y));
 		} else if (r > 40 && r < 50) {
 			MainGame.bm.add(new H_bulletblast(x, y));
-		} else if (r > 55 && r < 60+l) {
+		} else if (r > 55 && r < 60 + l) {
 			MainGame.bm.add(new W_Shotgun(x, y));
-		} else if (r > 60+l && r < 61+l) {
+		} else if (r > 60 + l && r < 61 + l) {
 			MainGame.bm.add(new W_BasicWeapon(x, y));
 		}
 	}

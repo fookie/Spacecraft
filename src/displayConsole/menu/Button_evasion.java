@@ -59,7 +59,7 @@ public class Button_evasion extends SButton{
 		//MainGame.bm.add(new horizonslider(300,300,(int) (MainGame.bm.windowsizex * 0.7),(int) (MainGame.bm.windowsizey * 0.7)));
 		//MainGame.bm.add(new KochiyaSanae(400, 300, (int) (MainGame.bm.windowsizex * 0.7),(int) (MainGame.bm.windowsizey * 0.7)));
 		
-		MainGame.bm.add(new Bossix(500,500,MainGame.bm.mapx,MainGame.bm.mapy));
+	//	MainGame.bm.add(new Bossix(500,500,MainGame.bm.mapx,MainGame.bm.mapy));
 		//MainGame.bm.add(new Bossix(-500,-500,MainGame.bm.mapx,MainGame.bm.mapy));
 		MainGame.test.repainter.add_nooffset_element("Images//UI//paused400x250.png",-200,75, 0, 0);
 		MainGame.test.repainter.repaint();

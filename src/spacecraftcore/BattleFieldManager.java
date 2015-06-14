@@ -188,10 +188,10 @@ public class BattleFieldManager {
 		}
 		if (lan_new) {
 			String[] r_array = lan_buffer.split(" ");
-			kw = (r_array[0]) == "W";
-			ka = (r_array[1]) == "A";
-			ks = (r_array[2]) == "S";
-			kd = (r_array[3]) == "D";
+			kw = (r_array[0]).compareTo("W")==0;
+			ka = (r_array[1]).compareTo("A")==0;
+			ks = (r_array[2]).compareTo("S")==0;
+			kd = (r_array[3]).compareTo("D")==0;
 			lan_new = false;
 		}
 		// System.out.println(MainGame.ji.);

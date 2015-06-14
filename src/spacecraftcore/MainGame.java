@@ -22,7 +22,8 @@ public class MainGame {
 	public static Thread mt,lan_t;
 	public static boolean debug=true;
 	public static boolean lan_game=true;//局域网游戏
-	public static String lan_IP="172.21.70.29";
+	public static String lan_IP="172.21.70.97";
+//	public static String lan_IP="127.0.0.1";
 	public static Dimension srcDim = Toolkit.getDefaultToolkit().getScreenSize();
 	public static boolean cansendimage=true;
 
@@ -37,25 +38,7 @@ public class MainGame {
 				System.exit(0);
 			}
 		});
-		mt.start();
-		lan_t.start();
-		/*q
-		bm = new BattleFieldManager(srcDim.width,srcDim.height);
-		test=bm.loadmap("Data//scmaps//testmap1600x1200.smp");
-		test.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				System.exit(0);
-			}
-		});
-	
-		bm.add(new Palelin(0,0,0,0));
-		bm.add(new Slime(300,200));
-		bm.add(new Slime(300,0));
-		bm.add(new Slime(30,200));
-		bm.add(new Slime(500,200));
-		bm.add(new RandomSlime(1600,1200));
-		mt.start();
-	
-	*/
+		mt.start();//主线程
+		lan_t.start();//通信线程
 	}
 }

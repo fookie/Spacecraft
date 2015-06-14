@@ -14,9 +14,11 @@ public class Receiver implements Runnable {
 
 	@Override
 	public void run() {
+		while(true){
 		receive_packet();
 		MainGame.bm.lan_buffer=received;
 		MainGame.bm.lan_new=true;
+		}
 	}
 
 	private void receive_packet() {
@@ -24,6 +26,7 @@ public class Receiver implements Runnable {
 			System.out.print("1");
 			ds.receive(dp);
 			received = new String(dp.getData(), 0, dp.getLength());
+			System.out.println(received);
 			System.out.print("2");
 
 		} catch (IOException e) {

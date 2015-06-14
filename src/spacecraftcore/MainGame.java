@@ -19,14 +19,17 @@ public class MainGame {
 	public static Gamewindow test;
 	public static Menuwindow mainmenu;
 	public static long gametime;
-	public static int nowdiff=0;//躲避模式的现在难度
-	public static Thread mt;
-	public static boolean cansendimage=true;
-	public static boolean debug=false;
+	public static Thread mt,lan_t;
+	public static boolean debug=true;
+	public static boolean lan_game=true;//局域网游戏
+	public static String lan_IP="172.21.70.29";
 	public static Dimension srcDim = Toolkit.getDefaultToolkit().getScreenSize();
+	public static boolean cansendimage=true;
 
 	public static void main(String[] args) {
 		mt = new Thread(new SpaceTimmer());//新建线程//new thread
+		lan_t=new Thread(new Receiver());
+		
 		srcDim = Toolkit.getDefaultToolkit().getScreenSize();   //获取屏幕分辨率//get screensize
 		mainmenu=new Menuwindow("Images//UI//menubg.jpg",srcDim.width,srcDim.height);
 		mainmenu.addWindowListener(new WindowAdapter() {
@@ -35,7 +38,8 @@ public class MainGame {
 			}
 		});
 		mt.start();
-		/*
+		lan_t.start();
+		/*q
 		bm = new BattleFieldManager(srcDim.width,srcDim.height);
 		test=bm.loadmap("Data//scmaps//testmap1600x1200.smp");
 		test.addWindowListener(new WindowAdapter() {

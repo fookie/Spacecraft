@@ -6,8 +6,14 @@ import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import displayConsole.Gamewindow;
 import displayConsole.Mousehud;
@@ -45,6 +51,7 @@ public class BattleFieldManager {
 	private List<SpaceItem> ItemList = new LinkedList<SpaceItem>();
 	private List<SpecialEffect> OList = new LinkedList<SpecialEffect>();
 	public SpaceShip ship = null;
+	public SpaceShip p2_ship = null;
 	public int mapx, mapy;// 地图实际大小//mapsize
 	private String bgloc;// 背景地址//background image location
 	private DataInputStream mapin;
@@ -55,6 +62,8 @@ public class BattleFieldManager {
 	public int imgnum = 0;
 	public boolean isshooting = false;
 	public long cautiontime = 0;
+	public String lan_buffer = "";
+	public boolean lan_new = false;
 
 	public SpaceShip getShip() {
 		return ship;
@@ -79,7 +88,8 @@ public class BattleFieldManager {
 		// add(new Bigslime(100, 100, 2500, 1200));
 		// add(new BigS(200, 200, (int) (windowsizex * 0.7),
 		// (int) (windowsizey * 0.7)));
-		// add(new Stigis(200, 200, (int) (windowsizex * 0.7),(int) (windowsizey * 0.7)));
+		// add(new Stigis(200, 200, (int) (windowsizex * 0.7),(int) (windowsizey
+		// * 0.7)));
 		// add(new Splinter(200,200,180));
 	}
 
@@ -95,7 +105,8 @@ public class BattleFieldManager {
 			mapin = new DataInputStream(new BufferedInputStream(
 					new FileInputStream(mapaddress)));
 		} catch (FileNotFoundException e) {
-			System.out.println(mapaddress + " 不存在，故无法加载地图");// (chinese:XX not exist)
+			System.out.println(mapaddress + " 不存在，故无法加载地图");// (chinese:XX not
+															// exist)
 			e.printStackTrace();// 会出现红字//print StackTrace
 			return null;
 		}
@@ -175,7 +186,14 @@ public class BattleFieldManager {
 			System.out.println("没有加载地图，故无法更新战场数据");// (no map ,can;t update)
 			return false;
 		}
-
+		if (lan_new) {
+			String[] r_array = lan_buffer.split(" ");
+			kw = (r_array[0]) == "W";
+			ka = (r_array[1]) == "A";
+			ks = (r_array[2]) == "S";
+			kd = (r_array[3]) == "D";
+			lan_new = false;
+		}
 		// System.out.println(MainGame.ji.);
 
 		// System.out.println("A");
@@ -190,6 +208,9 @@ public class BattleFieldManager {
 		// 计算碰撞
 		// 传递数据
 		sendImage();
+		if (MainGame.lan_game) {
+			sendpacket();
+		}
 		return true;
 	}
 
@@ -286,7 +307,7 @@ public class BattleFieldManager {
 						t.start();
 						cautiontime = MainGame.gametime;
 					}
-				}else{
+				} else {
 					cautiontime = 0;
 				}
 			}
@@ -307,8 +328,9 @@ public class BattleFieldManager {
 		for (int i = 0; i < EnemyList.size(); i++) {
 			if (EnemyList.get(i).health < 0) {
 				add(EnemyList.get(i).deathwhisper());
-				if(score<10000){
-				score = score + EnemyList.get(i).getscore;}
+				if (score < 10000) {
+					score = score + EnemyList.get(i).getscore;
+				}
 				EnemyList.remove(i);
 				i--;
 			} else {
@@ -345,12 +367,14 @@ public class BattleFieldManager {
 		Rectangle Shiphitbox = new Rectangle(ship.x - ship.volume / 2, ship.y
 				- ship.volume / 2, ship.volume / 2, ship.volume / 2);
 
-		for (int i = 0; i < EnemyList.size(); i++) {// 这个循环基本处理了所有需要处理的东西//collision between enemy and bullet
+		for (int i = 0; i < EnemyList.size(); i++) {// 这个循环基本处理了所有需要处理的东西//collision
+													// between enemy and bullet
 			Enemy tEnemy = EnemyList.get(i);
 			Rectangle Enemyhitbox = new Rectangle((int) tEnemy.x
 					- tEnemy.volume / 2, (int) tEnemy.y - tEnemy.volume / 2,
 					tEnemy.volume / 2, tEnemy.volume / 2);
-			if (Enemyhitbox.intersects(Shiphitbox)) {// 飞机碰上怪物怪物挂掉//dedete Enemy ship then delete
+			if (Enemyhitbox.intersects(Shiphitbox)) {// 飞机碰上怪物怪物挂掉//dedete Enemy
+														// ship then delete
 				ship.health--;
 				EnemyList.remove(i);
 				i--;
@@ -380,7 +404,8 @@ public class BattleFieldManager {
 			}
 		}
 
-		if (EnemyList.size() == 0) {// 没有敌人时，单独处理子弹和飞船//if no enemy ,we only deal with bullet and ship.
+		if (EnemyList.size() == 0) {// 没有敌人时，单独处理子弹和飞船//if no enemy ,we only
+									// deal with bullet and ship.
 			for (int j = 0; j < BulletList.size(); j++) {
 				Bullet tBullet = BulletList.get(j);
 				Rectangle Bullethitbox = new Rectangle((int) tBullet.x
@@ -438,8 +463,8 @@ public class BattleFieldManager {
 			ship.y = 0;
 			ship.visx = 0;
 			ship.visy = 0;
-			ship.ImageID="";
-			
+			ship.ImageID = "";
+
 		}
 
 		if (ship.vx > 0) {// 下面这几行保证飞船在不按键时能停住this lines will stop the ship when
@@ -495,6 +520,28 @@ public class BattleFieldManager {
 		}
 		ship.angle = currentangle;
 
+	}
+
+	private void sendpacket() {
+		// step1:prepare data
+		String tosend = "";
+		tosend = (kw ? "W" : "w") + " " + (ka ? "A" : "a") + " "
+				+ (ks ? "S" : "s") + " " + (kd ? "D" : "d") + " ";
+	//	System.out.println(tosend);
+		// step2:send data
+		byte[] buf = tosend.trim().getBytes();
+		try {
+			InetAddress address = InetAddress.getByName(MainGame.lan_IP);
+			DatagramPacket dp = new DatagramPacket(buf, buf.length, address,
+					Receiver.port);
+			DatagramSocket ds = new DatagramSocket();
+			ds.send(dp);
+			ds.close();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private boolean kw = false;
@@ -635,7 +682,7 @@ public class BattleFieldManager {
 			MainGame.bm.add(new W_Shotgun(x, y));
 		} else if (r > 60 + l && r < 61 + l) {
 			MainGame.bm.add(new W_BasicWeapon(x, y));
-		}else if (r > 61 + l && r < 64 + l) {
+		} else if (r > 61 + l && r < 64 + l) {
 			MainGame.bm.add(new W_rocketlauncher(x, y));
 		}
 	}

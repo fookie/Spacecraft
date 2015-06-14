@@ -272,6 +272,10 @@ public class Repainter extends JPanel {
 			line++;
 			g.drawString("Enemy: "+MainGame.bm.EnemyList.size()+" Bullet:"+MainGame.bm.BulletList.size(), windowsizex-250, 200+line*15);
 			line++;
+			g.drawString("LAN-status", windowsizex-250, 200+line*15);
+			line++;
+			g.drawString("new:"+MainGame.bm.lan_new+"message:"+MainGame.bm.lan_buffer, windowsizex-250, 200+line*15);
+			line++;
 		}
 	}
 }

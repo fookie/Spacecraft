@@ -61,7 +61,6 @@ public class Button_evasion extends SButton{
 		
 		MainGame.bm.add(new Bossix(500,500,MainGame.bm.mapx,MainGame.bm.mapy));
 		//MainGame.bm.add(new Bossix(-500,-500,MainGame.bm.mapx,MainGame.bm.mapy));
-		MainGame.nowdiff=0;
 		MainGame.test.repainter.add_nooffset_element("Images//UI//paused400x250.png",-200,75, 0, 0);
 		MainGame.test.repainter.repaint();
 		MainGame.test.addWindowListener(new WindowAdapter() {

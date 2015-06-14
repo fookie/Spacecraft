@@ -26,7 +26,6 @@ public class BulletRain extends SpaceEvent {
 			t.start();
 			if (x > 2) {
 				super.over = true;
-				MainGame.nowdiff--;
 			}
 		}
 		return true;
@@ -41,7 +40,6 @@ public class BulletRain extends SpaceEvent {
 	public BulletRain(int f) {
 		super.over = false;
 		this.f=f;
-		MainGame.nowdiff++;
 	}
 	public BulletRain() {
 		super.over = false;

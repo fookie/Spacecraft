@@ -23,11 +23,11 @@ public class KL implements KeyListener {
 		{
 			MainGame.debug=!MainGame.debug;
 		}
-		if(e.getKeyChar() == '=')//Ctrl+Q
-		{
-			MainGame.bm.ship.health++;
-			MainGame.bm.score+=1000;
-		}
+//		if(e.getKeyChar() == '=')//Ctrl+Q
+//		{
+//			MainGame.bm.ship.health++;
+//			MainGame.bm.score+=1000;
+//		}
 		if(e.getKeyChar() == 'q'&&(MainGame.bm.paused||MainGame.bm.ship.health<=0))
 		{
 			System.exit(0);
